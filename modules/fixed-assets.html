@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🔧 ОС · Платформа РК</title>
+<style>
+:root{--fs:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;--fm:'SF Mono','Consolas',monospace;--bp:#fff;--bs:#f7f7f5;--bt:#f0efea;--bi:#e6f1fb;--bg:#eaf3de;--bw:#faeeda;--bd:#fcebeb;--tp:#1a1a18;--ts:#6b6b67;--tt:#9b9b97;--ti:#185fa5;--tg:#3b6d11;--tw:#854f0b;--td:#a32d2d;--bor:rgba(26,26,24,.15);--bos:rgba(26,26,24,.28);--bop:rgba(26,26,24,.42);--boi:rgba(24,95,165,.4);--bog:rgba(59,109,17,.4);--bow:rgba(133,79,11,.4);--bod:rgba(163,45,45,.4)}
+@media(prefers-color-scheme:dark){:root{--bp:#1c1c1a;--bs:#252523;--bt:#2e2e2b;--bi:#0c3054;--bg:#1a3508;--bw:#422508;--bd:#4f1515;--tp:#f0efe8;--ts:#a8a8a2;--ti:#85b7eb;--tg:#97c459;--tw:#ef9f27;--td:#f09595;--bor:rgba(240,239,232,.15);--bos:rgba(240,239,232,.28);--bop:rgba(240,239,232,.42)}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--fs);font-size:13px;background:var(--bt);padding:16px}
+.pw{max-width:1100px;margin:0 auto;background:var(--bp);border-radius:16px;padding:20px 24px 32px;border:.5px solid var(--bor)}
+.tn{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:.5px solid var(--bor);font-size:12px}
+.tn a{color:var(--ti);text-decoration:none}.tn a:hover{text-decoration:underline}
+.tn .co{margin-left:auto;color:var(--ts)}
+.tabs{display:flex;gap:3px;border-bottom:.5px solid var(--bor);margin-bottom:16px;flex-wrap:wrap}
+.tab{padding:7px 13px;font-size:12px;cursor:pointer;border:none;background:transparent;color:var(--ts);border-bottom:2px solid transparent;margin-bottom:-1px;font-family:var(--fs);white-space:nowrap}
+.tab.active{color:var(--tp);border-bottom:2px solid var(--tp);font-weight:500}
+.sec{display:none}.sec.active{display:block}
+.notice{font-size:11px;padding:8px 12px;border-radius:8px;margin-bottom:10px;line-height:1.7;color:var(--ts);background:var(--bs)}
+.notice strong{color:var(--tp)}.notice.info{background:var(--bi)}.notice.info strong{color:var(--ti)}
+.notice.suc{background:var(--bg)}.notice.suc strong{color:var(--tg)}
+.notice.warn{background:var(--bw)}.notice.warn strong{color:var(--tw)}
+.notice.err{background:var(--bd)}.notice.err strong{color:var(--td)}
+input,select,textarea{font-family:var(--fs);font-size:12px;padding:6px 9px;border:.5px solid var(--bos);border-radius:7px;background:var(--bp);color:var(--tp);width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--bop)}
+textarea{resize:vertical;min-height:90px}
+.btn{padding:5px 14px;font-size:12px;font-family:var(--fs);border:.5px solid var(--bos);border-radius:7px;background:transparent;color:var(--tp);cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--bs)}.btn.p{background:var(--tp);color:var(--bp);border-color:var(--tp)}
+.btn.sm{padding:3px 9px;font-size:11px}.btn.red{color:var(--td);border-color:var(--bod)}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500}
+.b-g{background:var(--bg);color:var(--tg)}.b-r{background:var(--bd);color:var(--td)}
+.b-b{background:var(--bi);color:var(--ti)}.b-w{background:var(--bw);color:var(--tw)}
+.ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.pt{font-size:14px;font-weight:500}.ps{font-size:11px;color:var(--ts);margin-top:2px}
+.kpig{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:14px}
+.kpi{padding:10px 12px;border-radius:8px;background:var(--bs);border:.5px solid var(--bor)}
+.kpi .v{font-size:15px;font-weight:500;color:var(--tp)}.kpi .l{font-size:10px;color:var(--ts);margin-top:1px}
+.kpi.g{background:var(--bg)}.kpi.g .v{color:var(--tg)}.kpi.b{background:var(--bi)}.kpi.b .v{color:var(--ti)}
+.kpi.w{background:var(--bw)}.kpi.w .v{color:var(--tw)}.kpi.r{background:var(--bd)}.kpi.r .v{color:var(--td)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px}
+.fl{display:flex;flex-direction:column;gap:3px}.fl label{font-size:11px;color:var(--ts)}
+table.t{width:100%;border-collapse:collapse;font-size:12px}
+table.t th{padding:5px 8px;font-size:11px;font-weight:500;color:var(--ts);border-bottom:.5px solid var(--bor);text-align:left;background:var(--bs);white-space:nowrap}
+table.t td{padding:6px 8px;border-bottom:.5px solid var(--bor);vertical-align:middle}
+table.t tr:hover td{background:var(--bs)}
+table.t .tot td{font-weight:500;background:var(--bs)}
+.nm{text-align:right;font-family:var(--fm);font-size:11px}
+.acc{font-family:var(--fm);font-weight:500;color:var(--ti)}
+.accn{font-family:var(--fm);font-weight:500;color:var(--tg)}
+/* AI BOX */
+.ai-box{border:1.5px solid var(--boi);border-radius:12px;padding:16px;margin-bottom:14px;background:color-mix(in srgb,var(--bi) 8%,transparent)}
+.ai-box h3{font-size:13px;font-weight:500;color:var(--ti);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.choice{padding:10px 14px;border:.5px solid var(--bor);border-radius:8px;margin-bottom:8px;cursor:pointer;transition:all .15s}
+.choice:hover{border-color:var(--ti);background:color-mix(in srgb,var(--bi) 10%,transparent)}
+.choice h4{font-size:12px;font-weight:500;margin-bottom:3px}.choice p{font-size:11px;color:var(--ts)}
+/* SPINNER */
+.spin{display:none;align-items:center;gap:10px;padding:12px;background:var(--bs);border-radius:8px;margin:10px 0;font-size:12px;color:var(--ts)}
+.spin.on{display:flex}
+.sp{width:14px;height:14px;border:2px solid var(--bor);border-top-color:var(--tp);border-radius:50%;animation:sp .7s linear infinite;flex-shrink:0}
+@keyframes sp{to{transform:rotate(360deg)}}
+/* DROP ZONE */
+.dz{border:2px dashed var(--bos);border-radius:10px;padding:24px;text-align:center;cursor:pointer;margin-bottom:12px;transition:all .2s}
+.dz:hover,.dz.drag{border-color:var(--tp);background:var(--bs)}
+/* CARD */
+.card{border:.5px solid var(--bor);border-radius:12px;overflow:hidden;margin-bottom:12px}
+.card-h{display:flex;justify-content:space-between;align-items:flex-start;padding:12px 16px;background:var(--bs);border-bottom:.5px solid var(--bor);flex-wrap:wrap;gap:8px}
+.card-b{padding:14px 16px}
+.row2{display:flex;justify-content:space-between;padding:4px 0;font-size:12px;border-bottom:.5px solid var(--bor)}.row2:last-child{border-bottom:none}
+/* CONFIRM BOX */
+.confirm-box{border:1.5px solid var(--bog);border-radius:12px;padding:14px;margin-bottom:12px;background:color-mix(in srgb,var(--bg) 8%,transparent)}
+.confirm-box h3{font-size:13px;font-weight:500;color:var(--tg);margin-bottom:10px}
+/* ENTRY ROW */
+.erow{display:grid;grid-template-columns:70px 70px 60px 60px 1fr 110px 80px;gap:6px;padding:5px 0;border-bottom:.5px solid var(--bor);font-size:11px;align-items:center}
+.erow.hdr{font-size:10px;font-weight:500;color:var(--ts);text-transform:uppercase;padding:4px 0;background:var(--bs);border-radius:4px;margin-bottom:4px}
+.apbtn{padding:3px 8px;font-size:10px;border-radius:5px;border:.5px solid var(--bog);background:transparent;color:var(--tg);cursor:pointer}
+.apbtn.ok{background:var(--bg)}
+.rejbtn{padding:3px 8px;font-size:10px;border-radius:5px;border:.5px solid var(--bod);background:transparent;color:var(--td);cursor:pointer;margin-left:3px}
+</style>
+</head>
+<body>
+<div class="pw">
+<div class="tn">
+  <a href="../index.html">← Все модули</a>
+  <span style="color:var(--tt)">·</span>
+  <span style="font-weight:500">🔧 ОС / Внеоборотные активы</span>
+  <span class="co" id="co">Alpino Group ТОО</span>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="T('dash')">📊 Реестр ОС</button>
+  <button class="tab" onclick="T('add')">➕ Принять ОС</button>
+  <button class="tab" onclick="T('cards')">📋 Карточки ОС</button>
+  <button class="tab" onclick="T('ts')">🚛 Карточки ТС</button>
+  <button class="tab" onclick="T('amort')">📉 Амортизация</button>
+  <button class="tab" onclick="T('docs')">📄 Документы</button>
+</div>
+
+<!-- РЕЕСТР -->
+<div id="dash" class="sec active">
+  <div class="ph">
+    <div><div class="pt">🔧 Внеоборотные активы · Реестр</div><div class="ps">БУ + НУ · НК РК 2026</div></div>
+    <button class="btn p sm" onclick="T('add')">➕ Принять ОС</button>
+  </div>
+  <div class="kpig" id="dkpi"></div>
+  <div style="overflow-x:auto"><table class="t"><thead><tr>
+    <th>Инв.№</th><th>Наименование</th><th>Категория</th><th>Гр.НУ</th>
+    <th class="nm">Перв. стоимость (₸)</th><th class="nm">Аморт.БУ/год</th><th class="nm">Аморт.НУ/год</th>
+    <th>Статус</th><th></th>
+  </tr></thead><tbody id="regTb"></tbody>
+  <tfoot><tr class="tot" id="regTot"></tr></tfoot></table></div>
+</div>
+
+<!-- ПРИНЯТЬ ОС -->
+<div id="add" class="sec">
+  <div class="ph"><div>
+    <div class="pt">Принять основное средство</div>
+    <div class="ps">AI заполняет карточку ОС по загруженным данным · Бухгалтер проверяет</div>
+  </div></div>
+
+  <div id="os-step0">
+    <div class="ai-box">
+      <h3>🤖 Как хотите внести данные об ОС?</h3>
+      <div class="g2">
+        <div class="choice" onclick="osMode('ai')">
+          <h4>🤖 Через AI — загрузить данные</h4>
+          <p>Загрузите СНТ, ЭСНТ, технический паспорт, акт о приёме-передаче ОС-1 или опишите объект текстом — AI заполнит карточку, определит группу НУ, рассчитает амортизацию</p>
+        </div>
+        <div class="choice" onclick="osMode('manual')">
+          <h4>✏️ Вручную — форма</h4>
+          <p>Заполните карточку ОС самостоятельно по документам поступления</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="os-ai" style="display:none">
+    <div class="ai-box">
+      <h3>🤖 Предоставьте данные об объекте ОС</h3>
+      <div class="notice info"><strong>Что можно загрузить:</strong> ЭСНТ / СНТ (XML), акт о приёме-передаче ОС-1, технический паспорт, ЭСФ на покупку ОС. AI определит наименование, стоимость, группу НУ, срок полезного использования.</div>
+      <div class="dz" onclick="document.getElementById('osf').click()"
+        ondragover="event.preventDefault();this.classList.add('drag')"
+        ondragleave="this.classList.remove('drag')"
+        ondrop="osDrop(event)">
+        <div style="font-size:30px;margin-bottom:8px">🔧</div>
+        <div style="font-size:13px;color:var(--ts)">Перетащите файл или нажмите для выбора</div>
+        <div style="font-size:10px;color:var(--tt);margin-top:4px">ЭСФ · ЭСНТ · Тех. паспорт · PDF · XML · JPG</div>
+        <input type="file" id="osf" style="display:none" accept=".xml,.pdf,.jpg,.jpeg,.png,.xlsx" onchange="osFile(this)">
+      </div>
+      <div style="text-align:center;font-size:12px;color:var(--ts);margin:-6px 0 10px">— или опишите текстом —</div>
+      <textarea id="ostxt" placeholder="Примеры:&#10;&#10;• Куплен тягач SHACMAN X3000, стоимость 15 000 000 тенге, VIN LZZ5BLFBXKA001234, гос.номер 177 ABA 02, поставлен на учёт 01.06.2021&#10;&#10;• Поступил сервер Dell PowerEdge R540, стоимость 1 200 000 тенге, дата 15.01.2024, IT оборудование&#10;&#10;• ЭСФ от AKGEN GROUP — насосная станция Grundfos для НПС-2 на сумму 9 000 000 тенге — ЭТО МАТЕРИАЛ ДЛЯ ПРОЕКТА, НЕ ОС&#10;&#10;• Мониторы iiyama ProLite 35 штук, общая стоимость 7 608 000 тенге, дата 01.03.2024"></textarea>
+      <div class="notice warn"><strong>⚠️ Важно:</strong> Перед тем как AI заполнит карточку — убедитесь что объект действительно является Основным Средством (используется более 1 года, стоимость выше порога). Если это материал/товар для проекта — используйте модуль Покупка.</div>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <button class="btn p" onclick="osAnalyze()">🤖 AI — заполнить карточку ОС</button>
+        <button class="btn sm" onclick="osEx()">Пример данных</button>
+        <button class="btn sm" onclick="osMode('manual')">Вручную →</button>
+        <button class="btn sm" onclick="osMode('none')">← Назад</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="spin" id="ossp"><div class="sp"></div><span id="osspT">AI анализирует данные...</span></div>
+
+  <div id="os-form" style="display:none">
+    <div class="confirm-box">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+        <h3 id="osFormT" style="margin:0">📋 Карточка основного средства</h3>
+        <span class="badge b-w" id="osFormSrc">Проверьте данные</span>
+      </div>
+
+      <div style="font-size:10px;font-weight:500;color:var(--ts);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">Идентификация объекта</div>
+      <div class="g4" style="margin-bottom:12px">
+        <div class="fl"><label>Инвентарный №</label><input id="oInv" placeholder="ОС-008"></div>
+        <div class="fl"><label>Наименование *</label><input id="oName" placeholder="Тягач SHACMAN X3000"></div>
+        <div class="fl"><label>Категория</label><select id="oCat">
+          <option>ТС</option><option>Машины</option><option>IT</option>
+          <option>Здания</option><option>Оборудование</option><option>Прочее</option>
+        </select></div>
+        <div class="fl"><label>Дата принятия *</label><input type="date" id="oDate" value="2026-05-01"></div>
+      </div>
+
+      <div style="font-size:10px;font-weight:500;color:var(--ts);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">Стоимость и амортизация</div>
+      <div class="g4" style="margin-bottom:12px">
+        <div class="fl"><label>Первоначальная стоимость (₸) *</label><input type="number" id="oCost" placeholder="15000000" oninput="calcAmort()"></div>
+        <div class="fl"><label>Срок полезного использования (лет)</label><input type="number" id="oLife" placeholder="8" value="5" oninput="calcAmort()"></div>
+        <div class="fl"><label>Группа НУ</label><select id="oNuGr" onchange="calcAmort()">
+          <option value="I-10">I — 40% (ПК, орг.техника)</option>
+          <option value="II-25" selected>II — 25% (ТС, производств.)</option>
+          <option value="III-40">III — 40% (IT-оборудование)</option>
+          <option value="IV-15">IV — 15% (прочие)</option>
+          <option value="V-10">V — 10%</option>
+          <option value="VI-10">VI — 10%</option>
+        </select></div>
+        <div class="fl"><label>Метод аморт. БУ</label><select id="oMethod"><option>Равномерный</option><option>По объёму продукции</option></select></div>
+      </div>
+
+      <!-- Автоматический расчёт амортизации -->
+      <div id="amortCalc" style="padding:10px;background:var(--bs);border-radius:8px;font-size:11px;margin-bottom:12px;line-height:2"></div>
+
+      <div style="font-size:10px;font-weight:500;color:var(--ts);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">Для транспортных средств</div>
+      <div class="g4" style="margin-bottom:12px">
+        <div class="fl"><label>VIN-код</label><input id="oVIN" placeholder="LZZ5BLFBXKA001234"></div>
+        <div class="fl"><label>Гос. номер</label><input id="oReg" placeholder="177 ABA 02"></div>
+        <div class="fl"><label>№ двигателя</label><input id="oEng" placeholder="D10-2024001"></div>
+        <div class="fl"><label>Водитель (из реестра)</label><select id="oDriver"><option value="">— не назначен —</option></select></div>
+      </div>
+
+      <div style="font-size:10px;font-weight:500;color:var(--ts);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">Источник финансирования</div>
+      <div class="g3" style="margin-bottom:14px">
+        <div class="fl"><label>Способ поступления</label><select id="oSrc"><option>Покупка (собственные ср-ва)</option><option>Лизинг</option><option>Кредит банка</option><option>Взнос в УК</option></select></div>
+        <div class="fl"><label>Поставщик</label><input id="oSupp" placeholder="ТОО «Название»"></div>
+        <div class="fl"><label>Примечание / описание</label><input id="oDesc" placeholder="..."></div>
+      </div>
+
+      <div id="osAiConf" class="notice info" style="display:none"></div>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+        <button class="btn p" onclick="saveOS()">✅ Принять ОС в систему</button>
+        <button class="btn sm" onclick="clearOSF()">Очистить</button>
+        <button class="btn sm" onclick="osMode('none')">← Назад</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- КАРТОЧКИ ОС -->
+<div id="cards" class="sec">
+  <div class="ph"><div class="pt">Карточки основных средств</div>
+    <input id="oSrch" placeholder="Поиск..." style="width:200px;font-size:11px" oninput="rOSCards()">
+  </div>
+  <div id="osCards"></div>
+</div>
+
+<!-- КАРТОЧКИ ТС -->
+<div id="ts" class="sec">
+  <div class="ph"><div class="pt">Карточки транспортных средств · Детальные</div></div>
+  <div id="tsCards"></div>
+</div>
+
+<!-- АМОРТИЗАЦИЯ -->
+<div id="amort" class="sec">
+  <div class="ph"><div><div class="pt">Амортизация БУ vs НУ</div><div class="ps">Сравнение методов · Временные разницы · ОНА/ОНО</div></div>
+    <button class="btn p sm" onclick="postAmort()">💾 Проводки в журнал</button>
+  </div>
+  <div class="notice info"><strong>Временные разницы:</strong> НУ (уменьшаемый остаток) > БУ (равномерный) → Налогооблагаемые временные разницы → ОНО (счёт 4310). КПН 20%.</div>
+  <div style="overflow-x:auto"><table class="t" id="amortTbl"></table></div>
+  <div id="amortEntries" style="margin-top:12px;padding:12px;background:var(--bs);border-radius:8px;font-size:11px;line-height:2.2"></div>
+</div>
+
+<!-- ДОКУМЕНТЫ ОС -->
+<div id="docs" class="sec">
+  <div class="ph"><div class="pt">Документы по ОС</div>
+    <button class="btn p sm" onclick="addOSDoc()">+ Новый документ</button>
+  </div>
+  <div style="overflow-x:auto"><table class="t"><thead><tr>
+    <th>Дата</th><th>Тип</th><th>Объект ОС</th><th class="nm">Сумма (₸)</th><th>Проводки</th><th>Статус</th>
+  </tr></thead><tbody id="docsTb"></tbody></table></div>
+</div>
+
+</div>
+<script>
+const DK='platform_db_v1';
+function lDB(){try{const r=localStorage.getItem(DK);if(r)return JSON.parse(r);}catch(e){}return dDB();}
+function dDB(){return{company:{name:'Alpino Group ТОО',bin:'',mrp:4325,nds:true,regime:'ОУР'},
+employees:[
+  {id:'e1',s:'active',last:'Сейткали',first:'Нурлан',mid:'',iin:'820315301001',pos:'Директор',dept:'Руководство',salary:350000,date:'10.01.2022',contract:'Бессрочный',sch:'5/2',bank:'Kaspi',iik:'KZ...001',vy:'30',phone:'',email:'',cit:'Казахстан',cat:'Основной',note:''},
+  {id:'e2',s:'active',last:'Байжанова',first:'Айгүл',mid:'',iin:'870822400502',pos:'Гл. бухгалтер',dept:'Бухгалтерия',salary:250000,date:'10.01.2022',contract:'Бессрочный',sch:'5/2',bank:'Kaspi',iik:'KZ...002',vy:'30',phone:'',email:'',cit:'Казахстан',cat:'Основной',note:''},
+  {id:'e3',s:'active',last:'Мухамедов',first:'Алибек',mid:'',iin:'950112301003',pos:'Инженер',dept:'Производственный',salary:180952,date:'01.03.2023',contract:'Бессрочный',sch:'5/2',bank:'Kaspi',iik:'KZ...003',vy:'30',phone:'',email:'',cit:'Казахстан',cat:'Основной',note:''},
+  {id:'e4',s:'active',last:'Абдрахманов',first:'Серік',mid:'',iin:'870530300804',pos:'Водитель',dept:'АХО',salary:180000,date:'15.06.2023',contract:'Бессрочный',sch:'5/2',bank:'Kaspi',iik:'KZ...004',vy:'30',phone:'',email:'',cit:'Казахстан',cat:'Основной',note:''}
+],
+assets:[
+  {id:'a1',s:'active',inv:'ОС-001',name:'Экскаватор JINGONG JGM9225E',cat:'Машины',cost:5000000,life:10,nuGr:'II',nuR:25,nuBal:4250000,date:'2021-01-01',vin:'',reg:'',driver:'',desc:'Производственное оборудование'},
+  {id:'a2',s:'active',inv:'ОС-ТС-001',name:'Тягач SHACMAN X3000',cat:'ТС',cost:15000000,life:8,nuGr:'II',nuR:25,nuBal:13218750,date:'2021-06-01',vin:'LZZ5BLFBXKA001234',reg:'177 ABA 02',driver:'e4',desc:''},
+  {id:'a3',s:'active',inv:'ОС-ТС-002',name:'Тягач DAF XF 105.460',cat:'ТС',cost:19500000,life:8,nuGr:'II',nuR:25,nuBal:17875000,date:'2025-08-07',vin:'XLRTE47MS0G210199',reg:'',driver:'',desc:''},
+  {id:'a4',s:'active',inv:'ОС-ТС-003',name:'Тягач DAF XF 105.460',cat:'ТС',cost:21500000,life:8,nuGr:'II',nuR:25,nuBal:20006250,date:'2025-08-28',vin:'XLRTE47MS0G210454',reg:'',driver:'',desc:''},
+  {id:'a5',s:'active',inv:'ОС-003',name:'Сервер Dell PowerEdge R540',cat:'IT',cost:1200000,life:5,nuGr:'III',nuR:40,nuBal:1020000,date:'2024-01-15',vin:'',reg:'',driver:'',desc:''},
+  {id:'a6',s:'active',inv:'ОС-004',name:'Мониторы iiyama ProLite 35шт',cat:'IT',cost:7608000,life:5,nuGr:'III',nuR:40,nuBal:6467000,date:'2024-03-01',vin:'',reg:'',driver:'',desc:''},
+  {id:'a7',s:'active',inv:'ОС-005',name:'Комплект усиления связи',cat:'IT',cost:109900,life:5,nuGr:'III',nuR:40,nuBal:93365,date:'2024-05-01',vin:'',reg:'',driver:'',desc:''}
+],
+inventory:[
+  {id:'i1',s:'active',name:'Фильтр масляный DAF',unit:'шт',qty:3,price:24914,acc:'1310',wh:'Склад запчастей',min:2},
+  {id:'i2',s:'active',name:'Масло TOTAL Rubia 10w40',unit:'канист.',qty:2,price:94828,acc:'1310',wh:'Склад материалов',min:3},
+  {id:'i3',s:'active',name:'Диск отрезной 400×32',unit:'шт',qty:8,price:14483,acc:'1310',wh:'Склад материалов',min:5},
+  {id:'i4',s:'active',name:'Цемент М400',unit:'мешок',qty:12,price:4310,acc:'1310',wh:'Склад материалов',min:10}
+],
+purchases:[],bankTx:[],tabel:{},docs:[],journal:[]};}
+function sDB(d){try{localStorage.setItem(DK,JSON.stringify(d));}catch(e){console.error('DB:',e);}}
+let DB=lDB();
+function fmt(n){return Math.round(n||0).toLocaleString('ru-RU');}
+const MRP=DB.company?.mrp||4325,VY30=30*MRP;
+document.getElementById('co').textContent=(DB.company?.name||'Alpino Group ТОО')+' · НК РК 2026';
+
+// ===== РЕЕСТР =====
+function rDash(){
+  const ac=DB.assets.filter(a=>a.s==='active');
+  const totC=ac.reduce((s,a)=>s+(+a.cost||0),0);
+  const totBU=ac.reduce((s,a)=>s+Math.round((+a.cost||0)/(+a.life||5)),0);
+  const totNU=ac.reduce((s,a)=>s+Math.round((+a.nuBal||0)*(+a.nuR||25)/100),0);
+  document.getElementById('dkpi').innerHTML=
+    '<div class="kpi"><div class="v">'+ac.length+'</div><div class="l">Объектов ОС</div></div>'+
+    '<div class="kpi b"><div class="v">'+fmt(totC)+' ₸</div><div class="l">Первоначальная стоимость</div></div>'+
+    '<div class="kpi w"><div class="v">'+fmt(totBU)+' ₸</div><div class="l">Аморт. БУ/год</div></div>'+
+    '<div class="kpi g"><div class="v">'+fmt(totNU)+' ₸</div><div class="l">Аморт. НУ/год</div></div>';
+  document.getElementById('regTb').innerHTML=ac.map(a=>{
+    const buY=Math.round((+a.cost||0)/(+a.life||5));
+    const nuY=Math.round((+a.nuBal||0)*(+a.nuR||25)/100);
+    return '<tr><td style="font-family:var(--fm);font-size:10px">'+a.inv+'</td>'+
+      '<td><strong>'+a.name+'</strong></td>'+
+      '<td><span class="badge b-b">'+a.cat+'</span></td>'+
+      '<td><span class="badge '+(a.nuGr==='II'?'b-g':'b-b')+'">'+a.nuGr+' '+a.nuR+'%</span></td>'+
+      '<td class="nm">'+fmt(a.cost)+'</td>'+
+      '<td class="nm" style="color:var(--ti)">'+fmt(buY)+'</td>'+
+      '<td class="nm" style="color:var(--tg)">'+fmt(nuY)+'</td>'+
+      '<td><span class="badge b-g">Активен</span></td>'+
+      '<td><button class="btn sm" onclick="openOSCard(\''+a.id+'\')">Карточка →</button></td>'+
+      '</tr>';
+  }).join('');
+  const totBU2=ac.reduce((s,a)=>s+Math.round((+a.cost||0)/(+a.life||5)),0);
+  const totNU2=ac.reduce((s,a)=>s+Math.round((+a.nuBal||0)*(+a.nuR||25)/100),0);
+  document.getElementById('regTot').innerHTML=
+    '<td colspan="4" style="padding:5px 8px;font-weight:500">ИТОГО</td>'+
+    '<td class="nm" style="padding:5px 8px">'+fmt(ac.reduce((s,a)=>s+(+a.cost||0),0))+'</td>'+
+    '<td class="nm" style="padding:5px 8px">'+fmt(totBU2)+'</td>'+
+    '<td class="nm" style="padding:5px 8px">'+fmt(totNU2)+'</td>'+
+    '<td colspan="2" style="padding:5px 8px"></td>';
+}
+
+function openOSCard(id){T('cards');setTimeout(()=>{const el=document.getElementById('oc-'+id);if(el)el.scrollIntoView({behavior:'smooth'});},120);}
+
+// ===== ДОБАВЛЕНИЕ ОС =====
+function osMode(m){
+  document.getElementById('os-step0').style.display=m==='none'?'block':'none';
+  document.getElementById('os-ai').style.display=m==='ai'?'block':'none';
+  document.getElementById('os-form').style.display=(m==='manual'||m==='fill')?'block':'none';
+  if(m==='manual'){document.getElementById('osFormT').textContent='✏️ Карточка ОС — ручной ввод';document.getElementById('osFormSrc').textContent='Ручной ввод';document.getElementById('osFormSrc').className='badge b-b';}
+  if(m==='manual'||m==='fill')fillDrivers();
+}
+function osDrop(e){e.preventDefault();document.querySelector('#os-ai .dz').classList.remove('drag');const f=e.dataTransfer.files[0];if(f)osFile({files:[f]});}
+function osFile(inp){const f=inp.files[0];if(f)document.getElementById('ostxt').value='📎 '+f.name+' ('+Math.round(f.size/1024)+' KB)\n\nВ продакшн-версии AI прочитает документ. Для демо — введите данные текстом.';}
+function osEx(){document.getElementById('ostxt').value='Тягач SHACMAN X3000\nСтоимость: 15 000 000 тенге\nVIN: LZZ5BLFBXKA001234\nГос. номер: 177 ABA 02\nДата принятия: 01.06.2021\nСрок: 8 лет\nТип: транспортное средство';}
+function calcAmort(){
+  const cost=+document.getElementById('oCost').value||0;
+  const life=+document.getElementById('oLife').value||5;
+  const nuGrV=document.getElementById('oNuGr').value;
+  const nuR=+nuGrV.split('-')[1]||25;
+  const nuBal=cost;
+  const buM=Math.round(cost/life/12);const buY=Math.round(cost/life);
+  const nuM=Math.round(nuBal*nuR/100/12);const nuY=Math.round(nuBal*nuR/100);
+  const diff=nuY-buY;
+  const ono=Math.round(Math.max(0,diff)*0.20);
+  document.getElementById('amortCalc').innerHTML=
+    'Аморт. БУ (равномерный): <b>'+fmt(buM)+' ₸/мес</b> = '+fmt(buY)+' ₸/год'+
+    ' | Аморт. НУ: <b>'+fmt(nuM)+' ₸/мес</b> = '+fmt(nuY)+' ₸/год<br>'+
+    (diff>0?'Временная разница: '+fmt(diff)+' ₸ → ОНО = '+fmt(ono)+' ₸ (КПН 20%) | Дт <b>7710</b>/Кт <b>4310</b>':'Временная разница: 0');
+}
+function fillDrivers(){
+  const sel=document.getElementById('oDriver');
+  sel.innerHTML='<option value="">— не назначен —</option>'+
+    DB.employees.filter(e=>e.s==='active').map(e=>'<option value="'+e.id+'">'+e.last+' '+e.first+'</option>').join('');
+}
+function osAnalyze(){
+  const txt=document.getElementById('ostxt').value.trim();
+  if(!txt){alert('Введите данные об объекте ОС');return;}
+  const sp=document.getElementById('ossp');sp.classList.add('on');
+  const msgs=['AI читает данные...','Определяю тип объекта...','Классифицирую группу НУ...','Рассчитываю амортизацию...','Формирую карточку ОС...'];
+  let i=0;const iv=setInterval(()=>{document.getElementById('osspT').textContent=msgs[i%msgs.length];i++;},500);
+  setTimeout(()=>{
+    clearInterval(iv);sp.classList.remove('on');
+    const d=parseOS(txt);
+    fillOSForm(d);
+    document.getElementById('os-ai').style.display='none';
+    document.getElementById('os-form').style.display='block';
+    document.getElementById('osFormT').textContent='🤖 AI заполнил карточку ОС — проверьте';
+    document.getElementById('osFormSrc').textContent='AI · Требует подтверждения';
+    document.getElementById('osFormSrc').className='badge b-w';
+    const c=document.getElementById('osAiConf');c.style.display='block';
+    c.innerHTML='<strong>✅ AI определил:</strong> '+d._f.join(' · ')+(d._m.length?'<br><strong>⚠️ Уточните:</strong> '+d._m.join(' · '):'');
+    fillDrivers();calcAmort();
+  },2500);
+}
+function parseOS(txt){
+  const t=txt.toLowerCase(),r={_f:[],_m:[]};
+  const nameM=txt.match(/(?:тягач|экскаватор|сервер|монитор[ыа]?|станок|генератор|насос|комплект|[А-ЯЁ][A-Za-zА-ЯЁа-яё\s\d]{3,30}(?:\s+[A-Z0-9]{3,20})?)/);
+  if(nameM){r.name=nameM[0];r._f.push('Наименование');}else r._m.push('Наименование');
+  const salM=txt.match(/(\d[\d\s]*)\s*(?:тенге|₸|тг\.?)/i);if(salM){r.cost=parseInt(salM[1].replace(/\s/g,''));r._f.push('Стоимость');}else r._m.push('Стоимость');
+  const vinM=txt.match(/(?:VIN|VIN-код)[:\s]*([A-Z0-9]{17})/i);if(vinM){r.vin=vinM[1];r._f.push('VIN');}
+  const regM=txt.match(/(?:гос\.?\s*номер|рег\.?\s*номер)[:\s]*([А-Яа-я0-9\s]{5,12})/i);if(regM){r.reg=regM[1].trim();r._f.push('Гос.номер');}
+  const dm=txt.match(/(\d{1,2})[.\s](\d{2})[.\s](\d{4})/);if(dm){r.date=dm[3]+'-'+dm[2]+'-'+dm[1].padStart(2,'0');r._f.push('Дата');}
+  const lifeM=txt.match(/(\d{1,2})\s*лет/i);if(lifeM){r.life=+lifeM[1];r._f.push('Срок');}
+  if(t.includes('тягач')||t.includes('автомоб')||t.includes('грузов')){r.cat='ТС';r.nuGr='II-25';r._f.push('Группа НУ II (ТС)');}
+  else if(t.includes('сервер')||t.includes('компьютер')||t.includes('монитор')){r.cat='IT';r.nuGr='III-40';r._f.push('Группа НУ III (IT)');}
+  else if(t.includes('здани')||t.includes('строени')){r.cat='Здания';r.nuGr='VI-10';r._f.push('Группа НУ VI');}
+  else{r.cat='Оборудование';r.nuGr='II-25';}
+  return r;
+}
+function fillOSForm(d){
+  const sv=(id,v)=>{const el=document.getElementById(id);if(el&&v)el.value=v;};
+  sv('oName',d.name);sv('oCost',d.cost);sv('oVIN',d.vin);sv('oReg',d.reg);sv('oDate',d.date);sv('oLife',d.life);
+  if(d.cat){const s=document.getElementById('oCat');for(let i=0;i<s.options.length;i++)if(s.options[i].text===d.cat){s.selectedIndex=i;break;}}
+  if(d.nuGr){const s=document.getElementById('oNuGr');for(let i=0;i<s.options.length;i++)if(s.options[i].value===d.nuGr){s.selectedIndex=i;break;}}
+}
+function clearOSF(){['oInv','oName','oCost','oVIN','oReg','oEng','oSupp','oDesc'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});}
+function saveOS(){
+  const name=document.getElementById('oName').value.trim();
+  const cost=+document.getElementById('oCost').value;
+  if(!name){alert('Укажите наименование ОС');return;}
+  if(!cost||cost<=0){alert('Укажите стоимость ОС');return;}
+  const nuGrV=document.getElementById('oNuGr').value;
+  const nuR=+nuGrV.split('-')[1]||25;
+  const nuGr='Группа '+nuGrV.split('-')[0];
+  const life=+document.getElementById('oLife').value||5;
+  const invNum='ОС-'+(DB.assets.length+1).toString().padStart(3,'0');
+  const os={
+    id:'a'+Date.now(),s:'active',
+    inv:document.getElementById('oInv').value||invNum,
+    name,cat:document.getElementById('oCat').value,
+    cost,life,nuGr:nuGrV.split('-')[0],nuR,nuBal:cost,
+    date:document.getElementById('oDate').value,
+    vin:document.getElementById('oVIN').value,
+    reg:document.getElementById('oReg').value,
+    driver:document.getElementById('oDriver').value,
+    desc:document.getElementById('oDesc').value,
+    src:document.getElementById('oSrc').value,supp:document.getElementById('oSupp').value
+  };
+  DB.assets.push(os);
+  DB.docs=DB.docs||[];
+  DB.docs.unshift({date:new Date().toLocaleDateString('ru-RU'),type:'Поступление ОС',obj:os.name,sum:cost,entries:'Дт 2410/Кт 3310',s:'Проведён'});
+  sDB(DB);clearOSF();
+  document.getElementById('os-step0').style.display='block';
+  document.getElementById('os-ai').style.display='none';
+  document.getElementById('os-form').style.display='none';
+  document.getElementById('osAiConf').style.display='none';
+  rDash();rOSCards();rTSCards();rAmort();
+  alert('✅ ОС принят в систему: '+name+'\n\nАвтоматически добавлен в:\n• Реестр основных средств\n• Расчёт амортизации\n• ФНО 870.00\n\nПроводка: Дт 2410 / Кт 3310 — '+fmt(cost)+' ₸');
+  T('cards');
+}
+
+// ===== КАРТОЧКИ ОС =====
+function rOSCards(){
+  const q=(document.getElementById('oSrch')?.value||'').toLowerCase();
+  const assets=DB.assets.filter(a=>!q||a.name.toLowerCase().includes(q)||a.inv.toLowerCase().includes(q));
+  document.getElementById('osCards').innerHTML=assets.map(a=>{
+    const buM=Math.round((+a.cost||0)/(+a.life||5)/12);
+    const nuM=Math.round((+a.nuBal||0)*(+a.nuR||25)/100/12);
+    const driver=a.driver?DB.employees.find(e=>e.id===a.driver):null;
+    return '<div class="card" id="oc-'+a.id+'">'+
+      '<div class="card-h">'+
+        '<div>'+
+          '<div style="font-size:13px;font-weight:500">'+a.name+'</div>'+
+          '<div style="font-size:11px;color:var(--ts);margin-top:2px">'+a.inv+' · '+a.cat+' · принят '+a.date+'</div>'+
+        '</div>'+
+        '<div style="display:flex;gap:6px;flex-wrap:wrap">'+
+          '<span class="badge b-g">'+a.s+'</span>'+
+          '<span class="badge b-b">Гр.НУ '+a.nuGr+' ('+a.nuR+'%)</span>'+
+          '<button class="btn sm red" onclick="writeOff(\''+a.id+'\')">Списать</button>'+
+        '</div>'+
+      '</div>'+
+      '<div class="card-b">'+
+        '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">'+
+          '<div>'+
+            '<div style="font-size:10px;color:var(--ts);font-weight:500;text-transform:uppercase;margin-bottom:6px">Стоимость и амортизация</div>'+
+            '<div class="row2"><span>Перв. стоимость</span><strong>'+fmt(a.cost)+' ₸</strong></div>'+
+            '<div class="row2"><span>Стоим. баланс НУ</span><span>'+fmt(a.nuBal)+' ₸</span></div>'+
+            '<div class="row2"><span>Аморт. БУ/мес</span><span style="color:var(--ti)">'+fmt(buM)+' ₸</span></div>'+
+            '<div class="row2"><span>Аморт. НУ/мес</span><span style="color:var(--tg)">'+fmt(nuM)+' ₸</span></div>'+
+            '<div class="row2"><span>Метод БУ</span><span>Равномерный</span></div>'+
+          '</div>'+
+          '<div>'+
+            '<div style="font-size:10px;color:var(--ts);font-weight:500;text-transform:uppercase;margin-bottom:6px">Идентификация</div>'+
+            (a.vin?'<div class="row2"><span>VIN</span><span style="font-family:var(--fm);font-size:10px">'+a.vin+'</span></div>':'')+
+            (a.reg?'<div class="row2"><span>Гос. номер</span><strong>'+a.reg+'</strong></div>':'')+
+            '<div class="row2"><span>Категория</span><span>'+a.cat+'</span></div>'+
+            '<div class="row2"><span>Источник</span><span>'+(a.src||'Покупка')+'</span></div>'+
+            (a.supp?'<div class="row2"><span>Поставщик</span><span>'+a.supp+'</span></div>':'')+
+          '</div>'+
+          '<div>'+
+            '<div style="font-size:10px;color:var(--ts);font-weight:500;text-transform:uppercase;margin-bottom:6px">Эксплуатация</div>'+
+            '<div class="row2"><span>Срок СПИ</span><span>'+(a.life||5)+' лет</span></div>'+
+            (driver?'<div class="row2"><span>Водитель</span><strong>'+driver.last+' '+driver.first+'</strong></div>':'')+
+            (a.desc?'<div class="row2"><span>Описание</span><span>'+a.desc+'</span></div>':'')+
+          '</div>'+
+        '</div>'+
+        '<div style="margin-top:10px;padding:8px;background:var(--bs);border-radius:6px;font-size:11px">'+
+          'Проводки аморт.: Дт <span class="acc">7210</span>/Кт <span class="acc">2420</span> — '+fmt(buM)+' ₸/мес '+
+          '| НУ: Дт <span class="accn">7200Н</span>/Кт <span class="accn">2100Н</span> — '+fmt(nuM)+' ₸/мес'+
+        '</div>'+
+        '<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">'+
+          '<button class="btn sm" onclick="addOSDoc()">+ Ремонт/ТО →</button>'+
+          '<button class="btn sm p" onclick="T(\'amort\')">Амортизация →</button>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+function writeOff(id){
+  const a=DB.assets.find(x=>x.id===id);if(!a)return;
+  if(!confirm('Списать ОС: '+a.name+'?'))return;
+  a.s='written-off';sDB(DB);rDash();rOSCards();
+}
+
+// ===== КАРТОЧКИ ТС =====
+function rTSCards(){
+  const ts=DB.assets.filter(a=>a.s==='active'&&a.cat==='ТС');
+  document.getElementById('tsCards').innerHTML=ts.length?ts.map(a=>{
+    const driver=a.driver?DB.employees.find(e=>e.id===a.driver):null;
+    const buM=Math.round((+a.cost||0)/(+a.life||8)/12);
+    const nuM=Math.round((+a.nuBal||0)*(+a.nuR||25)/100/12);
+    return '<div class="card">'+
+      '<div class="card-h">'+
+        '<div><div style="font-size:13px;font-weight:500">🚛 '+a.name+'</div>'+
+        '<div style="font-size:11px;color:var(--ts);margin-top:2px">'+a.inv+' · принят '+a.date+'</div></div>'+
+        '<div style="display:flex;gap:6px"><span class="badge b-g">Активен</span><span class="badge b-b">Гр.НУ '+a.nuGr+' '+a.nuR+'%</span></div>'+
+      '</div>'+
+      '<div class="card-b">'+
+        '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">'+
+          '<div>'+
+            '<div style="font-size:10px;color:var(--ts);font-weight:500;text-transform:uppercase;margin-bottom:6px">Идентификация ТС</div>'+
+            '<div class="row2"><span>VIN-код</span><strong style="font-family:var(--fm);font-size:11px">'+(a.vin||'—')+'</strong></div>'+
+            '<div class="row2"><span>Гос. номер</span><strong>'+(a.reg||'не присвоен')+'</strong></div>'+
+            '<div class="row2"><span>№ двигателя</span><span style="font-family:var(--fm);font-size:10px">'+(a.eng||'—')+'</span></div>'+
+          '</div>'+
+          '<div>'+
+            '<div style="font-size:10px;color:var(--ts);font-weight:500;text-transform:uppercase;margin-bottom:6px">Стоимость и аморт.</div>'+
+            '<div class="row2"><span>Перв. стоимость</span><strong>'+fmt(a.cost)+' ₸</strong></div>'+
+            '<div class="row2"><span>Аморт. БУ/мес</span><span style="color:var(--ti)">'+fmt(buM)+' ₸</span></div>'+
+            '<div class="row2"><span>Аморт. НУ/мес</span><span style="color:var(--tg)">'+fmt(nuM)+' ₸</span></div>'+
+            '<div class="row2"><span>Транспортный нал.</span><span style="color:var(--tw)">'+fmt(117*MRP)+' ₸/год</span></div>'+
+          '</div>'+
+          '<div>'+
+            '<div style="font-size:10px;color:var(--ts);font-weight:500;text-transform:uppercase;margin-bottom:6px">Эксплуатация</div>'+
+            '<div class="row2"><span>Водитель</span><strong>'+(driver?driver.last+' '+driver.first:'—')+'</strong></div>'+
+            '<div class="row2"><span>Источник</span><span>'+(a.src||'Покупка')+'</span></div>'+
+            '<div class="row2"><span>Поставщик</span><span>'+(a.supp||'—')+'</span></div>'+
+          '</div>'+
+        '</div>'+
+        '<div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">'+
+          '<button class="btn sm" onclick="addOSDoc()">+ Ремонт/ТО →</button>'+
+          '<button class="btn sm p">Налоговый расчёт →</button>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }).join(''):'<div class="notice info">Нет транспортных средств в реестре. <button class="btn sm" onclick="T(\'add\')">Принять ТС →</button></div>';
+}
+
+// ===== АМОРТИЗАЦИЯ =====
+function rAmort(){
+  const ac=DB.assets.filter(a=>a.s==='active');
+  let totBU=0,totNU=0,totONO=0;
+  let rows=ac.map(a=>{
+    const buY=Math.round((+a.cost||0)/(+a.life||5));
+    const nuY=Math.round((+a.nuBal||0)*(+a.nuR||25)/100);
+    const diff=nuY-buY;const ono=Math.round(Math.max(0,diff)*0.20);
+    totBU+=buY;totNU+=nuY;totONO+=ono;
+    return '<tr><td style="font-family:var(--fm);font-size:10px">'+a.inv+'</td><td>'+a.name+'</td>'+
+      '<td><span class="badge b-b">'+a.nuGr+' '+a.nuR+'%</span></td>'+
+      '<td class="nm">'+fmt(buY)+'</td><td class="nm">'+fmt(nuY)+'</td>'+
+      '<td class="nm" style="color:'+(diff>0?'var(--td)':'var(--tg)')+'">'+fmt(diff)+'</td>'+
+      '<td class="nm" style="color:var(--tw)">'+fmt(ono)+'</td>'+
+      '</tr>';
+  }).join('');
+  document.getElementById('amortTbl').innerHTML=
+    '<thead><tr><th>Инв.№</th><th>Наименование</th><th>Гр.НУ</th>'+
+    '<th class="nm">Аморт.БУ/год</th><th class="nm">Аморт.НУ/год</th>'+
+    '<th class="nm">Разница</th><th class="nm">ОНО (20%)</th></tr></thead>'+
+    '<tbody>'+rows+'</tbody>'+
+    '<tfoot><tr class="tot"><td colspan="3">ИТОГО</td><td class="nm">'+fmt(totBU)+'</td><td class="nm">'+fmt(totNU)+'</td>'+
+    '<td class="nm" style="color:var(--td)">'+fmt(totNU-totBU)+'</td><td class="nm" style="color:var(--tw)">'+fmt(totONO)+'</td></tr></tfoot>';
+  document.getElementById('amortEntries').innerHTML=
+    'Аморт. БУ: Дт <b>7210</b>/Кт <b>2420</b> — '+fmt(Math.round(totBU/12))+' ₸/мес ('+fmt(totBU)+' ₸/год)<br>'+
+    'Аморт. НУ: Дт <b>7200Н</b>/Кт <b>2100Н</b> — '+fmt(Math.round(totNU/12))+' ₸/мес<br>'+
+    'ОНО (КПН 20%): Дт <b>7710</b>/Кт <b>4310</b> — '+fmt(Math.round(totONO/12))+' ₸/мес';
+}
+function postAmort(){DB.journal=DB.journal||[];DB.journal.push({date:new Date().toLocaleDateString('ru-RU'),type:'Аморт.ОС',src:'Модуль ОС'});sDB(DB);alert('✅ Проводки амортизации в журнале!');}
+
+// ===== ДОКУМЕНТЫ =====
+function rOSDocs(){
+  document.getElementById('docsTb').innerHTML=(DB.docs||[]).filter(d=>d.type&&d.obj).map(d=>'<tr>'+
+    '<td>'+d.date+'</td><td><span class="badge b-b">'+d.type+'</span></td>'+
+    '<td>'+d.obj+'</td><td class="nm">'+fmt(d.sum)+'</td>'+
+    '<td style="font-size:10px;font-family:var(--fm)">'+d.entries+'</td>'+
+    '<td><span class="badge b-g">'+d.s+'</span></td>'+
+    '</tr>').join('');
+}
+function addOSDoc(){
+  const types=['Поступление ОС','Амортизация','Ремонт/ТО','Модернизация','Выбытие/Списание'];
+  const type=prompt('Тип документа:\n'+types.map((t,i)=>(i+1)+'. '+t).join('\n'),'1');
+  if(!type)return;
+  const t=types[Math.min(types.length-1,+type-1)]||types[0];
+  const obj=prompt('Объект ОС:',DB.assets[0]?.name||'');if(!obj)return;
+  const sum=+prompt('Сумма (₸):','0')||0;
+  const entries={
+    'Поступление ОС':'Дт 2410/Кт 3310','Амортизация':'Дт 7210/Кт 2420',
+    'Ремонт/ТО':'Дт 7210/Кт 3310','Модернизация':'Дт 2930/Кт 3310','Выбытие/Списание':'Дт 7410/Кт 2410'
+  };
+  DB.docs=DB.docs||[];
+  DB.docs.unshift({date:new Date().toLocaleDateString('ru-RU'),type:t,obj,sum,entries:entries[t]||'—',s:'Проведён'});
+  sDB(DB);rOSDocs();
+  alert('✅ Документ проведён: '+t+' · '+obj+' · '+fmt(sum)+' ₸\nПроводка: '+entries[t]);
+}
+
+// ===== TABS =====
+function T(n){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.getElementById(n).classList.add('active');
+  event?.currentTarget?.classList.add('active');
+  if(n==='cards')rOSCards();
+  if(n==='ts')rTSCards();
+  if(n==='amort')rAmort();
+  if(n==='docs')rOSDocs();
+  if(n==='add'){document.getElementById('os-step0').style.display='block';document.getElementById('os-ai').style.display='none';document.getElementById('os-form').style.display='none';}
+}
+
+rDash();
+
+function sendPrompt(t){prompt('AI: '+t,'');}
+</script>
+</body>
+</html>
