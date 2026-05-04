@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>📥 Покупка · Платформа РК</title>
+<style>
+:root{--fs:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;--fm:'SF Mono','Consolas',monospace;--bp:#fff;--bs:#f7f7f5;--bt:#f0efea;--bi:#e6f1fb;--bg:#eaf3de;--bw:#faeeda;--bd:#fcebeb;--tp:#1a1a18;--ts:#6b6b67;--tt:#9b9b97;--ti:#185fa5;--tg:#3b6d11;--tw:#854f0b;--td:#a32d2d;--bor:rgba(26,26,24,.15);--bos:rgba(26,26,24,.28);--bop:rgba(26,26,24,.42);--boi:rgba(24,95,165,.4);--bog:rgba(59,109,17,.4);--bow:rgba(133,79,11,.4);--bod:rgba(163,45,45,.4)}
+@media(prefers-color-scheme:dark){:root{--bp:#1c1c1a;--bs:#252523;--bt:#2e2e2b;--bi:#0c3054;--bg:#1a3508;--bw:#422508;--bd:#4f1515;--tp:#f0efe8;--ts:#a8a8a2;--ti:#85b7eb;--tg:#97c459;--tw:#ef9f27;--td:#f09595;--bor:rgba(240,239,232,.15);--bos:rgba(240,239,232,.28);--bop:rgba(240,239,232,.42)}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--fs);font-size:13px;background:var(--bt);padding:16px}
+.pw{max-width:1100px;margin:0 auto;background:var(--bp);border-radius:16px;padding:20px 24px 32px;border:.5px solid var(--bor)}
+.tn{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:.5px solid var(--bor);font-size:12px}
+.tn a{color:var(--ti);text-decoration:none}.tn a:hover{text-decoration:underline}
+.tn .co{margin-left:auto;color:var(--ts)}
+.tabs{display:flex;gap:3px;border-bottom:.5px solid var(--bor);margin-bottom:16px;flex-wrap:wrap}
+.tab{padding:7px 13px;font-size:12px;cursor:pointer;border:none;background:transparent;color:var(--ts);border-bottom:2px solid transparent;margin-bottom:-1px;font-family:var(--fs);white-space:nowrap}
+.tab.active{color:var(--tp);border-bottom:2px solid var(--tp);font-weight:500}
+.sec{display:none}.sec.active{display:block}
+.notice{font-size:11px;padding:8px 12px;border-radius:8px;margin-bottom:10px;line-height:1.7;color:var(--ts);background:var(--bs)}
+.notice strong{color:var(--tp)}.notice.info{background:var(--bi)}.notice.info strong{color:var(--ti)}
+.notice.suc{background:var(--bg)}.notice.suc strong{color:var(--tg)}
+.notice.warn{background:var(--bw)}.notice.warn strong{color:var(--tw)}
+.notice.err{background:var(--bd)}.notice.err strong{color:var(--td)}
+input,select,textarea{font-family:var(--fs);font-size:12px;padding:6px 9px;border:.5px solid var(--bos);border-radius:7px;background:var(--bp);color:var(--tp);width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--bop)}
+textarea{resize:vertical;min-height:90px}
+.btn{padding:5px 14px;font-size:12px;font-family:var(--fs);border:.5px solid var(--bos);border-radius:7px;background:transparent;color:var(--tp);cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--bs)}.btn.p{background:var(--tp);color:var(--bp);border-color:var(--tp)}
+.btn.sm{padding:3px 9px;font-size:11px}.btn.red{color:var(--td);border-color:var(--bod)}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500}
+.b-g{background:var(--bg);color:var(--tg)}.b-r{background:var(--bd);color:var(--td)}
+.b-b{background:var(--bi);color:var(--ti)}.b-w{background:var(--bw);color:var(--tw)}
+.ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.pt{font-size:14px;font-weight:500}.ps{font-size:11px;color:var(--ts);margin-top:2px}
+.kpig{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:14px}
+.kpi{padding:10px 12px;border-radius:8px;background:var(--bs);border:.5px solid var(--bor)}
+.kpi .v{font-size:15px;font-weight:500;color:var(--tp)}.kpi .l{font-size:10px;color:var(--ts);margin-top:1px}
+.kpi.g{background:var(--bg)}.kpi.g .v{color:var(--tg)}.kpi.b{background:var(--bi)}.kpi.b .v{color:var(--ti)}
+.kpi.w{background:var(--bw)}.kpi.w .v{color:var(--tw)}.kpi.r{background:var(--bd)}.kpi.r .v{color:var(--td)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px}
+.fl{display:flex;flex-direction:column;gap:3px}.fl label{font-size:11px;color:var(--ts)}
+table.t{width:100%;border-collapse:collapse;font-size:12px}
+table.t th{padding:5px 8px;font-size:11px;font-weight:500;color:var(--ts);border-bottom:.5px solid var(--bor);text-align:left;background:var(--bs);white-space:nowrap}
+table.t td{padding:6px 8px;border-bottom:.5px solid var(--bor);vertical-align:middle}
+table.t tr:hover td{background:var(--bs)}
+table.t .tot td{font-weight:500;background:var(--bs)}
+.nm{text-align:right;font-family:var(--fm);font-size:11px}
+.acc{font-family:var(--fm);font-weight:500;color:var(--ti)}
+.accn{font-family:var(--fm);font-weight:500;color:var(--tg)}
+/* AI BOX */
+.ai-box{border:1.5px solid var(--boi);border-radius:12px;padding:16px;margin-bottom:14px;background:color-mix(in srgb,var(--bi) 8%,transparent)}
+.ai-box h3{font-size:13px;font-weight:500;color:var(--ti);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.choice{padding:10px 14px;border:.5px solid var(--bor);border-radius:8px;margin-bottom:8px;cursor:pointer;transition:all .15s}
+.choice:hover{border-color:var(--ti);background:color-mix(in srgb,var(--bi) 10%,transparent)}
+.choice h4{font-size:12px;font-weight:500;margin-bottom:3px}.choice p{font-size:11px;color:var(--ts)}
+/* SPINNER */
+.spin{display:none;align-items:center;gap:10px;padding:12px;background:var(--bs);border-radius:8px;margin:10px 0;font-size:12px;color:var(--ts)}
+.spin.on{display:flex}
+.sp{width:14px;height:14px;border:2px solid var(--bor);border-top-color:var(--tp);border-radius:50%;animation:sp .7s linear infinite;flex-shrink:0}
+@keyframes sp{to{transform:rotate(360deg)}}
+/* DROP ZONE */
+.dz{border:2px dashed var(--bos);border-radius:10px;padding:24px;text-align:center;cursor:pointer;margin-bottom:12px;transition:all .2s}
+.dz:hover,.dz.drag{border-color:var(--tp);background:var(--bs)}
+/* CARD */
+.card{border:.5px solid var(--bor);border-radius:12px;overflow:hidden;margin-bottom:12px}
+.card-h{display:flex;justify-content:space-between;align-items:flex-start;padding:12px 16px;background:var(--bs);border-bottom:.5px solid var(--bor);flex-wrap:wrap;gap:8px}
+.card-b{padding:14px 16px}
+.row2{display:flex;justify-content:space-between;padding:4px 0;font-size:12px;border-bottom:.5px solid var(--bor)}.row2:last-child{border-bottom:none}
+/* CONFIRM BOX */
+.confirm-box{border:1.5px solid var(--bog);border-radius:12px;padding:14px;margin-bottom:12px;background:color-mix(in srgb,var(--bg) 8%,transparent)}
+.confirm-box h3{font-size:13px;font-weight:500;color:var(--tg);margin-bottom:10px}
+/* ENTRY ROW */
+.erow{display:grid;grid-template-columns:70px 70px 60px 60px 1fr 110px 80px;gap:6px;padding:5px 0;border-bottom:.5px solid var(--bor);font-size:11px;align-items:center}
+.erow.hdr{font-size:10px;font-weight:500;color:var(--ts);text-transform:uppercase;padding:4px 0;background:var(--bs);border-radius:4px;margin-bottom:4px}
+.apbtn{padding:3px 8px;font-size:10px;border-radius:5px;border:.5px solid var(--bog);background:transparent;color:var(--tg);cursor:pointer}
+.apbtn.ok{background:var(--bg)}
+.rejbtn{padding:3px 8px;font-size:10px;border-radius:5px;border:.5px solid var(--bod);background:transparent;color:var(--td);cursor:pointer;margin-left:3px}
+</style>
+</head>
+<body>
+<div class="pw">
+<div class="tn">
+  <a href="../index.html">← Все модули</a>
+  <span style="color:var(--tt)">·</span>
+  <span style="font-weight:500">📥 Покупка — Поступление ресурсов</span>
+  <span class="co" id="co">Alpino Group ТОО</span>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="T('dash')">📊 Дашборд</button>
+  <button class="tab" onclick="T('add')">➕ Провести поступление</button>
+  <button class="tab" onclick="T('esf')">📋 Журнал ЭСФ</button>
+  <button class="tab" onclick="T('supps')">🏢 Поставщики</button>
+  <button class="tab" onclick="T('sverka')">⚖️ Акты сверки</button>
+</div>
+
+<!-- ДАШБОРД -->
+<div id="dash" class="sec active">
+  <div class="ph">
+    <div><div class="pt">📥 Покупка — Поступление ресурсов</div>
+    <div class="ps">ТМЦ · Услуги · Основные средства · НК РК 2026</div></div>
+    <button class="btn p sm" onclick="T('add')">➕ Провести поступление</button>
+  </div>
+  <div class="kpig" id="dkpi"></div>
+  <div class="notice warn" id="dwarn" style="display:none"></div>
+  <div style="overflow-x:auto"><table class="t"><thead><tr>
+    <th>Дата</th><th>Поставщик</th><th>Тип поступления</th><th>Документ</th>
+    <th class="nm">База без НДС (₸)</th><th class="nm">НДС (₸)</th><th class="nm">Итого (₸)</th>
+    <th>Счёт БУ</th><th>Статус</th>
+  </tr></thead><tbody id="dTb"></tbody></table></div>
+</div>
+
+<!-- ПРОВЕСТИ ПОСТУПЛЕНИЕ (с AI) -->
+<div id="add" class="sec">
+  <div class="ph"><div>
+    <div class="pt">Провести поступление</div>
+    <div class="ps">AI заполняет проводки · Оператор ОБЯЗАТЕЛЬНО указывает тип поступления</div>
+  </div></div>
+
+  <div class="notice err"><strong>⚠️ ВАЖНО:</strong> Перед анализом AI вы ДОЛЖНЫ указать тип поступления — это ключевое решение бухгалтера, которое определяет все проводки. AI не может самостоятельно решить: одна и та же насосная станция может быть ОС компании или материалом для проекта заказчика.</div>
+
+  <!-- Шаг 0: тип поступления -->
+  <div id="pStep0">
+    <div class="ai-box">
+      <h3>🤖 Шаг 1: Укажите тип поступления</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px">
+        <div class="choice" onclick="pSetType('tmz')" id="pt-tmz">
+          <h4>📦 ТМЦ / Материалы</h4>
+          <p>Товары, материалы, запчасти, ГСМ, комплектующие — идут на склад (счёт 1310/1330) или сразу на расходы</p>
+        </div>
+        <div class="choice" onclick="pSetType('uslugi')" id="pt-uslugi">
+          <h4>🔧 Услуги / Работы</h4>
+          <p>Транспортные услуги, ремонт, аренда, консультации, охрана, уборка — идут на расходы (счёт 7210/7010)</p>
+        </div>
+        <div class="choice" onclick="pSetType('os')" id="pt-os">
+          <h4>🏗️ Основное средство</h4>
+          <p>Оборудование, транспорт, IT-техника, мебель — используется более 1 года (счёт 2410). После проведения попадёт в реестр ОС</p>
+        </div>
+      </div>
+      <div id="pTypeAlert" style="display:none" class="notice info">
+        <strong id="pTypeText"></strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Шаг 1: ввод данных -->
+  <div id="pStep1" style="display:none">
+    <div class="ai-box">
+      <h3>🤖 Шаг 2: Предоставьте данные документа</h3>
+      <div class="notice info" id="pTypeHint"></div>
+
+      <!-- API ключ -->
+      <div id="pkey_wrap"></div>
+      <div class="dz" onclick="document.getElementById('pf').click()"
+        ondragover="event.preventDefault();this.classList.add('drag')"
+        ondragleave="this.classList.remove('drag')"
+        ondrop="pDrop(event)">
+        <div style="font-size:30px;margin-bottom:8px" id="pDzIcon">📄</div>
+        <div style="font-size:13px;color:var(--ts)">Перетащите ЭСФ, ЭАВР, ЭСНТ, счёт, акт</div>
+        <div style="font-size:10px;color:var(--tt);margin-top:4px">XML · PDF · JPG · Excel</div>
+        <input type="file" id="pf" style="display:none" onchange="pFile(this)">
+      </div>
+      <div style="text-align:center;font-size:12px;color:var(--ts);margin:-6px 0 10px">— или введите данные документа текстом —</div>
+      <textarea id="ptxt" placeholder="Например:&#10;ЭСФ от ТОО AKGEN GROUP на сумму 9 000 000 тенге, материалы для строительства НПС-2&#10;&#10;Или: ЭАВР №7 от ИП Дана, 1 544 920 тенге, перевозка грузов 130 рейсов&#10;&#10;Или: ЭСФ на тягач DAF XF VIN XLRTE47MS0G210199, 19 500 000 тенге"></textarea>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <button class="btn p" onclick="pAnalyze()">🤖 AI — сформировать проводки</button>
+        <button class="btn sm" onclick="pEx()">Пример данных</button>
+        <button class="btn sm" onclick="pSetType(null)">← Изменить тип</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spinner -->
+  <div class="spin" id="pSp"><div class="sp"></div><span id="pSpT">AI анализирует документ...</span></div>
+
+  <!-- Шаг 2: подтверждение проводок -->
+  <div id="pStep2" style="display:none">
+    <div class="confirm-box">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+        <div>
+          <h3 id="pFormT" style="margin:0">🤖 AI предлагает проводки — проверьте</h3>
+          <div style="font-size:11px;color:var(--ts);margin-top:4px" id="pFormSub"></div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <button class="btn p sm" onclick="pApproveAll()">✓ Принять все</button>
+          <button class="btn sm" onclick="pRejectAll()">✗ Отклонить все</button>
+          <button class="btn p sm" onclick="pSave()">💾 В систему →</button>
+        </div>
+      </div>
+
+      <!-- Детали документа -->
+      <div class="g4" style="margin-bottom:12px">
+        <div class="fl"><label>Дата документа</label><input type="date" id="pDate" value="2026-04-30"></div>
+        <div class="fl"><label>Поставщик</label><input id="pSupp" placeholder="ТОО «Название»"></div>
+        <div class="fl"><label>БИН поставщика</label><input id="pBIN" placeholder="000000000000" style="font-family:var(--fm)"></div>
+        <div class="fl"><label>Рег. № ЭСФ / документ</label><input id="pESFNum" placeholder="KZ-2026-..."></div>
+      </div>
+
+      <div id="pAiComment" class="notice info" style="margin-bottom:12px"></div>
+
+      <!-- Строки проводок -->
+      <div style="font-size:10px;font-weight:500;color:var(--ts);text-transform:uppercase;margin-bottom:8px">Предложенные проводки (Human-in-the-loop)</div>
+      <div class="erow hdr"><div>Дт БУ</div><div>Кт БУ</div><div>Дт НУ</div><div>Кт НУ</div><div>Описание</div><div>Сумма (₸)</div><div>Решение</div></div>
+      <div id="pEntries"></div>
+
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn p" onclick="pSave()">✅ Провести в систему</button>
+        <button class="btn sm" onclick="pStep1()">← Изменить данные</button>
+        <button class="btn sm" onclick="pSetType(null)">← Изменить тип</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ЖУРНАЛ ЭСФ -->
+<div id="esf" class="sec">
+  <div class="ph">
+    <div><div class="pt">Журнал ЭСФ полученных</div><div class="ps">Апрель 2026 · 99 ЭСФ</div></div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      <input id="eSrch" placeholder="Поиск..." style="width:180px;font-size:11px" oninput="rESF()">
+      <select id="eTyp" style="width:140px;font-size:11px" onchange="rESF()">
+        <option value="">Все типы</option><option value="tmz">ТМЦ</option>
+        <option value="uslugi">Услуги</option><option value="os">ОС</option>
+      </select>
+    </div>
+  </div>
+  <div class="kpig" id="eKpi"></div>
+  <div style="overflow-x:auto"><table class="t"><thead><tr>
+    <th>Дата</th><th>Поставщик</th><th>Тип</th><th class="nm">База (₸)</th>
+    <th class="nm">НДС (₸)</th><th class="nm">Итого (₸)</th><th>Счёт Дт</th><th>Статус</th>
+  </tr></thead><tbody id="eTb"></tbody>
+  <tfoot><tr class="tot" id="eTot"></tr></tfoot></table></div>
+</div>
+
+<!-- ПОСТАВЩИКИ -->
+<div id="supps" class="sec">
+  <div class="ph"><div class="pt">Поставщики · Контрагенты</div>
+    <button class="btn p sm" onclick="addSupp()">+ Новый поставщик</button>
+  </div>
+  <div style="overflow-x:auto"><table class="t"><thead><tr>
+    <th>Наименование</th><th>БИН/ИИН</th><th>Режим НДС</th>
+    <th class="nm">Оборот (₸)</th><th class="nm">НДС к зачёту (₸)</th>
+    <th class="nm">Долг (₸)</th><th>ЭСФ</th><th>Статус</th>
+  </tr></thead><tbody id="sTb"></tbody>
+  <tfoot><tr class="tot" id="sTot"></tr></tfoot></table></div>
+</div>
+
+<!-- АКТЫ СВЕРКИ -->
+<div id="sverka" class="sec">
+  <div class="ph"><div class="pt">Акты сверки взаимных расчётов</div>
+    <div style="display:flex;gap:6px">
+      <select id="svSupp" style="width:240px;font-size:11px" onchange="rSverka()">
+        <option value="akgen">ТОО «AKGEN GROUP»</option>
+        <option value="altra">ТОО «ALTRA Truck Service»</option>
+        <option value="forte">АО «ForteLeasing»</option>
+        <option value="dana">ИП «Дана»</option>
+      </select>
+      <button class="btn p sm" onclick="alert('PDF акта сверки — продакшн версия')">PDF →</button>
+    </div>
+  </div>
+  <div class="kpig" id="svKpi"></div>
+  <div style="border:.5px solid var(--bor);border-radius:10px;overflow:hidden" id="svContent"></div>
+</div>
+
+</div>
+<script>
+const DK='platform_db_v1';
+function lDB(){try{const r=localStorage.getItem(DK);if(r)return JSON.parse(r);}catch(e){}return dDB();}
+function dDB(){return{company:{name:'Alpino Group ТОО',bin:'',mrp:4325,nds:true,regime:'ОУР'},
+employees:[
+  {id:'e1',s:'active',last:'Сейткали',first:'Нурлан',mid:'',iin:'820315301001',pos:'Директор',dept:'Руководство',salary:350000,date:'10.01.2022',contract:'Бессрочный',sch:'5/2',bank:'Kaspi',iik:'KZ...001',vy:'30',phone:'',email:'',cit:'Казахстан',cat:'Основной',note:''},
+  {id:'e2',s:'active',last:'Байжанова',first:'Айгүл',mid:'',iin:'870822400502',pos:'Гл. бухгалтер',dept:'Бухгалтерия',salary:250000,date:'10.01.2022',contract:'Бессрочный',sch:'5/2',bank:'Kaspi',iik:'KZ...002',vy:'30',phone:'',email:'',cit:'Казахстан',cat:'Основной',note:''},
+  {id:'e3',s:'active',last:'Мухамедов',first:'Алибек',mid:'',iin:'950112301003',pos:'Инженер',dept:'Производственный',salary:180952,date:'01.03.2023',contract:'Бессрочный',sch:'5/2',bank:'Kaspi',iik:'KZ...003',vy:'30',phone:'',email:'',cit:'Казахстан',cat:'Основной',note:''},
+  {id:'e4',s:'active',last:'Абдрахманов',first:'Серік',mid:'',iin:'870530300804',pos:'Водитель',dept:'АХО',salary:180000,date:'15.06.2023',contract:'Бессрочный',sch:'5/2',bank:'Kaspi',iik:'KZ...004',vy:'30',phone:'',email:'',cit:'Казахстан',cat:'Основной',note:''}
+],
+assets:[
+  {id:'a1',s:'active',inv:'ОС-001',name:'Экскаватор JINGONG JGM9225E',cat:'Машины',cost:5000000,life:10,nuGr:'II',nuR:25,nuBal:4250000,date:'2021-01-01',vin:'',reg:'',driver:'',desc:'Производственное оборудование'},
+  {id:'a2',s:'active',inv:'ОС-ТС-001',name:'Тягач SHACMAN X3000',cat:'ТС',cost:15000000,life:8,nuGr:'II',nuR:25,nuBal:13218750,date:'2021-06-01',vin:'LZZ5BLFBXKA001234',reg:'177 ABA 02',driver:'e4',desc:''},
+  {id:'a3',s:'active',inv:'ОС-ТС-002',name:'Тягач DAF XF 105.460',cat:'ТС',cost:19500000,life:8,nuGr:'II',nuR:25,nuBal:17875000,date:'2025-08-07',vin:'XLRTE47MS0G210199',reg:'',driver:'',desc:''},
+  {id:'a4',s:'active',inv:'ОС-ТС-003',name:'Тягач DAF XF 105.460',cat:'ТС',cost:21500000,life:8,nuGr:'II',nuR:25,nuBal:20006250,date:'2025-08-28',vin:'XLRTE47MS0G210454',reg:'',driver:'',desc:''},
+  {id:'a5',s:'active',inv:'ОС-003',name:'Сервер Dell PowerEdge R540',cat:'IT',cost:1200000,life:5,nuGr:'III',nuR:40,nuBal:1020000,date:'2024-01-15',vin:'',reg:'',driver:'',desc:''},
+  {id:'a6',s:'active',inv:'ОС-004',name:'Мониторы iiyama ProLite 35шт',cat:'IT',cost:7608000,life:5,nuGr:'III',nuR:40,nuBal:6467000,date:'2024-03-01',vin:'',reg:'',driver:'',desc:''},
+  {id:'a7',s:'active',inv:'ОС-005',name:'Комплект усиления связи',cat:'IT',cost:109900,life:5,nuGr:'III',nuR:40,nuBal:93365,date:'2024-05-01',vin:'',reg:'',driver:'',desc:''}
+],
+inventory:[
+  {id:'i1',s:'active',name:'Фильтр масляный DAF',unit:'шт',qty:3,price:24914,acc:'1310',wh:'Склад запчастей',min:2},
+  {id:'i2',s:'active',name:'Масло TOTAL Rubia 10w40',unit:'канист.',qty:2,price:94828,acc:'1310',wh:'Склад материалов',min:3},
+  {id:'i3',s:'active',name:'Диск отрезной 400×32',unit:'шт',qty:8,price:14483,acc:'1310',wh:'Склад материалов',min:5},
+  {id:'i4',s:'active',name:'Цемент М400',unit:'мешок',qty:12,price:4310,acc:'1310',wh:'Склад материалов',min:10}
+],
+purchases:[],bankTx:[],tabel:{},docs:[],journal:[]};}
+function sDB(d){try{localStorage.setItem(DK,JSON.stringify(d));}catch(e){console.error('DB:',e);}}
+let DB=lDB();
+function fmt(n){return Math.round(n||0).toLocaleString('ru-RU');}
+const MRP=DB.company?.mrp||4325,VY30=30*MRP;
+document.getElementById('co').textContent=(DB.company?.name||'Alpino Group ТОО')+' · НК РК 2026';
+
+
+// ====== CLAUDE API HELPER ======
+function getKey(){return localStorage.getItem('anthropic_key')||'';}
+function saveKey(v){localStorage.setItem('anthropic_key',v.trim());}
+function toggleKeyVis(id){const el=document.getElementById(id);el.type=el.type==='password'?'text':'password';}
+
+function toB64(file){
+  return new Promise((res,rej)=>{
+    const r=new FileReader();
+    r.onload=()=>res(r.result.split(',')[1]);
+    r.onerror=()=>rej(new Error('Ошибка чтения'));
+    r.readAsDataURL(file);
+  });
+}
+
+async function callClaude(prompt, files=[]){
+  const key=getKey();
+  if(!key) throw new Error('NO_KEY');
+  const content=[];
+  for(const f of files){
+    const b64=await toB64(f);
+    if(f.type==='application/pdf'||f.name.endsWith('.pdf'))
+      content.push({type:'document',source:{type:'base64',media_type:'application/pdf',data:b64}});
+    else if(f.type.startsWith('image/'))
+      content.push({type:'image',source:{type:'base64',media_type:f.type,data:b64}});
+  }
+  content.push({type:'text',text:prompt});
+  const resp=await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'x-api-key':key,
+      'anthropic-version':'2023-06-01',
+      'anthropic-dangerous-direct-browser-access':'true'
+    },
+    body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:1500,messages:[{role:'user',content}]})
+  });
+  if(!resp.ok){
+    const e=await resp.json().catch(()=>({}));
+    throw new Error('API '+resp.status+': '+(e.error?.message||resp.statusText));
+  }
+  const data=await resp.json();
+  const text=data.content?.find(c=>c.type==='text')?.text||'{}';
+  const clean=text.replace(/```json|```/g,'').trim();
+  const m=clean.match(/\{[\s\S]*\}/);
+  return JSON.parse(m?.[0]||clean);
+}
+
+function mkKeyBlock(inputId){
+  const saved=getKey();
+  const el=document.getElementById(inputId+'_wrap');
+  if(el) el.innerHTML=`
+    <div style="margin-bottom:10px;padding:10px;background:var(--bs);border-radius:8px;border:.5px solid var(--bor)">
+      <div style="font-size:11px;font-weight:500;color:var(--ts);margin-bottom:6px">🔑 Anthropic API ключ</div>
+      <div style="display:flex;gap:6px">
+        <input type="password" id="${inputId}" value="${saved}" placeholder="sk-ant-api03-..."
+          style="font-family:var(--fm);font-size:11px" oninput="saveKey(this.value)">
+        <button class="btn sm" onclick="toggleKeyVis('${inputId}')" style="white-space:nowrap;flex-shrink:0">👁</button>
+      </div>
+      <div style="font-size:10px;color:var(--tt);margin-top:3px">
+        Ключ хранится в браузере · <a href="https://console.anthropic.com/account/keys" target="_blank" style="color:var(--ti)">Получить →</a>
+      </div>
+    </div>`;
+}
+// ====== END API HELPER ======
+
+let pType=null,pPending=[];
+
+const DEMO_ESF=[
+  {date:'10.04',supp:'ТОО «AKGEN GROUP»',bin:'150640000685',type:'tmz',base:7758621,nds:1241379,total:9000000,acc:'1310',st:'CONFIRMED'},
+  {date:'08.04',supp:'ТОО «Контакт Ойл»',bin:'040940003905',type:'tmz',base:5421379,nds:867421,total:6288800,acc:'1310',st:'CONFIRMED'},
+  {date:'27.04',supp:'ИП «Дана»',bin:'810712350011',type:'uslugi',base:1544920,nds:0,total:1544920,acc:'7210',st:'DELIVERED'},
+  {date:'05.04',supp:'АО «ForteLeasing»',bin:'010340001654',type:'uslugi',base:1943966,nds:311034,total:2255000,acc:'4030',st:'DELIVERED'},
+  {date:'23.04',supp:'ТОО «ALTRA Truck Service»',bin:'141040001943',type:'tmz',base:205800,nds:32928,total:238728,acc:'1310',st:'DELIVERED'},
+  {date:'07.08.25',supp:'FAVOR LOGISTIC KZ',bin:'',type:'os',base:19500000,nds:3120000,total:19500000,acc:'2410',st:'CONFIRMED'},
+  {date:'28.08.25',supp:'FAVOR LOGISTIC KZ',bin:'',type:'os',base:21500000,nds:3440000,total:21500000,acc:'2410',st:'CONFIRMED'},
+];
+
+const SUPPS=[
+  {name:'ТОО «AKGEN GROUP»',bin:'150640000685',nds:true,turn:9000000,ndsIn:1241379,debt:9000000,esf:1},
+  {name:'ТОО «Контакт Ойл»',bin:'040940003905',nds:true,turn:6288800,ndsIn:867421,debt:6288800,esf:3},
+  {name:'АО «ForteLeasing»',bin:'010340001654',nds:true,turn:2255000,ndsIn:311034,debt:455720,esf:12},
+  {name:'ТОО «ALTRA Truck Service»',bin:'141040001943',nds:true,turn:238728,ndsIn:38197,debt:0,esf:4},
+  {name:'ИП «Дана»',bin:'810712350011',nds:false,turn:1544920,ndsIn:0,debt:0,esf:0},
+];
+
+const SVERKA_DATA={
+  akgen:[{d:'01.04',op:'Сальдо',dt:0,kt:0},{d:'10.04',op:'ЭСФ — Материалы НПС-2',dt:9000000,kt:0}],
+  altra:[{d:'01.04',op:'Сальдо',dt:0,kt:0},{d:'23.04',op:'ЭСФ — Запчасти и масла',dt:238728,kt:0},{d:'25.04',op:'ПП — Оплата',dt:0,kt:238728}],
+  forte:[{d:'01.04',op:'Сальдо лизинг',dt:0,kt:3799280},{d:'17.04',op:'ЭСФ — Лизинговый платёж',dt:455720,kt:0},{d:'25.04',op:'ПП — Платёж по лизингу',dt:0,kt:455720}],
+  dana:[{d:'01.04',op:'Сальдо',dt:0,kt:0},{d:'27.04',op:'ЭАВР №7 — Перевозка грузов',dt:1544920,kt:0},{d:'27.04',op:'ПП — Оплата',dt:0,kt:1544920}],
+};
+
+// ===== DASH =====
+function rDash(){
+  const purch=DB.purchases||[];
+  const totBase=purch.reduce((s,p)=>s+(+p.base||0),0)+DEMO_ESF.filter(e=>e.type!=='os').reduce((s,e)=>s+(+e.base||0),0);
+  const totNDS=purch.reduce((s,p)=>s+(+p.nds||0),0)+DEMO_ESF.filter(e=>e.type!=='os').reduce((s,e)=>s+(+e.nds||0),0);
+  const totDebt=SUPPS.reduce((s,x)=>s+x.debt,0);
+  document.getElementById('dkpi').innerHTML=
+    '<div class="kpi"><div class="v">'+(purch.length+DEMO_ESF.length)+'</div><div class="l">Поступлений</div></div>'+
+    '<div class="kpi b"><div class="v">'+fmt(totBase)+' ₸</div><div class="l">База без НДС</div></div>'+
+    '<div class="kpi w"><div class="v">'+fmt(totNDS)+' ₸</div><div class="l">НДС к зачёту (1420)</div></div>'+
+    '<div class="kpi r"><div class="v">'+fmt(totDebt)+' ₸</div><div class="l">Кредиторка (3310)</div></div>';
+  const all=[...(DB.purchases||[]).map(p=>({...p,src:'new'})),...DEMO_ESF.map(e=>({...e,src:'demo'}))];
+  document.getElementById('dTb').innerHTML=all.map(p=>
+    '<tr><td>'+p.date+'</td><td><strong>'+p.supp+'</strong></td>'+
+    '<td><span class="badge '+(p.type==='tmz'?'b-b':p.type==='os'?'b-g':'b-w')+'">'+
+      (p.type==='tmz'?'📦 ТМЦ':p.type==='os'?'🏗️ ОС':'🔧 Услуга')+'</span></td>'+
+    '<td style="font-size:10px;color:var(--ts)">'+(p.esfNum||p.bin||'—')+'</td>'+
+    '<td class="nm">'+fmt(p.base)+'</td>'+
+    '<td class="nm" style="color:var(--tw)">'+(p.nds?fmt(p.nds):'0 (СНР)')+'</td>'+
+    '<td class="nm" style="font-weight:500">'+fmt(p.total)+'</td>'+
+    '<td><span class="acc">'+p.acc+'</span></td>'+
+    '<td><span class="badge b-g">'+（p.st||'Проведён')+'</span></td>'+
+    '</tr>').join('');
+}
+
+// ===== ТИП ПОСТУПЛЕНИЯ =====
+function pSetType(t){
+  pType=t;
+  document.querySelectorAll('[id^=pt-]').forEach(el=>el.classList.remove('sel'));
+  if(!t){
+    document.getElementById('pStep0').style.display='block';
+    document.getElementById('pStep1').style.display='none';
+    document.getElementById('pStep2').style.display='none';
+    document.getElementById('pTypeAlert').style.display='none';
+    return;
+  }
+  document.getElementById('pt-'+t)?.classList.add('sel');
+  document.getElementById('pStep0').style.display='block';
+  document.getElementById('pTypeAlert').style.display='block';
+  const hints={
+    tmz:{icon:'📦',text:'Тип: ТМЦ / Материалы → Счёт 1310 (склад) или прямо на 7210 (расходы). НДС → 1420.'},
+    uslugi:{icon:'🔧',text:'Тип: Услуги / Работы → Счёт 7210 (адм.расходы) или 7010 (себестоимость). НДС → 1420 если поставщик платит НДС.'},
+    os:{icon:'🏗️',text:'Тип: Основное средство → Счёт 2410. После проведения объект появится в модуле ОС с автоматическим расчётом амортизации.'},
+  };
+  const h=hints[t];
+  document.getElementById('pTypeText').textContent=h.icon+' '+h.text;
+  document.getElementById('pDzIcon').textContent=t==='tmz'?'📦':t==='os'?'🏗️':'🔧';
+  document.getElementById('pTypeHint').innerHTML='<strong>'+h.icon+' '+h.text+'</strong>';
+  setTimeout(()=>{
+    document.getElementById('pStep1').style.display='block';
+    document.getElementById('pStep1').scrollIntoView({behavior:'smooth'});
+  },300);
+}
+function pDrop(e){e.preventDefault();document.querySelector('#pStep1 .dz').classList.remove('drag');const f=e.dataTransfer.files[0];if(f)pFile({files:[f]});}
+function pFile(inp){const f=inp.files[0];if(f)document.getElementById('ptxt').value='📎 '+f.name+' ('+Math.round(f.size/1024)+' KB)\n\nВ продакшн-версии AI прочитает XML ЭСФ/ЭАВР. Для демо введите данные текстом.';}
+function pEx(){
+  const exs={
+    tmz:'ЭСФ от ТОО AKGEN GROUP БИН 150640000685\nДата: 10.04.2026 · Рег.№: KZ-2026-0414-001\nНаименование: Насосная станция Grundfos для объекта НПС-2\nСумма без НДС: 7 758 621 ₸\nНДС 16%: 1 241 379 ₸\nИтого: 9 000 000 ₸',
+    uslugi:'ЭАВР №7 от ИП «Дана» ИИН 810712350011\nДата: 27.04.2026\nУслуги перевозки грузов Кульсары–Атырау 130 рейсов\nСумма: 1 544 920 ₸ (НДС нет — ИП на СНР)',
+    os:'ЭСНТ от FAVOR LOGISTIC KZ\nДата: 07.08.2025\nТягач DAF XF 105.460 VIN XLRTE47MS0G210199\nСтоимость: 19 500 000 ₸\nТН ВЭД: 8701211011\nИмпорт из РФ (ЕАЭС) — уплата НДС по ФНО 328.00',
+  };
+  document.getElementById('ptxt').value=exs[pType]||'Введите данные документа';
+}
+function pStep1(){document.getElementById('pStep2').style.display='none';document.getElementById('pStep1').style.display='block';}
+async function pAnalyze(){
+  if(!pType){alert('Сначала выберите тип поступления (шаг 1)');return;}
+  const txt=document.getElementById('ptxt').value.trim();
+  const files=Array.from(document.getElementById('pf').files||[]);
+  if(!txt&&!files.length){alert('Введите данные документа или загрузите файл');return;}
+  
+  const sp=document.getElementById('pSp');sp.classList.add('on');
+  const msgs=['Claude читает документ...','Извлекаю реквизиты...','Проверяю статус НДС поставщика...','Формирую проводки по НК РК 2026...'];
+  let i=0;const iv=setInterval(()=>{document.getElementById('pSpT').textContent=msgs[i%msgs.length];i++;},600);
+  
+  const typeNames={tmz:'ТМЦ/Материалы (счёт 1310)',uslugi:'Услуги/Работы (счёт 7210)',os:'Основное средство (счёт 2410)'};
+  const prompt=`Ты бухгалтер в Казахстане. Прочитай документ и сформируй проводки.
+Тип поступления выбран оператором: ${typeNames[pType]}
+
+Верни ТОЛЬКО JSON:
+{
+  "supp": "название поставщика",
+  "bin": "БИН/ИИН 12 цифр или пустая строка",
+  "esfNum": "номер ЭСФ или пустая строка",
+  "base": число_без_НДС,
+  "nds": число_НДС_или_0,
+  "total": итого,
+  "noNDS": true_если_поставщик_без_НДС,
+  "entries": [
+    {"dt":"счёт","kt":"счёт","dtn":"НУ счёт","ktn":"НУ счёт","desc":"описание","sum":число}
+  ],
+  "comment": "пояснение AI на русском"
+}
+
+Счета для типа ${pType}:
+- tmz: Дт 1310/Кт 3310, НДС: Дт 1420/Кт 3310
+- uslugi: Дт 7210/Кт 3310, НДС: Дт 1420/Кт 3310  
+- os: Дт 2410/Кт 3310, НДС: Дт 1420/Кт 3310
+
+${txt?'Текст документа: '+txt:''}`;
+
+  try {
+    const result = await callClaude(prompt, files);
+    clearInterval(iv);sp.classList.remove('on');
+    
+    // Формируем pending entries
+    pPending=(result.entries||[]).map((e,i)=>({...e,id:i,ap:null}));
+    
+    fillPForm({
+      supp:result.supp||'',bin:result.bin||'',esfNum:result.esfNum||'',
+      base:result.base||0,nds:result.nds||0,total:result.total||0,
+      comment:result.comment||'',_f:['Claude AI'],_m:[]
+    });
+    document.getElementById('pStep1').style.display='none';
+    document.getElementById('pStep2').style.display='block';
+    document.getElementById('pStep2').scrollIntoView({behavior:'smooth'});
+    
+  } catch(err) {
+    clearInterval(iv);sp.classList.remove('on');
+    if(err.message==='NO_KEY'){
+      alert('Введите Anthropic API ключ в поле выше');
+      return;
+    }
+    // Fallback — локальный парсер
+    const d=parseDoc(txt,pType);
+    fillPForm(d);
+    document.getElementById('pStep1').style.display='none';
+    document.getElementById('pStep2').style.display='block';
+    document.getElementById('pAiComment').innerHTML='<strong>⚠ API недоступен:</strong> '+err.message+'. Данные заполнены локально — проверьте.';
+    document.getElementById('pStep2').scrollIntoView({behavior:'smooth'});
+  }
+}
+function parseDoc(txt,type){
+  const t=txt.toLowerCase(),r={entries:[],_f:[],_m:[]};
+  const salM=txt.match(/(\d[\d\s]*)\s*₸/);const base=salM?parseInt(salM[1].replace(/\s/g,''))||0:0;
+  const ndsM=txt.match(/НДС\s*(?:16%[:\s]*)?\s*(\d[\d\s]*)\s*₸/i);const nds=ndsM?parseInt(ndsM[1].replace(/\s/g,''))||0:0;
+  const noNDS=t.includes('снр')||t.includes('без ндс')||t.includes('ндс нет')||t.includes('не плательщик');
+  const suppM=txt.match(/(?:от|от |поставщик)[:\s]*(?:ТОО|ИП|АО|ООО)?\s*[«""]([^»""]+)[»""]/i);
+  const binM=txt.match(/БИН[:\s]*(\d{12})/i)||txt.match(/ИИН[:\s]*(\d{12})/i);
+  const esfM=txt.match(/(?:Рег\.?№|№)[:\s]*([A-Z]{2}-\d{4}-[\d-]+)/i);
+  r.supp=suppM?suppM[1]:'';
+  r.bin=binM?binM[1]:'';
+  r.esfNum=esfM?esfM[1]:'';
+  r.base=base;r.nds=noNDS?0:nds;r.total=base+(noNDS?0:nds);
+  // Формируем проводки по типу
+  if(type==='tmz'){
+    r.mainAcc='1310';r.acc2='3310';
+    r.entries=[
+      {dt:'1310',kt:'3310',dtn:'1310Н',ktn:'3310Н',desc:'Поступление ТМЦ/материалов на склад',sum:base,ap:null},
+      ...(noNDS?[]:[{dt:'1420',kt:'3310',dtn:'1420Н',ktn:'3310Н',desc:'НДС к зачёту 16%',sum:nds,ap:null}])
+    ];
+    r.comment='Материалы оприходованы на склад (1310). '+(noNDS?'НДС отсутствует (поставщик на СНР).':'НДС '+fmt(nds)+' ₸ принят к зачёту (1420).');
+    r._f.push('Счёт 1310 (ТМЦ)');
+  } else if(type==='uslugi'){
+    r.mainAcc='7210';r.acc2='3310';
+    r.entries=[
+      {dt:'7210',kt:'3310',dtn:'7200Н',ktn:'3310Н',desc:'Услуги/работы — административные расходы',sum:base,ap:null},
+      ...(noNDS?[]:[{dt:'1420',kt:'3310',dtn:'1420Н',ktn:'3310Н',desc:'НДС к зачёту 16%',sum:nds,ap:null}])
+    ];
+    r.comment='Услуги отнесены на административные расходы (7210). '+(noNDS?'Поставщик на СНР — НДС нет.':'НДС '+fmt(nds)+' ₸ к зачёту.');
+    r._f.push('Счёт 7210 (Услуги)');
+  } else if(type==='os'){
+    r.mainAcc='2410';r.acc2='3310';
+    r.entries=[
+      {dt:'2410',kt:'3310',dtn:'2100Н',ktn:'3310Н',desc:'Поступление ОС — первоначальная стоимость',sum:base,ap:null},
+      ...(noNDS?[]:[{dt:'1420',kt:'3310',dtn:'1420Н',ktn:'3310Н',desc:'НДС к зачёту / уплата ЕАЭС (328.00)',sum:nds||Math.round(base*.16),ap:null}])
+    ];
+    if(txt.toLowerCase().includes('еаэс')||txt.toLowerCase().includes('импорт'))r.entries.push({dt:'3130',kt:'1030',dtn:'',ktn:'',desc:'Уплата НДС при импорте ЕАЭС (ФНО 328.00)',sum:Math.round(base*.16),ap:null});
+    r.comment='ОС принято на учёт (2410). После проведения объект будет добавлен в реестр ОС с автоматическим расчётом амортизации.';
+    r._f.push('Счёт 2410 (ОС)');
+  }
+  if(r.supp)r._f.push('Поставщик');if(r.bin)r._f.push('БИН');if(r.base)r._f.push('Сумма');if(r.nds)r._f.push('НДС');
+  pPending=r.entries.map((e,i)=>({...e,id:i}));
+  return r;
+}
+function fillPForm(d){
+  const sv=(id,v)=>{const el=document.getElementById(id);if(el&&v)el.value=v;};
+  sv('pSupp',d.supp);sv('pBIN',d.bin);sv('pESFNum',d.esfNum);
+  document.getElementById('pFormT').textContent='🤖 AI предлагает проводки · Тип: '+(pType==='tmz'?'📦 ТМЦ':pType==='os'?'🏗️ ОС':'🔧 Услуга');
+  document.getElementById('pFormSub').textContent=d.supp+(d.bin?' · БИН '+d.bin:'')+(d.base?' · '+fmt(d.base)+' ₸':'');
+  document.getElementById('pAiComment').innerHTML='<strong>💡 AI:</strong> '+d.comment+'<br><strong>Найдено:</strong> '+d._f.join(' · ');
+  renderPEntries();
+}
+function renderPEntries(){
+  document.getElementById('pEntries').innerHTML=pPending.map(e=>'<div class="erow" style="background:'+(e.ap===true?'color-mix(in srgb,var(--bg) 20%,transparent)':e.ap===false?'color-mix(in srgb,var(--bd) 10%,transparent)':'transparent')+'">'+
+    '<div><span class="acc">'+e.dt+'</span></div>'+
+    '<div><span class="acc">'+e.kt+'</span></div>'+
+    '<div><span class="accn" style="font-size:10px">'+(e.dtn||'—')+'</span></div>'+
+    '<div><span class="accn" style="font-size:10px">'+(e.ktn||'—')+'</span></div>'+
+    '<div style="font-size:11px">'+e.desc+'</div>'+
+    '<div style="text-align:right;font-family:var(--fm);font-size:11px;font-weight:500">'+(e.sum?fmt(e.sum)+' ₸':'—')+'</div>'+
+    '<div>'+
+      (e.ap===null?'<button class="apbtn" onclick="apE('+e.id+',true)">✓</button><button class="rejbtn" onclick="apE('+e.id+',false)">✗</button>':
+        e.ap?'<span class="badge b-g">✓ Принята</span>':'<span class="badge b-r">✗ Откл.</span>')+
+    '</div>'+
+    '</div>').join('');
+}
+function apE(id,v){pPending=pPending.map(e=>e.id===id?{...e,ap:v}:e);renderPEntries();}
+function pApproveAll(){pPending=pPending.map(e=>({...e,ap:true}));renderPEntries();}
+function pRejectAll(){pPending=pPending.map(e=>({...e,ap:false}));renderPEntries();}
+function pSave(){
+  const ok=pPending.filter(e=>e.ap===true);
+  if(!ok.length){alert('Подтвердите хотя бы одну проводку (нажмите ✓)');return;}
+  const date=document.getElementById('pDate').value;
+  const supp=document.getElementById('pSupp').value;
+  const base=ok[0]?.sum||0;const ndsE=ok.find(e=>e.dt==='1420');
+  const rec={
+    id:'p'+Date.now(),date:date.split('-').reverse().join('.'),
+    supp,bin:document.getElementById('pBIN').value,
+    esfNum:document.getElementById('pESFNum').value,
+    type:pType,acc:ok[0]?.dt||'—',
+    base,nds:ndsE?.sum||0,total:ok.reduce((s,e)=>s+(e.sum||0),0),
+    st:'Проведён',entries:ok
+  };
+  DB.purchases=DB.purchases||[];DB.purchases.unshift(rec);
+  DB.journal=DB.journal||[];ok.forEach(e=>DB.journal.push({date:rec.date,type:'Покупка',dt:e.dt,kt:e.kt,sum:e.sum,src:'Покупка'}));
+  // Если ОС — добавить в реестр
+  if(pType==='os'&&supp){
+    DB.assets=DB.assets||[];
+    DB.assets.push({id:'a'+Date.now(),s:'active',inv:'ОС-'+(DB.assets.length+1).toString().padStart(3,'0'),name:supp,cat:'Оборудование',cost:base,life:5,nuGr:'II',nuR:25,nuBal:base,date:date,vin:'',reg:'',driver:'',desc:'Из модуля Покупка'});
+  }
+  sDB(DB);
+  pType=null;pPending=[];
+  document.getElementById('pStep0').style.display='block';document.getElementById('pTypeAlert').style.display='none';
+  document.getElementById('pStep1').style.display='none';document.getElementById('pStep2').style.display='none';
+  document.querySelectorAll('[id^=pt-]').forEach(el=>el.classList.remove('sel'));
+  document.getElementById('ptxt').value='';
+  rDash();rESF();
+  alert('✅ Поступление проведено в системе!\n\nПодтверждённые проводки добавлены в журнал.\n'+(pType==='os'?'ОС добавлен в реестр.\n':'')+'Открой «Журнал проводок» для выгрузки в 1С.');
+  T('dash');
+}
+
+// ===== ЖУРНАЛ ЭСФ =====
+function rESF(){
+  const q=(document.getElementById('eSrch')?.value||'').toLowerCase();
+  const typ=document.getElementById('eTyp')?.value||'';
+  const all=[...(DB.purchases||[]),...DEMO_ESF].filter(e=>(!q||e.supp.toLowerCase().includes(q))&&(!typ||e.type===typ));
+  const totB=all.reduce((s,e)=>s+(+e.base||0),0);
+  const totN=all.reduce((s,e)=>s+(+e.nds||0),0);
+  document.getElementById('eKpi').innerHTML=
+    '<div class="kpi"><div class="v">'+all.length+'</div><div class="l">ЭСФ всего</div></div>'+
+    '<div class="kpi b"><div class="v">'+fmt(totB)+' ₸</div><div class="l">База без НДС</div></div>'+
+    '<div class="kpi w"><div class="v">'+fmt(totN)+' ₸</div><div class="l">НДС к зачёту (1420)</div></div>'+
+    '<div class="kpi g"><div class="v">'+fmt(SUPPS.reduce((s,x)=>s+x.debt,0))+' ₸</div><div class="l">Кредиторка (3310)</div></div>';
+  document.getElementById('eTb').innerHTML=all.map(e=>
+    '<tr><td>'+e.date+'</td><td><strong>'+e.supp+'</strong></td>'+
+    '<td><span class="badge '+(e.type==='tmz'?'b-b':e.type==='os'?'b-g':'b-w')+'">'+
+      (e.type==='tmz'?'ТМЦ':e.type==='os'?'ОС':'Услуга')+'</span></td>'+
+    '<td class="nm">'+fmt(e.base)+'</td>'+
+    '<td class="nm" style="color:var(--tw)">'+(e.nds?fmt(e.nds):'0 (СНР)')+'</td>'+
+    '<td class="nm" style="font-weight:500">'+fmt(e.total)+'</td>'+
+    '<td><span class="acc">'+e.acc+'</span></td>'+
+    '<td><span class="badge b-g">'+(e.st||'Проведён')+'</span></td>'+
+    '</tr>').join('');
+  document.getElementById('eTot').innerHTML=
+    '<td colspan="3" style="padding:5px 8px;font-weight:500">ИТОГО ('+all.length+' шт.)</td>'+
+    '<td class="nm" style="padding:5px 8px">'+fmt(totB)+'</td>'+
+    '<td class="nm" style="padding:5px 8px;color:var(--tw)">'+fmt(totN)+'</td>'+
+    '<td class="nm" style="padding:5px 8px;font-weight:500">'+fmt(totB+totN)+'</td>'+
+    '<td colspan="2" style="padding:5px 8px"></td>';
+}
+
+// ===== ПОСТАВЩИКИ =====
+function rSupps(){
+  document.getElementById('sTb').innerHTML=SUPPS.map(s=>
+    '<tr><td><strong>'+s.name+'</strong></td>'+
+    '<td style="font-family:var(--fm);font-size:10px">'+s.bin+'</td>'+
+    '<td><span class="badge '+(s.nds?'b-g':'b-w')+'">'+(s.nds?'НДС':'СНР')+'</span></td>'+
+    '<td class="nm">'+fmt(s.turn)+'</td>'+
+    '<td class="nm" style="color:var(--tw)">'+(s.nds?fmt(s.ndsIn):'—')+'</td>'+
+    '<td class="nm" style="color:'+(s.debt>0?'var(--td)':'var(--tg)')+'">'+(s.debt?fmt(s.debt):'<span class="badge b-g">Оплачен</span>')+'</td>'+
+    '<td style="text-align:center">'+s.esf+'</td>'+
+    '<td><span class="badge b-g">Активен</span></td>'+
+    '</tr>').join('');
+  const tT=SUPPS.reduce((s,x)=>s+x.turn,0);
+  const tN=SUPPS.reduce((s,x)=>s+x.ndsIn,0);
+  const tD=SUPPS.reduce((s,x)=>s+x.debt,0);
+  document.getElementById('sTot').innerHTML=
+    '<td style="padding:5px 8px;font-weight:500">ИТОГО · '+SUPPS.length+' поставщиков</td>'+
+    '<td colspan="2" style="padding:5px 8px"></td>'+
+    '<td class="nm" style="padding:5px 8px">'+fmt(tT)+'</td>'+
+    '<td class="nm" style="padding:5px 8px;color:var(--tw)">'+fmt(tN)+'</td>'+
+    '<td class="nm" style="padding:5px 8px;color:var(--td)">'+fmt(tD)+'</td>'+
+    '<td colspan="2" style="padding:5px 8px"></td>';
+}
+function addSupp(){alert('Добавление поставщика — форма в продакшн версии');}
+
+// ===== АКТЫ СВЕРКИ =====
+function rSverka(){
+  const k=document.getElementById('svSupp').value||'akgen';
+  const rows=SVERKA_DATA[k]||[];
+  const names={akgen:'ТОО «AKGEN GROUP»',altra:'ТОО «ALTRA Truck Service»',forte:'АО «ForteLeasing»',dana:'ИП «Дана»'};
+  let dt=0,kt=0;
+  rows.forEach(r=>{dt+=r.dt;kt+=r.kt;});
+  const saldo=dt-kt;
+  document.getElementById('svKpi').innerHTML=
+    '<div class="kpi '+(saldo>0?'r':'g')+'"><div class="v">'+fmt(Math.abs(saldo))+' ₸</div><div class="l">'+(saldo>0?'Наш долг поставщику':saldo<0?'Переплата':'Взаиморасчёты закрыты')+'</div></div>'+
+    '<div class="kpi"><div class="v">'+rows.length+'</div><div class="l">Операций</div></div>';
+  document.getElementById('svContent').innerHTML=
+    '<div style="padding:10px 14px;background:var(--bs);border-bottom:.5px solid var(--bor);font-size:12px;font-weight:500">'+names[k]+' · Апрель 2026</div>'+
+    rows.map(r=>'<div style="display:grid;grid-template-columns:80px 1fr 110px 110px;gap:8px;padding:8px 14px;border-bottom:.5px solid var(--bor);font-size:12px">'+
+      '<div>'+r.d+'</div><div>'+r.op+'</div>'+
+      '<div style="text-align:right;color:'+(r.dt?'var(--td)':'var(--ts)')+'">'+(r.dt?fmt(r.dt):'—')+'</div>'+
+      '<div style="text-align:right;color:'+(r.kt?'var(--tg)':'var(--ts)')+'">'+(r.kt?fmt(r.kt):'—')+'</div>'+
+      '</div>').join('')+
+    '<div style="padding:10px 14px;background:var(--bs);font-size:12px;font-weight:500;display:flex;justify-content:space-between">'+
+      '<span>'+(saldo===0?'✅ Взаиморасчёты закрыты':saldo>0?'Сальдо — наш долг':'Сальдо — переплата')+'</span>'+
+      '<span style="color:'+(saldo>0?'var(--td)':saldo<0?'var(--tw)':'var(--tg)')+'">'+fmt(Math.abs(saldo))+' ₸</span>'+
+    '</div>';
+}
+
+// ===== TABS =====
+function T(n){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.getElementById(n).classList.add('active');
+  event?.currentTarget?.classList.add('active');
+  if(n==='esf')rESF();
+  if(n==='supps')rSupps();
+  if(n==='sverka')rSverka();
+  if(n==='add'){document.getElementById('pStep0').style.display='block';document.getElementById('pStep1').style.display='none';document.getElementById('pStep2').style.display='none';}
+}
+
+rDash();
+rESF();
+
+function sendPrompt(t){prompt('AI: '+t,'');}
+</script>
+</body>
+</html>

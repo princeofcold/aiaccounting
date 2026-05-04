@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>07 ЭАВР ЭСНТ · AI-Платформа бухучёта РК</title>
+<style>
+
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Consolas', 'Fira Code', monospace;
+  --font-serif: Georgia, serif;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f7f7f5;
+  --color-background-tertiary: #f0efea;
+  --color-background-info: #e6f1fb;
+  --color-background-success: #eaf3de;
+  --color-background-warning: #faeeda;
+  --color-background-danger: #fcebeb;
+  --color-text-primary: #1a1a18;
+  --color-text-secondary: #6b6b67;
+  --color-text-tertiary: #9b9b97;
+  --color-text-info: #185fa5;
+  --color-text-success: #3b6d11;
+  --color-text-warning: #854f0b;
+  --color-text-danger: #a32d2d;
+  --color-border-tertiary: rgba(26,26,24,0.15);
+  --color-border-secondary: rgba(26,26,24,0.30);
+  --color-border-primary: rgba(26,26,24,0.40);
+  --color-border-info: rgba(24,95,165,0.40);
+  --color-border-success: rgba(59,109,17,0.40);
+  --color-border-warning: rgba(133,79,11,0.40);
+  --color-border-danger: rgba(163,45,45,0.40);
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-primary: #1c1c1a;
+    --color-background-secondary: #252523;
+    --color-background-tertiary: #2e2e2b;
+    --color-background-info: #0c3054;
+    --color-background-success: #1a3508;
+    --color-background-warning: #422508;
+    --color-background-danger: #4f1515;
+    --color-text-primary: #f0efe8;
+    --color-text-secondary: #a8a8a2;
+    --color-text-tertiary: #6b6b65;
+    --color-text-info: #85b7eb;
+    --color-text-success: #97c459;
+    --color-text-warning: #ef9f27;
+    --color-text-danger: #f09595;
+    --color-border-tertiary: rgba(240,239,232,0.15);
+    --color-border-secondary: rgba(240,239,232,0.30);
+    --color-border-primary: rgba(240,239,232,0.40);
+    --color-border-info: rgba(133,183,235,0.40);
+    --color-border-success: rgba(151,196,89,0.40);
+    --color-border-warning: rgba(239,159,39,0.40);
+    --color-border-danger: rgba(240,149,149,0.40);
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  font-family: var(--font-sans);
+  background: var(--color-background-tertiary);
+  margin: 0;
+  padding: 16px;
+}
+.page-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--color-background-primary);
+  border-radius: var(--border-radius-xl);
+  padding: 20px 24px 32px;
+  border: 0.5px solid var(--color-border-tertiary);
+}
+.top-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+  font-size: 12px;
+}
+.top-nav a {
+  color: var(--color-text-info);
+  text-decoration: none;
+  font-size: 12px;
+}
+.top-nav a:hover { text-decoration: underline; }
+.top-nav .sep { color: var(--color-text-tertiary); }
+.top-nav .mod-name {
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+.top-nav .company {
+  margin-left: auto;
+  color: var(--color-text-secondary);
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+  <div class="top-nav">
+    <a href="../index.html">← Все модули</a>
+    <span class="sep">·</span>
+    <span class="mod-name">07 ЭАВР ЭСНТ</span>
+    <span class="company">Alpino Group ТОО · НК РК 2026</span>
+  </div>
+  
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);font-size:13px}
+.app{padding:1rem 0}
+.tabs{display:flex;gap:4px;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.2rem;flex-wrap:wrap}
+.tab{padding:7px 13px;font-size:12px;cursor:pointer;border:none;background:transparent;color:var(--color-text-secondary);border-bottom:2px solid transparent;margin-bottom:-1px;font-family:var(--font-sans)}
+.tab.active{color:var(--color-text-primary);border-bottom:2px solid var(--color-text-primary);font-weight:500}
+.section{display:none}.section.active{display:block}
+.notice{font-size:11px;color:var(--color-text-secondary);padding:8px 12px;background:var(--color-background-secondary);border-radius:8px;margin-bottom:10px;line-height:1.5}
+.notice strong{color:var(--color-text-primary)}
+.notice.info{background:var(--color-background-info)}.notice.info strong{color:var(--color-text-info)}
+.notice.warn{background:var(--color-background-warning)}.notice.warn strong{color:var(--color-text-warning)}
+.notice.success{background:var(--color-background-success)}.notice.success strong{color:var(--color-text-success)}
+.notice.danger{background:var(--color-background-danger)}.notice.danger strong{color:var(--color-text-danger)}
+input,select,textarea{font-family:var(--font-sans);font-size:12px;padding:5px 8px;border:0.5px solid var(--color-border-secondary);border-radius:7px;background:var(--color-background-primary);color:var(--color-text-primary);width:100%}
+input:focus,select:focus{outline:none;border-color:var(--color-border-primary)}
+.btn{padding:5px 12px;font-size:12px;font-family:var(--font-sans);border:0.5px solid var(--color-border-secondary);border-radius:7px;background:transparent;color:var(--color-text-primary);cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--color-background-secondary)}
+.btn-p{background:var(--color-text-primary);color:var(--color-background-primary);border-color:var(--color-text-primary)}
+.btn-sm{padding:2px 7px;font-size:11px}
+.badge{display:inline-block;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:500}
+.bg{background:var(--color-background-success);color:var(--color-text-success)}
+.br{background:var(--color-background-danger);color:var(--color-text-danger)}
+.bb{background:var(--color-background-info);color:var(--color-text-info)}
+.bw{background:var(--color-background-warning);color:var(--color-text-warning)}
+.bp{background:#EEEDFE;color:#3C3489}
+.acc{font-family:var(--font-mono);font-weight:500}
+.acc-bu{color:var(--color-text-info)}
+.acc-nu{color:var(--color-text-success)}
+.ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.pt{font-size:14px;font-weight:600}.ps{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.kpi-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:12px}
+.kpi{padding:9px 11px;border-radius:8px;background:var(--color-background-secondary)}
+.kpi .kv{font-size:15px;font-weight:600;color:var(--color-text-primary)}.kpi .kl{font-size:10px;color:var(--color-text-secondary);margin-top:1px}
+.kpi.green{background:var(--color-background-success)}.kpi.green .kv{color:var(--color-text-success)}
+.kpi.amber{background:var(--color-background-warning)}.kpi.amber .kv{color:var(--color-text-warning)}
+.kpi.info{background:var(--color-background-info)}.kpi.info .kv{color:var(--color-text-info)}
+table.mt{width:100%;border-collapse:collapse;font-size:12px}
+table.mt th{padding:5px 7px;font-size:11px;font-weight:500;color:var(--color-text-secondary);border-bottom:0.5px solid var(--color-border-tertiary);text-align:left;white-space:nowrap;background:var(--color-background-secondary)}
+table.mt td{padding:5px 7px;border-bottom:0.5px solid var(--color-border-tertiary)}
+table.mt tr:hover td{background:var(--color-background-secondary);cursor:pointer}
+.doc-card{border:0.5px solid var(--color-border-tertiary);border-radius:10px;padding:12px;margin-bottom:10px}
+.doc-card.awp{border-left:3px solid var(--color-text-info)}
+.doc-card.snt{border-left:3px solid var(--color-text-success)}
+.doc-card.revoked{opacity:.6;border-left-color:var(--color-text-secondary)}
+.doc-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;flex-wrap:wrap;gap:8px}
+.doc-title{font-size:13px;font-weight:600}
+.doc-sub{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.doc-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.doc-field{display:flex;flex-direction:column;gap:2px}
+.doc-field label{font-size:10px;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.02em}
+.doc-field .dv{font-size:12px;color:var(--color-text-primary)}
+.lines-tbl{width:100%;border-collapse:collapse;font-size:11px;margin-top:8px}
+.lines-tbl th{padding:4px 6px;font-size:10px;font-weight:500;color:var(--color-text-secondary);border-bottom:0.5px solid var(--color-border-tertiary);text-align:left;background:var(--color-background-secondary)}
+.lines-tbl td{padding:4px 6px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.entry-row{display:grid;grid-template-columns:90px 90px 80px 80px 1fr 110px;gap:6px;padding:4px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px;align-items:center}
+.entry-row:last-child{border-bottom:none}
+.diff-badge{padding:2px 6px;border-radius:4px;font-size:10px;font-weight:500}
+</style>
+</head>
+<body>
+<div class="app">
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('awp')">• AWP — Акты выполненных работ</button>
+  <button class="tab" onclick="showTab('snt')">• SNT — Сопроводительные накладные</button>
+  <button class="tab" onclick="showTab('journal')">• Журнал проводок</button>
+  <button class="tab" onclick="showTab('schema')">• Схема документооборота</button>
+</div>
+
+<!-- ===== AWP ===== -->
+<div id="awp" class="section active">
+  <div class="ph">
+    <div><div class="pt">Электронные акты выполненных работ (ЭАВР)</div>
+    <div class="ps">Портал e-contract.kz · Alpino Group ТОО</div></div>
+    <div style="display:flex;gap:6px">
+      <button class="btn btn-p btn-sm" onclick="processAWP()">Провести все ЭАВР</button>
+      <button class="btn btn-sm" onclick="sendPrompt('Экспортируй проводки по ЭАВР в Excel для 1С')">Excel →</button>
+    </div>
+  </div>
+
+  <div class="notice info">
+    <strong>Структура AWP XML:</strong> awpContainer → awpSet → awp · Поля: awpType, date, number, performedDate, senders (исполнитель), recipients (заказчик), worksPerformed (работы: ГСВС-код, наименование, кол-во, ед.изм., цена, НДС, итог)
+  </div>
+
+  <div class="kpi-g" id="awp-kpi"></div>
+
+  <div id="awp-list"></div>
+</div>
+
+<!-- ===== SNT ===== -->
+<div id="snt" class="section">
+  <div class="ph">
+    <div><div class="pt">Электронные сопроводительные накладные (ЭСНТ)</div>
+    <div class="ps">Портал esf.gov.kz · Alpino Group ТОО</div></div>
+    <div style="display:flex;gap:6px">
+      <button class="btn btn-p btn-sm" onclick="processSNT()">Провести CONFIRMED</button>
+      <button class="btn btn-sm" onclick="sendPrompt('Экспортируй проводки по ЭСНТ в Excel для 1С')">Excel →</button>
+    </div>
+  </div>
+
+  <div class="notice info">
+    <strong>Структура SNT XML:</strong> sntInfoContainer → sntInfoSet → sntInfo · Поля: sntId, registrationNumber, status (DELIVERED/CONFIRMED/REVOKED), documentInfo → sntBody (CDATA) · Тело: date, number, sntType, consignee, consignor, seller, customer, productSet (products), contract, acceptanceGoodsInfo (подписант приёмки)
+  </div>
+
+  <div class="kpi-g" id="snt-kpi"></div>
+
+  <!-- Фильтр по статусу -->
+  <div style="display:flex;gap:8px;margin-bottom:12px;align-items:center">
+    <div style="font-size:11px;color:var(--color-text-secondary)">Фильтр:</div>
+    <button class="btn btn-sm" id="f-all" onclick="filterSNT('all',this)" style="border-color:var(--color-border-primary)">Все</button>
+    <button class="btn btn-sm" id="f-conf" onclick="filterSNT('CONFIRMED',this)">✓ Подтверждены</button>
+    <button class="btn btn-sm" id="f-del" onclick="filterSNT('DELIVERED',this)">• Доставлены</button>
+    <button class="btn btn-sm" id="f-rev" onclick="filterSNT('REVOKED',this)">✕ Отозваны</button>
+  </div>
+
+  <div id="snt-list"></div>
+</div>
+
+<!-- ===== ЖУРНАЛ ===== -->
+<div id="journal" class="section">
+  <div class="ph">
+    <div><div class="pt">Журнал проводок AWP + SNT</div><div class="ps">БУ + НУ параллельно</div></div>
+    <button class="btn btn-p btn-sm" onclick="sendPrompt('Экспортируй все проводки по ЭАВР и ЭСНТ в Excel для 1С:Казахстан')">Excel для 1С →</button>
+  </div>
+  <div class="kpi-g" id="j-kpi"></div>
+  <div style="overflow-x:auto">
+    <table class="mt" id="j-table">
+      <thead><tr>
+        <th>Дата</th><th>Тип</th><th>Документ</th><th>Контрагент</th>
+        <th>Дт БУ</th><th>Кт БУ</th><th>Дт НУ</th><th>Кт НУ</th>
+        <th style="text-align:right">Сумма (₸)</th><th>НДС</th><th>Описание</th>
+      </tr></thead>
+      <tbody id="j-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== СХЕМА ===== -->
+<div id="schema" class="section">
+  <div class="pt" style="margin-bottom:12px">• Схема электронного документооборота РК и проводки</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+    <div style="padding:12px;border:0.5px solid var(--color-border-info);border-radius:10px;background:color-mix(in srgb,var(--color-background-info) 10%,transparent)">
+      <div style="font-size:13px;font-weight:600;color:var(--color-text-info);margin-bottom:10px">• ЭАВР (Акт выполненных работ)</div>
+      <div style="font-size:12px;line-height:2;color:var(--color-text-secondary)">
+        <strong style="color:var(--color-text-primary)">Портал:</strong> e-contract.kz<br>
+        <strong style="color:var(--color-text-primary)">Формат:</strong> awpContainer XML<br>
+        <strong style="color:var(--color-text-primary)">Статусы:</strong> PRIMARY / ADDITIONAL<br>
+        <strong style="color:var(--color-text-primary)">Коды работ:</strong> ГСВС (Государственная статистика видов услуг)<br>
+        <strong style="color:var(--color-text-primary)">Подписанты:</strong> Исполнитель (sender) + Заказчик (recipient)<br>
+        <strong style="color:var(--color-text-primary)">НДС:</strong> может быть 0% (освобождено) или 12%
+      </div>
+      <div style="margin-top:10px;padding:8px;background:var(--color-background-secondary);border-radius:7px;font-size:11px">
+        <div style="font-weight:500;margin-bottom:4px">Проводки у получателя (Alpino):</div>
+        Дт <span class="acc acc-bu">7210</span> / Кт <span class="acc acc-bu">3310</span> — Затраты на услуги<br>
+        Дт <span class="acc acc-bu">1420</span> / Кт <span class="acc acc-bu">3310</span> — НДС к зачёту (если есть)<br>
+        <span class="acc acc-nu">НУ: 7200Н / 3310Н</span>
+      </div>
+    </div>
+
+    <div style="padding:12px;border:0.5px solid var(--color-border-success);border-radius:10px;background:color-mix(in srgb,var(--color-background-success) 10%,transparent)">
+      <div style="font-size:13px;font-weight:600;color:var(--color-text-success);margin-bottom:10px">• ЭСНТ (Сопроводительная накладная)</div>
+      <div style="font-size:12px;line-height:2;color:var(--color-text-secondary)">
+        <strong style="color:var(--color-text-primary)">Портал:</strong> esf.gov.kz<br>
+        <strong style="color:var(--color-text-primary)">Формат:</strong> sntInfoContainer XML<br>
+        <strong style="color:var(--color-text-primary)">Статусы:</strong> DELIVERED → CONFIRMED / REVOKED<br>
+        <strong style="color:var(--color-text-primary)">Коды товаров:</strong> ТН ВЭД (tnvedCode) + TRU Origin<br>
+        <strong style="color:var(--color-text-primary)">Участники:</strong> Продавец (seller) → Грузоотправитель (consignor) → Грузополучатель (consignee) → Покупатель (customer)<br>
+        <strong style="color:var(--color-text-primary)">Приёмка:</strong> acceptanceGoodsInfo — кто принял, дата, доверенность
+      </div>
+      <div style="margin-top:10px;padding:8px;background:var(--color-background-secondary);border-radius:7px;font-size:11px">
+        <div style="font-weight:500;margin-bottom:4px">Проводки у получателя (Alpino):</div>
+        Дт <span class="acc acc-bu">1310</span> (<span class="acc acc-bu">1330</span>) / Кт <span class="acc acc-bu">3310</span> — Поступление<br>
+        Дт <span class="acc acc-bu">1420</span> / Кт <span class="acc acc-bu">3310</span> — НДС к зачёту<br>
+        <span class="acc acc-nu">НУ: 1310Н / 3310Н · 1420Н / 3310Н</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice">
+    <strong>Ключевые отличия ЭАВР от ЭСФ:</strong> ЭАВР — это акт выполненных работ (услуги), ЭСФ — счёт-фактура (налоговый документ для НДС). Они выписываются параллельно. ЭАВР подтверждает факт выполнения работ, ЭСФ — право на зачёт НДС. Оба документа должны совпадать по сумме.
+  </div>
+
+  <div class="notice warn">
+    <strong>SNT → ТН ВЭД коды из ваших файлов:</strong><br>
+    8528521000 — Мониторы iiyama (Группа НУ III, 40%)<br>
+    8517620009 — Комплект усиления сотовой связи (Группа НУ III, 40%)<br>
+    8701211011 — Грузовой седельный тягач DAF FT XF 105.460 (Группа НУ II, 25% — ТС!)<br>
+    3925200000 — Штульповые двери (Группа НУ IV, 15% — прочие)<br>
+    <strong>Важно:</strong> ТН ВЭД код из SNT автоматически определяет группу НУ!
+  </div>
+
+  <div style="font-size:12px;font-weight:500;margin-bottom:8px;margin-top:12px">Соответствие ТН ВЭД → Группа НУ</div>
+  <div style="overflow-x:auto"><table class="mt">
+    <thead><tr><th>ТН ВЭД группа</th><th>Описание</th><th>Группа НУ</th><th>Норма</th><th>Счёт НУ</th></tr></thead>
+    <tbody>
+      <tr><td>84, 85 (кроме компьютеров)</td><td>Машины и оборудование, промышленная техника</td><td><span class="badge bb">II</span></td><td>25%</td><td class="acc acc-nu">2100Н</td></tr>
+      <tr><td>8471, 847330, 8528</td><td>Компьютеры, мониторы, ПО</td><td><span class="badge bp">III</span></td><td>40%</td><td class="acc acc-nu">2100Н</td></tr>
+      <tr><td>8517</td><td>Телефоны, телекоммуникации</td><td><span class="badge bp">III</span></td><td>40%</td><td class="acc acc-nu">2100Н</td></tr>
+      <tr><td>87 (ТС)</td><td>Автомобили, тягачи, грузовики</td><td><span class="badge bg">II</span></td><td>25%</td><td class="acc acc-nu">2100Н</td></tr>
+      <tr><td>94</td><td>Мебель</td><td><span class="badge bw">IV</span></td><td>15%</td><td class="acc acc-nu">2100Н</td></tr>
+      <tr><td>39</td><td>Пластмассовые изделия, двери</td><td><span class="badge bw">IV</span></td><td>15%</td><td class="acc acc-nu">2100Н</td></tr>
+      <tr><td>72, 73</td><td>Чёрные металлы, изделия из стали</td><td><span class="badge bw">IV</span></td><td>15%</td><td class="acc acc-nu">2100Н</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+</div>
+
+<script>
+// РЕАЛЬНЫЕ ДАННЫЕ ИЗ ВАШИХ ФАЙЛОВ
+const AWP_DATA = [
+  {
+    type:'AWP', awpType:'PRIMARY',
+    date:'27.04.2026', number:'7', performedDate:'27.04.2026',
+    sender:'ИП "Дана"', senderTin:'020626651506',
+    senderBank:'АО "Банк ЦентрКредит"', senderBik:'KCJBKZKX', senderIik:'KZ818562204136961998',
+    senderAddress:'Атырауская область, район Жылыойский, г. Кульсары',
+    recipient:'ТОО "Alpino Group"', recipientTin:'140840019304',
+    recipientAddress:'г. Атырау, ул. Каныш Сатбаев, д. 48Б, оф. 2',
+    currency:'KZT', totalWithTax:1544920, totalWithoutTax:1544920, totalNds:0,
+    works:[
+      {n:'Услуги автомобильного транспорта по перевозкам грузов прочих',gsvsCode:'49.41.19.01',qty:65,unitCode:'179',unitPrice:11884,sumWithTax:772460,sumWithoutTax:772460,nds:0,date:'27.04.2026'},
+      {n:'Услуги автомобильного транспорта по перевозкам грузов прочих',gsvsCode:'49.41.19.01',qty:65,unitCode:'179',unitPrice:11884,sumWithTax:772460,sumWithoutTax:772460,nds:0,date:'27.04.2026'},
+    ]
+  }
+];
+
+const SNT_DATA = [
+  {
+    sntId:'201897847448567808',
+    regNum:'KZ-SNT-4814-890221350208-20250422-50495073',
+    status:'DELIVERED',
+    inputDate:'2025-04-22',
+    date:'22.04.2025', number:'11', shippingDate:'22.04.2025',
+    sntType:'PRIMARY_SNT',
+    seller:'ИП Легаев Иван Григорьевич', sellerTin:'890221350208',
+    sellerAddr:'Республика Казахстан, г. Петропавловск, ул. Хименко, дом 7',
+    consignor:'ИП Легаев Иван Григорьевич', consignorTin:'890221350208',
+    consignee:'ТОО "Alpino Group"', consigneeTin:'140840019304',
+    customer:'ТОО "Alpino Group"', customerTin:'140840019304',
+    customerAddr:'Атырау ул. Сатпаева д.48Б',
+    currency:'KZT',
+    isContract:false, deliveryCondition:'XXX', paymentTerm:'безналичный расчет',
+    totalWithTax:589000, totalWithoutTax:589000, totalNds:0,
+    acceptance:null, cancelReason:null,
+    products:[
+      {num:1,name:'Штульповая дверь без откосов, с доводчиком, без тонировки',tnved:'3925200000',truOrigin:'5',qty:1,price:280000,priceWithTax:280000,ndsRate:0,nds:0},
+      {num:2,name:'Штульповая дверь без откосов, с доводчиком, с тонировкой',tnved:'3925200000',truOrigin:'5',qty:1,price:309000,priceWithTax:309000,ndsRate:0,nds:0},
+    ]
+  },
+  {
+    sntId:'201962446033559552',
+    regNum:'KZ-SNT-1510-130640002300-20250722-73664420',
+    status:'CONFIRMED',
+    inputDate:'2025-07-22',
+    date:'22.07.2025', number:'1', shippingDate:'15.07.2025',
+    sntType:'PRIMARY_SNT',
+    seller:'ТОО "Zilant"', sellerTin:'130640002300',
+    sellerAddr:'г. Атырау, ул. Чокана Валиханова, д.19, блок 2, офис 3А',
+    consignor:'ТОО "Zilant"', consignorTin:'130640002300',
+    consignee:'ТОО "Alpino Group"', consigneeTin:'140840019304',
+    customer:'ТОО "Alpino Group"', customerTin:'140840019304',
+    customerAddr:'Атырау ул. Сатпаева д.48Б',
+    currency:'KZT',
+    isContract:false,
+    totalWithTax:7608000, totalWithoutTax:6792857.14, totalNds:815142.86,
+    acceptance:{name:'МЫРЗАҰЛЫ АЯЗБЕК', date:'23.07.2025', powAtt:'89', powAttDate:'15.07.2025'},
+    cancelReason:null,
+    products:[
+      {num:1,name:'Монитор, iiyama, ProLite PL2255M, T2255MSC-B1, 21.5" (1 год)',tnved:'8528521000',truOrigin:'2',qty:35,price:138392.86,priceWithTax:154999.99,ndsRate:12,nds:581250,decl:'55302/290525/0083695'},
+      {num:2,name:'Монитор, iiyama, ProLite PL2293H',tnved:'8528521000',truOrigin:'2',qty:37,price:52678.57,priceWithTax:59000,ndsRate:12,nds:233892.86,decl:'55302/070425/0049132'},
+    ]
+  },
+  {
+    sntId:'201968539439857664',
+    regNum:'KZ-SNT-6004-130140013685-20250731-39888475',
+    status:'CONFIRMED',
+    inputDate:'2025-07-31',
+    date:'31.07.2025', number:'2', shippingDate:'28.07.2025',
+    sntType:'PRIMARY_SNT',
+    seller:'ТОО "RUBA TECHNOLOGY"', sellerTin:'130140013685',
+    sellerAddr:'Толе би 291-291а, офис 33',
+    consignor:'Филиал ТОО "Ruba Technology Астана"', consignorTin:'160341003824',
+    consignee:'ТОО "Alpino Group"', consigneeTin:'140840019304',
+    customer:'ТОО "Alpino Group"', customerTin:'140840019304',
+    customerAddr:'Атырау ул. Сатпаева д.48Б',
+    currency:'KZT',
+    isContract:false,
+    totalWithTax:109900, totalWithoutTax:98125, totalNds:11775,
+    acceptance:{name:'МЫРЗАҰЛЫ АЯЗБЕК', date:'31.07.2025', powAtt:'96', powAttDate:'28.07.2025'},
+    cancelReason:null,
+    products:[
+      {num:1,name:'Комплект усиления сотовой связи KW23A.3.GDW.N12121 (трехдиапазонный) SILA SVЯZI',tnved:'8517620009',truOrigin:'2',qty:1,price:98125,priceWithTax:109900,ndsRate:12,nds:11775,decl:'55301/290425/0050101'},
+    ]
+  },
+  {
+    sntId:'201972268620201984',
+    regNum:'KZ-SNT-6207-140940005229-20250805-63110747',
+    status:'CONFIRMED',
+    inputDate:'2025-08-05',
+    date:'05.08.2025', number:'1', shippingDate:'16.07.2025',
+    sntType:'PRIMARY_SNT',
+    seller:'ТОО "FAVOR LOGISTIC KZ"', sellerTin:'140940005229',
+    sellerAddr:'г. Астана, р-н Байконыр, ул. Константин Циолковский зд. 4 н.п. 1',
+    consignor:'ТОО "FAVOR LOGISTIC KZ"', consignorTin:'140940005229',
+    consignee:'ТОО "Alpino Group"', consigneeTin:'140840019304',
+    customer:'ТОО "Alpino Group"', customerTin:'140840019304',
+    customerAddr:'Атырауская обл., г. Атырау, ул. Каныш Сатбаев, д. 48Б',
+    currency:'KZT',
+    isContract:true, contractNum:'07/16-25', contractDate:'16.07.2025',
+    totalWithTax:19500000, totalWithoutTax:17410714.29, totalNds:2089285.71,
+    acceptance:{name:'ТОО "Alpino Group"', date:'07.08.2025', powAtt:'92', powAttDate:'16.07.2025'},
+    cancelReason:null,
+    products:[
+      {num:1,name:'Грузовой седельный тягач DAF FT XF 105.460 VIN XLRTE47MS0G210199',tnved:'8701211011',truOrigin:'5',qty:1,price:17410714.29,priceWithTax:19500000,ndsRate:12,nds:2089285.71,vin:'XLRTE47MS0G210199'},
+    ]
+  },
+  {
+    sntId:'201987069760700416',
+    regNum:'KZ-SNT-6207-140940005229-20250826-55490519',
+    status:'CONFIRMED',
+    inputDate:'2025-08-26',
+    date:'26.08.2025', number:'2', shippingDate:'09.08.2025',
+    sntType:'PRIMARY_SNT',
+    seller:'ТОО "FAVOR LOGISTIC KZ"', sellerTin:'140940005229',
+    sellerAddr:'г. Астана, р-н Байконыр, ул. Константин Циолковский зд. 4 н.п. 1',
+    consignor:'ТОО "FAVOR LOGISTIC KZ"', consignorTin:'140940005229',
+    consignee:'ТОО "Alpino Group"', consigneeTin:'140840019304',
+    customer:'ТОО "Alpino Group"', customerTin:'140840019304',
+    customerAddr:'Атырауская обл., г. Атырау, ул. Каныш Сатбаев, д. 48Б',
+    currency:'KZT',
+    isContract:true, contractNum:'08/08-25', contractDate:'08.08.2025',
+    totalWithTax:21500000, totalWithoutTax:19196428.57, totalNds:2303571.43,
+    acceptance:{name:'МЫРЗАҰЛЫ АЯЗБЕК', date:'28.08.2025', powAtt:'92', powAttDate:'16.07.2025'},
+    cancelReason:null,
+    products:[
+      {num:1,name:'Грузовой седельный тягач DAF FT XF 105.460 VIN XLRTE47MS0G210454',tnved:'8701211011',truOrigin:'5',qty:1,price:19196428.57,priceWithTax:21500000,ndsRate:12,nds:2303571.43,vin:'XLRTE47MS0G210454'},
+    ]
+  },
+  // REVOKED
+  {sntId:'201897740362416128',regNum:'KZ-SNT-4814-890221350208-20250422-37422978',status:'REVOKED',inputDate:'2025-04-22',date:'22.04.2025',number:'10',shippingDate:'22.04.2025',sntType:'PRIMARY_SNT',seller:'ИП Легаев Иван Григорьевич',sellerTin:'890221350208',consignor:'ИП Легаев Иван Григорьевич',consignorTin:'890221350208',consignee:'ТОО "Alpino Group"',consigneeTin:'140840019304',customer:'ТОО "Alpino Group"',customerTin:'140840019304',currency:'KZT',totalWithTax:589000,totalWithoutTax:589000,totalNds:0,cancelReason:'Ошибка в разделе A',acceptance:null,products:[{num:1,name:'Штульповая дверь без откосов, с доводчиком, без тонировки',tnved:'3925200000',qty:1,price:280000,ndsRate:0,nds:0},{num:2,name:'Штульповая дверь без откосов, с доводчиком, с тонировкой',tnved:'3925200000',qty:1,price:309000,ndsRate:0,nds:0}]},
+  {sntId:'201897747326017536',regNum:'KZ-SNT-4814-890221350208-20250422-38273046',status:'REVOKED',inputDate:'2025-04-22',date:'22.04.2025',number:'11',shippingDate:'22.04.2025',sntType:'PRIMARY_SNT',seller:'ИП Легаев Иван Григорьевич',sellerTin:'890221350208',consignor:'ИП Легаев Иван Григорьевич',consignorTin:'890221350208',consignee:'ТОО "Alpino Group"',consigneeTin:'140840019304',customer:'ТОО "Alpino Group"',customerTin:'140840019304',currency:'KZT',totalWithTax:589000,totalWithoutTax:589000,totalNds:0,cancelReason:'Ошибка в разделе B',acceptance:null,products:[{num:1,name:'Штульповая дверь без откосов',tnved:'3925200000',qty:1,price:280000,ndsRate:0,nds:0}]},
+  {sntId:'201968536132124672',regNum:'KZ-SNT-6004-130140013685-20250731-39484628',status:'REVOKED',inputDate:'2025-07-31',date:'31.07.2025',number:'1',shippingDate:'28.07.2025',sntType:'PRIMARY_SNT',seller:'ТОО "RUBA TECHNOLOGY"',sellerTin:'130140013685',consignor:'Филиал ТОО "Ruba Technology Астана"',consignorTin:'160341003824',consignee:'ТОО "Alpino Group"',consigneeTin:'140840019304',customer:'ТОО "Alpino Group"',customerTin:'140840019304',currency:'KZT',totalWithTax:109900,totalWithoutTax:98125,totalNds:11775,cancelReason:'ошибка в разделе G',acceptance:null,products:[{num:1,name:'Комплект усиления сотовой связи KW23A',tnved:'8517620009',qty:1,price:98125,ndsRate:12,nds:11775}]},
+];
+
+function fmt(n){return Math.round(n||0).toLocaleString('ru-RU');}
+function fmtD(n){return parseFloat(n||0).toFixed(2);}
+
+// Определение типа по ТН ВЭД
+function getTnvedType(tnved, name) {
+  const code = (tnved||'').substring(0,4);
+  const n = (name||'').toLowerCase();
+  if(['8471','8472','8528','8473'].includes(code)||n.includes('монитор')||n.includes('компьютер')||n.includes('ноутбук')||n.includes('принтер')) return {type:'os',group:'III',rate:40,acc:'2100Н'};
+  if(code==='8517'||n.includes('телефон')||n.includes('связь')) return {type:'os_or_tmz',group:'III',rate:40,acc:'2100Н'};
+  if(code==='8701'||code==='8702'||code==='8703'||code==='8704') return {type:'os',group:'II',rate:25,acc:'2100Н',isTS:true};
+  if(['84','85'].includes(code.substring(0,2))&&!['8471','8472','8473','8517','8528'].includes(code)) return {type:'os',group:'II',rate:25,acc:'2100Н'};
+  if(code.startsWith('87')) return {type:'os',group:'II',rate:25,acc:'2100Н'};
+  if(['7201','7202','7203','7204','7205','7206','7207','7208','7209','7210','7211','7212','7213','7214','7215','7216','7217','7218','7219','7220','7221','7222','7223','7224','7225','7226','7227','7228','7229','7301','7302','7303','7304','7305','7306','7307','7308','7309','7310','7311','7312','7313','7314','7315','7316','7317','7318','7319','7320','7321','7322','7323','7324','7325','7326'].includes(code)) return {type:'tmz',group:'—',acc:'1310'};
+  if(code.startsWith('39')) return {type:'os_or_tmz',group:'IV',rate:15,acc:'2100Н'};
+  return {type:'unknown',group:'?',acc:'1310'};
+}
+
+let journalRows = [];
+
+// === AWP ===
+function renderAWP() {
+  const total = AWP_DATA.reduce((s,a)=>s+a.totalWithTax,0);
+  const nds = AWP_DATA.reduce((s,a)=>s+a.totalNds,0);
+  document.getElementById('awp-kpi').innerHTML=`
+    <div class="kpi"><div class="kv">${AWP_DATA.length}</div><div class="kl">ЭАВР в файле</div></div>
+    <div class="kpi amber"><div class="kv">${fmt(total)} ₸</div><div class="kl">Итого по актам</div></div>
+    <div class="kpi"><div class="kv">${fmt(nds)} ₸</div><div class="kl">НДС к зачёту</div></div>
+    <div class="kpi info"><div class="kv">${AWP_DATA.reduce((s,a)=>s+a.works.length,0)}</div><div class="kl">Видов работ</div></div>
+  `;
+
+  document.getElementById('awp-list').innerHTML = AWP_DATA.map((a,i)=>`
+    <div class="doc-card awp">
+      <div class="doc-header">
+        <div>
+          <div class="doc-title">ЭАВР № ${a.number} от ${a.date}</div>
+          <div class="doc-sub">Исполнитель: <strong>${a.sender}</strong> (ИИН: ${a.senderTin})</div>
+          <div class="doc-sub">Заказчик: <strong>${a.recipient}</strong> (ИИН: ${a.recipientTin})</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:16px;font-weight:700">${fmt(a.totalWithTax)} ₸</div>
+          <div style="font-size:11px;color:var(--color-text-secondary)">НДС: ${fmt(a.totalNds)} ₸</div>
+          <span class="badge bb">${a.awpType==='PRIMARY'?'Первичный':'Дополнительный'}</span>
+        </div>
+      </div>
+
+      <div class="doc-grid">
+        <div class="doc-field"><label>Дата выполнения</label><div class="dv">${a.performedDate}</div></div>
+        <div class="doc-field"><label>Валюта</label><div class="dv">${a.currency}</div></div>
+        <div class="doc-field"><label>Банк исполнителя</label><div class="dv">${a.senderBank||'—'}</div></div>
+        <div class="doc-field"><label>ИИК исполнителя</label><div class="dv" style="font-family:var(--font-mono);font-size:11px">${a.senderIik||'—'}</div></div>
+        <div class="doc-field"><label>Адрес исполнителя</label><div class="dv">${a.senderAddress||'—'}</div></div>
+        <div class="doc-field"><label>Адрес заказчика</label><div class="dv">${a.recipientAddress||'—'}</div></div>
+      </div>
+
+      <div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:6px;text-transform:uppercase">Виды выполненных работ/услуг</div>
+      <table class="lines-tbl">
+        <thead><tr><th>#</th><th>Наименование работ/услуг</th><th>Код ГСВС</th><th>Кол-во</th><th>Цена без НДС (₸)</th><th>Сумма с НДС (₸)</th><th>НДС (₸)</th><th>Дата</th></tr></thead>
+        <tbody>${a.works.map((w,j)=>`<tr>
+          <td>${j+1}</td>
+          <td>${w.n}</td>
+          <td style="font-family:var(--font-mono);font-size:10px">${w.gsvsCode}</td>
+          <td style="text-align:center">${w.qty}</td>
+          <td style="text-align:right">${fmt(w.unitPrice)}</td>
+          <td style="text-align:right;font-weight:500">${fmt(w.sumWithTax)}</td>
+          <td style="text-align:right;color:var(--color-text-warning)">${w.nds>0?fmt(w.nds):'Без НДС'}</td>
+          <td>${w.date}</td>
+        </tr>`).join('')}</tbody>
+      </table>
+
+      <div style="margin-top:10px;padding:10px;background:var(--color-background-secondary);border-radius:8px">
+        <div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:6px;text-transform:uppercase">Проводки 1С:Казахстан</div>
+        <div class="entry-row">
+          <div class="acc acc-bu">Дт 7210</div><div class="acc acc-bu">Кт 3310</div>
+          <div class="acc acc-nu" style="font-size:10px">Дт 7200Н</div><div class="acc acc-nu" style="font-size:10px">Кт 3310Н</div>
+          <div style="font-size:11px;color:var(--color-text-secondary)">Услуги по перевозке грузов · ${a.sender}</div>
+          <div style="text-align:right;font-weight:500">${fmt(a.totalWithoutTax)} ₸</div>
+        </div>
+        ${a.totalNds>0?`<div class="entry-row">
+          <div class="acc acc-bu">Дт 1420</div><div class="acc acc-bu">Кт 3310</div>
+          <div class="acc acc-nu" style="font-size:10px">Дт 1420Н</div><div class="acc acc-nu" style="font-size:10px">Кт 3310Н</div>
+          <div style="font-size:11px;color:var(--color-text-secondary)">НДС к зачёту</div>
+          <div style="text-align:right;font-weight:500;color:var(--color-text-warning)">${fmt(a.totalNds)} ₸</div>
+        </div>`:'<div style="font-size:11px;color:var(--color-text-secondary);padding:4px 0">НДС = 0 (освобождено от НДС, ИП на СНР)</div>'}
+      </div>
+    </div>`).join('');
+}
+
+// === SNT ===
+let sntFilter = 'all';
+function filterSNT(f, btn) {
+  sntFilter = f;
+  document.querySelectorAll('#f-all,#f-conf,#f-del,#f-rev').forEach(b=>b.style.borderColor='');
+  if(btn) btn.style.borderColor='var(--color-text-primary)';
+  renderSNT();
+}
+
+function renderSNT() {
+  const filtered = sntFilter==='all' ? SNT_DATA : SNT_DATA.filter(s=>s.status===sntFilter);
+  const confirmed = SNT_DATA.filter(s=>s.status==='CONFIRMED');
+  const revoked = SNT_DATA.filter(s=>s.status==='REVOKED');
+  const totalConf = confirmed.reduce((s,x)=>s+x.totalWithTax,0);
+  const totalNds = confirmed.reduce((s,x)=>s+x.totalNds,0);
+
+  document.getElementById('snt-kpi').innerHTML=`
+    <div class="kpi"><div class="kv">${SNT_DATA.length}</div><div class="kl">SNT всего</div></div>
+    <div class="kpi green"><div class="kv">${confirmed.length}</div><div class="kl">CONFIRMED (к учёту)</div></div>
+    <div class="kpi"><div class="kv">${SNT_DATA.filter(s=>s.status==='DELIVERED').length}</div><div class="kl">DELIVERED</div></div>
+    <div class="kpi"><div class="kv" style="color:var(--color-text-secondary)">${revoked.length}</div><div class="kl">REVOKED (не учитывать)</div></div>
+    <div class="kpi amber"><div class="kv">${fmt(totalConf)} ₸</div><div class="kl">Итого CONFIRMED</div></div>
+    <div class="kpi info"><div class="kv">${fmt(totalNds)} ₸</div><div class="kl">НДС к зачёту</div></div>
+  `;
+
+  document.getElementById('snt-list').innerHTML = filtered.map(s=>{
+    const isActive = s.status==='CONFIRMED'||s.status==='DELIVERED';
+    const tnvedInfo = s.products?.length ? getTnvedType(s.products[0].tnved, s.products[0].name) : {};
+    const statusColor = s.status==='CONFIRMED'?'bg':s.status==='DELIVERED'?'bb':'br';
+    const statusLabel = {CONFIRMED:'✓ Подтверждён',DELIVERED:'• Доставлен',REVOKED:'✕ Отозван'}[s.status];
+
+    return `<div class="doc-card snt ${s.status==='REVOKED'?'revoked':''}">
+      <div class="doc-header">
+        <div>
+          <div class="doc-title">СНТ № ${s.number} от ${s.date}</div>
+          <div class="doc-sub">Продавец: <strong>${s.seller}</strong> (ИИН: ${s.sellerTin})</div>
+          ${s.consignor!==s.seller?`<div class="doc-sub">Грузоотправитель: ${s.consignor} (${s.consignorTin})</div>`:''}
+          <div class="doc-sub">Покупатель: <strong>${s.customer}</strong></div>
+          <div style="font-size:10px;color:var(--color-text-secondary);margin-top:4px;font-family:var(--font-mono)">${s.regNum}</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:16px;font-weight:700">${fmt(s.totalWithTax)} ₸</div>
+          <div style="font-size:11px;color:var(--color-text-warning)">НДС: ${fmt(s.totalNds)} ₸</div>
+          <div style="margin-top:4px;display:flex;gap:4px;justify-content:flex-end;flex-wrap:wrap">
+            <span class="badge ${statusColor}">${statusLabel}</span>
+            ${s.isContract?`<span class="badge bb">Договор ${s.contractNum}</span>`:''}
+          </div>
+        </div>
+      </div>
+
+      ${s.cancelReason?`<div class="notice danger" style="margin-bottom:8px"><strong>Причина отзыва:</strong> ${s.cancelReason}</div>`:''}
+
+      <div class="doc-grid">
+        <div class="doc-field"><label>Дата отгрузки</label><div class="dv">${s.shippingDate}</div></div>
+        <div class="doc-field"><label>Дата ввода</label><div class="dv">${s.inputDate}</div></div>
+        <div class="doc-field"><label>Условия оплаты</label><div class="dv">${s.paymentTerm||'—'}</div></div>
+        <div class="doc-field"><label>Адрес покупателя</label><div class="dv">${s.customerAddr||'—'}</div></div>
+        ${s.acceptance?`
+        <div class="doc-field"><label>Принял (ФИО)</label><div class="dv" style="font-weight:500">${s.acceptance.name}</div></div>
+        <div class="doc-field"><label>Дата приёмки · Дов. № ${s.acceptance.powAtt}</label><div class="dv">${s.acceptance.date} · Дов. от ${s.acceptance.powAttDate}</div></div>`:''}
+      </div>
+
+      <div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:6px;text-transform:uppercase">Товарные позиции</div>
+      <table class="lines-tbl">
+        <thead><tr><th>#</th><th>Наименование товара</th><th>ТН ВЭД</th><th>Происх.</th><th>Кол-во</th><th>Цена (₸)</th><th>Сумма с НДС</th><th>НДС %</th><th>НДС ₸</th><th>${s.products[0]?.decl?'Декларация':'Группа НУ'}</th></tr></thead>
+        <tbody>${(s.products||[]).map(p=>{
+          const ti = getTnvedType(p.tnved, p.name);
+          const originLabels={1:'КЗ произв.',2:'Импорт',3:'КЗ перераб.',4:'СЭЗ',5:'Не опред.'};
+          return `<tr>
+            <td>${p.num}</td>
+            <td style="max-width:200px">${p.name}${p.vin?`<br><span style="font-family:var(--font-mono);font-size:10px;color:var(--color-text-secondary)">VIN: ${p.vin}</span>`:''}</td>
+            <td style="font-family:var(--font-mono);font-size:10px">${p.tnved}</td>
+            <td style="text-align:center;font-size:10px">${originLabels[p.truOrigin]||p.truOrigin}</td>
+            <td style="text-align:center">${p.qty}</td>
+            <td style="text-align:right">${fmt(p.price)}</td>
+            <td style="text-align:right;font-weight:500">${fmt(p.priceWithTax||p.price*p.qty)}</td>
+            <td style="text-align:center">${p.ndsRate?p.ndsRate+'%':'0%'}</td>
+            <td style="text-align:right;color:var(--color-text-warning)">${p.nds>0?fmt(p.nds):'—'}</td>
+            <td>${p.decl?`<span style="font-family:var(--font-mono);font-size:10px">${p.decl}</span>`:`<span class="badge ${ti.group==='II'?'bg':ti.group==='III'?'bp':ti.group==='IV'?'bw':'bb'}">${ti.group} · ${ti.rate||'?'}%</span>`}</td>
+          </tr>`;
+        }).join('')}</tbody>
+      </table>
+
+      ${isActive?`<div style="margin-top:10px;padding:10px;background:var(--color-background-secondary);border-radius:8px">
+        <div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:6px;text-transform:uppercase">Проводки 1С:Казахстан</div>
+        ${(s.products||[]).map(p=>{
+          const ti = getTnvedType(p.tnved, p.name);
+          const dtBU = ti.type==='os' ? '2410' : '1330';
+          const dtNU = ti.type==='os' ? ti.acc||'2100Н' : '1330Н';
+          return `<div class="entry-row">
+            <div class="acc acc-bu">Дт ${dtBU}</div><div class="acc acc-bu">Кт 3310</div>
+            <div class="acc acc-nu" style="font-size:10px">Дт ${dtNU}</div><div class="acc acc-nu" style="font-size:10px">Кт 3310Н</div>
+            <div style="font-size:11px;color:var(--color-text-secondary)">${p.name.substring(0,50)}${ti.type==='os'?` <span class="badge bw">ОС Гр.${ti.group}</span>`:''}</div>
+            <div style="text-align:right;font-weight:500">${fmt(p.price*p.qty)}</div>
+          </div>`;
+        }).join('')}
+        ${s.totalNds>0?`<div class="entry-row">
+          <div class="acc acc-bu">Дт 1420</div><div class="acc acc-bu">Кт 3310</div>
+          <div class="acc acc-nu" style="font-size:10px">Дт 1420Н</div><div class="acc acc-nu" style="font-size:10px">Кт 3310Н</div>
+          <div style="font-size:11px;color:var(--color-text-secondary)">НДС к зачёту ${(s.products[0]?.ndsRate||12)}%</div>
+          <div style="text-align:right;font-weight:500;color:var(--color-text-warning)">${fmt(s.totalNds)}</div>
+        </div>`:''}
+      </div>`:''}
+    </div>`;
+  }).join('');
+}
+
+function processAWP(){
+  journalRows = journalRows.filter(r=>r.src!=='awp');
+  AWP_DATA.forEach(a=>{
+    journalRows.push({src:'awp',date:a.date,docType:'ЭАВР',docNum:`№${a.number}`,counterparty:a.sender,dtBU:'7210',ctBU:'3310',dtNU:'7200Н',ctNU:'3310Н',amount:a.totalWithoutTax,nds:0,desc:'Услуги по перевозке грузов'});
+    if(a.totalNds>0) journalRows.push({src:'awp',date:a.date,docType:'ЭАВР НДС',docNum:`№${a.number}`,counterparty:a.sender,dtBU:'1420',ctBU:'3310',dtNU:'1420Н',ctNU:'3310Н',amount:a.totalNds,nds:0,desc:'НДС к зачёту'});
+  });
+  renderJournal();
+  alert('ЭАВР проведены! Переходите в Журнал.');
+}
+
+function processSNT(){
+  journalRows = journalRows.filter(r=>r.src!=='snt');
+  SNT_DATA.filter(s=>s.status==='CONFIRMED').forEach(s=>{
+    s.products.forEach(p=>{
+      const ti = getTnvedType(p.tnved, p.name);
+      const dtBU = ti.type==='os'?'2410':'1330';
+      const dtNU = ti.type==='os'?(ti.acc||'2100Н'):'1330Н';
+      journalRows.push({src:'snt',date:s.date,docType:'ЭСНТ',docNum:`№${s.number}`,counterparty:s.seller,dtBU,ctBU:'3310',dtNU,ctNU:'3310Н',amount:p.price*p.qty,nds:p.nds,desc:p.name.substring(0,50)});
+    });
+    if(s.totalNds>0) journalRows.push({src:'snt',date:s.date,docType:'ЭСНТ НДС',docNum:`№${s.number}`,counterparty:s.seller,dtBU:'1420',ctBU:'3310',dtNU:'1420Н',ctNU:'3310Н',amount:s.totalNds,nds:0,desc:'НДС к зачёту'});
+  });
+  renderJournal();
+  alert('ЭСНТ (CONFIRMED) проведены! Переходите в Журнал.');
+}
+
+function renderJournal(){
+  const total=journalRows.filter(r=>!r.dtBU.includes('1420')).reduce((s,r)=>s+r.amount,0);
+  const nds=journalRows.filter(r=>r.dtBU.includes('1420')).reduce((s,r)=>s+r.amount,0);
+  document.getElementById('j-kpi').innerHTML=`
+    <div class="kpi"><div class="kv">${journalRows.length}</div><div class="kl">Проводок</div></div>
+    <div class="kpi amber"><div class="kv">${fmt(total)} ₸</div><div class="kl">Итого без НДС</div></div>
+    <div class="kpi info"><div class="kv">${fmt(nds)} ₸</div><div class="kl">НДС к зачёту</div></div>
+    <div class="kpi green"><div class="kv">${fmt(total+nds)} ₸</div><div class="kl">Итого с НДС</div></div>
+  `;
+  document.getElementById('j-tbody').innerHTML=journalRows.map(r=>`<tr>
+    <td>${r.date}</td>
+    <td><span class="badge ${r.src==='awp'?'bb':'bg'}">${r.docType}</span></td>
+    <td style="font-size:11px;font-family:var(--font-mono)">${r.docNum}</td>
+    <td style="max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px">${r.counterparty}</td>
+    <td class="acc acc-bu">${r.dtBU}</td><td class="acc acc-bu">${r.ctBU}</td>
+    <td class="acc acc-nu">${r.dtNU}</td><td class="acc acc-nu">${r.ctNU}</td>
+    <td style="text-align:right;font-weight:500">${fmt(r.amount)}</td>
+    <td style="text-align:right;color:var(--color-text-warning)">${r.nds>0?fmt(r.nds):'—'}</td>
+    <td style="font-size:11px;color:var(--color-text-secondary);max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.desc}</td>
+  </tr>`).join('')||'<tr><td colspan="11" style="padding:20px;text-align:center;color:var(--color-text-secondary)">Нажмите «Провести» в AWP или SNT вкладке</td></tr>';
+}
+
+function showTab(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(name).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+renderAWP();
+renderSNT();
+renderJournal();
+</script>
+
+</div>
+<script>
+// Заглушка для sendPrompt — в локальной версии показывает prompt
+function sendPrompt(text) {
+  var action = prompt('sendPrompt: ' + text + '\n\nВ реальной системе это отправит запрос к AI. Сейчас введите текст или нажмите Отмена:', '');
+  if (action) console.log('sendPrompt:', text);
+}
+// Заглушка для openLink
+function openLink(url) {
+  if (confirm('Открыть ссылку: ' + url)) window.open(url, '_blank');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>💰 ФОТ — Расчёт зарплаты · Платформа бухучёта РК</title>
+<style>
+:root{--font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;--font-mono:'SF Mono','Consolas',monospace;--color-background-primary:#fff;--color-background-secondary:#f7f7f5;--color-background-tertiary:#f0efea;--color-background-info:#e6f1fb;--color-background-success:#eaf3de;--color-background-warning:#faeeda;--color-background-danger:#fcebeb;--color-text-primary:#1a1a18;--color-text-secondary:#6b6b67;--color-text-tertiary:#9b9b97;--color-text-info:#185fa5;--color-text-success:#3b6d11;--color-text-warning:#854f0b;--color-text-danger:#a32d2d;--color-border-tertiary:rgba(26,26,24,0.15);--color-border-secondary:rgba(26,26,24,0.30);--color-border-primary:rgba(26,26,24,0.40);--color-border-info:rgba(24,95,165,0.40);--color-border-success:rgba(59,109,17,0.40);--color-border-warning:rgba(133,79,11,0.40);--color-border-danger:rgba(163,45,45,0.40);--border-radius-md:8px;--border-radius-lg:12px;--border-radius-xl:16px}
+@media(prefers-color-scheme:dark){:root{--color-background-primary:#1c1c1a;--color-background-secondary:#252523;--color-background-tertiary:#2e2e2b;--color-background-info:#0c3054;--color-background-success:#1a3508;--color-background-warning:#422508;--color-background-danger:#4f1515;--color-text-primary:#f0efe8;--color-text-secondary:#a8a8a2;--color-text-info:#85b7eb;--color-text-success:#97c459;--color-text-warning:#ef9f27;--color-text-danger:#f09595;--color-border-tertiary:rgba(240,239,232,0.15);--color-border-secondary:rgba(240,239,232,0.30);--color-border-primary:rgba(240,239,232,0.40);--color-border-info:rgba(133,183,235,0.40);--color-border-success:rgba(151,196,89,0.40);--color-border-warning:rgba(239,159,39,0.40);--color-border-danger:rgba(240,149,149,0.40)}}
+.page-wrap{max-width:1200px;margin:0 auto;background:var(--color-background-primary);border-radius:var(--border-radius-xl);padding:20px 24px 32px;border:0.5px solid var(--color-border-tertiary)}
+.top-nav{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:12px;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px}
+.top-nav a{color:var(--color-text-info);text-decoration:none}.top-nav a:hover{text-decoration:underline}
+.top-nav .co{margin-left:auto;color:var(--color-text-secondary)}
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);font-size:13px;background:transparent}
+.platform{display:grid;grid-template-columns:190px 1fr;min-height:650px}
+.sidebar{background:var(--color-background-secondary);border-right:0.5px solid var(--color-border-tertiary);padding:10px 0;display:flex;flex-direction:column}
+.main{padding:14px;overflow-y:auto;max-height:650px}
+.logo{padding:0 12px 10px;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:6px}
+.logo .ln{font-size:13px;font-weight:600;color:var(--color-text-primary)}
+.logo .ls{font-size:10px;color:var(--color-text-secondary)}
+.client-box{padding:6px 12px 8px;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:4px}
+.client-box label{font-size:10px;color:var(--color-text-secondary);display:block;margin-bottom:2px}
+.client-box select{font-size:11px;padding:3px 6px;width:100%}
+.ng{margin-bottom:2px}
+.ngl{font-size:10px;color:var(--color-text-secondary);padding:5px 12px 2px;text-transform:uppercase;letter-spacing:.04em;font-weight:500}
+.ni{display:flex;align-items:center;gap:7px;padding:6px 12px;cursor:pointer;font-size:12px;color:var(--color-text-secondary);border-left:2px solid transparent}
+.ni:hover{background:var(--color-background-primary);color:var(--color-text-primary)}
+.ni.active{background:var(--color-background-primary);color:var(--color-text-primary);border-left-color:var(--color-text-primary);font-weight:500}
+.ni-ic{font-size:13px;width:15px;text-align:center}
+.sf{margin-top:auto;padding:8px 12px;border-top:0.5px solid var(--color-border-tertiary);font-size:10px;color:var(--color-text-secondary);line-height:1.6}
+.page{display:none}.page.active{display:block}
+.ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.pt{font-size:14px;font-weight:600;color:var(--color-text-primary)}
+.ps{font-size:11px;color:var(--color-text-secondary);margin-top:1px}
+input,select{font-family:var(--font-sans);font-size:12px;padding:4px 7px;border:0.5px solid var(--color-border-secondary);border-radius:6px;background:var(--color-background-primary);color:var(--color-text-primary);width:100%}
+input:focus,select:focus{outline:none;border-color:var(--color-border-primary)}
+.btn{padding:5px 12px;font-size:12px;font-family:var(--font-sans);border:0.5px solid var(--color-border-secondary);border-radius:6px;background:transparent;color:var(--color-text-primary);cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--color-background-secondary)}
+.btn-p{background:var(--color-text-primary);color:var(--color-background-primary);border-color:var(--color-text-primary)}
+.btn-sm{padding:2px 7px;font-size:11px}
+.notice{font-size:11px;color:var(--color-text-secondary);padding:7px 10px;background:var(--color-background-secondary);border-radius:7px;margin-bottom:10px;line-height:1.5}
+.notice strong{color:var(--color-text-primary)}
+.notice.warn{background:var(--color-background-warning)}.notice.warn strong{color:var(--color-text-warning)}
+.notice.info{background:var(--color-background-info)}.notice.info strong{color:var(--color-text-info)}
+.notice.success{background:var(--color-background-success)}.notice.success strong{color:var(--color-text-success)}
+.notice.danger{background:var(--color-background-danger)}.notice.danger strong{color:var(--color-text-danger)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:8px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:8px}
+.fl{display:flex;gap:7px;align-items:flex-end;flex-wrap:wrap;margin-bottom:8px}
+.fl-i{display:flex;flex-direction:column;gap:2px}
+.fl-i label{font-size:11px;color:var(--color-text-secondary)}
+.badge{display:inline-block;padding:1px 5px;border-radius:8px;font-size:10px;font-weight:500}
+.bg{background:var(--color-background-success);color:var(--color-text-success)}
+.br{background:var(--color-background-danger);color:var(--color-text-danger)}
+.bb{background:var(--color-background-info);color:var(--color-text-info)}
+.bw{background:var(--color-background-warning);color:var(--color-text-warning)}
+.bp{background:#EEEDFE;color:#3C3489}
+.kpi-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:7px;margin-bottom:12px}
+.kpi{padding:9px 11px;border-radius:8px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary)}
+.kpi .kv{font-size:15px;font-weight:600;color:var(--color-text-primary)}
+.kpi .kl{font-size:10px;color:var(--color-text-secondary);margin-top:1px}
+.kpi.green{border-color:var(--color-border-success);background:var(--color-background-success)}.kpi.green .kv{color:var(--color-text-success)}
+.kpi.amber{border-color:var(--color-border-warning);background:var(--color-background-warning)}.kpi.amber .kv{color:var(--color-text-warning)}
+.kpi.info{border-color:var(--color-border-info);background:var(--color-background-info)}.kpi.info .kv{color:var(--color-text-info)}
+.kpi.red{border-color:var(--color-border-danger);background:var(--color-background-danger)}.kpi.red .kv{color:var(--color-text-danger)}
+.kpi.purple{background:#EEEDFE}.kpi.purple .kv{color:#3C3489}
+table.mt{width:100%;border-collapse:collapse;font-size:12px}
+table.mt th{padding:5px 7px;font-size:11px;font-weight:500;color:var(--color-text-secondary);border-bottom:0.5px solid var(--color-border-tertiary);text-align:left;white-space:nowrap;background:var(--color-background-secondary)}
+table.mt td{padding:5px 7px;border-bottom:0.5px solid var(--color-border-tertiary)}
+table.mt tr.tot td{font-weight:600;background:var(--color-background-secondary)}
+table.mt tr:hover:not(.tot) td{background:var(--color-background-secondary)}
+.prog-bar{height:7px;background:var(--color-border-tertiary);border-radius:4px;overflow:hidden;margin:3px 0}
+.prog-fill{height:100%;border-radius:4px;transition:width .3s}
+
+/* ===== ТАБЕЛЬ ===== */
+.ts-controls{display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;margin-bottom:10px;padding-bottom:10px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.ts-scroll{overflow-x:auto;margin-bottom:10px}
+table.ts{border-collapse:collapse;font-size:11px;width:100%}
+table.ts th,table.ts td{border:0.5px solid var(--color-border-tertiary);padding:0}
+table.ts th{background:var(--color-background-secondary);font-weight:500;color:var(--color-text-secondary);padding:3px 2px;text-align:center;white-space:nowrap}
+.ts-emp{text-align:left!important;padding:4px 7px!important;min-width:130px;white-space:nowrap}
+.ts-rate{text-align:right!important;padding:3px 5px!important;font-size:10px;color:var(--color-text-secondary);min-width:70px;white-space:nowrap}
+.ts-sum{text-align:right!important;padding:3px 5px!important;font-weight:500;white-space:nowrap;min-width:55px}
+.dc{width:34px;min-width:34px;height:34px;cursor:pointer;position:relative}
+.dc input[type=number]{border:none;border-bottom:0.5px solid var(--color-border-tertiary);background:transparent;font-size:10px;width:100%;height:50%;padding:0 2px;text-align:center;color:var(--color-text-primary);font-weight:500}
+.dc input[type=number]:focus{outline:none;background:var(--color-background-secondary)}
+.dc select{border:none;background:transparent;font-size:9px;width:100%;height:50%;padding:0;text-align:center;cursor:pointer;color:var(--color-text-secondary)}
+.dc.wknd{background:color-mix(in srgb,var(--color-border-tertiary) 25%,transparent)}
+.dc.hday{background:color-mix(in srgb,var(--color-background-danger) 20%,transparent)}
+.dc.YA{background:color-mix(in srgb,var(--color-background-success) 18%,transparent)}
+.dc.B{background:color-mix(in srgb,var(--color-background-danger) 15%,transparent)}
+.dc.OT{background:color-mix(in srgb,var(--color-background-info) 18%,transparent)}
+.dc.K{background:color-mix(in srgb,var(--color-background-warning) 18%,transparent)}
+.dc.PR{background:color-mix(in srgb,var(--color-text-danger) 12%,transparent)}
+.dc.DO{background:color-mix(in srgb,var(--color-border-tertiary) 35%,transparent)}
+.dc.VP{background:color-mix(in srgb,var(--color-background-success) 28%,transparent)}
+.ts-legend{display:flex;flex-wrap:wrap;gap:6px;font-size:10px;color:var(--color-text-secondary);margin-bottom:8px}
+.ts-legend-item{display:flex;align-items:center;gap:3px}
+.ts-legend-dot{width:8px;height:8px;border-radius:2px}
+</style>
+</style>
+</head>
+<body>
+<div class="page-wrap">
+<div class="top-nav">
+  <a href="../index.html">← Все модули</a>
+  <span style="color:var(--color-text-tertiary)">·</span>
+  <span style="font-weight:500;color:var(--color-text-primary)">💰 ФОТ — Расчёт зарплаты</span>
+  <span class="co">НК РК 2026 · МРП 4 325 ₸</span>
+</div>
+<div class="platform">
+
+<!-- САЙДБАР -->
+<div class="sidebar">
+  <div class="logo"><div class="ln">КЗ Бухгалтерия</div><div class="ls">ФОТ · Табель · Налоги 2026</div></div>
+  <div class="client-box">
+    <label>Клиент</label>
+    <select id="client-sel" onchange="switchClient()">
+      <option value="1">Alpino Group ТОО</option>
+      
+    </select>
+    <button onclick="addNewClient()" style="margin-top:5px;width:100%;padding:4px;font-size:10px;border:0.5px dashed var(--color-border-secondary);border-radius:5px;background:transparent;cursor:pointer;color:var(--color-text-secondary);font-family:var(--font-sans)">+ Добавить компанию</button>
+  </div>
+  <div class="ng"><div class="ngl">Главная</div>
+    <div class="ni active" onclick="nav('dashboard',this)"><span class="ni-ic">📊</span>Дашборд</div>
+  </div>
+  <div class="ng"><div class="ngl">Кадры</div>
+    <div class="ni" onclick="nav('employees',this)"><span class="ni-ic">👤</span>Сотрудники</div>
+    <div class="ni" onclick="nav('timesheet',this)"><span class="ni-ic">📅</span>Табель</div>
+  </div>
+  <div class="ng"><div class="ngl">Расчёты</div>
+    <div class="ni" onclick="nav('payroll',this)"><span class="ni-ic">💰</span>Расчёт ФОТ</div>
+    <div class="ni" onclick="nav('vacation',this)"><span class="ni-ic">🌴</span>Отпускные</div>
+    <div class="ni" onclick="nav('sick',this)"><span class="ni-ic">🏥</span>Больничный</div>
+    <div class="ni" onclick="nav('bonus',this)"><span class="ni-ic">⭐</span>Премии</div>
+    <div class="ni" onclick="nav('alimony',this)"><span class="ni-ic">⚖️</span>Алименты</div>
+  </div>
+  <div class="ng"><div class="ngl">Налоги</div>
+    <div class="ni" onclick="nav('ipn',this)"><span class="ni-ic">📈</span>ИПН нараст.</div>
+    <div class="ni" onclick="nav('calendar',this)"><span class="ni-ic">📆</span>Платёж. кал.</div>
+  </div>
+  <div class="ng"><div class="ngl">Инструменты</div>
+    <div class="ni" onclick="nav('calc',this)"><span class="ni-ic">🔢</span>Калькулятор</div>
+  </div>
+  <div class="sf">МРП: 4 325 ₸ · МЗП: 85 000 ₸<br>Порог 15%: 36 762 500 ₸</div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- ДАШБОРД -->
+<div class="page active" id="page-dashboard">
+  <div class="ph">
+    <div><div class="pt">Дашборд</div><div class="ps" id="dash-sub"></div></div>
+    <button class="btn btn-p btn-sm" onclick="nav('payroll',null)">Рассчитать ФОТ →</button>
+  </div>
+  <div class="kpi-g" id="dash-kpi"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div><div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:7px;text-transform:uppercase;letter-spacing:.03em">Сотрудники</div><div id="dash-emps"></div></div>
+    <div><div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:7px;text-transform:uppercase;letter-spacing:.03em">Дедлайны — май 2026</div><div id="dash-dl"></div></div>
+  </div>
+  <div style="margin-top:12px"><div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:7px;text-transform:uppercase;letter-spacing:.03em">Контроль ИПН 15%</div><div id="dash-ipn"></div></div>
+</div>
+
+<!-- СОТРУДНИКИ -->
+<div class="page" id="page-employees">
+  <div class="ph"><div><div class="pt">Сотрудники</div><div class="ps" id="emp-sub"></div></div>
+    <button class="btn btn-p btn-sm" onclick="toggleAddForm()">+ Добавить</button></div>
+  <div id="add-form" style="display:none;padding:10px;border:0.5px solid var(--color-border-tertiary);border-radius:9px;margin-bottom:12px">
+    <div class="g3">
+      <div class="fl-i"><label>Фамилия</label><input id="nf-last" placeholder="Иванов"></div>
+      <div class="fl-i"><label>Имя</label><input id="nf-first" placeholder="Иван"></div>
+      <div class="fl-i"><label>ИИН</label><input id="nf-iin" placeholder="900101300001" maxlength="12"></div>
+    </div>
+    <div class="g3">
+      <div class="fl-i"><label>Должность</label><input id="nf-pos" placeholder="Бухгалтер"></div>
+      <div class="fl-i"><label>Год рождения</label><input type="number" id="nf-by" value="1990"></div>
+      <div class="fl-i"><label>Таб. №</label><input id="nf-tab" placeholder="006"></div>
+    </div>
+    <div class="g3">
+      <div class="fl-i"><label>Тип ставки</label>
+        <select id="nf-type" onchange="updateRL()">
+          <option value="month">Месячный оклад</option>
+          <option value="day">Дневная ставка</option>
+          <option value="hour">Часовая ставка</option>
+        </select>
+      </div>
+      <div class="fl-i"><label id="nf-rl">Оклад (₸/мес)</label><input type="number" id="nf-rate" placeholder="250000"></div>
+      <div class="fl-i"><label>Вычет ИПН</label>
+        <select id="nf-vychet">
+          <option value="30">30 МРП (осн.)</option>
+          <option value="14">14 МРП</option>
+          <option value="0">Без вычета</option>
+        </select>
+      </div>
+    </div>
+    <div class="g3">
+      <div class="fl-i"><label>Статус</label>
+        <select id="nf-status">
+          <option value="staff">Штатный</option>
+          <option value="pensioner">Пенсионер</option>
+          <option value="no-opvr">Без ОПВР (до 1975)</option>
+          <option value="gph">ГПХ</option>
+          <option value="multimom">Многодетная мать</option>
+        </select>
+      </div>
+      <div class="fl-i"><label>Алименты (%)</label><input type="number" id="nf-alim" value="0" min="0" max="50"></div>
+    </div>
+    <div style="display:flex;gap:6px">
+      <button class="btn btn-p btn-sm" onclick="saveEmp()">Сохранить</button>
+      <button class="btn btn-sm" onclick="toggleAddForm()">Отмена</button>
+    </div>
+  </div>
+  <div style="overflow-x:auto"><table class="mt" id="emp-tbl">
+    <thead><tr><th>ФИО</th><th>ИИН</th><th>Должность</th><th>Тип</th><th>Ставка</th><th>Вычет</th><th>Статус</th><th>Год р.</th><th>Алим.</th><th></th></tr></thead>
+    <tbody id="emp-tbody"></tbody>
+  </table></div>
+</div>
+
+<!-- ===== ТАБЕЛЬ ===== -->
+<div class="page" id="page-timesheet">
+  <div class="ph">
+    <div><div class="pt">Табель рабочего времени</div><div class="ps" id="ts-sub">Часы · Коды · 3 типа ставок · Пропорциональный расчёт</div></div>
+    <button class="btn btn-p btn-sm" onclick="applyTsToPayroll()">→ В расчёт ФОТ</button>
+  </div>
+
+  <div class="ts-controls">
+    <div class="fl-i"><label>Месяц</label>
+      <select id="ts-month" onchange="buildTs()" style="width:130px">
+        <option value="3">Апрель 2026</option>
+        <option value="4">Май 2026</option>
+        <option value="2">Март 2026</option>
+      </select>
+    </div>
+    <div class="fl-i"><label>График</label>
+      <select id="ts-sch" onchange="buildTs()" style="width:110px">
+        <option value="5">5-дн (Пн-Пт)</option>
+        <option value="6">6-дн (Пн-Сб)</option>
+        <option value="shift">Сменный</option>
+      </select>
+    </div>
+    <div class="fl-i"><label>Часов/день</label>
+      <select id="ts-hpd" onchange="buildTs()" style="width:90px">
+        <option value="8">8 часов</option>
+        <option value="7">7 часов</option>
+        <option value="12">12 часов</option>
+      </select>
+    </div>
+    <button class="btn btn-sm" onclick="fillAllYa()">Заполнить Я</button>
+    <button class="btn btn-sm" onclick="buildTs()">Обновить</button>
+  </div>
+
+  <!-- Легенда кодов -->
+  <div class="ts-legend">
+    <div class="ts-legend-item"><div class="ts-legend-dot" style="background:color-mix(in srgb,var(--color-text-success) 50%,transparent)"></div>Я — явка</div>
+    <div class="ts-legend-item"><div class="ts-legend-dot" style="background:color-mix(in srgb,var(--color-border-tertiary) 60%,transparent)"></div>В — выходной</div>
+    <div class="ts-legend-item"><div class="ts-legend-dot" style="background:color-mix(in srgb,var(--color-text-danger) 35%,transparent)"></div>П — праздник РК</div>
+    <div class="ts-legend-item"><div class="ts-legend-dot" style="background:color-mix(in srgb,var(--color-background-danger) 40%,transparent)"></div>Б — больничный</div>
+    <div class="ts-legend-item"><div class="ts-legend-dot" style="background:color-mix(in srgb,var(--color-background-info) 45%,transparent)"></div>ОТ — отпуск</div>
+    <div class="ts-legend-item"><div class="ts-legend-dot" style="background:color-mix(in srgb,var(--color-background-warning) 45%,transparent)"></div>К — командировка</div>
+    <div class="ts-legend-item"><div class="ts-legend-dot" style="background:color-mix(in srgb,var(--color-text-danger) 20%,transparent)"></div>ПР — прогул</div>
+    <div class="ts-legend-item"><div class="ts-legend-dot" style="background:color-mix(in srgb,var(--color-border-tertiary) 50%,transparent)"></div>ДО — отпуск без содержания</div>
+    <div class="ts-legend-item"><div class="ts-legend-dot" style="background:color-mix(in srgb,var(--color-background-success) 50%,transparent)"></div>ВП — работа в выходной</div>
+  </div>
+
+  <div class="ts-scroll"><table class="ts" id="ts-tbl"></table></div>
+  <div id="ts-info" style="font-size:11px;color:var(--color-text-secondary);margin-bottom:10px"></div>
+
+  <!-- Итоги табеля -->
+  <div style="font-size:12px;font-weight:500;margin-bottom:8px">Итоги табеля → ФОТ</div>
+  <div style="overflow-x:auto"><table class="mt" id="ts-result-tbl">
+    <thead><tr><th>Сотрудник</th><th>Тип ставки</th><th>Ставка</th><th>Факт. ч.</th><th>Норм. ч.</th><th>%</th><th>Я дней</th><th>Б дней</th><th>ОТ дней</th><th>ПР дней</th><th>Начислено</th></tr></thead>
+    <tbody id="ts-result-tbody"></tbody>
+  </table></div>
+</div>
+
+<!-- РАСЧЁТ ФОТ -->
+<div class="page" id="page-payroll">
+  <div class="ph">
+    <div><div class="pt">Расчёт ФОТ</div><div class="ps">НК РК 2026 · Все налоги</div></div>
+    <div style="display:flex;gap:6px;align-items:center">
+      <select id="pay-month" style="width:130px;font-size:11px"><option>Апрель 2026</option><option>Март 2026</option></select>
+      <button class="btn btn-p btn-sm" onclick="calcPayroll()">Рассчитать</button>
+      <button class="btn btn-sm" onclick="sendPrompt('Экспортируй ведомость ФОТ в Excel для 1С')">Excel →</button>
+    </div>
+  </div>
+  <div class="notice"><strong>ОУР 2026:</strong> СО 5% (база: оклад−ОПВ, коридор 1–7 МЗП) · СН 6% (оклад−ОПВ−ВОСМС) · ОПВР 3,5% · ИПН вычет 30 МРП</div>
+  <div class="kpi-g" id="pay-kpi"></div>
+  <div style="overflow-x:auto"><table class="mt">
+    <thead><tr><th>Сотрудник</th><th>Оклад</th><th>ОПВ</th><th>ВОСМС</th><th>ИПН</th><th>Алименты</th><th>На руки</th><th>СО</th><th>ОСМС</th><th>ОПВР</th><th>СН</th><th>Расходы</th><th>Ставка</th></tr></thead>
+    <tbody id="pay-tbody"></tbody>
+  </table></div>
+</div>
+
+<!-- ОТПУСКНЫЕ -->
+<div class="page" id="page-vacation">
+  <div class="ph"><div><div class="pt">Отпускные</div><div class="ps">Приказ №908 · С индексацией</div></div></div>
+  <div class="g3">
+    <div class="fl-i"><label>Сотрудник</label><select id="vac-emp"><option value="">— выбрать —</option></select></div>
+    <div class="fl-i"><label>Дата начала</label><input type="date" id="vac-s"></div>
+    <div class="fl-i"><label>Дата окончания</label><input type="date" id="vac-e"></div>
+  </div>
+  <div class="g3">
+    <div class="fl-i"><label>Σ зарплата за 12 мес. (₸)</label><input type="number" id="vac-sal" placeholder="4200000"></div>
+    <div class="fl-i"><label>Факт. отраб. дней за 12 мес.</label><input type="number" id="vac-days" value="252"></div>
+    <div class="fl-i"><label>Режим работы</label><select id="vac-mode"><option value="5">5-дневная</option><option value="6">6-дневная</option></select></div>
+  </div>
+  <button class="btn btn-p btn-sm" onclick="calcVac()">Рассчитать</button>
+  <div id="vac-res" style="display:none;margin-top:10px"></div>
+</div>
+
+<!-- БОЛЬНИЧНЫЙ -->
+<div class="page" id="page-sick">
+  <div class="ph"><div><div class="pt">Больничный</div><div class="ps">ТК РК ст.133 · Лимит 25 МРП = 108 125 ₸/мес</div></div></div>
+  <div class="g3">
+    <div class="fl-i"><label>Сотрудник</label><select id="sick-emp"><option value="">— выбрать —</option></select></div>
+    <div class="fl-i"><label>Дата начала б/л</label><input type="date" id="sick-s"></div>
+    <div class="fl-i"><label>Дата окончания б/л</label><input type="date" id="sick-e"></div>
+  </div>
+  <div class="g3">
+    <div class="fl-i"><label>Σ зарплата за 12 мес. (₸)</label><input type="number" id="sick-sal" placeholder="3360000"></div>
+    <div class="fl-i"><label>Факт. раб. дней за 12 мес.</label><input type="number" id="sick-days" value="252"></div>
+    <div class="fl-i"><label>Режим работы</label><select id="sick-mode"><option value="5">5-дневная</option><option value="6">6-дневная</option></select></div>
+  </div>
+  <button class="btn btn-p btn-sm" onclick="calcSick()">Рассчитать</button>
+  <div id="sick-res" style="display:none;margin-top:10px"></div>
+</div>
+
+<!-- ПРЕМИИ -->
+<div class="page" id="page-bonus">
+  <div class="ph"><div><div class="pt">Премии и бонусы</div><div class="ps">Налоги как с зарплаты · НК РК 2026</div></div></div>
+  <div class="g3">
+    <div class="fl-i"><label>Сотрудник</label><select id="bon-emp"><option value="">— выбрать —</option></select></div>
+    <div class="fl-i"><label>Оклад месяца (₸)</label><input type="number" id="bon-sal" placeholder="450000"></div>
+    <div class="fl-i"><label>Сумма премии (₸)</label><input type="number" id="bon-amt" placeholder="100000"></div>
+  </div>
+  <div class="g2">
+    <div class="fl-i"><label>Вид премии</label>
+      <select id="bon-type"><option value="perm">Постоянная</option><option value="once">Единовременная</option><option value="kpi">Бонус KPI</option><option value="annual">Годовая</option></select>
+    </div>
+    <div class="fl-i"><label>Накопл. база ИПН с нач. года (₸)</label><input type="number" id="bon-ytd" value="0"></div>
+  </div>
+  <button class="btn btn-p btn-sm" onclick="calcBonus()">Рассчитать</button>
+  <div id="bon-res" style="display:none;margin-top:10px"></div>
+</div>
+
+<!-- АЛИМЕНТЫ -->
+<div class="page" id="page-alimony">
+  <div class="ph"><div><div class="pt">Алименты</div><div class="ps">Удержание с суммы «на руки» · Лимит 50%</div></div></div>
+  <div class="notice"><strong>ТК РК:</strong> Алименты = % от суммы на руки (после ОПВ, ВОСМС, ИПН). Остаток у сотрудника — не менее 50%.</div>
+  <div id="alim-body"></div>
+</div>
+
+<!-- ИПН НАРАСТАЮЩИЙ -->
+<div class="page" id="page-ipn">
+  <div class="ph"><div><div class="pt">ИПН нарастающим итогом</div><div class="ps">Прогрессивная ставка 10%/15% · НК РК 2026 Ст.363</div></div></div>
+  <div class="notice"><strong>Порог: 8 500 МРП = 36 762 500 ₸/год</strong> налогооблагаемой базы. До порога — 10%, сверх — 15% с превышения.</div>
+  <div class="kpi-g" id="ipn-kpi"></div>
+  <div style="overflow-x:auto"><table class="mt">
+    <thead><tr><th>Сотрудник</th><th>Оклад/мес</th><th>База ИПН/мес</th><th>Годовая база</th><th>% от порога</th><th>Мес. перехода</th><th>ИПН 10%/год</th><th>ИПН 15%/год</th><th>Итого ИПН</th><th>Статус</th></tr></thead>
+    <tbody id="ipn-tbody"></tbody>
+  </table></div>
+</div>
+
+<!-- ПЛАТЁЖНЫЙ КАЛЕНДАРЬ -->
+<div class="page" id="page-calendar">
+  <div class="ph"><div><div class="pt">Платёжный календарь</div><div class="ps">Май 2026 · Дедлайны по налогам и взносам</div></div></div>
+  <div id="cal-body" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px"></div>
+</div>
+
+<!-- КАЛЬКУЛЯТОР -->
+<div class="page" id="page-calc">
+  <div class="ph"><div><div class="pt">Калькулятор ФОТ</div><div class="ps">Оклад→На руки и На руки→Оклад</div></div></div>
+  <div style="display:flex;gap:8px;margin-bottom:10px">
+    <button class="btn btn-p btn-sm" id="ct-gross" onclick="switchCalcTab('gross')">Оклад → На руки</button>
+    <button class="btn btn-sm" id="ct-net" onclick="switchCalcTab('net')">На руки → Оклад</button>
+  </div>
+  <div class="g3">
+    <div class="fl-i"><label id="c-lbl">Оклад (₸)</label><input type="number" id="c-val" placeholder="350000" oninput="runCalc()"></div>
+    <div class="fl-i"><label>Вычет ИПН</label>
+      <select id="c-vychet" onchange="runCalc()">
+        <option value="30">30 МРП</option><option value="14">14 МРП</option><option value="0">Без вычета</option>
+      </select>
+    </div>
+    <div class="fl-i"><label>Статус</label>
+      <select id="c-status" onchange="runCalc()">
+        <option value="staff">Штатный</option><option value="pensioner">Пенсионер</option><option value="no-opvr">Без ОПВР</option><option value="gph">ГПХ</option>
+      </select>
+    </div>
+  </div>
+  <div class="kpi-g" id="c-kpi"></div>
+  <div id="c-detail" style="font-size:11px;color:var(--color-text-secondary);line-height:2"></div>
+</div>
+
+
+<!-- NET → GROSS (из модуля 15) -->
+<div class="page" id="page-netgross">
+  <div class="ph"><div><div class="pt">Net → Gross · Расчёт от обратного</div>
+  <div class="ps">Сотрудник хочет X ₸ на руки — какой оклад установить?</div></div></div>
+  <div id="reverse" class="sec">
+  <div class="pt" style="margin-bottom:12px">🔄 Расчёт от обратного: Net → Gross</div>
+  <div class="notice info"><strong>Задача:</strong> Сотрудник хочет получать <strong>X ₸ на руки</strong>. Какой оклад нужно установить?</div>
+  <div class="g3">
+    <div class="fl-i"><label>Желаемая сумма на руки (₸)</label><input type="number" id="rv-net" value="250000" oninput="calcReverse()"></div>
+    <div class="fl-i"><label>Категория вычета</label>
+      <select id="rv-cat" onchange="calcReverse()">
+        <option value="base">Базовый (30 МРП = 129 750 ₸)</option>
+        <option value="none">Без вычета</option>
+      </select>
+    </div>
+    <div class="fl-i"><label>МРП</label><input type="number" id="rv-mrp" value="4325" oninput="calcReverse()"></div>
+  </div>
+  <div id="rv-result" class="notice success" style="margin-top:10px"></div>
+</div>
+
+</div>
+</div>
+</div><!-- /main -->
+</div><!-- /platform -->
+<script>
+const MRP=4325,MZP=85000,VYCHET_30=30*MRP,PROG_LIMIT=8500*MRP;
+const VMAP={'30':VYCHET_30,'14':14*MRP,'882':Math.round(882*MRP/12),'0':0};
+const SO_MIN=MZP,SO_MAX=7*MZP,SN_MIN=14*MRP;
+const MONTHS_RU=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+const DOW=['Вс','Пн','Вт','Ср','Чт','Пт','Сб'];
+const TS_MONTHS={
+  '2':{y:2026,m:2,lbl:'Март 2026'},
+  '3':{y:2026,m:3,lbl:'Апрель 2026'},
+  '4':{y:2026,m:4,lbl:'Май 2026'}
+};
+const HOLIDAYS={
+  '2026-01-01':1,'2026-01-02':1,'2026-01-07':1,'2026-03-08':1,
+  '2026-03-21':1,'2026-03-22':1,'2026-03-23':1,
+  '2026-05-01':1,'2026-05-07':1,'2026-05-09':1,
+  '2026-07-06':1,'2026-08-30':1,'2026-10-25':1,
+  '2026-12-01':1,'2026-12-16':1,'2026-12-17':1
+};
+const ALL_CODES=['Я','В','П','Б','ОТ','К','ПР','НП','ДО','ВП','УО','Д'];
+const PAID=['Я','К','ВП'];
+
+let clients={
+  '1':{name:'Alpino Group LLP',emps:[
+    {id:1,last:'Сейткали',first:'Нурлан',iin:'901015300123',pos:'Директор',by:1990,type:'month',rate:450000,vychet:'30',status:'staff',tab:'001',alim:0},
+    {id:2,last:'Байжанова',first:'Айгүл',iin:'950320401234',pos:'Гл. бухгалтер',by:1995,type:'month',rate:350000,vychet:'30',status:'staff',tab:'002',alim:0},
+    {id:3,last:'Мухамедов',first:'Алибек',iin:'880712302345',pos:'Инженер',by:1988,type:'day',rate:13500,vychet:'30',status:'staff',tab:'003',alim:25},
+    {id:4,last:'Касымова',first:'Дина',iin:'970430403456',pos:'Менеджер',by:1997,type:'month',rate:220000,vychet:'30',status:'staff',tab:'004',alim:0},
+    {id:5,last:'Абдрахманов',first:'Серік',iin:'750615301234',pos:'Водитель',by:1972,type:'hour',rate:1600,vychet:'30',status:'no-opvr',tab:'005',alim:0},
+  ]},
+  '2':{name:'KazComService LLP',emps:[
+    {id:10,last:'Ержанов',first:'Марат',iin:'850320401111',pos:'Фин. директор',by:1985,type:'month',rate:550000,vychet:'30',status:'staff',tab:'001',alim:0},
+    {id:11,last:'Нурмаганбетова',first:'Жанар',iin:'920520301222',pos:'Бухгалтер',by:1992,type:'month',rate:310000,vychet:'30',status:'staff',tab:'002',alim:0},
+  ]}
+};
+let activeClient='1';
+let nextId=20;
+// Табель: tbl[clientId][empId][dateKey] = {code,hours}
+let tbl={};
+let calcTab='gross';
+
+function fmt(n){return Math.round(n).toLocaleString('ru-RU');}
+function fmtD(n){return n.toFixed(2);}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+function getEmps(){return clients[activeClient]?.emps||[];}
+function getClientName(){return clients[activeClient]?.name||'';}
+
+function switchClient(){
+  activeClient=document.getElementById('client-sel').value;
+  refreshAll();
+}
+
+// ===== НАЛОГИ =====
+function tax(gross,by,vychet,status){
+  const born75=by<1975,st=status||'staff';
+  const opv=(st==='pensioner'||st==='gph'||st==='multimom')?0:Math.round(Math.min(gross,50*MZP)*0.10);
+  const vosmss=(st==='pensioner'||st==='multimom')?0:Math.round(Math.min(gross,20*MZP)*0.02);
+  const vch=VMAP[vychet]||VYCHET_30;
+  const ipnBase=Math.max(0,gross-opv-vosmss-vch);
+  const ann=ipnBase*12;
+  let ipn=0;
+  if(ipnBase>0) ipn=ann<=PROG_LIMIT?Math.round(ipnBase*0.10):Math.round((ipnBase-(ann-PROG_LIMIT)/12)*0.10+((ann-PROG_LIMIT)/12)*0.15);
+  if(st==='pensioner') ipn=Math.round(Math.max(0,gross-vch)*0.10);
+  const net=gross-opv-vosmss-ipn;
+  const soBase=clamp(gross-(st==='pensioner'||st==='gph'||st==='multimom'?0:opv),SO_MIN,SO_MAX);
+  const so=(st==='pensioner'||st==='gph'||st==='multimom')?0:Math.round(soBase*0.05);
+  const osms=st==='gph'?0:Math.round(Math.min(gross,40*MZP)*0.03);
+  const noOpvr=born75||['no-opvr','pensioner','multimom'].includes(st);
+  const opvr=noOpvr?0:Math.round(Math.min(Math.max(gross,MZP),50*MZP)*0.035);
+  const sn=Math.round(Math.max(gross-(st==='pensioner'?0:opv+vosmss),SN_MIN)*0.06);
+  return {gross,opv,vosmss,ipn,net,so,osms,opvr,sn,empCost:gross+so+osms+opvr+sn,noOpvr,progressive:ann>PROG_LIMIT};
+}
+
+function revCalc(tgt,by,vychet,status){
+  let lo=tgt,hi=tgt*1.7,best=null;
+  for(let i=0;i<70;i++){const mid=Math.round((lo+hi)/2);const t=tax(mid,by,vychet,status);if(t.net===tgt){best={salary:mid,t};break;}t.net<tgt?lo=mid+1:hi=mid-1;}
+  if(!best){const mid=Math.round((lo+hi)/2);let mn=null,md=999;for(let d=-5;d<=5;d++){const s=mid+d;if(s<=0)continue;const t=tax(s,by,vychet,status);if(Math.abs(t.net-tgt)<md){md=Math.abs(t.net-tgt);mn={salary:s,t};}}best=mn;}
+  return best;
+}
+
+// ===== ТАБЕЛЬ =====
+function getMonthDays(y,m){const days=[];const d=new Date(y,m,1);while(d.getMonth()===m){days.push(new Date(d));d.setDate(d.getDate()+1);}return days;}
+function isHol(d){return !!HOLIDAYS[d.toISOString().slice(0,10)];}
+function isWknd(d,sch){const dw=d.getDay();return sch==='5'?(dw===0||dw===6):sch==='6'?dw===0:false;}
+function isWorkday(d,sch){return !isWknd(d,sch)&&!isHol(d);}
+function defCode(d,sch){return isHol(d)?'П':isWknd(d,sch)?'В':'Я';}
+function getHPD(){return parseInt(document.getElementById('ts-hpd').value)||8;}
+function defHours(code,hpd){return ['Я','К','ВП','Б','ОТ','УО','Д'].includes(code)?hpd:0;}
+function normH(days,sch,hpd){return days.filter(d=>isWorkday(d,sch)).length*hpd;}
+function normD(days,sch){return days.filter(d=>isWorkday(d,sch)).length;}
+
+function getTbl(){if(!tbl[activeClient])tbl[activeClient]={};return tbl[activeClient];}
+function initTblCells(emp,days,sch,hpd){
+  const t=getTbl();
+  if(!t[emp.id])t[emp.id]={};
+  days.forEach(d=>{const k=d.toISOString().slice(0,10);if(!t[emp.id][k]){const c=defCode(d,sch);t[emp.id][k]={code:c,hours:defHours(c,hpd)};}});
+}
+
+function buildTs(){
+  const mi=document.getElementById('ts-month').value;
+  const sch=document.getElementById('ts-sch').value;
+  const hpd=getHPD();
+  const {y,m,lbl}=TS_MONTHS[mi];
+  const days=getMonthDays(y,m);
+  const nH=normH(days,sch,hpd);
+  const nD=normD(days,sch);
+  const emps=getEmps();
+  emps.forEach(e=>initTblCells(e,days,sch,hpd));
+
+  // Заголовок
+  let head=`<thead><tr><th class="ts-emp">Сотрудник / Ставка</th>`;
+  days.forEach(d=>{
+    const cls=isHol(d)?'hday':isWknd(d,sch)?'wknd':'';
+    head+=`<th class="${cls}" style="font-size:10px">${d.getDate()}</th>`;
+  });
+  head+=`<th class="ts-sum" title="Факт.ч">Ч.ф</th><th class="ts-sum" title="Норм.ч">Ч.н</th><th class="ts-sum" title="Начислено">₸</th></tr>`;
+  head+=`<tr><th class="ts-emp" style="font-size:10px;color:var(--color-text-secondary)">Норма: ${nD}дн/${nH}ч</th>`;
+  days.forEach(d=>{
+    const cls=isHol(d)?'hday':isWknd(d,sch)?'wknd':'';
+    head+=`<th class="${cls}" style="font-size:9px;color:var(--color-text-secondary)">${DOW[d.getDay()]}</th>`;
+  });
+  head+=`<th></th><th></th><th></th></tr></thead>`;
+
+  // Тело
+  const tb=getTbl();
+  let body='<tbody>';
+  emps.forEach(emp=>{
+    let factH=0;
+    const cells=days.map(d=>{
+      const k=d.toISOString().slice(0,10);
+      const cell=tb[emp.id][k]||{code:defCode(d,sch),hours:0};
+      if(PAID.includes(cell.code)) factH+=cell.hours;
+      const bCls=isHol(d)?'hday':isWknd(d,sch)?'wknd':'';
+      const cCls={'Я':'YA','Б':'B','ОТ':'OT','К':'K','ПР':'PR','ДО':'DO','ВП':'VP'}[cell.code]||'';
+      return `<td class="dc ${bCls} ${cCls}">
+        <input type="number" min="0" max="24" value="${cell.hours||''}" placeholder=""
+          style="border-bottom:0.5px solid var(--color-border-tertiary)"
+          onchange="setH(${emp.id},'${k}',this.value)">
+        <select onchange="setC(${emp.id},'${k}',this.value,this)">
+          ${ALL_CODES.map(c=>`<option value="${c}"${c===cell.code?' selected':''}>${c}</option>`).join('')}
+        </select>
+      </td>`;
+    }).join('');
+    const gross=calcGrossFromHours(emp,factH,nH,nD,hpd);
+    const rLbl=emp.type==='month'?`${fmt(emp.rate)} ₸/мес`:emp.type==='day'?`${fmt(emp.rate)} ₸/день`:`${fmt(emp.rate)} ₸/час`;
+    body+=`<tr>
+      <td class="ts-emp">
+        <div style="font-weight:500">${emp.last} ${emp.first}</div>
+        <div style="font-size:10px;color:var(--color-text-secondary)">${rLbl} <span class="badge ${emp.type==='month'?'bg':emp.type==='day'?'bb':'bw'}">${emp.type==='month'?'МЕС':emp.type==='day'?'ДЕНЬ':'ЧАС'}</span></div>
+      </td>
+      ${cells}
+      <td class="ts-sum" style="color:var(--color-text-primary)">${factH}</td>
+      <td class="ts-sum" style="color:var(--color-text-secondary)">${nH}</td>
+      <td class="ts-sum" style="color:var(--color-text-success)">${fmt(gross)}</td>
+    </tr>`;
+  });
+  body+='</tbody>';
+  document.getElementById('ts-tbl').innerHTML=head+body;
+  document.getElementById('ts-info').textContent=`${lbl} · Норма: ${nD} дн / ${nH} ч · Праздники РК 2026 учтены автоматически`;
+  buildTsResult(days,sch,hpd,nH,nD);
+}
+
+function calcGrossFromHours(emp,factH,nH,nD,hpd){
+  if(emp.type==='month') return nH>0?Math.round(emp.rate/nH*factH):emp.rate;
+  if(emp.type==='day') return hpd>0?Math.round(emp.rate*(factH/hpd)):0;
+  return Math.round(emp.rate*factH);
+}
+
+function setH(empId,k,val){
+  const t=getTbl();
+  if(!t[empId]||!t[empId][k]) return;
+  t[empId][k].hours=parseFloat(val)||0;
+  // пересчитать строку
+  rebuildTsRow(empId);
+}
+
+function setC(empId,k,code,sel){
+  const t=getTbl();
+  if(!t[empId]) return;
+  const hpd=getHPD();
+  t[empId][k]={code,hours:defHours(code,hpd)};
+  const td=sel.closest('td');
+  td.className='dc';
+  const mi=document.getElementById('ts-month').value;
+  const sch=document.getElementById('ts-sch').value;
+  const {y,m}=TS_MONTHS[mi];
+  const d=new Date(k);
+  if(isHol(d)) td.classList.add('hday');
+  else if(isWknd(d,sch)) td.classList.add('wknd');
+  const cm={Я:'YA',Б:'B',ОТ:'OT',К:'K',ПР:'PR',ДО:'DO',ВП:'VP'};
+  if(cm[code]) td.classList.add(cm[code]);
+  const inp=td.querySelector('input');
+  inp.value=defHours(code,hpd)||'';
+  rebuildTsRow(empId);
+}
+
+function rebuildTsRow(empId){
+  const mi=document.getElementById('ts-month').value;
+  const sch=document.getElementById('ts-sch').value;
+  const hpd=getHPD();
+  const {y,m}=TS_MONTHS[mi];
+  const days=getMonthDays(y,m);
+  const nH=normH(days,sch,hpd);
+  const nD_=normD(days,sch);
+  const emp=getEmps().find(e=>e.id===empId);
+  if(!emp) return;
+  const t=getTbl();
+  let factH=0;
+  days.forEach(d=>{const k=d.toISOString().slice(0,10);const cell=t[empId]?.[k];if(cell&&PAID.includes(cell.code))factH+=cell.hours;});
+  const gross=calcGrossFromHours(emp,factH,nH,nD_,hpd);
+  const rows=document.querySelectorAll('#ts-tbl tbody tr');
+  const idx=getEmps().findIndex(e=>e.id===empId);
+  if(rows[idx]){
+    const sums=rows[idx].querySelectorAll('.ts-sum');
+    if(sums[0])sums[0].textContent=factH;
+    if(sums[2])sums[2].textContent=fmt(gross);
+  }
+  buildTsResult(days,sch,hpd,nH,nD_);
+}
+
+function buildTsResult(days,sch,hpd,nH,nD_){
+  const t=getTbl();
+  const emps=getEmps();
+  document.getElementById('ts-result-tbody').innerHTML=emps.map(emp=>{
+    if(!t[emp.id]) return '';
+    let factH=0,bD=0,otD=0,prD=0;
+    days.forEach(d=>{
+      const k=d.toISOString().slice(0,10);
+      const cell=t[emp.id][k]||{code:'В',hours:0};
+      if(PAID.includes(cell.code)) factH+=cell.hours;
+      if(cell.code==='Б') bD++;
+      if(cell.code==='ОТ') otD++;
+      if(cell.code==='ПР') prD++;
+    });
+    const gross=calcGrossFromHours(emp,factH,nH,nD_,hpd);
+    const pct=nH>0?Math.round(factH/nH*100):100;
+    return `<tr>
+      <td>${emp.last} ${emp.first}</td>
+      <td><span class="badge ${emp.type==='month'?'bg':emp.type==='day'?'bb':'bw'}">${emp.type==='month'?'Мес.':emp.type==='day'?'День':'Час'}</span></td>
+      <td style="text-align:right">${emp.type==='month'?fmt(emp.rate)+' ₸/мес':emp.type==='day'?fmt(emp.rate)+' ₸/день':fmt(emp.rate)+' ₸/час'}</td>
+      <td style="text-align:right;font-weight:500">${factH} ч</td>
+      <td style="text-align:right;color:var(--color-text-secondary)">${nH} ч</td>
+      <td><span class="badge ${pct>=100?'bg':pct>=80?'bw':'br'}">${pct}%</span></td>
+      <td style="text-align:center">${Math.round(factH/hpd*10)/10}</td>
+      <td style="text-align:center;color:${bD?'var(--color-text-danger)':'var(--color-text-secondary)'}">${bD||'—'}</td>
+      <td style="text-align:center;color:${otD?'var(--color-text-info)':'var(--color-text-secondary)'}">${otD||'—'}</td>
+      <td style="text-align:center;color:${prD?'var(--color-text-danger)':'var(--color-text-secondary)'}">${prD||'—'}</td>
+      <td style="text-align:right;font-weight:600;color:var(--color-text-success)">${fmt(gross)} ₸</td>
+    </tr>`;
+  }).join('');
+}
+
+function fillAllYa(){
+  const mi=document.getElementById('ts-month').value;
+  const sch=document.getElementById('ts-sch').value;
+  const hpd=getHPD();
+  const {y,m}=TS_MONTHS[mi];
+  const days=getMonthDays(y,m);
+  const t=getTbl();
+  getEmps().forEach(emp=>{
+    if(!t[emp.id]) t[emp.id]={};
+    days.forEach(d=>{const k=d.toISOString().slice(0,10);t[emp.id][k]={code:defCode(d,sch),hours:defHours(defCode(d,sch),hpd)};});
+  });
+  buildTs();
+}
+
+function applyTsToPayroll(){nav('payroll',null);calcPayroll();}
+
+// ===== ДАШБОРД =====
+function renderDashboard(){
+  document.getElementById('dash-sub').textContent=getClientName()+' · Апрель 2026';
+  const emps=getEmps();
+  let tG=0,tNet=0,tEmp=0,tAlim=0;
+  emps.forEach(e=>{const t=tax(e.rate,e.by,e.vychet,e.status);const a=e.alim>0?Math.round(t.net*e.alim/100):0;tG+=t.gross;tNet+=t.net-a;tEmp+=t.empCost;tAlim+=a;});
+  document.getElementById('dash-kpi').innerHTML=`
+    <div class="kpi"><div class="kv">${emps.length}</div><div class="kl">Сотрудников</div></div>
+    <div class="kpi info"><div class="kv">${fmt(tG)} ₸</div><div class="kl">ФОТ</div></div>
+    <div class="kpi green"><div class="kv">${fmt(tNet)} ₸</div><div class="kl">К выплате</div></div>
+    <div class="kpi amber"><div class="kv">${fmt(tEmp)} ₸</div><div class="kl">Расходы р-дат.</div></div>
+    ${tAlim>0?`<div class="kpi red"><div class="kv">${fmt(tAlim)} ₸</div><div class="kl">Алименты</div></div>`:''}
+  `;
+  document.getElementById('dash-emps').innerHTML=emps.map(e=>{
+    const t=tax(e.rate,e.by,e.vychet,e.status);
+    return `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 8px;border:0.5px solid var(--color-border-tertiary);border-radius:7px;margin-bottom:5px;cursor:pointer" onclick="nav('employees',null)">
+      <div><div style="font-size:12px;font-weight:500">${e.last} ${e.first}</div><div style="font-size:10px;color:var(--color-text-secondary)">${e.pos}</div></div>
+      <div style="text-align:right"><div style="font-size:12px;font-weight:500;color:var(--color-text-success)">${fmt(t.net)} ₸</div><div style="font-size:10px;color:var(--color-text-secondary)">на руки</div></div>
+    </div>`;
+  }).join('');
+  const dls=[
+    {d:'05 мая',n:'Аванс',t:'pay'},{d:'15 мая',n:'Форма 200.00',t:'rep'},
+    {d:'20 мая',n:'Окончат. расчёт з/п',t:'pay'},{d:'25 мая',n:'ОПВ + ОПВР',t:'tax'},
+    {d:'25 мая',n:'ИПН физ. лиц',t:'tax'},{d:'25 мая',n:'СО + ОСМС + СН',t:'tax'},
+  ];
+  document.getElementById('dash-dl').innerHTML=dls.map(d=>`
+    <div style="display:flex;justify-content:space-between;padding:6px 8px;border:0.5px solid var(--color-border-tertiary);border-radius:7px;margin-bottom:4px;font-size:12px">
+      <span>${d.n}</span>
+      <span style="display:flex;gap:5px;align-items:center">
+        <span class="badge ${d.t==='pay'?'bb':d.t==='tax'?'br':'bg'}">${d.t==='pay'?'Выплата':d.t==='tax'?'Налог':'Отчёт'}</span>
+        <span style="font-size:11px;color:var(--color-text-secondary)">${d.d}</span>
+      </span>
+    </div>`).join('');
+  const risky=emps.filter(e=>{const t_=tax(e.rate,e.by,e.vychet,e.status);const base=Math.max(0,e.rate-t_.opv-t_.vosmss-(VMAP[e.vychet]||0))*12;return base>PROG_LIMIT*0.6;});
+  document.getElementById('dash-ipn').innerHTML=risky.length===0
+    ?'<div class="notice success"><strong>Все сотрудники</strong> далеки от порога 15%.</div>'
+    :risky.map(e=>{
+      const t_=tax(e.rate,e.by,e.vychet,e.status);
+      const base=Math.max(0,e.rate-t_.opv-t_.vosmss-(VMAP[e.vychet]||0))*12;
+      const pct=Math.min(base/PROG_LIMIT*100,100);
+      return `<div style="margin-bottom:7px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:2px"><span>${e.last} ${e.first}</span><span class="badge ${pct>=100?'br':'bw'}">${pct>=100?'15% применяется':Math.round(pct)+'% от порога'}</span></div><div class="prog-bar"><div class="prog-fill" style="width:${pct}%;background:${pct>=100?'var(--color-text-danger)':'var(--color-text-warning)'}"></div></div></div>`;
+    }).join('');
+}
+
+// ===== СОТРУДНИКИ =====
+function renderEmps(){
+  document.getElementById('emp-sub').textContent=getClientName();
+  document.getElementById('emp-tbody').innerHTML=getEmps().map(e=>`<tr>
+    <td><strong>${e.last} ${e.first}</strong></td>
+    <td style="font-size:10px;font-family:var(--font-mono)">${e.iin}</td>
+    <td>${e.pos}</td>
+    <td><span class="badge ${e.type==='month'?'bg':e.type==='day'?'bb':'bw'}">${e.type==='month'?'Мес.':e.type==='day'?'День':'Час'}</span></td>
+    <td style="text-align:right">${fmt(e.rate)} ₸</td>
+    <td>${e.vychet==='30'?'30 МРП':e.vychet==='14'?'14 МРП':'—'}</td>
+    <td><span class="badge bg">${{staff:'Штатный',pensioner:'Пенсионер',gph:'ГПХ','no-opvr':'Без ОПВР',multimom:'Многодет.'}[e.status]||e.status}</span></td>
+    <td>${e.by}${e.by<1975?' <span class="badge bw">до 75</span>':''}</td>
+    <td>${e.alim>0?`<span class="badge bw">${e.alim}%</span>`:'—'}</td>
+    <td><button class="btn btn-sm" style="color:var(--color-text-danger)" onclick="delEmp(${e.id})">✕</button></td>
+  </tr>`).join('');
+}
+function toggleAddForm(){const f=document.getElementById('add-form');f.style.display=f.style.display==='none'?'block':'none';}
+function updateRL(){const t=document.getElementById('nf-type').value;document.getElementById('nf-rl').textContent=t==='month'?'Оклад (₸/мес)':t==='day'?'Ставка (₸/день)':'Ставка (₸/час)';}
+function saveEmp(){
+  const last=document.getElementById('nf-last').value.trim();
+  const first=document.getElementById('nf-first').value.trim();
+  const rate=parseFloat(document.getElementById('nf-rate').value)||0;
+  if(!last||!first||!rate){alert('Заполните ФИО и ставку');return;}
+  clients[activeClient].emps.push({id:nextId++,last,first,iin:document.getElementById('nf-iin').value.trim(),pos:document.getElementById('nf-pos').value.trim(),by:parseInt(document.getElementById('nf-by').value)||1990,type:document.getElementById('nf-type').value,rate,vychet:document.getElementById('nf-vychet').value,status:document.getElementById('nf-status').value,tab:document.getElementById('nf-tab').value.trim(),alim:parseFloat(document.getElementById('nf-alim').value)||0});
+  toggleAddForm();refreshAll();
+}
+function delEmp(id){if(!confirm('Удалить?'))return;clients[activeClient].emps=clients[activeClient].emps.filter(e=>e.id!==id);refreshAll();}
+
+// ===== РАСЧЁТ ФОТ =====
+function calcPayroll(){
+  const emps=getEmps();
+  let tG=0,tNet=0,tEmp=0,tIPN=0,tAlim=0;
+  const rows=emps.map(e=>{
+    const t=tax(e.rate,e.by,e.vychet,e.status);
+    const a=e.alim>0?Math.round(t.net*e.alim/100):0;
+    const nf=t.net-a;
+    tG+=t.gross;tNet+=nf;tEmp+=t.empCost;tIPN+=t.ipn;tAlim+=a;
+    return `<tr>
+      <td>${e.last} ${e.first}${t.progressive?' <span class="badge br">15%</span>':''}</td>
+      <td style="text-align:right">${fmt(t.gross)}</td>
+      <td style="text-align:right;color:var(--color-text-danger)">−${fmt(t.opv)}</td>
+      <td style="text-align:right;color:var(--color-text-danger)">−${fmt(t.vosmss)}</td>
+      <td style="text-align:right;color:var(--color-text-danger)">−${fmt(t.ipn)}</td>
+      <td style="text-align:right;color:var(--color-text-warning)">${a?'−'+fmt(a):'—'}</td>
+      <td style="text-align:right;font-weight:600;color:var(--color-text-success)">${fmt(nf)}</td>
+      <td style="text-align:right">${fmt(t.so)}</td>
+      <td style="text-align:right">${fmt(t.osms)}</td>
+      <td style="text-align:right">${t.noOpvr?'—':fmt(t.opvr)}</td>
+      <td style="text-align:right">${fmt(t.sn)}</td>
+      <td style="text-align:right;font-weight:600">${fmt(t.empCost)}</td>
+      <td><span class="badge ${t.progressive?'br':'bg'}">${t.progressive?'10+15%':'10%'}</span></td>
+    </tr>`;
+  });
+  rows.push(`<tr class="tot"><td>ИТОГО</td><td style="text-align:right">${fmt(tG)}</td><td></td><td></td><td style="text-align:right">${fmt(tIPN)}</td><td style="text-align:right">${fmt(tAlim)}</td><td style="text-align:right">${fmt(tNet)}</td><td></td><td></td><td></td><td></td><td style="text-align:right">${fmt(tEmp)}</td><td></td></tr>`);
+  document.getElementById('pay-tbody').innerHTML=rows.join('');
+  document.getElementById('pay-kpi').innerHTML=`
+    <div class="kpi info"><div class="kv">${fmt(tG)} ₸</div><div class="kl">Начислено</div></div>
+    <div class="kpi green"><div class="kv">${fmt(tNet)} ₸</div><div class="kl">К выплате</div></div>
+    <div class="kpi amber"><div class="kv">${fmt(tEmp)} ₸</div><div class="kl">Расходы работодат.</div></div>
+    <div class="kpi"><div class="kv">${fmt(tIPN)} ₸</div><div class="kl">ИПН итого</div></div>
+    ${tAlim>0?`<div class="kpi red"><div class="kv">${fmt(tAlim)} ₸</div><div class="kl">Алименты</div></div>`:''}
+  `;
+}
+
+// ===== ОТПУСКНЫЕ =====
+function calcVac(){
+  const sal=parseFloat(document.getElementById('vac-sal').value)||0;
+  const days=parseFloat(document.getElementById('vac-days').value)||252;
+  const vs=document.getElementById('vac-s').value;
+  const ve=document.getElementById('vac-e').value;
+  const mode=document.getElementById('vac-mode').value;
+  if(!sal||!vs||!ve){alert('Заполните все поля');return;}
+  const sdz=sal/days;
+  const sd=new Date(vs),ed=new Date(ve);
+  let wd=0;const cur=new Date(sd);
+  while(cur<=ed){if(!isWknd(cur,mode)&&!isHol(cur))wd++;cur.setDate(cur.getDate()+1);}
+  const gross=Math.round(sdz*wd);
+  const empId=document.getElementById('vac-emp').value;
+  const emp=getEmps().find(e=>e.id==empId)||{by:1990,vychet:'30',status:'staff'};
+  const t=tax(gross,emp.by,emp.vychet,emp.status);
+  document.getElementById('vac-res').style.display='block';
+  document.getElementById('vac-res').innerHTML=`<div class="kpi-g">
+    <div class="kpi info"><div class="kv">${fmtD(sdz)} ₸</div><div class="kl">СДЗ</div></div>
+    <div class="kpi"><div class="kv">${wd} дн.</div><div class="kl">Рабочих дней</div></div>
+    <div class="kpi"><div class="kv">${fmt(gross)} ₸</div><div class="kl">Начислено</div></div>
+    <div class="kpi green"><div class="kv">${fmt(t.net)} ₸</div><div class="kl">На руки</div></div>
+    <div class="kpi amber"><div class="kv">${fmt(t.empCost)} ₸</div><div class="kl">Расходы р-дат.</div></div>
+  </div>`;
+}
+
+// ===== БОЛЬНИЧНЫЙ =====
+function calcSick(){
+  const sal=parseFloat(document.getElementById('sick-sal').value)||0;
+  const days=parseFloat(document.getElementById('sick-days').value)||252;
+  const vs=document.getElementById('sick-s').value;
+  const ve=document.getElementById('sick-e').value;
+  const mode=document.getElementById('sick-mode').value;
+  if(!sal||!vs||!ve){alert('Заполните все поля');return;}
+  const sdz=sal/days;
+  const sd=new Date(vs),ed=new Date(ve);
+  let wd=0;const cur=new Date(sd);
+  while(cur<=ed){if(!isWknd(cur,mode))wd++;cur.setDate(cur.getDate()+1);}
+  const raw=Math.round(sdz*wd);
+  const lim=25*MRP;
+  const limited=raw>lim;
+  const gross=Math.min(raw,lim);
+  const empId=document.getElementById('sick-emp').value;
+  const emp=getEmps().find(e=>e.id==empId)||{by:1990,vychet:'30',status:'staff'};
+  const t=tax(gross,emp.by,emp.vychet,emp.status);
+  document.getElementById('sick-res').style.display='block';
+  document.getElementById('sick-res').innerHTML=`
+    ${limited?`<div class="notice warn"><strong>Лимит 25 МРП применён:</strong> расчётно ${fmt(raw)} ₸, ограничено до ${fmt(lim)} ₸</div>`:''}
+    <div class="kpi-g">
+      <div class="kpi info"><div class="kv">${fmtD(sdz)} ₸</div><div class="kl">СДЗ</div></div>
+      <div class="kpi"><div class="kv">${wd} дн.</div><div class="kl">Рабочих дней б/л</div></div>
+      <div class="kpi${limited?' red':''}"><div class="kv">${fmt(gross)} ₸</div><div class="kl">Начислено${limited?' (лим.)':''}</div></div>
+      <div class="kpi green"><div class="kv">${fmt(t.net)} ₸</div><div class="kl">На руки</div></div>
+      <div class="kpi amber"><div class="kv">${fmt(t.empCost)} ₸</div><div class="kl">Расходы р-дат.</div></div>
+    </div>`;
+}
+
+// ===== ПРЕМИИ =====
+function calcBonus(){
+  const sal=parseFloat(document.getElementById('bon-sal').value)||0;
+  const amt=parseFloat(document.getElementById('bon-amt').value)||0;
+  const ytd=parseFloat(document.getElementById('bon-ytd').value)||0;
+  const empId=document.getElementById('bon-emp').value;
+  const emp=getEmps().find(e=>e.id==empId)||{by:1990,vychet:'30',status:'staff'};
+  const gross=sal+amt;
+  const t=tax(gross,emp.by,emp.vychet,emp.status);
+  const base=Math.max(0,gross-t.opv-t.vosmss-(VMAP[emp.vychet]||0))*12+ytd;
+  const prog=base>PROG_LIMIT;
+  document.getElementById('bon-res').style.display='block';
+  document.getElementById('bon-res').innerHTML=`
+    ${prog?'<div class="notice danger"><strong>⚠ Прогрессивный ИПН 15%</strong> — нарастающий итог превышает порог</div>':''}
+    <div class="kpi-g">
+      <div class="kpi"><div class="kv">${fmt(sal)} ₸</div><div class="kl">Оклад</div></div>
+      <div class="kpi info"><div class="kv">${fmt(amt)} ₸</div><div class="kl">Премия</div></div>
+      <div class="kpi"><div class="kv">${fmt(gross)} ₸</div><div class="kl">Итого gross</div></div>
+      <div class="kpi${prog?' red':' amber'}"><div class="kv">${fmt(t.ipn)} ₸</div><div class="kl">ИПН</div></div>
+      <div class="kpi green"><div class="kv">${fmt(t.net)} ₸</div><div class="kl">На руки</div></div>
+      <div class="kpi amber"><div class="kv">${fmt(t.empCost)} ₸</div><div class="kl">Расходы р-дат.</div></div>
+    </div>`;
+}
+
+// ===== АЛИМЕНТЫ =====
+function renderAlimony(){
+  const emps=getEmps().filter(e=>e.alim>0);
+  document.getElementById('alim-body').innerHTML=emps.length===0
+    ?'<div class="notice">Нет сотрудников с алиментами. Укажите % в карточке сотрудника (раздел «Сотрудники»).</div>'
+    :emps.map(e=>{
+      const t=tax(e.rate,e.by,e.vychet,e.status);
+      const a=Math.round(t.net*e.alim/100);
+      const rem=t.net-a;
+      const pct=Math.round(a/t.net*100);
+      return `<div style="padding:10px;border:0.5px solid var(--color-border-tertiary);border-radius:8px;margin-bottom:8px">
+        <div style="display:flex;justify-content:space-between;margin-bottom:5px"><strong>${e.last} ${e.first}</strong><span class="badge bw">${e.alim}% алиментов</span></div>
+        <div style="font-size:12px;color:var(--color-text-secondary);line-height:2">На руки (до удержания): ${fmt(t.net)} ₸ → Алименты: <strong style="color:var(--color-text-warning)">${fmt(a)} ₸</strong> → Остаток: <strong style="color:var(--color-text-success)">${fmt(rem)} ₸</strong></div>
+        <div class="prog-bar"><div class="prog-fill" style="width:${pct}%;background:${pct>=50?'var(--color-text-danger)':'var(--color-text-warning)'}"></div></div>
+        <div style="font-size:10px;color:var(--color-text-secondary);margin-top:2px">Удержано ${pct}% · Лимит 50% · Дт 3350/Кт 3385 ${fmt(a)} ₸ · Дт 3385/Кт 1030 ${fmt(a)} ₸</div>
+      </div>`;
+    }).join('');
+}
+
+// ===== ИПН =====
+function renderIPN(){
+  const emps=getEmps();
+  let atRisk=0;
+  document.getElementById('ipn-tbody').innerHTML=emps.map(e=>{
+    const t_=tax(e.rate,e.by,e.vychet,e.status);
+    const base=Math.max(0,e.rate-t_.opv-t_.vosmss-(VMAP[e.vychet]||0))*12;
+    const pct=Math.min(base/PROG_LIMIT*100,100);
+    const over=base>PROG_LIMIT;
+    if(over) atRisk++;
+    const monthEx=over?'Уже':base>0?Math.ceil(PROG_LIMIT/base*12)+'й мес.':'—';
+    const ipn10=over?Math.round(PROG_LIMIT*0.10):Math.round(base*0.10);
+    const ipn15=over?Math.round((base-PROG_LIMIT)*0.15):0;
+    return `<tr>
+      <td>${e.last} ${e.first}</td>
+      <td style="text-align:right">${fmt(e.rate)}</td>
+      <td style="text-align:right">${fmt(Math.max(0,e.rate-t_.opv-t_.vosmss-(VMAP[e.vychet]||0)))}</td>
+      <td style="text-align:right">${fmt(base)}</td>
+      <td><div style="font-size:11px;margin-bottom:1px">${Math.round(pct)}%</div><div class="prog-bar"><div class="prog-fill" style="width:${pct}%;background:${over?'var(--color-text-danger)':pct>80?'var(--color-text-warning)':'var(--color-text-success)'}"></div></div></td>
+      <td><span class="badge ${over?'br':pct>80?'bw':'bg'}">${monthEx}</span></td>
+      <td style="text-align:right;color:var(--color-text-success)">${fmt(ipn10)}</td>
+      <td style="text-align:right;color:var(--color-text-danger)">${ipn15?fmt(ipn15):'—'}</td>
+      <td style="text-align:right;font-weight:500">${fmt(ipn10+ipn15)}</td>
+      <td><span class="badge ${over?'br':'bg'}">${over?'Прогресс.':'10%'}</span></td>
+    </tr>`;
+  }).join('');
+  document.getElementById('ipn-kpi').innerHTML=`
+    <div class="kpi"><div class="kv">${emps.length}</div><div class="kl">Сотрудников</div></div>
+    <div class="kpi${atRisk>0?' red':'  green'}"><div class="kv">${atRisk}</div><div class="kl">Применяется 15%</div></div>
+    <div class="kpi purple"><div class="kv">${fmt(PROG_LIMIT)} ₸</div><div class="kl">Порог (год. база)</div></div>
+  `;
+}
+
+// ===== КАЛЕНДАРЬ =====
+function renderCalendar(){
+  const items=[
+    {d:'5 мая',n:'Аванс (зарплата)',t:'pay',note:'Первая выплата'},
+    {d:'15 мая',n:'Форма 200.00 (за март)',t:'rep',note:'ЭСФ портал'},
+    {d:'20 мая',n:'Окончательный расчёт з/п',t:'pay',note:'Вторая выплата'},
+    {d:'25 мая',n:'ОПВ (10%)',t:'tax',note:'ЕНПФ'},
+    {d:'25 мая',n:'ОПВР (3,5%)',t:'tax',note:'ЕНПФ'},
+    {d:'25 мая',n:'ИПН с доходов физ. лиц',t:'tax',note:'КГД'},
+    {d:'25 мая',n:'ВОСМС (2%)',t:'tax',note:'ФСМС'},
+    {d:'25 мая',n:'СО (5%) + ОСМС (3%)',t:'tax',note:'ГФСС + ФСМС'},
+    {d:'25 мая',n:'Социальный налог (6%)',t:'tax',note:'КГД'},
+  ];
+  document.getElementById('cal-body').innerHTML=items.map(i=>`
+    <div style="padding:9px 11px;border:0.5px solid var(--color-border-tertiary);border-radius:8px">
+      <div style="font-size:10px;color:var(--color-text-secondary)">${i.d}</div>
+      <div style="font-size:12px;font-weight:500;margin:2px 0">${i.n}</div>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span class="badge ${i.t==='pay'?'bb':i.t==='tax'?'br':'bg'}">${i.t==='pay'?'Выплата':i.t==='tax'?'Налог':'Отчёт'}</span>
+        <span style="font-size:10px;color:var(--color-text-secondary)">${i.note}</span>
+      </div>
+    </div>`).join('');
+}
+
+// ===== КАЛЬКУЛЯТОР =====
+function switchCalcTab(t){
+  calcTab=t;
+  document.getElementById('ct-gross').className='btn '+(t==='gross'?'btn-p':'')+' btn-sm';
+  document.getElementById('ct-net').className='btn '+(t==='net'?'btn-p':'')+' btn-sm';
+  document.getElementById('c-lbl').textContent=t==='gross'?'Оклад (₸)':'Сумма на руки (₸)';
+  document.getElementById('c-val').value='';
+  document.getElementById('c-kpi').innerHTML='';
+  document.getElementById('c-detail').innerHTML='';
+}
+function runCalc(){
+  const v=parseFloat(document.getElementById('c-val').value)||0;
+  const vc=document.getElementById('c-vychet').value;
+  const st=document.getElementById('c-status').value;
+  if(!v) return;
+  if(calcTab==='gross'){
+    const t=tax(v,1990,vc,st);
+    document.getElementById('c-kpi').innerHTML=`
+      <div class="kpi info"><div class="kv">${fmt(v)} ₸</div><div class="kl">Gross</div></div>
+      <div class="kpi"><div class="kv">${fmt(t.opv+t.vosmss+t.ipn)} ₸</div><div class="kl">Удержания</div></div>
+      <div class="kpi green"><div class="kv">${fmt(t.net)} ₸</div><div class="kl">На руки</div></div>
+      <div class="kpi amber"><div class="kv">${fmt(t.empCost)} ₸</div><div class="kl">Расходы р-дат.</div></div>
+      <div class="kpi purple"><div class="kv">${(t.empCost/v*100).toFixed(1)}%</div><div class="kl">Нагрузка</div></div>`;
+    document.getElementById('c-detail').innerHTML=`ОПВ −${fmt(t.opv)} · ВОСМС −${fmt(t.vosmss)} · ИПН −${fmt(t.ipn)} → <strong>На руки ${fmt(t.net)} ₸</strong> · СО ${fmt(t.so)} · ОСМС ${fmt(t.osms)} · ОПВР ${t.noOpvr?'—':fmt(t.opvr)} · СН ${fmt(t.sn)} → <strong>+${fmt(t.empCost-v)} ₸ работодатель</strong>`;
+  } else {
+    const r=revCalc(v,1990,vc,st);
+    if(!r) return;
+    const {salary,t}=r;
+    document.getElementById('c-kpi').innerHTML=`
+      <div class="kpi green"><div class="kv">${fmt(salary)} ₸</div><div class="kl">Оклад (gross)</div></div>
+      <div class="kpi"><div class="kv">${fmt(t.opv+t.vosmss+t.ipn)} ₸</div><div class="kl">Удержания</div></div>
+      <div class="kpi info"><div class="kv">${fmt(t.net)} ₸</div><div class="kl">На руки (факт)</div></div>
+      <div class="kpi amber"><div class="kv">${fmt(t.empCost)} ₸</div><div class="kl">Расходы р-дат.</div></div>`;
+    document.getElementById('c-detail').innerHTML=`Gross <strong>${fmt(salary)} ₸</strong> → ОПВ −${fmt(t.opv)} · ВОСМС −${fmt(t.vosmss)} · ИПН −${fmt(t.ipn)} = <strong>На руки ${fmt(t.net)} ₸</strong>`;
+  }
+}
+
+// ===== SEL СОТРУДНИКОВ =====
+function fillSelects(){
+  const opts='<option value="">— выбрать —</option>'+getEmps().map(e=>`<option value="${e.id}">${e.last} ${e.first}</option>`).join('');
+  ['vac-emp','sick-emp','bon-emp'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=opts;});
+}
+
+// ===== НАВИГАЦИЯ =====
+function nav(page,el){
+  document.querySelectorAll('.ni').forEach(i=>i.classList.remove('active'));
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  if(el) el.classList.add('active');
+  else document.querySelectorAll('.ni').forEach(i=>{if(i.getAttribute('onclick')?.includes("'"+page+"'"))i.classList.add('active');});
+  if(page==='timesheet') buildTs();
+  if(page==='payroll') calcPayroll();
+  if(page==='ipn') renderIPN();
+  if(page==='alimony') renderAlimony();
+  if(page==='calendar') renderCalendar();
+  if(page==='netgross') calcReverse();
+}
+
+function refreshAll(){
+  renderDashboard();renderEmps();fillSelects();renderIPN();renderAlimony();renderCalendar();calcPayroll();
+}
+
+refreshAll();
+
+function calcReverse(){
+  const net=parseFloat(document.getElementById('rv-net').value)||250000;
+  const vychet=document.getElementById('rv-cat').value==='base'?VYCHET_BASE:0;
+  const mrp=parseFloat(document.getElementById('rv-mrp').value)||MRP;
+  // net = nachr - opv - vosmss - ipn
+  // nachr = gross, opv=0.1*gross, vosmss=0.02*gross
+  // ipn_base = gross - 0.1gross - 0.02gross - vychet = 0.88gross - vychet
+  // ipn = 0.10 * (0.88gross - vychet)
+  // net = gross - 0.1gross - 0.02gross - 0.10*(0.88gross - vychet)
+  // net = gross*(1-0.1-0.02-0.088) + 0.10*vychet
+  // net = 0.792*gross + 0.1*vychet
+  const gross=Math.round((net-0.1*vychet)/0.792);
+  const opv=Math.round(gross*0.1);
+  const vosmss=Math.round(gross*0.02);
+  const ipn_base=Math.max(0,gross-opv-vosmss-vychet);
+  const ipn=Math.round(ipn_base*0.10);
+  const net_check=gross-opv-vosmss-ipn;
+  const so=Math.round(Math.max(0,gross-opv)*0.035);
+  const osmss=Math.round(gross*0.03);
+  const sn_base=Math.max(0,gross-opv-vosmss);
+  const sn=Math.max(0,Math.round(sn_base*0.095)-so);
+  const total=gross+so+osmss+sn;
+  document.getElementById('rv-result').innerHTML=`
+    <strong>Чтобы сотрудник получал ${fmt(net)} ₸ на руки:</strong><br>
+    Оклад (Gross) = <strong>${fmt(gross)} ₸</strong><br>
+    ОПВ: ${fmt(opv)} · ВОСМС: ${fmt(vosmss)} · ИПН: ${fmt(ipn)}<br>
+    Проверка к выплате: ${fmt(net_check)} ₸ (расхождение: ${Math.abs(net-net_check)} ₸)<br>
+    Затраты работодателя = ${fmt(gross)} + СО ${fmt(so)} + ОСМС ${fmt(osmss)} + СН ${fmt(sn)} = <strong>${fmt(total)} ₸</strong>`;
+}
+
+</script>
+</div>
+<script>
+function sendPrompt(t){prompt('→ AI: '+t,'');}
+function openLink(u){if(confirm('Открыть: '+u))window.open(u,'_blank');}
+</script>
+</body>
+</html>

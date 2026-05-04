@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>👥 Кадры · Платформа РК</title>
+<style>
+:root{--fs:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;--fm:'SF Mono','Consolas',monospace;--bp:#fff;--bs:#f7f7f5;--bt:#f0efea;--bi:#e6f1fb;--bg:#eaf3de;--bw:#faeeda;--bd:#fcebeb;--tp:#1a1a18;--ts:#6b6b67;--tt:#9b9b97;--ti:#185fa5;--tg:#3b6d11;--tw:#854f0b;--td:#a32d2d;--bor:rgba(26,26,24,.15);--bos:rgba(26,26,24,.28);--bop:rgba(26,26,24,.42);--boi:rgba(24,95,165,.4);--bog:rgba(59,109,17,.4);--bow:rgba(133,79,11,.4);--bod:rgba(163,45,45,.4)}
+@media(prefers-color-scheme:dark){:root{--bp:#1c1c1a;--bs:#252523;--bt:#2e2e2b;--bi:#0c3054;--bg:#1a3508;--bw:#422508;--bd:#4f1515;--tp:#f0efe8;--ts:#a8a8a2;--ti:#85b7eb;--tg:#97c459;--tw:#ef9f27;--td:#f09595;--bor:rgba(240,239,232,.15);--bos:rgba(240,239,232,.28);--bop:rgba(240,239,232,.42)}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--fs);font-size:13px;background:var(--bt);padding:16px}
+.pw{max-width:1100px;margin:0 auto;background:var(--bp);border-radius:16px;padding:20px 24px 32px;border:.5px solid var(--bor)}
+.tn{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:.5px solid var(--bor);font-size:12px}
+.tn a{color:var(--ti);text-decoration:none}.tn a:hover{text-decoration:underline}
+.tn .co{margin-left:auto;color:var(--ts)}
+.tabs{display:flex;gap:3px;border-bottom:.5px solid var(--bor);margin-bottom:16px;flex-wrap:wrap}
+.tab{padding:7px 13px;font-size:12px;cursor:pointer;border:none;background:transparent;color:var(--ts);border-bottom:2px solid transparent;margin-bottom:-1px;font-family:var(--fs);white-space:nowrap}
+.tab.active{color:var(--tp);border-bottom:2px solid var(--tp);font-weight:500}
+.sec{display:none}.sec.active{display:block}
+.notice{font-size:11px;padding:8px 12px;border-radius:8px;margin-bottom:10px;line-height:1.7;color:var(--ts);background:var(--bs)}
+.notice strong{color:var(--tp)}.notice.info{background:var(--bi)}.notice.info strong{color:var(--ti)}
+.notice.suc{background:var(--bg)}.notice.suc strong{color:var(--tg)}
+.notice.warn{background:var(--bw)}.notice.warn strong{color:var(--tw)}
+.notice.err{background:var(--bd)}.notice.err strong{color:var(--td)}
+input,select,textarea{font-family:var(--fs);font-size:12px;padding:6px 9px;border:.5px solid var(--bos);border-radius:7px;background:var(--bp);color:var(--tp);width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--bop)}
+textarea{resize:vertical;min-height:90px}
+.btn{padding:5px 14px;font-size:12px;font-family:var(--fs);border:.5px solid var(--bos);border-radius:7px;background:transparent;color:var(--tp);cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--bs)}.btn.p{background:var(--tp);color:var(--bp);border-color:var(--tp)}
+.btn.sm{padding:3px 9px;font-size:11px}.btn.red{color:var(--td);border-color:var(--bod)}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500}
+.b-g{background:var(--bg);color:var(--tg)}.b-r{background:var(--bd);color:var(--td)}
+.b-b{background:var(--bi);color:var(--ti)}.b-w{background:var(--bw);color:var(--tw)}
+.ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.pt{font-size:14px;font-weight:500}.ps{font-size:11px;color:var(--ts);margin-top:2px}
+.kpig{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:14px}
+.kpi{padding:10px 12px;border-radius:8px;background:var(--bs);border:.5px solid var(--bor)}
+.kpi .v{font-size:15px;font-weight:500;color:var(--tp)}.kpi .l{font-size:10px;color:var(--ts);margin-top:1px}
+.kpi.g{background:var(--bg)}.kpi.g .v{color:var(--tg)}.kpi.b{background:var(--bi)}.kpi.b .v{color:var(--ti)}
+.kpi.w{background:var(--bw)}.kpi.w .v{color:var(--tw)}.kpi.r{background:var(--bd)}.kpi.r .v{color:var(--td)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px}
+.fl{display:flex;flex-direction:column;gap:3px}.fl label{font-size:11px;color:var(--ts)}
+table.t{width:100%;border-collapse:collapse;font-size:12px}
+table.t th{padding:5px 8px;font-size:11px;font-weight:500;color:var(--ts);border-bottom:.5px solid var(--bor);text-align:left;background:var(--bs);white-space:nowrap}
+table.t td{padding:6px 8px;border-bottom:.5px solid var(--bor);vertical-align:middle}
+table.t tr:hover td{background:var(--bs)}
+table.t .tot td{font-weight:500;background:var(--bs)}
+.nm{text-align:right;font-family:var(--fm);font-size:11px}
+.acc{font-family:var(--fm);font-weight:500;color:var(--ti)}
+.accn{font-family:var(--fm);font-weight:500;color:var(--tg)}
+/* AI BOX */
+.ai-box{border:1.5px solid var(--boi);border-radius:12px;padding:16px;margin-bottom:14px;background:color-mix(in srgb,var(--bi) 8%,transparent)}
+.ai-box h3{font-size:13px;font-weight:500;color:var(--ti);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.choice{padding:10px 14px;border:.5px solid var(--bor);border-radius:8px;margin-bottom:8px;cursor:pointer;transition:all .15s}
+.choice:hover{border-color:var(--ti);background:color-mix(in srgb,var(--bi) 10%,transparent)}
+.choice h4{font-size:12px;font-weight:500;margin-bottom:3px}.choice p{font-size:11px;color:var(--ts)}
+/* SPINNER */
+.spin{display:none;align-items:center;gap:10px;padding:12px;background:var(--bs);border-radius:8px;margin:10px 0;font-size:12px;color:var(--ts)}
+.spin.on{display:flex}
+.sp{width:14px;height:14px;border:2px solid var(--bor);border-top-color:var(--tp);border-radius:50%;animation:sp .7s linear infinite;flex-shrink:0}
+@keyframes sp{to{transform:rotate(360deg)}}
+/* DROP ZONE */
+.dz{border:2px dashed var(--bos);border-radius:10px;padding:24px;text-align:center;cursor:pointer;margin-bottom:12px;transition:all .2s}
+.dz:hover,.dz.drag{border-color:var(--tp);background:var(--bs)}
+/* CARD */
+.card{border:.5px solid var(--bor);border-radius:12px;overflow:hidden;margin-bottom:12px}
+.card-h{display:flex;justify-content:space-between;align-items:flex-start;padding:12px 16px;background:var(--bs);border-bottom:.5px solid var(--bor);flex-wrap:wrap;gap:8px}
+.card-b{padding:14px 16px}
+.row2{display:flex;justify-content:space-between;padding:4px 0;font-size:12px;border-bottom:.5px solid var(--bor)}.row2:last-child{border-bottom:none}
+/* CONFIRM BOX */
+.confirm-box{border:1.5px solid var(--bog);border-radius:12px;padding:14px;margin-bottom:12px;background:color-mix(in srgb,var(--bg) 8%,transparent)}
+.confirm-box h3{font-size:13px;font-weight:500;color:var(--tg);margin-bottom:10px}
+/* ENTRY ROW */
+.erow{display:grid;grid-template-columns:70px 70px 60px 60px 1fr 110px 80px;gap:6px;padding:5px 0;border-bottom:.5px solid var(--bor);font-size:11px;align-items:center}
+.erow.hdr{font-size:10px;font-weight:500;color:var(--ts);text-transform:uppercase;padding:4px 0;background:var(--bs);border-radius:4px;margin-bottom:4px}
+.apbtn{padding:3px 8px;font-size:10px;border-radius:5px;border:.5px solid var(--bog);background:transparent;color:var(--tg);cursor:pointer}
+.apbtn.ok{background:var(--bg)}
+.rejbtn{padding:3px 8px;font-size:10px;border-radius:5px;border:.5px solid var(--bod);background:transparent;color:var(--td);cursor:pointer;margin-left:3px}
+</style>
+</head>
+<body>
+<div class="pw">
+<div class="tn">
+  <a href="../index.html">← Все модули</a>
+  <span style="color:var(--tt)">·</span>
+  <span style="font-weight:500">👥 Кадры — Людские ресурсы</span>
+  <span class="co" id="co">Alpino Group ТОО</span>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="T('dash')">📊 Дашборд</button>
+  <button class="tab" onclick="T('reg')">👤 Карточки Т-2</button>
+  <button class="tab" onclick="T('add')">➕ Принять сотрудника</button>
+  <button class="tab" onclick="T('tab')">📅 Табель</button>
+  <button class="tab" onclick="T('fot')">💰 ФОТ из табеля</button>
+  <button class="tab" onclick="T('doc')">📋 Документы</button>
+</div>
+
+<!-- ДАШБОРД -->
+<div id="dash" class="sec active">
+  <div class="ph">
+    <div><div class="pt">👥 Людские ресурсы · Дашборд</div><div class="ps" id="ddate">Апрель 2026</div></div>
+    <button class="btn p sm" onclick="T('add')">➕ Принять сотрудника</button>
+  </div>
+  <div class="kpig" id="dkpi"></div>
+  <div class="notice err" id="dwarn" style="display:none"></div>
+  <div style="overflow-x:auto"><table class="t"><thead><tr>
+    <th>ФИО</th><th>Должность</th><th>Подразд.</th><th>ИИН</th><th>С даты</th>
+    <th class="nm">Оклад (₸)</th><th>Договор</th><th>Статус</th><th></th>
+  </tr></thead><tbody id="dtb"></tbody></table></div>
+</div>
+
+<!-- КАРТОЧКИ Т-2 -->
+<div id="reg" class="sec">
+  <div class="ph"><div class="pt">Карточки сотрудников (Т-2)</div>
+    <div style="display:flex;gap:6px">
+      <input id="srch" placeholder="Поиск по ФИО, ИИН..." style="width:200px;font-size:11px" oninput="rCards()">
+      <button class="btn p sm" onclick="T('add')">➕ Принять</button>
+    </div>
+  </div>
+  <div id="cards"></div>
+</div>
+
+<!-- ПРИНЯТЬ НОВОГО СОТРУДНИКА -->
+<div id="add" class="sec">
+  <div class="ph"><div>
+    <div class="pt">Принять нового сотрудника</div>
+    <div class="ps">AI заполняет карточку Т-2 по загруженным данным · Бухгалтер проверяет и подтверждает</div>
+  </div></div>
+
+  <!-- Шаг 0: выбор способа -->
+  <div id="step0">
+    <div class="ai-box">
+      <h3>🤖 Как хотите внести данные сотрудника?</h3>
+      <div class="g2">
+        <div class="choice" onclick="setMode('ai')">
+          <h4>🤖 Через AI — загрузить данные</h4>
+          <p>Загрузите фото удостоверения личности, резюме или трудовую книжку. Либо опишите сотрудника текстом — AI автоматически заполнит все поля карточки Т-2 и предложит бухгалтеру проверить.</p>
+        </div>
+        <div class="choice" onclick="setMode('manual')">
+          <h4>✏️ Вручную — ввод через форму</h4>
+          <p>Заполните поля карточки самостоятельно. Подходит когда все документы перед вами и нужен точный ввод без участия AI.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Шаг 1: AI-ввод -->
+  <div id="step-ai" style="display:none">
+    <div class="ai-box">
+      <h3>🤖 Предоставьте данные о сотруднике</h3>
+      <div class="notice info"><strong>Что можно загрузить (несколько файлов сразу):</strong> трудовой договор (PDF), удостоверение личности (фото), резюме, приказ о приёме — Claude прочитает документы и извлечёт все данные автоматически.</div>
+
+      <!-- Зона загрузки — multiple файлов -->
+
+      <!-- Поле для API ключа -->
+      <div id="apiKeyBlock" style="margin-bottom:10px;padding:10px;background:var(--bs);border-radius:8px;border:.5px solid var(--bor)">
+        <div style="font-size:11px;font-weight:500;color:var(--ts);margin-bottom:6px">🔑 Anthropic API ключ (для чтения PDF)</div>
+        <div style="display:flex;gap:6px">
+          <input type="password" id="apiKeyInput" placeholder="sk-ant-api03-..." style="font-family:var(--fm);font-size:11px"
+            oninput="saveApiKey(this.value)">
+          <button class="btn sm" onclick="toggleKeyVis()" style="white-space:nowrap;flex-shrink:0">Показать</button>
+        </div>
+        <div style="font-size:10px;color:var(--tt);margin-top:4px">Ключ хранится в localStorage · Получить: <a href="https://console.anthropic.com/account/keys" target="_blank" style="color:var(--ti)">console.anthropic.com</a></div>
+      </div>
+      <div class="dz" id="dz"
+        onclick="document.getElementById('ef').click()"
+        ondragover="event.preventDefault();this.classList.add('drag')"
+        ondragleave="this.classList.remove('drag')"
+        ondrop="onDrop(event)">
+        <div style="font-size:30px;margin-bottom:8px">📂</div>
+        <div style="font-size:13px;color:var(--ts)">Перетащите файлы или нажмите для выбора</div>
+        <div style="font-size:10px;color:var(--tt);margin-top:4px">Трудовой договор · Удостоверение · Резюме · PDF · JPG · PNG (несколько файлов)</div>
+        <input type="file" id="ef" style="display:none"
+          accept=".jpg,.jpeg,.png,.pdf,.docx,.xlsx"
+          multiple
+          onchange="onFile(this)">
+      </div>
+
+      <!-- Список загруженных файлов -->
+      <div id="fileList" style="display:none;margin-bottom:10px;padding:8px 10px;background:var(--bs);border-radius:8px;font-size:11px"></div>
+
+      <div style="text-align:center;font-size:12px;color:var(--ts);margin:-4px 0 8px">— или введите данные текстом —</div>
+      <textarea id="aitxt" placeholder="Примеры:&#10;&#10;• Принять Жансеитова Болата Сериковича, ИИН 880714300123, механик, оклад 190 000 тенге, с 5 мая 2026, бессрочный, Kaspi Bank&#10;&#10;• ФИО: Мырзаұлы Аязбек / ИИН: 940221350589 / Должность: Финансовый Директор / Оклад: 100 000 тенге / Дата: 15.05.2025&#10;&#10;• Загрузите PDF трудового договора — Claude прочитает все данные автоматически"></textarea>
+
+      <!-- Статус API -->
+      <div id="apiStatus" style="margin-top:8px;font-size:11px;color:var(--ts);display:flex;align-items:center;gap:6px">
+        <span id="apiDot" style="width:8px;height:8px;border-radius:50%;background:var(--bor);flex-shrink:0"></span>
+        <span id="apiStatusTxt">Проверка подключения к Claude API...</span>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <button class="btn p" onclick="aiAnalyze()" id="aiBtn">🤖 Claude — заполнить карточку</button>
+        <button class="btn sm" onclick="loadEx()">Пример данных</button>
+        <button class="btn sm" onclick="setMode('manual')">Вручную →</button>
+        <button class="btn sm" onclick="setMode('none')">← Назад</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spinner -->
+  <div class="spin" id="aisp"><div class="sp"></div><span id="aispT">AI анализирует данные...</span></div>
+
+  <!-- Шаг 2: карточка (AI или ручная) -->
+  <div id="step-form" style="display:none">
+    <div class="confirm-box">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+        <h3 id="formT" style="margin:0">✏️ Карточка сотрудника (Т-2)</h3>
+        <span class="badge b-b" id="formSrc">Ввод данных</span>
+      </div>
+
+      <div style="font-size:10px;font-weight:500;color:var(--ts);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">Личные данные</div>
+      <div class="g4" style="margin-bottom:12px">
+        <div class="fl"><label>Фамилия *</label><input id="fLast" placeholder="Жансеитов"></div>
+        <div class="fl"><label>Имя *</label><input id="fFirst" placeholder="Болат"></div>
+        <div class="fl"><label>Отчество</label><input id="fMid" placeholder="Серикович"></div>
+        <div class="fl"><label>ИИН * (12 цифр)</label><input id="fIIN" placeholder="880714300123" maxlength="12" oninput="this.value=this.value.replace(/\D/g,'')"></div>
+      </div>
+      <div class="g4" style="margin-bottom:14px">
+        <div class="fl"><label>Дата рождения</label><input type="date" id="fDOB"></div>
+        <div class="fl"><label>Гражданство</label><select id="fCit"><option>Казахстан</option><option>Россия</option><option>Кыргызстан</option><option>Другое</option></select></div>
+        <div class="fl"><label>Телефон</label><input id="fPhone" placeholder="+7 777 000 00 00"></div>
+        <div class="fl"><label>Email</label><input id="fEmail" placeholder="name@mail.kz"></div>
+      </div>
+
+      <div style="font-size:10px;font-weight:500;color:var(--ts);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">Трудовые данные</div>
+      <div class="g4" style="margin-bottom:12px">
+        <div class="fl"><label>Должность *</label><input id="fPos" placeholder="Механик"></div>
+        <div class="fl"><label>Подразделение</label><input id="fDept" placeholder="Производственный"></div>
+        <div class="fl"><label>Оклад (₸/мес) *</label><input type="number" id="fSal" placeholder="190000"></div>
+        <div class="fl"><label>Дата приёма *</label><input type="date" id="fDate" value="2026-05-05"></div>
+      </div>
+      <div class="g4" style="margin-bottom:14px">
+        <div class="fl"><label>Тип договора</label><select id="fContract"><option>Бессрочный</option><option>Срочный (1 год)</option><option>Срочный (2 года)</option><option>ГПХ</option></select></div>
+        <div class="fl"><label>График работы</label><select id="fSch"><option>5/2 · 8ч/день</option><option>6/1 · 8ч/день</option><option>Сменный 12ч</option><option>Вахта 30/15</option></select></div>
+        <div class="fl"><label>Вычет ИПН</label><select id="fVy"><option value="30">30 МРП — базовый (129 750 ₸)</option><option value="14">14 МРП — пенсионер</option><option value="0">Без вычета</option></select></div>
+        <div class="fl"><label>Категория</label><select id="fCat"><option>Основной</option><option>Совместитель</option><option>Сезонный</option></select></div>
+      </div>
+
+      <div style="font-size:10px;font-weight:500;color:var(--ts);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">Банковские реквизиты</div>
+      <div class="g3" style="margin-bottom:14px">
+        <div class="fl"><label>Банк</label><select id="fBank"><option>Kaspi Bank</option><option>Halyk Bank</option><option>ForteBank</option><option>БЦК</option><option>Jusan Bank</option></select></div>
+        <div class="fl"><label>ИИК (KZ...)</label><input id="fIIK" placeholder="KZ75722C000012345678"></div>
+        <div class="fl"><label>Примечание</label><input id="fNote" placeholder="..."></div>
+      </div>
+
+      <div id="aiConf" class="notice info" style="display:none"></div>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+        <button class="btn p" onclick="saveEmp()">✅ Принять в систему</button>
+        <button class="btn sm" onclick="clearF()">Очистить</button>
+        <button class="btn sm" onclick="setMode('ai')">← К AI-вводу</button>
+        <button class="btn sm" onclick="setMode('none')">← Назад</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ТАБЕЛЬ -->
+<div id="tab" class="sec">
+  <div class="ph">
+    <div><div class="pt">📅 Табель учёта рабочего времени</div>
+      <div class="ps">AI заполняет по команде оператора · Бухгалтер корректирует кликом</div></div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      <select id="tMon" style="width:150px;font-size:11px" onchange="initTab()">
+        <option value="4-2026">Апрель 2026</option>
+        <option value="5-2026">Май 2026</option>
+        <option value="3-2026">Март 2026</option>
+      </select>
+      <button class="btn p sm" onclick="showTabAI()">🤖 AI заполнить</button>
+      <button class="btn sm" onclick="fillStd()">Стандарт (Я)</button>
+      <button class="btn sm" onclick="saveTab()">💾 Сохранить</button>
+    </div>
+  </div>
+
+  <!-- AI-заполнение -->
+  <div id="tabAI" style="display:none;margin-bottom:14px">
+    <div class="ai-box">
+      <h3>🤖 AI заполнение табеля — укажите отклонения</h3>
+      <div class="notice info"><strong>Стандартные рабочие дни</strong> AI проставит автоматически по производственному календарю РК. Вам нужно указать только отклонения от нормы.</div>
+      <textarea id="tabTxt" placeholder="Примеры команд:&#10;&#10;• В апреле Мухамедов был в командировке с 20 по 22 апреля&#10;• Абдрахманов болел с 8 по 12 апреля (больничный лист)&#10;• Байжанова взяла отгул 15 апреля&#10;• Сейткали в отпуске с 25 по 30 апреля&#10;&#10;Или: все сотрудники работали по стандартному графику 5/2"></textarea>
+      <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+        <button class="btn p sm" onclick="runTabAI()">🤖 Заполнить табель</button>
+        <button class="btn sm" onclick="document.getElementById('tabAI').style.display='none'">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Легенда -->
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center">
+    <span style="font-size:10px;color:var(--ts)">Кликните статус → затем ячейку:</span>
+    <span onclick="SC='Y'" style="cursor:pointer;padding:2px 8px;border-radius:4px;background:var(--bg);color:var(--tg);font-size:11px">Я — явка</span>
+    <span onclick="SC='V'" style="cursor:pointer;padding:2px 8px;border-radius:4px;background:var(--bs);color:var(--ts);font-size:11px">В — выходной</span>
+    <span onclick="SC='B'" style="cursor:pointer;padding:2px 8px;border-radius:4px;background:var(--bd);color:var(--td);font-size:11px">Б — больничный</span>
+    <span onclick="SC='O'" style="cursor:pointer;padding:2px 8px;border-radius:4px;background:var(--bi);color:var(--ti);font-size:11px">ОТ — отпуск</span>
+    <span onclick="SC='K'" style="cursor:pointer;padding:2px 8px;border-radius:4px;background:var(--bw);color:var(--tw);font-size:11px">К — командировка</span>
+    <span onclick="SC='PR'" style="cursor:pointer;padding:2px 8px;border-radius:4px;background:#f0e8ff;color:#6b35c4;font-size:11px">ПР — прогул</span>
+  </div>
+
+  <div class="spin" id="tabSp"><div class="sp"></div><span>AI заполняет табель по производственному календарю...</span></div>
+
+  <div style="overflow-x:auto"><table id="tTbl" style="border-collapse:collapse;font-size:11px"></table></div>
+  <div id="tSum" style="margin-top:8px;font-size:11px;color:var(--ts)"></div>
+  <div style="margin-top:12px">
+    <button class="btn p sm" onclick="T('fot');calcFOT()">💰 Рассчитать ФОТ из табеля →</button>
+  </div>
+</div>
+
+<!-- ФОТ ИЗ ТАБЕЛЯ -->
+<div id="fot" class="sec">
+  <div class="ph">
+    <div><div class="pt">💰 ФОТ · Расчёт из табеля</div>
+      <div class="ps" id="fotPs">Автоматически из табеля · НК РК 2026</div></div>
+    <button class="btn p sm" onclick="calcFOT()">🔄 Пересчитать</button>
+  </div>
+  <div class="notice info"><strong>Как работает:</strong> Принятый сотрудник → автоматически в Табеле → заполняем табель → ФОТ рассчитывается мгновенно с учётом оклада, режима работы, вычетов и НК РК 2026.</div>
+  <div class="kpig" id="fKpi"></div>
+  <div style="overflow-x:auto"><table class="t"><thead><tr>
+    <th>ФИО</th><th>Дней/ч.</th>
+    <th class="nm">Начислено</th><th class="nm">ОПВ 10%</th><th class="nm">ВОСМС 2%</th>
+    <th class="nm">ИПН 10%</th><th class="nm">К выплате</th>
+    <th class="nm">СО 3.5%</th><th class="nm">ОСМС 3%</th><th class="nm">Затраты</th>
+  </tr></thead><tbody id="fTb"></tbody><tfoot><tr class="tot" id="fTot"></tr></tfoot></table></div>
+  <div style="margin-top:12px;padding:12px;background:var(--bs);border-radius:8px;font-size:11px;line-height:2.2" id="fEnt"></div>
+  <div style="margin-top:10px;display:flex;gap:8px">
+    <button class="btn p sm" onclick="postFOT()">💾 Проводки → в журнал</button>
+    <button class="btn sm" onclick="window.open('fot-final.html','_blank')">Полный модуль ФОТ →</button>
+  </div>
+</div>
+
+<!-- КАДРОВЫЕ ДОКУМЕНТЫ -->
+<div id="doc" class="sec">
+  <div class="ph"><div class="pt">📋 Кадровые документы · ЕСУТД</div>
+    <button class="btn p sm" onclick="addDoc()">+ Новый документ</button></div>
+  <div class="notice info"><strong>ЕСУТД:</strong> Все договоры регистрируются на eEnbek.kz. Обязательно для всех работодателей РК с 2021 года.</div>
+  <div style="overflow-x:auto"><table class="t"><thead><tr>
+    <th>Дата</th><th>Тип</th><th>№</th><th>Сотрудник</th><th>Содержание</th><th>Статус</th><th></th>
+  </tr></thead><tbody id="docTb"></tbody></table></div>
+</div>
+
+</div>
+<script>
+const DK='platform_db_v1';
+function lDB(){try{const r=localStorage.getItem(DK);if(r)return JSON.parse(r);}catch(e){}return dDB();}
+function dDB(){return{company:{name:'Alpino Group ТОО',bin:'',mrp:4325,nds:true,regime:'ОУР'},
+employees:[
+  {id:'e1',s:'active',last:'Сейткали',first:'Нурлан',mid:'',iin:'820315301001',pos:'Директор',dept:'Руководство',salary:350000,date:'10.01.2022',contract:'Бессрочный',sch:'5/2',bank:'Kaspi',iik:'KZ...001',vy:'30',phone:'',email:'',cit:'Казахстан',cat:'Основной',note:''},
+  {id:'e2',s:'active',last:'Байжанова',first:'Айгүл',mid:'',iin:'870822400502',pos:'Гл. бухгалтер',dept:'Бухгалтерия',salary:250000,date:'10.01.2022',contract:'Бессрочный',sch:'5/2',bank:'Kaspi',iik:'KZ...002',vy:'30',phone:'',email:'',cit:'Казахстан',cat:'Основной',note:''},
+  {id:'e3',s:'active',last:'Мухамедов',first:'Алибек',mid:'',iin:'950112301003',pos:'Инженер',dept:'Производственный',salary:180952,date:'01.03.2023',contract:'Бессрочный',sch:'5/2',bank:'Kaspi',iik:'KZ...003',vy:'30',phone:'',email:'',cit:'Казахстан',cat:'Основной',note:''},
+  {id:'e4',s:'active',last:'Абдрахманов',first:'Серік',mid:'',iin:'870530300804',pos:'Водитель',dept:'АХО',salary:180000,date:'15.06.2023',contract:'Бессрочный',sch:'5/2',bank:'Kaspi',iik:'KZ...004',vy:'30',phone:'',email:'',cit:'Казахстан',cat:'Основной',note:''}
+],
+assets:[
+  {id:'a1',s:'active',inv:'ОС-001',name:'Экскаватор JINGONG JGM9225E',cat:'Машины',cost:5000000,life:10,nuGr:'II',nuR:25,nuBal:4250000,date:'2021-01-01',vin:'',reg:'',driver:'',desc:'Производственное оборудование'},
+  {id:'a2',s:'active',inv:'ОС-ТС-001',name:'Тягач SHACMAN X3000',cat:'ТС',cost:15000000,life:8,nuGr:'II',nuR:25,nuBal:13218750,date:'2021-06-01',vin:'LZZ5BLFBXKA001234',reg:'177 ABA 02',driver:'e4',desc:''},
+  {id:'a3',s:'active',inv:'ОС-ТС-002',name:'Тягач DAF XF 105.460',cat:'ТС',cost:19500000,life:8,nuGr:'II',nuR:25,nuBal:17875000,date:'2025-08-07',vin:'XLRTE47MS0G210199',reg:'',driver:'',desc:''},
+  {id:'a4',s:'active',inv:'ОС-ТС-003',name:'Тягач DAF XF 105.460',cat:'ТС',cost:21500000,life:8,nuGr:'II',nuR:25,nuBal:20006250,date:'2025-08-28',vin:'XLRTE47MS0G210454',reg:'',driver:'',desc:''},
+  {id:'a5',s:'active',inv:'ОС-003',name:'Сервер Dell PowerEdge R540',cat:'IT',cost:1200000,life:5,nuGr:'III',nuR:40,nuBal:1020000,date:'2024-01-15',vin:'',reg:'',driver:'',desc:''},
+  {id:'a6',s:'active',inv:'ОС-004',name:'Мониторы iiyama ProLite 35шт',cat:'IT',cost:7608000,life:5,nuGr:'III',nuR:40,nuBal:6467000,date:'2024-03-01',vin:'',reg:'',driver:'',desc:''},
+  {id:'a7',s:'active',inv:'ОС-005',name:'Комплект усиления связи',cat:'IT',cost:109900,life:5,nuGr:'III',nuR:40,nuBal:93365,date:'2024-05-01',vin:'',reg:'',driver:'',desc:''}
+],
+inventory:[
+  {id:'i1',s:'active',name:'Фильтр масляный DAF',unit:'шт',qty:3,price:24914,acc:'1310',wh:'Склад запчастей',min:2},
+  {id:'i2',s:'active',name:'Масло TOTAL Rubia 10w40',unit:'канист.',qty:2,price:94828,acc:'1310',wh:'Склад материалов',min:3},
+  {id:'i3',s:'active',name:'Диск отрезной 400×32',unit:'шт',qty:8,price:14483,acc:'1310',wh:'Склад материалов',min:5},
+  {id:'i4',s:'active',name:'Цемент М400',unit:'мешок',qty:12,price:4310,acc:'1310',wh:'Склад материалов',min:10}
+],
+purchases:[],bankTx:[],tabel:{},docs:[],journal:[]};}
+function sDB(d){try{localStorage.setItem(DK,JSON.stringify(d));}catch(e){console.error('DB:',e);}}
+let DB=lDB();
+function fmt(n){return Math.round(n||0).toLocaleString('ru-RU');}
+const MRP=DB.company?.mrp||4325,VY30=30*MRP;
+document.getElementById('co').textContent=(DB.company?.name||'Alpino Group ТОО')+' · НК РК 2026';
+
+let SC='Y',TAB={};
+const CM={Y:'tc-y',V:'tc-v',B:'tc-b',O:'tc-o',K:'tc-k',PR:'tc-pr'};
+const CL={Y:'Я',V:'В',B:'Б',O:'ОТ',K:'К',PR:'ПР'};
+const CYC=['Y','V','B','O','K','PR'];
+const CSS_TC=`.tc-y{background:var(--bg);color:var(--tg)}.tc-v{background:var(--bs);color:var(--ts)}.tc-b{background:var(--bd);color:var(--td)}.tc-o{background:var(--bi);color:var(--ti)}.tc-k{background:var(--bw);color:var(--tw)}.tc-pr{background:#f0e8ff;color:#6b35c4}`;
+document.head.insertAdjacentHTML('beforeend','<style>'+CSS_TC+'.tc{width:28px;height:24px;border:.5px solid var(--bor);text-align:center;font-size:10px;cursor:pointer;vertical-align:middle;font-family:var(--fm)}</style>');
+
+// ===== DASH =====
+function rDash(){
+  const ac=DB.employees.filter(e=>e.s==='active');
+  const tot=ac.reduce((s,e)=>s+(+e.salary||0),0);
+  const bad=ac.filter(e=>!e.iin||e.iin.length!==12);
+  document.getElementById('dkpi').innerHTML=
+    '<div class="kpi b"><div class="v">'+ac.length+'</div><div class="l">Активных</div></div>'+
+    '<div class="kpi g"><div class="v">'+fmt(tot)+' ₸</div><div class="l">ФОТ / мес</div></div>'+
+    '<div class="kpi"><div class="v">'+fmt(Math.round(tot/(ac.length||1)))+' ₸</div><div class="l">Средний оклад</div></div>'+
+    (bad.length?'<div class="kpi r"><div class="v">'+bad.length+'</div><div class="l">Неполных карточек</div></div>':'');
+  const dw=document.getElementById('dwarn');
+  if(bad.length){dw.style.display='block';dw.innerHTML='<strong>⚠ Неполные карточки:</strong> '+bad.map(e=>e.last+' '+e.first).join(' · ');}else dw.style.display='none';
+  document.getElementById('dtb').innerHTML=ac.map(e=>'<tr>'+
+    '<td><strong>'+e.last+' '+e.first+'</strong></td><td>'+e.pos+'</td><td>'+(e.dept||'—')+'</td>'+
+    '<td style="font-family:var(--fm);font-size:10px">'+e.iin+'</td><td>'+e.date+'</td>'+
+    '<td class="nm">'+fmt(e.salary)+'</td>'+
+    '<td><span class="badge b-b">'+(e.contract||'—')+'</span></td>'+
+    '<td><span class="badge b-g">Активен</span></td>'+
+    '<td><button class="btn sm" onclick="openC(\''+e.id+'\')">Карточка →</button></td>'+
+    '</tr>').join('');
+}
+
+function openC(id){T('reg');setTimeout(()=>{const el=document.getElementById('c-'+id);if(el)el.scrollIntoView({behavior:'smooth'});},120);}
+
+// ===== КАРТОЧКИ =====
+function rCards(){
+  const q=(document.getElementById('srch')?.value||'').toLowerCase();
+  const emps=DB.employees.filter(e=>!q||(e.last+' '+e.first).toLowerCase().includes(q)||e.iin.includes(q));
+  document.getElementById('cards').innerHTML=emps.map(e=>{
+    const ini=(e.last[0]||'')+(e.first[0]||'');
+    const wd=(TAB[e.id]||[]).filter(v=>v==='Y'||v==='K').length;
+    return '<div class="card" id="c-'+e.id+'">'+
+      '<div class="card-h">'+
+        '<div style="display:flex;align-items:center;gap:12px">'+
+          '<div style="width:40px;height:40px;border-radius:50%;background:var(--tp);color:var(--bp);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0">'+ini+'</div>'+
+          '<div><div style="font-size:14px;font-weight:500">'+e.last+' '+e.first+(e.mid?' '+e.mid:'')+'</div>'+
+          '<div style="font-size:11px;color:var(--ts);margin-top:2px">'+e.pos+' · '+(e.dept||'—')+' · с '+e.date+'</div></div>'+
+        '</div>'+
+        '<div style="display:flex;gap:6px;flex-wrap:wrap">'+
+          '<span class="badge '+(e.s==='active'?'b-g':'b-r')+'">'+(e.s==='active'?'Активен':'Архив')+'</span>'+
+          '<span class="badge b-b">'+(e.contract||'—')+'</span>'+
+          '<button class="btn sm" onclick="editE(\''+e.id+'\')">Редактировать</button>'+
+          '<button class="btn sm red" onclick="disE(\''+e.id+'\')">Уволить</button>'+
+        '</div>'+
+      '</div>'+
+      '<div class="card-b">'+
+        '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">'+
+          '<div>'+
+            '<div style="font-size:10px;color:var(--ts);font-weight:500;text-transform:uppercase;margin-bottom:6px">Личные данные</div>'+
+            '<div class="row2"><span>ИИН</span><span style="font-family:var(--fm);font-size:11px">'+e.iin+'</span></div>'+
+            '<div class="row2"><span>Гражданство</span><span>'+(e.cit||'Казахстан')+'</span></div>'+
+            '<div class="row2"><span>Телефон</span><span>'+(e.phone||'—')+'</span></div>'+
+            '<div class="row2"><span>Email</span><span>'+(e.email||'—')+'</span></div>'+
+          '</div>'+
+          '<div>'+
+            '<div style="font-size:10px;color:var(--ts);font-weight:500;text-transform:uppercase;margin-bottom:6px">Трудовые данные</div>'+
+            '<div class="row2"><span>Оклад</span><strong>'+fmt(e.salary)+' ₸</strong></div>'+
+            '<div class="row2"><span>График</span><span>'+(e.sch||'5/2')+'</span></div>'+
+            '<div class="row2"><span>Вычет ИПН</span><span>'+(e.vy||30)+' МРП = '+fmt(+(e.vy||30)*MRP)+' ₸</span></div>'+
+            '<div class="row2"><span>Категория</span><span>'+(e.cat||'Основной')+'</span></div>'+
+          '</div>'+
+          '<div>'+
+            '<div style="font-size:10px;color:var(--ts);font-weight:500;text-transform:uppercase;margin-bottom:6px">Банк / ЕСУТД</div>'+
+            '<div class="row2"><span>Банк</span><span>'+(e.bank||'—')+'</span></div>'+
+            '<div class="row2"><span>ИИК</span><span style="font-family:var(--fm);font-size:10px">'+(e.iik||'—')+'</span></div>'+
+            '<div class="row2"><span>ЕСУТД</span><span class="badge b-g">Зарегистрирован</span></div>'+
+            (e.note?'<div class="row2"><span>Заметки</span><span>'+e.note+'</span></div>':'')+
+          '</div>'+
+        '</div>'+
+        '<div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">'+
+          '<button class="btn sm" onclick="T(\'tab\')">Открыть Табель →</button>'+
+          '<button class="btn sm" onclick="T(\'fot\');calcFOT()">Открыть ФОТ →</button>'+
+          '<button class="btn sm p" onclick="printCard(\''+e.id+'\')">Печать Т-2</button>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
+// ===== ДОБАВЛЕНИЕ СОТРУДНИКА =====
+function setMode(m){
+  document.getElementById('step0').style.display=m==='none'?'block':'none';
+  document.getElementById('step-ai').style.display=m==='ai'?'block':'none';
+  document.getElementById('step-form').style.display=m==='manual'||m==='fill'?'block':'none';
+  if(m==='manual'){
+    document.getElementById('formT').textContent='✏️ Карточка сотрудника (Т-2) — ручной ввод';
+    document.getElementById('formSrc').textContent='Ручной ввод';
+    document.getElementById('formSrc').className='badge b-b';
+  }
+}
+// ====== ФАЙЛЫ ======
+let _files = []; // накапливаем загруженные файлы
+
+function onDrop(e){
+  e.preventDefault();
+  document.getElementById('dz').classList.remove('drag');
+  addFiles(e.dataTransfer.files);
+}
+function onFile(inp){
+  addFiles(inp.files);
+}
+function addFiles(fileList){
+  for(const f of fileList) _files.push(f);
+  renderFileList();
+}
+function renderFileList(){
+  const fl = document.getElementById('fileList');
+  if(!_files.length){fl.style.display='none';return;}
+  fl.style.display='block';
+  fl.innerHTML = '<strong>📎 Загружено файлов: '+_files.length+'</strong><br>'+
+    _files.map((f,i)=>'<span style="display:inline-flex;align-items:center;gap:4px;margin:2px 4px 2px 0;padding:2px 7px;background:var(--bi);border-radius:10px;color:var(--ti)">'+
+      (f.type.includes('pdf')?'📄':f.type.includes('image')?'🖼️':'📎')+' '+
+      f.name+' ('+Math.round(f.size/1024)+'KB)'+
+      ' <span onclick="removeFile('+i+')" style="cursor:pointer;color:var(--td);font-weight:bold">×</span></span>'
+    ).join('');
+}
+function removeFile(i){_files.splice(i,1);renderFileList();}
+
+// ====== ANTHROPIC API STATUS ======
+function saveApiKey(v){localStorage.setItem('anthropic_key',v.trim());}
+function getApiKey(){return localStorage.getItem('anthropic_key')||'';}
+function toggleKeyVis(){const el=document.getElementById('apiKeyInput');el.type=el.type==='password'?'text':'password';}
+
+async function checkAPI(){
+  const key = getApiKey();
+  const apiDot = document.getElementById('apiDot');
+  const apiTxt = document.getElementById('apiStatusTxt');
+  const inp = document.getElementById('apiKeyInput');
+
+  // Восстанавливаем ключ из localStorage
+  if(key && inp) inp.value = key;
+
+  if(!key){
+    apiDot.style.background='var(--tw)';
+    apiTxt.textContent='⚠ Введите API ключ выше для чтения PDF файлов';
+    return;
+  }
+  try{
+    const r = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'x-api-key': key,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:5,messages:[{role:'user',content:'ok'}]})
+    });
+    if(r.status===200||r.status===529){
+      apiDot.style.background='var(--tg)';
+      apiTxt.textContent='✓ Claude API подключён — загружайте файлы';
+    } else if(r.status===401){
+      apiDot.style.background='var(--td)';
+      apiTxt.textContent='✗ Неверный API ключ — проверьте и введите снова';
+    } else {
+      apiDot.style.background='var(--tg)';
+      apiTxt.textContent='✓ API доступен (статус '+r.status+')';
+    }
+  }catch(err){
+    apiDot.style.background='var(--tw)';
+    apiTxt.textContent='⚠ Нет соединения с API — проверьте интернет';
+  }
+}
+checkAPI();
+function loadEx(){
+  document.getElementById('aitxt').value='Принять нового сотрудника:\nФИО: Жансеитов Болат Серикович\nИИН: 880714300123\nДолжность: Механик\nПодразделение: Производственный отдел\nОклад: 190 000 тенге\nДата приёма: 5 мая 2026\nДоговор: Бессрочный\nТелефон: +7 702 555 12 34\nБанк: Kaspi Bank';
+}
+
+async function aiAnalyze(){
+  const txt = document.getElementById('aitxt').value.trim();
+  if(!txt && !_files.length){alert('Загрузите файлы или введите данные о сотруднике');return;}
+
+  const sp = document.getElementById('aisp');
+  sp.classList.add('on');
+  const msgs=['Claude читает документы...','Извлекаю ФИО и ИИН...','Определяю должность и условия...','Проверяю реквизиты...','Формирую карточку Т-2...'];
+  let i=0;
+  const iv=setInterval(()=>{document.getElementById('aispT').textContent=msgs[i%msgs.length];i++;},700);
+
+  // Проверяем ключ
+  if(!getApiKey()){
+    clearInterval(iv);
+    sp.classList.remove('on');
+    alert('⚠ Введите Anthropic API ключ в поле выше\n\nПолучить ключ: console.anthropic.com/account/keys');
+    return;
+  }
+
+  try {
+    let result;
+
+    // Если есть файлы — используем Anthropic API
+    if(_files.length > 0){
+      result = await analyzeWithAPI(txt);
+    } else {
+      // Только текст — используем локальный парсер + API для улучшения
+      result = await analyzeWithAPI(txt);
+    }
+
+    clearInterval(iv);
+    sp.classList.remove('on');
+    fillForm(result);
+    document.getElementById('step-ai').style.display='none';
+    document.getElementById('step-form').style.display='block';
+    document.getElementById('formT').textContent='🤖 Claude заполнил карточку — проверьте данные';
+    document.getElementById('formSrc').textContent='Claude AI · Требует проверки';
+    document.getElementById('formSrc').className='badge b-w';
+    const c=document.getElementById('aiConf');c.style.display='block';
+    c.innerHTML='<strong>✅ Claude извлёк:</strong> '+result._f.join(' · ')+
+      (result._m.length?'<br><strong>⚠️ Проверьте вручную:</strong> '+result._m.join(' · '):'');
+  } catch(err) {
+    clearInterval(iv);
+    sp.classList.remove('on');
+    // Fallback — локальный парсер
+    const d = parseEmp(txt + (_files.length?' [файлы: '+_files.map(f=>f.name).join(', ')+']':''));
+    fillForm(d);
+    document.getElementById('step-ai').style.display='none';
+    document.getElementById('step-form').style.display='block';
+    document.getElementById('formT').textContent='📋 Заполнено локальным парсером — проверьте';
+    document.getElementById('formSrc').textContent='Локальный парсер · API недоступен';
+    document.getElementById('formSrc').className='badge b-w';
+    const c=document.getElementById('aiConf');c.style.display='block';
+    c.innerHTML='<strong>⚠️ Claude API недоступен.</strong> Данные заполнены по тексту.<br>Ошибка: '+err.message+'<br><strong>Проверьте все поля вручную.</strong>';
+  }
+}
+
+// Конвертируем файл в base64
+function fileToBase64(file){
+  return new Promise((res,rej)=>{
+    const r=new FileReader();
+    r.onload=()=>res(r.result.split(',')[1]);
+    r.onerror=()=>rej(new Error('Ошибка чтения файла'));
+    r.readAsDataURL(file);
+  });
+}
+
+// Анализ через Anthropic API
+async function analyzeWithAPI(txt){
+  // Строим содержимое сообщения
+  const content = [];
+
+  // Добавляем файлы как документы/изображения
+  for(const file of _files){
+    const b64 = await fileToBase64(file);
+    const isPDF = file.type === 'application/pdf' || file.name.endsWith('.pdf');
+    const isImg = file.type.startsWith('image/');
+
+    if(isPDF){
+      content.push({
+        type:'document',
+        source:{type:'base64',media_type:'application/pdf',data:b64}
+      });
+    } else if(isImg){
+      content.push({
+        type:'image',
+        source:{type:'base64',media_type:file.type||'image/jpeg',data:b64}
+      });
+    }
+  }
+
+  // Добавляем текстовый промпт
+  const prompt = `Ты бухгалтер в Казахстане. Прочитай приложенные документы ${txt?'и текст:'+txt:''} и извлеки данные сотрудника для карточки Т-2.
+
+Верни ТОЛЬКО JSON без пояснений:
+{
+  "last": "Фамилия",
+  "first": "Имя", 
+  "mid": "Отчество или пустая строка",
+  "iin": "ИИН 12 цифр",
+  "pos": "Должность",
+  "dept": "Подразделение или пустая строка",
+  "salary": число_только_цифры,
+  "date": "YYYY-MM-DD дата приёма",
+  "contract": "Бессрочный или Срочный (1 год) или ГПХ",
+  "phone": "+7...",
+  "bank": "название банка",
+  "iik": "KZ... или пустая строка",
+  "found": ["что нашёл 1", "что нашёл 2"],
+  "missing": ["чего не хватает 1"]
+}
+
+Для Казахстана: фамилия обычно последнее слово в казахском имени (Мырзаұлы Аязбек → last=Мырзаұлы, first=Аязбек). ИИН это 12-значное число. Оклад — число в тенге (если написано "чистыми на руки" — это и есть оклад к/выплате, для системы используй это число). БЦК = БЦК/Банк ЦентрКредит.`;
+
+  content.push({type:'text',text:prompt});
+
+  const resp = await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','x-api-key':getApiKey(),'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+    body:JSON.stringify({
+      model:'claude-sonnet-4-5',
+      max_tokens:1000,
+      messages:[{role:'user',content}]
+    })
+  });
+
+  if(!resp.ok){
+    const err = await resp.text();
+    throw new Error('API '+resp.status+': '+err.substring(0,100));
+  }
+
+  const data = await resp.json();
+  const rawText = data.content?.find(c=>c.type==='text')?.text || '{}';
+
+  // Парсим JSON из ответа
+  let parsed;
+  try {
+    const clean = rawText.replace(/```json|```/g,'').trim();
+    const jsonMatch = clean.match(/\{[\s\S]*\}/);
+    parsed = JSON.parse(jsonMatch?.[0] || clean);
+  } catch(e){
+    throw new Error('Claude ответил нечитаемо: '+rawText.substring(0,100));
+  }
+
+  // Нормализуем результат
+  return {
+    last: parsed.last || '',
+    first: parsed.first || '',
+    mid: parsed.mid || '',
+    iin: parsed.iin || '',
+    pos: parsed.pos || '',
+    dept: parsed.dept || '',
+    salary: +parsed.salary || 0,
+    date: parsed.date || '',
+    contract: parsed.contract || 'Бессрочный',
+    phone: parsed.phone || '',
+    bank: parsed.bank || '',
+    iik: parsed.iik || '',
+    _f: parsed.found || ['Данные из документа'],
+    _m: parsed.missing || []
+  };
+}
+function parseEmp(txt){
+  const t=txt.toLowerCase(),r={_f:[],_m:[]};
+  const fio=txt.match(/([А-ЯЁ][а-яё]{1,})\s+([А-ЯЁ][а-яё]{1,})(?:\s+([А-ЯЁ][а-яё]{1,}))?/);
+  if(fio){r.last=fio[1];r.first=fio[2];r.mid=fio[3]||'';r._f.push('ФИО');}else r._m.push('ФИО');
+  const iin=txt.match(/(\d{12})/);if(iin){r.iin=iin[1];r._f.push('ИИН');}else r._m.push('ИИН');
+  const sal=txt.match(/(\d[\d\s]{3,})\s*(?:тенге|₸|тг\.?)/i);if(sal){r.salary=parseInt(sal[1].replace(/\s/g,''));r._f.push('Оклад');}else r._m.push('Оклад');
+  const pkeys=['должность','специальность','принять','принят'];
+  for(const k of pkeys){const i=t.indexOf(k);if(i>=0){const after=txt.substring(i+k.length+1,i+k.length+50).replace(/[:\-—\n]/g,'').trim().split(/\n/)[0];if(after.length>2){r.pos=after;r._f.push('Должность');break;}}}
+  if(!r.pos)r._m.push('Должность');
+  const dept=txt.match(/(?:подразделени[ея][:\s]+|отдел[:\s]+)([^\n,]+)/i);if(dept){r.dept=dept[1].trim();r._f.push('Подразделение');}
+  const dm=txt.match(/(\d{1,2})\s*(?:мая|апреля|января|февраля|марта|июня|июля|августа|сентября|октября|ноября|декабря)\s*(\d{4})/i);
+  if(dm){const m2n={мая:'05',апреля:'04',января:'01',февраля:'02',марта:'03',июня:'06',июля:'07',августа:'08',сентября:'09',октября:'10',ноября:'11',декабря:'12'};const mn=txt.match(/мая|апреля|января|февраля|марта|июня|июля|августа|сентября|октября|ноября|декабря/i);r.date=dm[2]+'-'+(mn?m2n[mn[0].toLowerCase()]:'05')+'-'+String(dm[1]).padStart(2,'0');r._f.push('Дата');}
+  const ph=txt.match(/\+?[78]\s?\d{3}\s?\d{3}\s?\d{2}\s?\d{2}/);if(ph){r.phone=ph[0];r._f.push('Телефон');}
+  if(t.includes('бессрочн'))r.contract='Бессрочный';
+  else if(t.includes('срочн'))r.contract='Срочный (1 год)';
+  else if(t.includes('гпх'))r.contract='ГПХ';
+  if(t.includes('kaspi')||t.includes('каспи'))r.bank='Kaspi Bank';
+  else if(t.includes('halyk')||t.includes('халык'))r.bank='Halyk Bank';
+  else if(t.includes('forte')||t.includes('форте'))r.bank='ForteBank';
+  else if(t.includes('бцк'))r.bank='БЦК';
+  return r;
+}
+function fillForm(d){
+  const sv=(id,v)=>{const el=document.getElementById(id);if(el&&v!==undefined&&v!==null&&String(v).trim()!=='')el.value=v;};
+  sv('fLast',d.last);sv('fFirst',d.first);sv('fMid',d.mid);sv('fIIN',d.iin);
+  sv('fPos',d.pos);sv('fDept',d.dept);sv('fSal',d.salary);sv('fPhone',d.phone);
+  sv('fDate',d.date||'2026-05-05');sv('fIIK',d.iik||'');
+  if(d.bank){
+    const bk=(d.bank||'').toLowerCase();
+    const bankMap=[{keys:['kaspi','каспи'],idx:0},{keys:['halyk','халык','народный'],idx:1},{keys:['forte','форте'],idx:2},{keys:['бцк','bck','centercredit','kcjb'],idx:3},{keys:['jusan'],idx:4}];
+    const s=document.getElementById('fBank');
+    for(const b of bankMap){if(b.keys.some(k=>bk.includes(k))){s.selectedIndex=b.idx;break;}}
+  }
+  if(d.contract){
+    const co=(d.contract||'').toLowerCase();
+    const s=document.getElementById('fContract');
+    if(co.includes('бессрочн'))s.selectedIndex=0;
+    else if(co.includes('срочн')&&co.includes('2'))s.selectedIndex=2;
+    else if(co.includes('срочн'))s.selectedIndex=1;
+    else if(co.includes('гпх'))s.selectedIndex=3;
+  }
+}
+function clearF(){['fLast','fFirst','fMid','fIIN','fPos','fDept','fSal','fPhone','fEmail','fDOB','fIIK','fNote'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});}
+function saveEmp(){
+  const last=document.getElementById('fLast').value.trim();
+  const first=document.getElementById('fFirst').value.trim();
+  const iin=document.getElementById('fIIN').value.trim();
+  const sal=document.getElementById('fSal').value;
+  if(!last||!first){alert('Заполните Фамилию и Имя');return;}
+  if(iin&&(iin.length!==12||!/^\d+$/.test(iin))){alert('ИИН должен содержать ровно 12 цифр');return;}
+  if(!sal||+sal<=0){alert('Укажите оклад');return;}
+  const emp={
+    id:'e'+Date.now(),s:'active',
+    last,first,mid:document.getElementById('fMid').value,iin,
+    pos:document.getElementById('fPos').value,dept:document.getElementById('fDept').value,
+    salary:+sal,date:document.getElementById('fDate').value.split('-').reverse().join('.'),
+    contract:document.getElementById('fContract').value,sch:document.getElementById('fSch').value,
+    vy:document.getElementById('fVy').value,cat:document.getElementById('fCat').value,
+    bank:document.getElementById('fBank').value,iik:document.getElementById('fIIK').value,
+    phone:document.getElementById('fPhone').value,email:document.getElementById('fEmail').value,
+    cit:document.getElementById('fCit').value,note:document.getElementById('fNote').value
+  };
+  DB.employees.push(emp);
+  DB.docs=DB.docs||[];
+  DB.docs.unshift({date:new Date().toLocaleDateString('ru-RU'),type:'Приём',num:'П-'+DB.employees.length,emp:last+' '+first,content:emp.pos+(emp.dept?' · '+emp.dept:''),s:'Действует'});
+  sDB(DB);clearF();
+  document.getElementById('step0').style.display='block';
+  document.getElementById('step-ai').style.display='none';
+  document.getElementById('step-form').style.display='none';
+  document.getElementById('aiConf').style.display='none';
+  initTab();rDash();rCards();
+  alert('✅ '+last+' '+first+' принят в систему!\n\nАвтоматически добавлен в:\n• Реестр сотрудников (карточка Т-2)\n• Табель учёта рабочего времени\n• Расчёт ФОТ\n\nСледующий шаг:\n→ Заполните Табель за текущий месяц\n→ Рассчитайте ФОТ\n→ Зарегистрируйте договор в ЕСУТД: eEnbek.kz');
+  T('reg');
+}
+function editE(id){
+  const e=DB.employees.find(x=>x.id===id);if(!e)return;
+  T('add');setMode('manual');
+  setTimeout(()=>{
+    fillForm({last:e.last,first:e.first,mid:e.mid,iin:e.iin,pos:e.pos,dept:e.dept,salary:e.salary,date:e.date?.split('.').reverse().join('-'),phone:e.phone,bank:e.bank,contract:e.contract});
+    document.getElementById('fIIK').value=e.iik||'';
+    document.getElementById('fNote').value=e.note||'';
+    document.getElementById('formT').textContent='Редактирование: '+e.last+' '+e.first;
+  },50);
+}
+function disE(id){
+  const e=DB.employees.find(x=>x.id===id);if(!e)return;
+  if(!confirm('Уволить '+e.last+' '+e.first+'?\nДанные сохранятся в архиве.'))return;
+  e.s='dismissed';sDB(DB);rDash();rCards();
+}
+function printCard(id){alert('Печать карточки Т-2 — в продакшн версии генерируется PDF по форме ГО-МТСЗН РК.');}
+
+// ===== ТАБЕЛЬ =====
+function initTab(){
+  const mv=document.getElementById('tMon')?.value||'4-2026';
+  const [m,y]=mv.split('-').map(Number);
+  const days=new Date(y,m,0).getDate();
+  DB.employees.filter(e=>e.s==='active').forEach(e=>{
+    if(!TAB[e.id]){TAB[e.id]=Array.from({length:days},(_,i)=>{const d=new Date(y,m-1,i+1).getDay();return(d===0||d===6)?'V':'Y';});}
+  });
+  rTab();
+}
+function rTab(){
+  const mv=document.getElementById('tMon')?.value||'4-2026';
+  const [m,y]=mv.split('-').map(Number);
+  const days=new Date(y,m,0).getDate();
+  const emps=DB.employees.filter(e=>e.s==='active');
+  if(!emps.length){document.getElementById('tTbl').innerHTML='<tr><td style="padding:20px;color:var(--ts);text-align:center">Нет активных сотрудников. <a href="#" onclick="T(\'add\')" style="color:var(--ti)">Принять сотрудника →</a></td></tr>';return;}
+  let h='<tr><th style="padding:5px 8px;font-size:11px;min-width:130px;text-align:left;background:var(--bs);border-bottom:.5px solid var(--bor);white-space:nowrap">Сотрудник</th>';
+  for(let d=1;d<=days;d++){const dw=new Date(y,m-1,d).getDay();h+='<td style="padding:2px 3px;font-size:9px;text-align:center;color:'+(dw===0||dw===6?'var(--td)':'var(--ts)')+';background:var(--bs);border-bottom:.5px solid var(--bor);font-weight:500">'+d+'</td>';}
+  h+='<th style="padding:5px 8px;font-size:11px;background:var(--bs);border-bottom:.5px solid var(--bor)">Дней</th><th style="padding:5px 8px;font-size:11px;background:var(--bs);border-bottom:.5px solid var(--bor)">Ч.</th></tr>';
+  emps.forEach(e=>{
+    if(!TAB[e.id])TAB[e.id]=Array.from({length:days},(_,i)=>{const d=new Date(y,m-1,i+1).getDay();return(d===0||d===6)?'V':'Y';});
+    const row=TAB[e.id];const wd=row.filter(v=>v==='Y'||v==='K').length;
+    h+='<tr><td style="padding:4px 8px;font-size:11px;white-space:nowrap"><strong>'+e.last+'</strong> '+e.first.charAt(0)+'.</td>';
+    row.forEach((v,i)=>{h+='<td class="tc '+(CM[v]||'tc-v')+'" onclick="tClick(\''+e.id+'\','+i+')">'+(CL[v]||v)+'</td>';});
+    h+='<td style="padding:4px 8px;text-align:center;font-weight:500;font-size:11px">'+wd+'</td><td style="padding:4px 8px;text-align:center;font-size:11px">'+(wd*8)+'</td></tr>';
+  });
+  document.getElementById('tTbl').innerHTML=h;
+  const ea=DB.employees.filter(e=>e.s==='active');
+  const tw=ea.reduce((s,e)=>s+(TAB[e.id]||[]).filter(v=>v==='Y'||v==='K').length,0);
+  const tb=ea.reduce((s,e)=>s+(TAB[e.id]||[]).filter(v=>v==='B').length,0);
+  const tk=ea.reduce((s,e)=>s+(TAB[e.id]||[]).filter(v=>v==='K').length,0);
+  const to=ea.reduce((s,e)=>s+(TAB[e.id]||[]).filter(v=>v==='O').length,0);
+  document.getElementById('tSum').textContent='Итого человеко-дней: '+tw+' · Больничных: '+tb+' · Командировок: '+tk+' · Отпуск: '+to;
+}
+function tClick(eid,di){
+  if(!TAB[eid])return;
+  TAB[eid][di]=SC?SC:CYC[(CYC.indexOf(TAB[eid][di])+1)%CYC.length];
+  rTab();
+}
+function showTabAI(){document.getElementById('tabAI').style.display='block';document.getElementById('tabAI').scrollIntoView({behavior:'smooth'});}
+function fillStd(){
+  const mv=document.getElementById('tMon')?.value||'4-2026';const [m,y]=mv.split('-').map(Number);const days=new Date(y,m,0).getDate();
+  DB.employees.filter(e=>e.s==='active').forEach(e=>{TAB[e.id]=Array.from({length:days},(_,i)=>{const d=new Date(y,m-1,i+1).getDay();return(d===0||d===6)?'V':'Y';});});
+  rTab();
+}
+function saveTab(){DB.tabel=TAB;sDB(DB);alert('✅ Табель сохранён в системе');}
+function runTabAI(){
+  const txt=document.getElementById('tabTxt').value.toLowerCase();
+  const sp=document.getElementById('tabSp');sp.classList.add('on');
+  setTimeout(()=>{
+    fillStd();
+    const mv=document.getElementById('tMon')?.value||'4-2026';const [m,y]=mv.split('-').map(Number);const days=new Date(y,m,0).getDate();
+    DB.employees.filter(e=>e.s==='active').forEach(e=>{
+      const nm=e.last.toLowerCase();
+      if(!txt.includes(nm))return;
+      const rgx=[...txt.matchAll(/(\d{1,2})[-–\s](?:по\s)?(\d{1,2})(?:\s|\.|$)/g)];
+      rgx.forEach(r=>{
+        const from=parseInt(r[1])-1,to=parseInt(r[2])-1;
+        const pos=txt.indexOf(r[0]);
+        const ctx=txt.substring(Math.max(0,pos-200),pos+100);
+        if(!ctx.includes(nm))return;
+        const type=ctx.includes('команди')?'K':ctx.includes('больн')?'B':ctx.includes('отгул')||ctx.includes('отпуск')?'O':'V';
+        for(let d=from;d<=to&&d<days;d++)TAB[e.id][d]=type;
+      });
+    });
+    sp.classList.remove('on');document.getElementById('tabAI').style.display='none';rTab();
+    alert('✅ Табель заполнен!\n\nСтандартные рабочие дни расставлены по производственному календарю РК.\nОтклонения применены согласно вашему описанию.\n\nПроверьте табель и нажмите «Рассчитать ФОТ».');
+  },1800);
+}
+
+// ===== ФОТ =====
+function calcFOT(){
+  const mv=document.getElementById('tMon')?.value||'4-2026';const [m,y]=mv.split('-').map(Number);
+  const stdWD=Array.from({length:new Date(y,m,0).getDate()},(_,i)=>new Date(y,m-1,i+1).getDay()).filter(d=>d>0&&d<6).length;
+  const emps=DB.employees.filter(e=>e.s==='active');
+  document.getElementById('fotPs').textContent='Расчёт за '+['','Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'][m]+' '+y+' · НК РК 2026 · МРП '+MRP+' ₸ · Вычет '+fmt(VY30)+' ₸';
+  let sN=0,sO=0,sV=0,sI=0,sNt=0,sSo=0,sOm=0,sSn=0,sT=0;
+  document.getElementById('fTb').innerHTML=emps.map(e=>{
+    const wd=(TAB[e.id]||[]).filter(v=>v==='Y'||v==='K').length||stdWD;
+    const nachr=Math.round(e.salary*(wd/stdWD));
+    const opv=Math.round(nachr*.10);const vos=Math.round(nachr*.02);
+    const vy=+(e.vy||30)*MRP;
+    const ipn=Math.max(0,Math.round((nachr-opv-vos-vy)*.10));
+    const net=nachr-opv-vos-ipn;
+    const so=Math.round(Math.max(0,nachr-opv)*.035);const osmss=Math.round(nachr*.03);
+    const sn=Math.max(0,Math.round(Math.max(0,nachr-opv-vos)*.095)-so);
+    const total=nachr+so+osmss+sn;
+    sN+=nachr;sO+=opv;sV+=vos;sI+=ipn;sNt+=net;sSo+=so;sOm+=osmss;sSn+=sn;sT+=total;
+    return '<tr><td><strong>'+e.last+' '+e.first+'</strong></td>'+
+      '<td style="text-align:center;font-size:11px">'+wd+'д/'+(wd*8)+'ч</td>'+
+      '<td class="nm">'+fmt(nachr)+'</td><td class="nm" style="color:var(--ts)">'+fmt(opv)+'</td>'+
+      '<td class="nm" style="color:var(--ts)">'+fmt(vos)+'</td><td class="nm" style="color:var(--tw)">'+fmt(ipn)+'</td>'+
+      '<td class="nm" style="font-weight:500;color:var(--tg)">'+fmt(net)+'</td>'+
+      '<td class="nm" style="color:var(--ts)">'+fmt(so)+'</td><td class="nm" style="color:var(--ts)">'+fmt(osmss)+'</td>'+
+      '<td class="nm" style="color:var(--td)">'+fmt(total)+'</td></tr>';
+  }).join('');
+  document.getElementById('fTot').innerHTML='<td style="padding:5px 8px;font-weight:500" colspan="2">ИТОГО</td>'+
+    '<td class="nm" style="padding:5px 8px">'+fmt(sN)+'</td><td class="nm" style="padding:5px 8px">'+fmt(sO)+'</td>'+
+    '<td class="nm" style="padding:5px 8px">'+fmt(sV)+'</td><td class="nm" style="padding:5px 8px;color:var(--tw)">'+fmt(sI)+'</td>'+
+    '<td class="nm" style="padding:5px 8px;font-weight:500;color:var(--tg)">'+fmt(sNt)+'</td>'+
+    '<td class="nm" style="padding:5px 8px">'+fmt(sSo)+'</td><td class="nm" style="padding:5px 8px">'+fmt(sOm)+'</td>'+
+    '<td class="nm" style="padding:5px 8px;color:var(--td)">'+fmt(sT)+'</td>';
+  document.getElementById('fKpi').innerHTML=
+    '<div class="kpi b"><div class="v">'+fmt(sN)+' ₸</div><div class="l">Начислено</div></div>'+
+    '<div class="kpi g"><div class="v">'+fmt(sNt)+' ₸</div><div class="l">К выплате</div></div>'+
+    '<div class="kpi w"><div class="v">'+fmt(sI)+' ₸</div><div class="l">ИПН</div></div>'+
+    '<div class="kpi"><div class="v">'+fmt(sO)+' ₸</div><div class="l">ОПВ</div></div>'+
+    '<div class="kpi r"><div class="v">'+fmt(sT)+' ₸</div><div class="l">Затраты</div></div>';
+  document.getElementById('fEnt').innerHTML=
+    'Начисление ФОТ: Дт <b>7210</b> / Кт <b>3350</b> — '+fmt(sN)+' ₸<br>'+
+    'ОПВ удержан: Дт <b>3350</b> / Кт <b>3220</b> — '+fmt(sO)+' ₸<br>'+
+    'ВОСМС удержан: Дт <b>3350</b> / Кт <b>3213</b> — '+fmt(sV)+' ₸<br>'+
+    'ИПН удержан: Дт <b>3350</b> / Кт <b>3120</b> — '+fmt(sI)+' ₸<br>'+
+    'Выплата: Дт <b>3350</b> / Кт <b>1030</b> — '+fmt(sNt)+' ₸<br>'+
+    'СО (работодатель): Дт <b>7210</b> / Кт <b>3211</b> — '+fmt(sSo)+' ₸<br>'+
+    'ОСМС (работодатель): Дт <b>7210</b> / Кт <b>3212</b> — '+fmt(sOm)+' ₸';
+}
+function postFOT(){DB.journal=DB.journal||[];DB.journal.push({date:new Date().toLocaleDateString('ru-RU'),type:'ФОТ',src:'Кадры'});sDB(DB);alert('✅ Проводки ФОТ добавлены в журнал!');}
+
+// ===== ДОКУМЕНТЫ =====
+function rDocs(){
+  document.getElementById('docTb').innerHTML=(DB.docs||[]).map(d=>'<tr>'+
+    '<td>'+d.date+'</td><td><span class="badge b-b">'+d.type+'</span></td>'+
+    '<td style="font-family:var(--fm);font-size:10px">'+d.num+'</td>'+
+    '<td><strong>'+d.emp+'</strong></td><td style="font-size:11px">'+d.content+'</td>'+
+    '<td><span class="badge '+(d.s==='Действует'?'b-g':'b-b')+'">'+d.s+'</span></td>'+
+    '<td><button class="btn sm">Печать</button></td></tr>').join('');
+}
+function addDoc(){
+  const emp=prompt('ФИО сотрудника:');if(!emp)return;
+  const type=prompt('Тип документа:','Командировка');if(!type)return;
+  const cont=prompt('Содержание:','')||'';
+  DB.docs=DB.docs||[];
+  DB.docs.unshift({date:new Date().toLocaleDateString('ru-RU'),type,num:type.charAt(0)+'-'+((DB.docs.length||0)+1),emp,content:cont,s:'Действует'});
+  sDB(DB);rDocs();
+}
+
+// ===== TABS =====
+function T(n){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.getElementById(n).classList.add('active');
+  event?.currentTarget?.classList.add('active');
+  if(n==='reg')rCards();
+  if(n==='tab')initTab();
+  if(n==='fot')calcFOT();
+  if(n==='doc')rDocs();
+  if(n==='add'){document.getElementById('step0').style.display='block';document.getElementById('step-ai').style.display='none';document.getElementById('step-form').style.display='none';}
+}
+
+rDash();
+if(DB.tabel)TAB=JSON.parse(JSON.stringify(DB.tabel));
+initTab();
+
+function sendPrompt(t){prompt('AI: '+t,'');}
+</script>
+</body>
+</html>

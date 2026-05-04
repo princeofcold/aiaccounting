@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>📁 Проекты — Бюджет vs Факт · Платформа бухучёта РК</title>
+<style>
+:root{--font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;--font-mono:'SF Mono','Consolas',monospace;--color-background-primary:#fff;--color-background-secondary:#f7f7f5;--color-background-tertiary:#f0efea;--color-background-info:#e6f1fb;--color-background-success:#eaf3de;--color-background-warning:#faeeda;--color-background-danger:#fcebeb;--color-text-primary:#1a1a18;--color-text-secondary:#6b6b67;--color-text-tertiary:#9b9b97;--color-text-info:#185fa5;--color-text-success:#3b6d11;--color-text-warning:#854f0b;--color-text-danger:#a32d2d;--color-border-tertiary:rgba(26,26,24,0.15);--color-border-secondary:rgba(26,26,24,0.30);--color-border-primary:rgba(26,26,24,0.40);--color-border-success:rgba(59,109,17,0.40);--color-border-warning:rgba(133,79,11,0.40);--color-border-danger:rgba(163,45,45,0.40);--color-border-info:rgba(24,95,165,0.40);--border-radius-md:8px;--border-radius-lg:12px;--border-radius-xl:16px}
+@media(prefers-color-scheme:dark){:root{--color-background-primary:#1c1c1a;--color-background-secondary:#252523;--color-background-tertiary:#2e2e2b;--color-background-info:#0c3054;--color-background-success:#1a3508;--color-background-warning:#422508;--color-background-danger:#4f1515;--color-text-primary:#f0efe8;--color-text-secondary:#a8a8a2;--color-text-info:#85b7eb;--color-text-success:#97c459;--color-text-warning:#ef9f27;--color-text-danger:#f09595;--color-border-tertiary:rgba(240,239,232,0.15);--color-border-secondary:rgba(240,239,232,0.30);--color-border-primary:rgba(240,239,232,0.40);--color-border-info:rgba(133,183,235,0.40);--color-border-success:rgba(151,196,89,0.40);--color-border-warning:rgba(239,159,39,0.40);--color-border-danger:rgba(240,149,149,0.40)}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);font-size:13px;background:var(--color-background-tertiary);padding:16px}
+.pw{max-width:1100px;margin:0 auto;background:var(--color-background-primary);border-radius:12px;padding:20px 24px 32px;border:0.5px solid var(--color-border-tertiary)}
+.tn{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:12px;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px}
+.tn a{color:var(--color-text-info);text-decoration:none}.tn a:hover{text-decoration:underline}
+.tn .co{margin-left:auto;color:var(--color-text-secondary)}
+.tabs{display:flex;gap:4px;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.2rem;flex-wrap:wrap}
+.tab{padding:7px 13px;font-size:12px;cursor:pointer;border:none;background:transparent;color:var(--color-text-secondary);border-bottom:2px solid transparent;margin-bottom:-1px;font-family:var(--font-sans);white-space:nowrap}
+.tab.active{color:var(--color-text-primary);border-bottom:2px solid var(--color-text-primary);font-weight:500}
+.sec{display:none}.sec.active{display:block}
+.notice{font-size:11px;padding:8px 12px;background:var(--color-background-secondary);border-radius:8px;margin-bottom:10px;line-height:1.6;color:var(--color-text-secondary)}
+.notice strong{color:var(--color-text-primary)}
+.notice.info{background:var(--color-background-info)}.notice.info strong{color:var(--color-text-info)}
+.notice.success{background:var(--color-background-success)}.notice.success strong{color:var(--color-text-success)}
+.notice.warn{background:var(--color-background-warning)}.notice.warn strong{color:var(--color-text-warning)}
+.btn{padding:5px 12px;font-size:12px;font-family:var(--font-sans);border:0.5px solid var(--color-border-secondary);border-radius:7px;background:transparent;color:var(--color-text-primary);cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--color-background-secondary)}
+.btn-p{background:var(--color-text-primary);color:var(--color-background-primary);border-color:var(--color-text-primary)}
+.btn-sm{padding:2px 7px;font-size:11px}
+.badge{display:inline-block;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:500}
+.bg{background:var(--color-background-success);color:var(--color-text-success)}
+.br{background:var(--color-background-danger);color:var(--color-text-danger)}
+.bb{background:var(--color-background-info);color:var(--color-text-info)}
+.bw{background:var(--color-background-warning);color:var(--color-text-warning)}
+.ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.pt{font-size:14px;font-weight:500}.ps{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.kpi-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:12px}
+.kpi{padding:9px 11px;border-radius:8px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary)}
+.kpi .kv{font-size:14px;font-weight:500;color:var(--color-text-primary)}.kpi .kl{font-size:10px;color:var(--color-text-secondary);margin-top:1px}
+.kpi.green{background:var(--color-background-success)}.kpi.green .kv{color:var(--color-text-success)}
+.kpi.amber{background:var(--color-background-warning)}.kpi.amber .kv{color:var(--color-text-warning)}
+.kpi.info{background:var(--color-background-info)}.kpi.info .kv{color:var(--color-text-info)}
+.kpi.red{background:var(--color-background-danger)}.kpi.red .kv{color:var(--color-text-danger)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+.fl-i{display:flex;flex-direction:column;gap:3px}
+.fl-i label{font-size:11px;color:var(--color-text-secondary)}
+input,select{font-family:var(--font-sans);font-size:12px;padding:5px 8px;border:0.5px solid var(--color-border-secondary);border-radius:7px;background:var(--color-background-primary);color:var(--color-text-primary);width:100%}
+table.mt{width:100%;border-collapse:collapse;font-size:12px}
+table.mt th{padding:5px 8px;font-size:11px;font-weight:500;color:var(--color-text-secondary);border-bottom:0.5px solid var(--color-border-tertiary);text-align:left;background:var(--color-background-secondary);white-space:nowrap}
+table.mt td{padding:5px 8px;border-bottom:0.5px solid var(--color-border-tertiary);vertical-align:middle}
+table.mt tr:hover td{background:var(--color-background-secondary)}
+table.mt tr.tot td{font-weight:500;background:var(--color-background-secondary)}
+.num{text-align:right;font-family:var(--font-mono);font-size:11px}
+.acc{font-family:var(--font-mono);font-weight:500}
+.acc-b{color:var(--color-text-info)}.acc-n{color:var(--color-text-success)}
+.prog{height:6px;background:var(--color-border-tertiary);border-radius:3px;overflow:hidden}
+.prog-f{height:100%;border-radius:3px}
+</style>
+</head>
+<body>
+<div class="pw">
+<div class="tn">
+  <a href="../index.html">← Все модули</a>
+  <span style="color:var(--color-text-tertiary)">·</span>
+  <span style="font-weight:500;color:var(--color-text-primary)">📁 Проекты — Бюджет vs Факт</span>
+  <span class="co">Alpino Group ТОО · НК РК 2026</span>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('proj-dash')">📊 Дашборд</button>
+  <button class="tab" onclick="showTab('proj-reest')">📋 Реестр проектов</button>
+  <button class="tab" onclick="showTab('proj-chain')">🔗 1310→2930→7010</button>
+  <button class="tab" onclick="showTab('proj-2930')">📒 Карточка 2930</button>
+  <button class="tab" onclick="showTab('proj-ao')">📋 Авансовые отчёты</button>
+  <button class="tab" onclick="showTab('proj-cls')">🔍 Классификатор ЭСФ</button>
+</div>
+<div id="proj-dash" class="sec active">
+  <div class="ph"><div><div class="pt">Проекты · Бюджет vs Факт</div><div class="ps">Апрель 2026 · Счёт 2930 · 1310→2930→7010</div></div>
+  <button class="btn btn-p btn-sm" onclick="sendPrompt('Сформируй управленческий отчёт по проектам Alpino Group ТОО за апрель 2026')">Отчёт руководителю →</button></div>
+  <div class="kpi-g" id="proj-kpi"></div>
+  <div id="proj-list"></div>
+</div>
+<div id="proj-reest" class="sec">
+  <div class="ph"><div class="pt">Реестр контрактов</div><button class="btn btn-p btn-sm">+ Новый проект</button></div>
+  <div style="overflow-x:auto"><table class="mt"><thead><tr><th>Проект</th><th>Заказчик</th><th>Договор</th><th>Тип</th><th class="num">Контракт (₸)</th><th class="num">Бюджет (₸)</th><th class="num">Факт (₸)</th><th>Прогресс</th><th>Статус</th></tr></thead>
+  <tbody id="reest-tbody"></tbody></table></div>
+</div>
+<div id="proj-chain" class="sec"><div class="pt" style="margin-bottom:12px">Цепочка учёта затрат · 1310 → 2930 → 7010 → 6020</div><div id="chain-content"></div></div>
+<div id="proj-2930" class="sec"><div class="pt" style="margin-bottom:12px">Карточка счёта 2930 · Незавершённое строительство</div><div id="acc2930-content"></div></div>
+<div id="proj-ao" class="sec"><div class="ph"><div class="pt">Авансовые отчёты</div><button class="btn btn-p btn-sm">+ Новый АО</button></div><div id="ao-content"></div></div>
+<div id="proj-cls" class="sec"><div class="pt" style="margin-bottom:12px">Классификатор ЭСФ с контекстом проектов</div><div id="cls-content"></div></div>
+<script>
+document.getElementById('reest-tbody').innerHTML=PROJS.map(p=>`<tr>
+  <td><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${p.color};margin-right:5px"></span><strong>${p.name}</strong></td>
+  <td>${p.client}</td><td style="font-family:var(--font-mono);font-size:10px">${p.contract}</td>
+  <td><span class="badge bb">${p.type}</span></td>
+  <td class="num">${fmt(p.amount)}</td><td class="num">${fmt(p.budget)}</td><td class="num" style="color:var(--color-text-warning)">${fmt(p.fact)}</td>
+  <td><div class="prog" style="width:100px"><div class="prog-f" style="width:${p.pct}%;background:var(--color-text-info)"></div></div>${p.pct}%</td>
+  <td><span class="badge bg">Активен</span></td>
+</tr>`).join('');
+</script>
+
+</div>
+<script>
+function sendPrompt(t){prompt('→ AI: '+t,'');}function openLink(u){if(confirm('Открыть: '+u))window.open(u,'_blank');}
+
+function fmt(n){return Math.round(n||0).toLocaleString('ru-RU');}
+const PROJS=[
+  {id:1,name:'Реконструкция НПС-2 NCOC',client:'ТОО NCOC N.V.',contract:'NCOC-2026-0451',
+   type:'Строительство',amount:250000000,budget:180000000,fact:13862069,rev:11600000,
+   pct:18,color:'#3B82F6',acc2930:13862069,subkonto:'NCOC НПС-2',
+   keywords:['насос','насосная','генератор','кабель','щит','датчик','манометр','задвижка','клапан','автоматика']},
+  {id:2,name:'ТО насосного оборудования КМГ',client:'КазМунайГаз',contract:'КМГ-2026-03',
+   type:'ТО/Ремонт',amount:4640000,budget:3200000,fact:2900000,rev:4640000,
+   pct:95,color:'#10B981',acc2930:0,subkonto:'КМГ ТО-2026',
+   keywords:['ремонт','тех.обслуживание','запчасть','подшипник']},
+  {id:3,name:'Ремонтные работы Атырауский НПЗ',client:'ТОО Атырауский НПЗ',contract:'АНП-2026-07',
+   type:'Услуги',amount:4000000,budget:2800000,fact:1950000,rev:4000000,
+   pct:75,color:'#F59E0B',acc2930:0,subkonto:'АНП Ремонт-2026',
+   keywords:['ремонт','сварка','покраска','трубопровод','фланец']},
+];
+function renderDash(){
+  document.getElementById('proj-kpi').innerHTML=`
+    <div class="kpi"><div class="kv">${PROJS.length}</div><div class="kl">Активных проектов</div></div>
+    <div class="kpi info"><div class="kv">${fmt(PROJS.reduce((s,p)=>s+p.amount,0))} ₸</div><div class="kl">Объём контрактов</div></div>
+    <div class="kpi amber"><div class="kv">${fmt(PROJS.reduce((s,p)=>s+p.fact,0))} ₸</div><div class="kl">Затраты факт</div></div>
+    <div class="kpi green"><div class="kv">${fmt(PROJS.reduce((s,p)=>s+p.rev,0))} ₸</div><div class="kl">Выручка признана</div></div>
+    <div class="kpi"><div class="kv">${fmt(PROJS.reduce((s,p)=>s+p.acc2930,0))} ₸</div><div class="kl">2930 (НЗП)</div></div>`;
+  document.getElementById('proj-list').innerHTML=PROJS.map(p=>{
+    const bpct=Math.round(p.fact/p.budget*100);
+    const margin=p.rev?Math.round((p.rev-p.fact)/p.rev*100):0;
+    return`<div style="border:0.5px solid var(--color-border-tertiary);border-radius:10px;padding:12px 14px;margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:6px">
+        <div>
+          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${p.color};margin-right:6px"></span>
+          <strong>${p.name}</strong>
+          <span style="font-size:11px;color:var(--color-text-secondary);margin-left:6px">${p.client} · ${p.contract}</span>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <span class="badge bb">${p.type}</span>
+          <span class="badge ${margin>=15?'bg':margin>=0?'bw':'br'}">Маржа ${margin}%</span>
+          <span class="badge bw">Прогресс ${p.pct}%</span>
+        </div>
+      </div>
+      <div class="g3" style="font-size:11px">
+        <div>
+          <div style="color:var(--color-text-secondary);margin-bottom:4px">Бюджет затрат: ${fmt(p.budget)} ₸ · Факт: ${fmt(p.fact)} ₸ (${bpct}%)</div>
+          <div class="prog"><div class="prog-f" style="width:${Math.min(100,bpct)}%;background:${bpct>90?'var(--color-text-danger)':bpct>70?'var(--color-text-warning)':'var(--color-text-success)'}"></div></div>
+        </div>
+        <div>
+          <div style="color:var(--color-text-secondary);margin-bottom:4px">Контракт: ${fmt(p.amount)} ₸ · Выручка: ${fmt(p.rev)} ₸</div>
+          <div class="prog"><div class="prog-f" style="width:${Math.min(100,Math.round(p.rev/p.amount*100))}%;background:var(--color-text-info)"></div></div>
+        </div>
+        <div>Затраты → <span class="acc acc-b">1310</span> · 2930 остаток: <strong>${fmt(p.acc2930)} ₸</strong><br>
+          Субконто: <strong>${p.subkonto}</strong></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+function renderChain(){
+  document.getElementById('chain-content').innerHTML=`
+    <div style="font-size:12px;font-weight:500;margin-bottom:12px;color:var(--color-text-info)">Проект: Реконструкция НПС-2 NCOC · Апрель 2026</div>
+    ${[
+      {n:1,t:'Закупка материалов',acc:'1310/3310',sum:13862069,done:true,desc:'Насосная станция, генератор, кабель, щит, датчики'},
+      {n:2,t:'НДС к зачёту',acc:'1420/3310',sum:2217931,done:true,desc:'16% от поставщиков-плательщиков НДС'},
+      {n:3,t:'Передача в монтаж',acc:'2930/1310',sum:0,done:false,current:true,desc:'Материалы передаются на объект НПС-2'},
+      {n:4,t:'Акт выполненных работ',acc:'7010/2930',sum:0,done:false,desc:'Себестоимость признаётся при подписании акта'},
+      {n:5,t:'Признание выручки',acc:'1210/6020',sum:0,done:false,desc:'Доход от реализации услуг NCOC N.V.'},
+    ].map(s=>`<div style="border:0.5px solid ${s.done?'var(--color-border-success)':s.current?'var(--color-border-primary)':'var(--color-border-tertiary)'};border-radius:10px;padding:10px 14px;margin-bottom:8px;background:${s.done?'color-mix(in srgb,var(--color-background-success) 8%,transparent)':s.current?'color-mix(in srgb,var(--color-background-info) 8%,transparent)':'transparent'}">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+        <div style="width:22px;height:22px;border-radius:50%;background:${s.done?'var(--color-text-success)':s.current?'var(--color-text-primary)':'var(--color-border-tertiary)'};color:${s.done||s.current?'white':'var(--color-text-secondary)'};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0">${s.n}</div>
+        <strong>${s.t}</strong>
+        ${s.done?'<span class="badge bg" style="margin-left:auto">✓ Выполнено</span>':s.current?'<span class="badge bb" style="margin-left:auto">▶ Текущий</span>':'<span class="badge" style="margin-left:auto;background:var(--color-background-secondary)">Ожидает</span>'}
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary)">${s.desc}</div>
+      <div style="font-family:var(--font-mono);font-size:11px;margin-top:4px">Дт <span class="acc-b">${s.acc.split('/')[0]}</span> / Кт <span class="acc-b">${s.acc.split('/')[1]}</span>${s.sum?` — ${fmt(s.sum)} ₸`:''}</div>
+    </div>`).join('')}`;
+}
+function render2930(){
+  document.getElementById('acc2930-content').innerHTML=`
+    <div style="overflow-x:auto"><table class="mt">
+      <thead><tr><th>Субконто (Проект)</th><th class="num">Дт оборот (₸)</th><th class="num">Кт оборот (₸)</th><th class="num">Сальдо кон. (₸)</th><th>Статус</th></tr></thead>
+      <tbody>
+        <tr><td><strong>NCOC НПС-2</strong></td><td class="num" style="color:var(--color-text-success)">13 862 069</td><td class="num">—</td><td class="num" style="font-weight:500">13 862 069</td><td><span class="badge bw">В работе</span></td></tr>
+        <tr><td><strong>КМГ ТО-2026</strong></td><td class="num" style="color:var(--color-text-success)">2 900 000</td><td class="num" style="color:var(--color-text-danger)">2 900 000</td><td class="num">0</td><td><span class="badge bg">Закрыт</span></td></tr>
+        <tr><td><strong>АНП Ремонт-2026</strong></td><td class="num" style="color:var(--color-text-success)">1 950 000</td><td class="num" style="color:var(--color-text-danger)">1 950 000</td><td class="num">0</td><td><span class="badge bg">Закрыт</span></td></tr>
+        <tr class="tot"><td>ИТОГО счёт 2930</td><td class="num">18 712 069</td><td class="num">4 850 000</td><td class="num" style="font-weight:500;color:var(--color-text-warning)">13 862 069</td><td></td></tr>
+      </tbody>
+    </table></div>`;
+}
+function renderAO(){
+  document.getElementById('ao-content').innerHTML=`
+    <div class="notice info"><strong>Суточные НК РК 2026:</strong> Внутри страны — 6 МРП/сут = 25 950 ₸ · Загранкомандировка — 8 МРП/сут = 34 600 ₸</div>
+    <table class="mt"><thead><tr><th>№ АО</th><th>Сотрудник</th><th>Цель</th><th>Проект</th><th class="num">Аванс (₸)</th><th class="num">Факт (₸)</th><th>Счёт Дт</th><th>Статус</th></tr></thead>
+    <tbody>
+      <tr><td>АО-001</td><td>Мухамедов Алибек</td><td>Командировка г.Астана (3 дня)</td><td>NCOC НПС-2</td><td class="num">120 000</td><td class="num">112 350</td><td class="acc acc-b">7210</td><td><span class="badge bg">Утверждён</span></td></tr>
+      <tr><td>АО-002</td><td>Сейткали Нурлан</td><td>Командировка г.Алматы (2 дня)</td><td>КМГ ТО</td><td class="num">80 000</td><td class="num">79 500</td><td class="acc acc-b">7210</td><td><span class="badge bg">Утверждён</span></td></tr>
+      <tr><td>АО-003</td><td>Абдрахманов Серік</td><td>ГСМ для объекта НПС-2</td><td>NCOC НПС-2</td><td class="num">50 000</td><td class="num">48 700</td><td class="acc acc-b">1310</td><td><span class="badge bg">Утверждён</span></td></tr>
+    </tbody></table>`;
+}
+function renderClassifier(){
+  document.getElementById('cls-content').innerHTML=`
+    <div style="border:1.5px solid var(--color-text-warning);border-radius:10px;padding:12px 14px;background:color-mix(in srgb,var(--color-background-warning) 8%,transparent);margin-bottom:12px">
+      <div style="font-size:12px;font-weight:500;color:var(--color-text-warning);margin-bottom:4px">📁 Активный контекст: Реконструкция НПС-2 NCOC</div>
+      <div style="font-size:11px;color:var(--color-text-secondary)">Ключевые слова (${PROJS[0].keywords.length}): ${PROJS[0].keywords.map(k=>`<span style="padding:1px 6px;background:color-mix(in srgb,var(--color-background-warning) 30%,transparent);border-radius:10px;font-size:10px;margin-right:3px">${k}</span>`).join('')}</div>
+    </div>
+    <div class="notice info"><strong>Логика классификации:</strong><br>
+      1. ИИ проверяет ключевые слова активных проектов → если совпадение: <span class="badge bw">Материал проекта (1310)</span>, НЕ ОС (2410)<br>
+      2. Насосная станция 4 500 000 ₸ — это материал для NCOC, не ОС Alpino Group<br>
+      3. Стандартные ключи: ремонт→7210 · фильтр/масло→1310 · экскаватор→2410 (только если нет контекста)
+    </div>`;
+}
+function showTab(n){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));document.getElementById(n).classList.add('active');event?.currentTarget?.classList.add('active');if(n==='proj-chain')renderChain();if(n==='proj-2930')render2930();if(n==='proj-ao')renderAO();if(n==='proj-cls')renderClassifier();}
+renderDash();
+
+</script>
+</body>
+</html>

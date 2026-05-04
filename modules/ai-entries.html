@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🤖 AI — Проводки · Платформа бухучёта РК</title>
+<style>
+:root{--font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;--font-mono:'SF Mono','Consolas',monospace;--color-background-primary:#fff;--color-background-secondary:#f7f7f5;--color-background-tertiary:#f0efea;--color-background-info:#e6f1fb;--color-background-success:#eaf3de;--color-background-warning:#faeeda;--color-background-danger:#fcebeb;--color-text-primary:#1a1a18;--color-text-secondary:#6b6b67;--color-text-info:#185fa5;--color-text-success:#3b6d11;--color-text-warning:#854f0b;--color-text-danger:#a32d2d;--color-border-tertiary:rgba(26,26,24,0.15);--color-border-secondary:rgba(26,26,24,0.30);--color-border-primary:rgba(26,26,24,0.40);--border-radius-md:8px;--border-radius-lg:12px;--border-radius-xl:16px}
+@media(prefers-color-scheme:dark){:root{--color-background-primary:#1c1c1a;--color-background-secondary:#252523;--color-background-tertiary:#2e2e2b;--color-background-info:#0c3054;--color-background-success:#1a3508;--color-background-warning:#422508;--color-background-danger:#4f1515;--color-text-primary:#f0efe8;--color-text-secondary:#a8a8a2;--color-text-info:#85b7eb;--color-text-success:#97c459;--color-text-warning:#ef9f27;--color-text-danger:#f09595;--color-border-tertiary:rgba(240,239,232,0.15);--color-border-secondary:rgba(240,239,232,0.30);--color-border-primary:rgba(240,239,232,0.40)}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);font-size:13px;background:var(--color-background-tertiary);padding:16px}
+.pw{max-width:1000px;margin:0 auto;background:var(--color-background-primary);border-radius:var(--border-radius-xl);padding:20px 24px 32px;border:0.5px solid var(--color-border-tertiary)}
+.tn{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:12px;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px}
+.tn a{color:var(--color-text-info);text-decoration:none}.tn a:hover{text-decoration:underline}
+.tn .co{margin-left:auto;color:var(--color-text-secondary)}
+.tabs{display:flex;gap:4px;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.2rem;flex-wrap:wrap}
+.tab{padding:7px 13px;font-size:12px;cursor:pointer;border:none;background:transparent;color:var(--color-text-secondary);border-bottom:2px solid transparent;margin-bottom:-1px;font-family:var(--font-sans);white-space:nowrap}
+.tab.active{color:var(--color-text-primary);border-bottom:2px solid var(--color-text-primary);font-weight:500}
+.sec{display:none}.sec.active{display:block}
+.notice{font-size:11px;padding:8px 12px;background:var(--color-background-secondary);border-radius:8px;margin-bottom:10px;line-height:1.6;color:var(--color-text-secondary)}
+.notice strong{color:var(--color-text-primary)}
+.notice.info{background:var(--color-background-info)}.notice.info strong{color:var(--color-text-info)}
+.notice.success{background:var(--color-background-success)}.notice.success strong{color:var(--color-text-success)}
+.notice.warn{background:var(--color-background-warning)}.notice.warn strong{color:var(--color-text-warning)}
+input,select,textarea{font-family:var(--font-sans);font-size:12px;padding:6px 9px;border:0.5px solid var(--color-border-secondary);border-radius:7px;background:var(--color-background-primary);color:var(--color-text-primary);width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--color-border-primary)}
+textarea{resize:vertical;min-height:80px}
+.btn{padding:6px 14px;font-size:12px;font-family:var(--font-sans);border:0.5px solid var(--color-border-secondary);border-radius:7px;background:transparent;color:var(--color-text-primary);cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--color-background-secondary)}
+.btn-p{background:var(--color-text-primary);color:var(--color-background-primary);border-color:var(--color-text-primary)}
+.btn-sm{padding:3px 9px;font-size:11px}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500}
+.bg{background:var(--color-background-success);color:var(--color-text-success)}
+.br{background:var(--color-background-danger);color:var(--color-text-danger)}
+.bb{background:var(--color-background-info);color:var(--color-text-info)}
+.bw{background:var(--color-background-warning);color:var(--color-text-warning)}
+.ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.pt{font-size:15px;font-weight:500}.ps{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.fl-i{display:flex;flex-direction:column;gap:3px}
+.fl-i label{font-size:11px;color:var(--color-text-secondary)}
+.acc-b{font-family:var(--font-mono);font-weight:500;color:var(--color-text-info)}
+.acc-n{font-family:var(--font-mono);font-weight:500;color:var(--color-text-success)}
+table.mt{width:100%;border-collapse:collapse;font-size:12px}
+table.mt th{padding:5px 8px;font-size:11px;font-weight:500;color:var(--color-text-secondary);border-bottom:0.5px solid var(--color-border-tertiary);text-align:left;background:var(--color-background-secondary)}
+table.mt td{padding:5px 8px;border-bottom:0.5px solid var(--color-border-tertiary)}
+table.mt tr:hover td{background:var(--color-background-secondary)}
+.spin{display:none;align-items:center;gap:10px;padding:14px;background:var(--color-background-secondary);border-radius:8px;margin:10px 0;font-size:12px;color:var(--color-text-secondary)}
+.spin.show{display:flex}
+.spinner{width:16px;height:16px;border:2px solid var(--color-border-tertiary);border-top-color:var(--color-text-primary);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* DROP ZONE */
+.drop-zone{border:2px dashed var(--color-border-secondary);border-radius:12px;padding:32px;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:12px}
+.drop-zone:hover,.drop-zone.drag{border-color:var(--color-text-primary);background:var(--color-background-secondary)}
+.drop-zone .dz-icon{font-size:32px;margin-bottom:8px}
+.drop-zone .dz-text{font-size:13px;color:var(--color-text-secondary)}
+.drop-zone .dz-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:4px}
+/* РЕЗУЛЬТАТ AI */
+.ai-result{border:1.5px solid var(--color-border-success);border-radius:12px;padding:16px;margin-top:12px;display:none}
+.ai-result.show{display:block}
+.entry-row{display:grid;grid-template-columns:80px 80px 70px 70px 1fr 120px;gap:8px;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px;align-items:center}
+.entry-row.header{font-size:10px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;background:var(--color-background-secondary);padding:5px 0;border-radius:4px;margin-bottom:4px}
+.approve-btn{padding:4px 10px;font-size:11px;border-radius:6px;border:0.5px solid var(--color-border-success);background:transparent;color:var(--color-text-success);cursor:pointer}
+.approve-btn.approved{background:var(--color-background-success)}
+.reject-btn{padding:4px 10px;font-size:11px;border-radius:6px;border:0.5px solid var(--color-border-danger);background:transparent;color:var(--color-text-danger);cursor:pointer;margin-left:4px}
+/* КОМАНДНАЯ СТРОКА */
+.cmd-input{display:flex;gap:8px;margin-bottom:12px}
+.cmd-input input{font-size:13px;padding:9px 12px;border-radius:8px}
+.history-item{padding:10px 12px;border:0.5px solid var(--color-border-tertiary);border-radius:8px;margin-bottom:8px}
+.history-item .cmd{font-size:12px;color:var(--color-text-secondary);margin-bottom:6px}
+.history-item .res{font-size:12px}
+</style>
+</head>
+<body>
+<div class="pw">
+<div class="tn">
+  <a href="../index.html">← Все модули</a>
+  <span style="color:var(--color-text-tertiary)">·</span>
+  <span style="font-weight:500">🤖 AI — Автоматические проводки</span>
+  <span class="co">Human-in-the-loop · Бухгалтер проверяет и подтверждает</span>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('upload')">📁 Загрузить файл</button>
+  <button class="tab" onclick="showTab('command')">💬 Команда бухгалтера</button>
+  <button class="tab" onclick="showTab('esf-auto')">📋 Авто-загрузка ЭСФ</button>
+  <button class="tab" onclick="showTab('journal')">📒 Журнал проводок</button>
+  <button class="tab" onclick="showTab('howto')">❓ Как работает</button>
+</div>
+
+<!-- ===== ЗАГРУЗИТЬ ФАЙЛ ===== -->
+<div id="upload" class="sec active">
+  <div class="ph">
+    <div><div class="pt">Загрузить документ → AI сформирует проводки</div>
+    <div class="ps">ЭСФ · ЭАВР · Акт · Банковская выписка · Накладная · Авансовый отчёт</div></div>
+  </div>
+
+  <div class="notice info">
+    <strong>Human-in-the-loop:</strong> AI предлагает проводки на основе НК РК 2026 и плана счетов. Бухгалтер проверяет каждую проводку и нажимает «✓ Подтвердить» или «✗ Отклонить». Только подтверждённые проводки попадают в журнал.
+  </div>
+
+  <!-- Зона загрузки -->
+  <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()"
+    ondragover="event.preventDefault();this.classList.add('drag')"
+    ondragleave="this.classList.remove('drag')"
+    ondrop="handleDrop(event)">
+    <div class="dz-icon">📄</div>
+    <div class="dz-text">Перетащите файл сюда или кликните для выбора</div>
+    <div class="dz-sub">ЭСФ (XML) · PDF · Excel · Изображение чека · Текст</div>
+    <input type="file" id="file-input" style="display:none" accept=".xml,.pdf,.xlsx,.xls,.jpg,.jpeg,.png,.txt,.csv" onchange="handleFileSelect(this)">
+  </div>
+
+  <!-- Или вставить текст -->
+  <div style="margin-bottom:12px">
+    <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:6px">Или вставьте содержимое документа / описание операции:</div>
+    <textarea id="doc-text" placeholder="Пример: ЭСФ от ТОО AKGEN GROUP на сумму 9 000 000 тенге за поставку материалов для строительного проекта НПС-2&#10;&#10;Или: Банковская выписка 25.04.2026 — поступление от NCOC N.V. 25 000 000 тенге по договору NCOC-2026-0451&#10;&#10;Или: Авансовый отчёт Мухамедова Алибека — командировка Атырау-Астана 3 дня, билеты 65 000 ₸, гостиница 90 000 ₸, суточные 3×25950"></textarea>
+  </div>
+
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+    <button class="btn btn-p" onclick="analyzeDocument()">🤖 Сформировать проводки</button>
+    <button class="btn btn-sm" onclick="loadExample('esf')">Пример: ЭСФ</button>
+    <button class="btn btn-sm" onclick="loadExample('bank')">Пример: Банк</button>
+    <button class="btn btn-sm" onclick="loadExample('ao')">Пример: АО</button>
+    <button class="btn btn-sm" onclick="loadExample('zp')">Пример: Зарплата</button>
+  </div>
+
+  <div class="spin" id="upload-spin">
+    <div class="spinner"></div>
+    <span id="spin-text">AI анализирует документ...</span>
+  </div>
+
+  <!-- Результат -->
+  <div class="ai-result" id="upload-result">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+      <div>
+        <div style="font-size:13px;font-weight:500;color:var(--color-text-success)">✓ AI сформировал проводки</div>
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-top:2px" id="result-summary"></div>
+      </div>
+      <div style="display:flex;gap:6px">
+        <button class="btn btn-p btn-sm" onclick="approveAll()">✓ Подтвердить все</button>
+        <button class="btn btn-sm" onclick="rejectAll()">✗ Отклонить все</button>
+        <button class="btn btn-sm" onclick="postToJournal()">💾 В журнал →</button>
+      </div>
+    </div>
+
+    <div class="entry-row header">
+      <div>Дт БУ</div><div>Кт БУ</div><div>Дт НУ</div><div>Кт НУ</div>
+      <div>Описание</div><div>Сумма (₸)</div>
+    </div>
+    <div id="entries-list"></div>
+
+    <div id="ai-comment" style="margin-top:10px;padding:10px;background:var(--color-background-secondary);border-radius:8px;font-size:11px;color:var(--color-text-secondary)"></div>
+  </div>
+</div>
+
+<!-- ===== КОМАНДА БУХГАЛТЕРА ===== -->
+<div id="command" class="sec">
+  <div class="ph">
+    <div><div class="pt">Команда бухгалтера → AI формирует проводки</div>
+    <div class="ps">Опишите операцию своими словами — AI переведёт в проводки 1С</div></div>
+  </div>
+
+  <div class="notice info">
+    <strong>Примеры команд:</strong> «Получили аванс от NCOC 25 млн тенге» · «Начисли зарплату за апрель» · «Оплатили ОПВ за март» · «Поступил тягач DAF за 21 500 000, лизинг ForteLeasing» · «Списали материалы на объект НПС-2»
+  </div>
+
+  <div class="cmd-input">
+    <input id="cmd-input" type="text" placeholder="Опишите операцию... (например: получили оплату от NCOC 11 600 000 тенге по акту за апрель)"
+      onkeydown="if(event.key==='Enter')runCommand()">
+    <button class="btn btn-p" onclick="runCommand()" style="white-space:nowrap">→ Сформировать</button>
+  </div>
+
+  <div class="g3" style="margin-bottom:12px">
+    <button class="btn btn-sm" onclick="setCmd('Получили аванс от NCOC N.V. 25 000 000 тенге по договору NCOC-2026-0451')">Аванс от покупателя</button>
+    <button class="btn btn-sm" onclick="setCmd('Начисли зарплату за апрель 2026 всем сотрудникам Alpino Group')">Начисление зарплаты</button>
+    <button class="btn btn-sm" onclick="setCmd('Оплатили ОПВ, ИПН, СО за апрель в КГД')">Уплата налогов ФОТ</button>
+    <button class="btn btn-sm" onclick="setCmd('Поступил тягач DAF XF на сумму 21 500 000 тенге, куплен в лизинг у ForteLeasing')">Поступление ОС (лизинг)</button>
+    <button class="btn btn-sm" onclick="setCmd('Начислили амортизацию по всем ОС за апрель 2026')">Амортизация ОС</button>
+    <button class="btn btn-sm" onclick="setCmd('Списали материалы со склада на объект НПС-2 для монтажа насосной станции')">Передача в монтаж 2930</button>
+  </div>
+
+  <div class="spin" id="cmd-spin">
+    <div class="spinner"></div>
+    <span>AI формирует проводки по вашей команде...</span>
+  </div>
+
+  <div id="cmd-history"></div>
+</div>
+
+<!-- ===== АВТО-ЗАГРУЗКА ЭСФ ===== -->
+<div id="esf-auto" class="sec">
+  <div class="ph">
+    <div><div class="pt">Авто-загрузка ЭСФ из ИС ЭСФ</div>
+    <div class="ps">Кабинет налогоплательщика · esf.gov.kz · Автоматическое получение и классификация</div></div>
+  </div>
+
+  <div class="notice warn">
+    <strong>В текущей версии:</strong> Демо-режим. В продакшн-версии подключается к API ИС ЭСФ через ЭЦП (NCALayer) и автоматически забирает все новые ЭСФ за период.
+  </div>
+
+  <div style="border:0.5px solid var(--color-border-tertiary);border-radius:10px;padding:14px;margin-bottom:12px">
+    <div class="g3" style="margin-bottom:10px">
+      <div class="fl-i"><label>Период с</label><input type="date" value="2026-04-01" id="esf-from"></div>
+      <div class="fl-i"><label>Период по</label><input type="date" value="2026-04-30" id="esf-to"></div>
+      <div class="fl-i"><label>Тип ЭСФ</label>
+        <select id="esf-dir">
+          <option value="in">Входящие (полученные)</option>
+          <option value="out">Исходящие (выданные)</option>
+          <option value="both">Все</option>
+        </select>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-p" onclick="loadESF()">📥 Загрузить из ИС ЭСФ</button>
+      <button class="btn btn-sm" onclick="loadESFDemo()">Демо (99 ЭСФ апрель)</button>
+    </div>
+  </div>
+
+  <div class="spin" id="esf-spin">
+    <div class="spinner"></div>
+    <span id="esf-spin-text">Подключение к esf.gov.kz...</span>
+  </div>
+
+  <div id="esf-result" style="display:none">
+    <div class="notice success" id="esf-notice"></div>
+    <div id="esf-table-wrap"></div>
+    <div style="margin-top:10px;display:flex;gap:8px">
+      <button class="btn btn-p btn-sm" onclick="classifyAllESF()">🤖 AI классифицировать все</button>
+      <button class="btn btn-sm" onclick="postToJournal()">💾 Подтверждённые → в журнал</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ЖУРНАЛ ПРОВОДОК ===== -->
+<div id="journal" class="sec">
+  <div class="ph">
+    <div><div class="pt">Журнал проводок</div>
+    <div class="ps">Подтверждённые бухгалтером · Готовы к загрузке в 1С</div></div>
+    <div style="display:flex;gap:6px">
+      <button class="btn btn-p btn-sm" onclick="exportTo1C()">📤 Выгрузить в 1С</button>
+      <button class="btn btn-sm" onclick="exportExcel()">Excel →</button>
+    </div>
+  </div>
+  <div id="journal-content">
+    <div class="notice" style="font-size:12px">
+      Журнал пуст. Загрузите документы и подтвердите проводки на вкладках выше — они появятся здесь.
+    </div>
+  </div>
+</div>
+
+<!-- ===== КАК РАБОТАЕТ ===== -->
+<div id="howto" class="sec">
+  <div class="pt" style="margin-bottom:14px">Как работает AI-модуль проводок</div>
+
+  <div class="g2" style="margin-bottom:14px">
+    <div style="padding:14px;border:0.5px solid var(--color-border-tertiary);border-radius:10px">
+      <div style="font-size:13px;font-weight:500;margin-bottom:10px;color:var(--color-text-info)">🤖 Что делает AI</div>
+      <div style="font-size:12px;line-height:2;color:var(--color-text-secondary)">
+        ✓ Читает загруженный документ (ЭСФ, акт, выписку)<br>
+        ✓ Определяет тип хозяйственной операции<br>
+        ✓ Проверяет контекст активных проектов (NCOC, КМГ)<br>
+        ✓ Выбирает счета БУ и НУ по НК РК 2026<br>
+        ✓ Рассчитывает НДС, ОНА/ОНО, суточные<br>
+        ✓ Формирует готовые проводки с субконто
+      </div>
+    </div>
+    <div style="padding:14px;border:0.5px solid var(--color-border-tertiary);border-radius:10px">
+      <div style="font-size:13px;font-weight:500;margin-bottom:10px;color:var(--color-text-success)">👤 Что делает бухгалтер</div>
+      <div style="font-size:12px;line-height:2;color:var(--color-text-secondary)">
+        ✓ Проверяет каждую предложенную проводку<br>
+        ✓ Нажимает «✓ Подтвердить» или «✗ Отклонить»<br>
+        ✓ При необходимости корректирует счёт или сумму<br>
+        ✓ Нажимает «В журнал» — проводки сохраняются<br>
+        ✓ Выгружает в 1С:Казахстан одним файлом<br>
+        ✓ Ответственность всегда на бухгалтере
+      </div>
+    </div>
+  </div>
+
+  <div style="border:0.5px solid var(--color-border-tertiary);border-radius:10px;padding:14px;margin-bottom:12px">
+    <div style="font-size:13px;font-weight:500;margin-bottom:10px">Типовые операции и счета НК РК 2026</div>
+    <table class="mt">
+      <thead><tr><th>Операция</th><th>Дт БУ</th><th>Кт БУ</th><th>Дт НУ</th><th>Кт НУ</th><th>Примечание</th></tr></thead>
+      <tbody>
+        <tr><td>Поступление ТМЦ от поставщика</td><td class="acc-b">1310</td><td class="acc-b">3310</td><td class="acc-n">1310Н</td><td class="acc-n">3310Н</td><td>+НДС → 1420</td></tr>
+        <tr><td>Поступление ОС</td><td class="acc-b">2410</td><td class="acc-b">3310</td><td class="acc-n">2100Н</td><td class="acc-n">3310Н</td><td>ТС → Гр.II 25%</td></tr>
+        <tr><td>Реализация услуг</td><td class="acc-b">1210</td><td class="acc-b">6020</td><td class="acc-n">1210Н</td><td class="acc-n">6020Н</td><td>+НДС → 3130</td></tr>
+        <tr><td>Аванс от покупателя</td><td class="acc-b">1030</td><td class="acc-b">3260</td><td class="acc-n">1030Н</td><td class="acc-n">3260Н</td><td>Зачёт при отгрузке</td></tr>
+        <tr><td>Начисление зарплаты</td><td class="acc-b">7210</td><td class="acc-b">3350</td><td class="acc-n">7200Н</td><td class="acc-n">3350Н</td><td>ОПВ,ИПН → 3220,3120</td></tr>
+        <tr><td>Амортизация ОС</td><td class="acc-b">7210</td><td class="acc-b">2420</td><td class="acc-n">7200Н</td><td class="acc-n">2100Н</td><td>Разница → ОНО 4310</td></tr>
+        <tr><td>Материалы проекту (2930)</td><td class="acc-b">2930</td><td class="acc-b">1310</td><td class="acc-n">2400Н</td><td class="acc-n">1310Н</td><td>NCOC НПС-2 субконто</td></tr>
+        <tr><td>Выдача аванса сотруднику</td><td class="acc-b">1250</td><td class="acc-b">1010</td><td>—</td><td>—</td><td>АО → 7210/1310</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="notice info">
+    <strong>Для полноценной работы AI нужен Anthropic API ключ.</strong>
+    Сейчас модуль работает в демо-режиме с заранее подготовленными примерами.
+    Для подключения реального AI обратитесь к разработчику платформы.
+  </div>
+</div>
+
+</div>
+
+<script>
+const MRP = 4325;
+let journalEntries = [];
+let pendingEntries = [];
+let entryId = 1;
+
+function fmt(n){return Math.round(n||0).toLocaleString('ru-RU');}
+
+function showTab(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.getElementById(name).classList.add('active');
+  event?.currentTarget?.classList.add('active');
+  if(name==='journal') renderJournal();
+}
+
+function loadExample(type){
+  const examples = {
+    esf: `ЭСФ от ТОО «AKGEN GROUP» БИН 150640000685
+Дата: 10.04.2026
+Наименование: Насосная станция Grundfos для объекта НПС-2
+Количество: 1 шт.
+Цена без НДС: 7 758 621 ₸
+НДС 16%: 1 241 379 ₸
+Итого: 9 000 000 ₸`,
+    bank: `Банковская выписка БЦК — Alpino Group ТОО
+25.04.2026  Поступление  25 000 000 ₸
+Назначение: Аванс по договору NCOC-2026-0451 от NCOC N.V.
+ИИК отправителя: KZ...NCOC`,
+    ao: `Авансовый отчёт АО-2026-001
+Подотчётное лицо: Мухамедов Алибек (Инженер)
+Командировка: Атырау → Астана, 20-22 апреля 2026 (3 дня)
+Выдано: 150 000 ₸
+
+Расходы:
+1. Авиабилет Air Astana 65 000 ₸ (без НДС)
+2. Гостиница Rixos 3 ночи × 30 000 = 90 000 ₸ (НДС 12 414 ₸)
+3. Такси 8 500 ₸
+4. Суточные 3 дн. × 25 950 ₸ = 77 850 ₸ (в норме, ИПН нет)
+
+Итого расходов: 241 350 ₸
+Перерасход: 91 350 ₸`,
+    zp: `Начисление зарплаты за апрель 2026 — Alpino Group ТОО
+4 сотрудника:
+- Сейткали Нурлан (Директор): оклад 350 000 ₸
+- Байжанова Айгүл (Гл.бухгалтер): оклад 250 000 ₸
+- Мухамедов Алибек (Инженер): оклад 180 952 ₸
+- Абдрахманов Серік (Водитель): оклад 180 000 ₸`
+  };
+  document.getElementById('doc-text').value = examples[type] || '';
+}
+
+function setCmd(text){
+  document.getElementById('cmd-input').value = text;
+  document.getElementById('cmd-input').focus();
+}
+
+function handleFileSelect(input){
+  const file = input.files[0];
+  if(!file) return;
+  document.getElementById('doc-text').value = `📎 Файл выбран: ${file.name} (${Math.round(file.size/1024)}KB)\n\nВ продакшн-версии файл отправляется на AI-анализ. Для демо используйте кнопки примеров ниже или опишите операцию текстом.`;
+}
+
+function handleDrop(e){
+  e.preventDefault();
+  document.getElementById('drop-zone').classList.remove('drag');
+  const file = e.dataTransfer.files[0];
+  if(file) handleFileSelect({files:[file]});
+}
+
+// ДЕМО-ДВИЖОК ПРОВОДОК
+function generateEntries(text){
+  const t = text.toLowerCase();
+  const entries = [];
+
+  // ЭСФ / Поступление ТМЦ
+  if(t.includes('эсф') || t.includes('насос') || t.includes('материал') || t.includes('поставк') || t.includes('акген')){
+    const sumMatch = text.match(/(\d[\d\s]*)\s*[₸тенге]/);
+    const sum = sumMatch ? parseInt(sumMatch[1].replace(/\s/g,'')) : 7758621;
+    const nds = Math.round(sum * 0.16);
+    entries.push(
+      {dt:'1310',kt:'3310',dtnu:'1310Н',ktnu:'3310Н',desc:'Поступление материалов · Насосная станция НПС-2',sum:sum,subkonto:'NCOC НПС-2',approved:null},
+      {dt:'1420',kt:'3310',dtnu:'1420Н',ktnu:'3310Н',desc:'НДС к зачёту 16%',sum:nds,subkonto:'',approved:null}
+    );
+    return {entries, comment:`Классификация: материалы проекта (1310), НЕ ОС — т.к. обнаружен контекст проекта «NCOC НПС-2». НДС к зачёту: ${fmt(nds)} ₸.`};
+  }
+
+  // Аванс от покупателя
+  if(t.includes('аванс') && (t.includes('ncoc') || t.includes('покупател') || t.includes('поступлени') && t.includes('25'))){
+    entries.push(
+      {dt:'1030',kt:'3260',dtnu:'1030Н',ktnu:'3260Н',desc:'Аванс полученный от NCOC N.V. · дог. NCOC-2026-0451',sum:25000000,subkonto:'NCOC N.V.',approved:null},
+    );
+    return {entries, comment:'Аванс полученный учитывается на счёте 3260 до момента отгрузки/оказания услуг. НДС с аванса не начисляется (ст.383 НК РК).'};
+  }
+
+  // Зарплата
+  if(t.includes('зарплат') || t.includes('начисл') && t.includes('апрел')){
+    entries.push(
+      {dt:'7210',kt:'3350',dtnu:'7200Н',ktnu:'3350Н',desc:'Начисление ФОТ апрель 2026 · 4 сотрудника',sum:960952,subkonto:'',approved:null},
+      {dt:'3350',kt:'3220',dtnu:'',ktnu:'',desc:'ОПВ 10% удержанный',sum:96095,subkonto:'',approved:null},
+      {dt:'3350',kt:'3213',dtnu:'',ktnu:'',desc:'ВОСМС 2% удержанный',sum:19219,subkonto:'',approved:null},
+      {dt:'3350',kt:'3120',dtnu:'',ktnu:'',desc:'ИПН у источника',sum:32664,subkonto:'',approved:null},
+      {dt:'7210',kt:'3211',dtnu:'7200Н',ktnu:'3211Н',desc:'СО 3.5% (работодатель)',sum:30275,subkonto:'',approved:null},
+      {dt:'7210',kt:'3212',dtnu:'7200Н',ktnu:'3212Н',desc:'ОСМС 3% (работодатель)',sum:28829,subkonto:'',approved:null},
+    );
+    return {entries, comment:'Расчёт по данным модуля ФОТ · НК РК 2026. Вычет ИПН 30 МРП применён для каждого сотрудника. К выплате: 812 974 ₸.'};
+  }
+
+  // Авансовый отчёт
+  if(t.includes('авансовый отчёт') || (t.includes('командировк') && t.includes('расход'))){
+    entries.push(
+      {dt:'1250',kt:'1010',dtnu:'',ktnu:'',desc:'Выдача аванса на командировку (РКО)',sum:150000,subkonto:'',approved:null},
+      {dt:'7210',kt:'1250',dtnu:'7200Н',ktnu:'1250Н',desc:'Суточные 3 дн × 25950 ₸ (в норме, ИПН нет)',sum:77850,subkonto:'',approved:null},
+      {dt:'7210',kt:'1250',dtnu:'7200Н',ktnu:'1250Н',desc:'Авиабилет Атырау-Астана',sum:65000,subkonto:'',approved:null},
+      {dt:'7210',kt:'1250',dtnu:'7200Н',ktnu:'1250Н',desc:'Гостиница (без НДС)',sum:77586,subkonto:'',approved:null},
+      {dt:'1420',kt:'1250',dtnu:'1420Н',ktnu:'1250Н',desc:'НДС к зачёту по гостинице 16%',sum:12414,subkonto:'',approved:null},
+      {dt:'7210',kt:'1250',dtnu:'7200Н',ktnu:'1250Н',desc:'Такси и транспорт',sum:8500,subkonto:'',approved:null},
+      {dt:'1250',kt:'1030',dtnu:'',ktnu:'',desc:'Перерасход — выплата сотруднику',sum:91350,subkonto:'',approved:null},
+    );
+    return {entries, comment:'Суточные в норме (6 МРП × 3 дн. = 77 850 ₸) — ИПН не начисляется. Перерасход 91 350 ₸ выплачивается из кассы/банка. НДС по гостинице принят к зачёту (если есть ЭСФ).'};
+  }
+
+  // Амортизация ОС
+  if(t.includes('аморт')){
+    entries.push(
+      {dt:'7210',kt:'2420',dtnu:'7200Н',ktnu:'2100Н',desc:'Амортизация БУ апрель 2026 · 7 объектов ОС',sum:513618,subkonto:'',approved:null},
+    );
+    return {entries, comment:'Амортизация БУ (равномерный метод): 513 618 ₸/мес. Амортизация НУ (уменьшаемый остаток): 691 797 ₸/мес. Временная разница 178 179 ₸ → ОНО Дт7710/Кт4310 35 636 ₸.'};
+  }
+
+  // Реализация услуг
+  if(t.includes('реализ') || t.includes('акт') && t.includes('услуг') || t.includes('11 600 000')){
+    const sum = 10000000;
+    const nds = 1600000;
+    entries.push(
+      {dt:'1210',kt:'6020',dtnu:'1210Н',ktnu:'6020Н',desc:'Реализация услуг NCOC N.V. апрель',sum:sum,subkonto:'NCOC N.V.',approved:null},
+      {dt:'1210',kt:'3130',dtnu:'',ktnu:'',desc:'НДС начисленный 16%',sum:nds,subkonto:'',approved:null},
+      {dt:'3260',kt:'1210',dtnu:'3260Н',ktnu:'1210Н',desc:'Зачёт ранее полученного аванса',sum:11600000,subkonto:'NCOC N.V.',approved:null},
+    );
+    return {entries, comment:'Зачёт аванса (3260 → 1210) на сумму выставленного акта. Оставшийся аванс 13 400 000 ₸ остаётся на 3260 до следующего акта.'};
+  }
+
+  // По умолчанию
+  entries.push(
+    {dt:'7210',kt:'3310',dtnu:'7200Н',ktnu:'3310Н',desc:'Операция требует уточнения · AI не смог однозначно определить тип',sum:0,subkonto:'',approved:null},
+  );
+  return {entries, comment:'Не удалось точно определить тип операции. Пожалуйста, уточните: сумму, контрагента, тип документа (ЭСФ / акт / выписка) и назначение.'};
+}
+
+function analyzeDocument(){
+  const text = document.getElementById('doc-text').value.trim();
+  if(!text){alert('Введите описание операции или загрузите файл');return;}
+
+  const spin = document.getElementById('upload-spin');
+  spin.classList.add('show');
+  document.getElementById('upload-result').classList.remove('show');
+
+  const messages = ['AI читает документ...','Определяю тип операции...','Подбираю счета НК РК 2026...','Проверяю контекст проектов...','Формирую проводки...'];
+  let i=0;
+  const interval = setInterval(()=>{
+    document.getElementById('spin-text').textContent = messages[i % messages.length];
+    i++;
+  }, 600);
+
+  setTimeout(()=>{
+    clearInterval(interval);
+    spin.classList.remove('show');
+
+    const {entries, comment} = generateEntries(text);
+    pendingEntries = entries.map(e=>({...e,id:entryId++}));
+
+    renderEntries(pendingEntries);
+    document.getElementById('result-summary').textContent = `${pendingEntries.length} проводок · Проверьте и подтвердите каждую`;
+    document.getElementById('ai-comment').innerHTML = '<strong>💡 Комментарий AI:</strong> ' + comment;
+    document.getElementById('upload-result').classList.add('show');
+  }, 2800);
+}
+
+function renderEntries(entries){
+  document.getElementById('entries-list').innerHTML = entries.map(e=>`
+    <div class="entry-row" id="erow-${e.id}" style="background:${e.approved===true?'color-mix(in srgb,var(--color-background-success) 20%,transparent)':e.approved===false?'color-mix(in srgb,var(--color-background-danger) 10%,transparent)':'transparent'}">
+      <div><span class="acc-b">${e.dt}</span></div>
+      <div><span class="acc-b">${e.kt}</span></div>
+      <div><span class="acc-n" style="font-size:10px">${e.dtnu||'—'}</span></div>
+      <div><span class="acc-n" style="font-size:10px">${e.ktnu||'—'}</span></div>
+      <div style="font-size:11px">${e.desc}${e.subkonto?` <span style="color:var(--color-text-warning);font-size:10px">📁 ${e.subkonto}</span>`:''}</div>
+      <div style="text-align:right">
+        <div style="font-weight:500;font-family:var(--font-mono);font-size:11px">${e.sum?fmt(e.sum)+' ₸':'—'}</div>
+        <div style="display:flex;gap:3px;justify-content:flex-end;margin-top:3px">
+          ${e.approved===null?`
+            <button class="approve-btn" onclick="approveEntry(${e.id})">✓</button>
+            <button class="reject-btn" onclick="rejectEntry(${e.id})">✗</button>
+          `:e.approved?'<span class="badge bg">✓ Принята</span>':'<span class="badge br">✗ Отклонена</span>'}
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function approveEntry(id){
+  pendingEntries = pendingEntries.map(e=>e.id===id?{...e,approved:true}:e);
+  renderEntries(pendingEntries);
+}
+function rejectEntry(id){
+  pendingEntries = pendingEntries.map(e=>e.id===id?{...e,approved:false}:e);
+  renderEntries(pendingEntries);
+}
+function approveAll(){
+  pendingEntries = pendingEntries.map(e=>({...e,approved:true}));
+  renderEntries(pendingEntries);
+}
+function rejectAll(){
+  pendingEntries = pendingEntries.map(e=>({...e,approved:false}));
+  renderEntries(pendingEntries);
+}
+
+function postToJournal(){
+  const approved = pendingEntries.filter(e=>e.approved===true);
+  if(!approved.length){alert('Сначала подтвердите хотя бы одну проводку (кнопка ✓)');return;}
+  const today = new Date().toLocaleDateString('ru-RU');
+  approved.forEach(e=>{
+    journalEntries.push({...e, date:today, source:'AI · Загрузка документа'});
+  });
+  pendingEntries = [];
+  document.getElementById('upload-result').classList.remove('show');
+  document.getElementById('doc-text').value='';
+  alert(`✓ ${approved.length} проводок добавлено в журнал!\nПерейдите на вкладку «Журнал проводок» для выгрузки в 1С.`);
+}
+
+// КОМАНДА БУХГАЛТЕРА
+function runCommand(){
+  const cmd = document.getElementById('cmd-input').value.trim();
+  if(!cmd) return;
+
+  const spin = document.getElementById('cmd-spin');
+  spin.classList.add('show');
+
+  setTimeout(()=>{
+    spin.classList.remove('show');
+    const {entries, comment} = generateEntries(cmd);
+    const today = new Date().toLocaleDateString('ru-RU');
+
+    const html = `<div class="history-item">
+      <div class="cmd">💬 Команда: <strong>${cmd}</strong></div>
+      <div class="res">
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:8px">💡 ${comment}</div>
+        ${entries.map(e=>`
+          <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px;align-items:center">
+            <div>Дт <span class="acc-b">${e.dt}</span> / Кт <span class="acc-b">${e.kt}</span> · ${e.desc}</div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span style="font-weight:500;font-family:var(--font-mono)">${e.sum?fmt(e.sum)+' ₸':'—'}</span>
+              <button class="approve-btn" onclick="addToJournal(this,'${e.dt}','${e.kt}','${e.desc.replace(/'/g,'')}',${e.sum},'${today}')">✓ В журнал</button>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+
+    const h = document.getElementById('cmd-history');
+    h.insertAdjacentHTML('afterbegin', html);
+    document.getElementById('cmd-input').value='';
+  }, 1800);
+}
+
+function addToJournal(btn, dt, kt, desc, sum, date){
+  journalEntries.push({id:entryId++,dt,kt,dtnu:dt+'Н',ktnu:kt+'Н',desc,sum,date,source:'AI · Команда бухгалтера',approved:true});
+  btn.textContent='✓ Добавлено';
+  btn.disabled=true;
+  btn.style.opacity='.5';
+}
+
+// ЭСФ авто
+function loadESF(){
+  alert('В демо-версии используйте кнопку «Демо (99 ЭСФ апрель)».\nВ продакшн: подключение к ИС ЭСФ через NCALayer + ЭЦП.');
+}
+
+function loadESFDemo(){
+  const spin = document.getElementById('esf-spin');
+  spin.classList.add('show');
+  const texts = ['Подключение к esf.gov.kz...','Авторизация по ЭЦП...','Получение ЭСФ за период...','Загрузка 99 документов...','AI классифицирует...'];
+  let i=0;
+  const iv = setInterval(()=>{document.getElementById('esf-spin-text').textContent=texts[i%texts.length];i++;},700);
+  setTimeout(()=>{
+    clearInterval(iv);
+    spin.classList.remove('show');
+    document.getElementById('esf-result').style.display='block';
+    document.getElementById('esf-notice').innerHTML='<strong>✓ Загружено 99 ЭСФ за апрель 2026.</strong> AI классифицировал 96 автоматически. 3 REVOKED — пропущены. Требуют проверки бухгалтера: 12 ЭСФ (нестандартные операции).';
+    document.getElementById('esf-table-wrap').innerHTML=`
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:10px">
+        <div style="padding:8px 10px;border-radius:8px;background:var(--color-background-success);text-align:center"><div style="font-size:16px;font-weight:500;color:var(--color-text-success)">84</div><div style="font-size:10px;color:var(--color-text-success)">Авто-классифицированы</div></div>
+        <div style="padding:8px 10px;border-radius:8px;background:var(--color-background-warning);text-align:center"><div style="font-size:16px;font-weight:500;color:var(--color-text-warning)">12</div><div style="font-size:10px;color:var(--color-text-warning)">Требуют проверки</div></div>
+        <div style="padding:8px 10px;border-radius:8px;background:var(--color-background-danger);text-align:center"><div style="font-size:16px;font-weight:500;color:var(--color-text-danger)">3</div><div style="font-size:10px;color:var(--color-text-danger)">REVOKED — пропущены</div></div>
+        <div style="padding:8px 10px;border-radius:8px;background:var(--color-background-info);text-align:center"><div style="font-size:16px;font-weight:500;color:var(--color-text-info)">5 309 072 ₸</div><div style="font-size:10px;color:var(--color-text-info)">НДС к зачёту (1420)</div></div>
+      </div>`;
+  },3500);
+}
+
+function classifyAllESF(){
+  alert('AI классификация запущена.\nПосле проверки нажмите «Подтверждённые → в журнал» для сохранения проводок.');
+}
+
+// ЖУРНАЛ
+function renderJournal(){
+  if(!journalEntries.length){
+    document.getElementById('journal-content').innerHTML='<div class="notice" style="font-size:12px">Журнал пуст. Загрузите документы на вкладке «Загрузить файл» или «Команда бухгалтера», подтвердите проводки и нажмите «В журнал».</div>';
+    return;
+  }
+  const total = journalEntries.reduce((s,e)=>s+(e.sum||0),0);
+  document.getElementById('journal-content').innerHTML=`
+    <div style="display:flex;gap:8px;margin-bottom:10px;font-size:11px;flex-wrap:wrap">
+      <span class="badge bg">${journalEntries.length} проводок</span>
+      <span class="badge bb">Итого: ${fmt(total)} ₸</span>
+    </div>
+    <div style="overflow-x:auto"><table class="mt">
+      <thead><tr><th>Дата</th><th>Дт БУ</th><th>Кт БУ</th><th>Дт НУ</th><th>Кт НУ</th><th>Описание</th><th style="text-align:right">Сумма (₸)</th><th>Источник</th></tr></thead>
+      <tbody>${journalEntries.map(e=>`<tr>
+        <td>${e.date}</td>
+        <td class="acc-b">${e.dt}</td><td class="acc-b">${e.kt}</td>
+        <td class="acc-n" style="font-size:10px">${e.dtnu||'—'}</td><td class="acc-n" style="font-size:10px">${e.ktnu||'—'}</td>
+        <td style="font-size:11px">${e.desc}</td>
+        <td style="text-align:right;font-family:var(--font-mono);font-size:11px">${e.sum?fmt(e.sum):'—'}</td>
+        <td style="font-size:10px;color:var(--color-text-secondary)">${e.source}</td>
+      </tr>`).join('')}</tbody>
+    </table></div>`;
+}
+
+function exportTo1C(){
+  if(!journalEntries.length){alert('Журнал пуст');return;}
+  alert(`✓ Готово к выгрузке в 1С:Казахстан!\n\nФормат: XML (обмен данными 1С)\nПроводок: ${journalEntries.length}\nВ продакшн-версии файл скачивается автоматически и загружается в 1С через «Загрузка данных из XML»`);
+}
+
+function exportExcel(){
+  alert('В продакшн-версии: экспорт в Excel с колонками Дата/Дт/Кт/Дт НУ/Кт НУ/Описание/Сумма/Субконто.');
+}
+</script>
+</body>
+</html>

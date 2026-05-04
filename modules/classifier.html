@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>06 Классификатор с проектами · AI-Платформа бухучёта РК</title>
+<style>
+
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Consolas', 'Fira Code', monospace;
+  --font-serif: Georgia, serif;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f7f7f5;
+  --color-background-tertiary: #f0efea;
+  --color-background-info: #e6f1fb;
+  --color-background-success: #eaf3de;
+  --color-background-warning: #faeeda;
+  --color-background-danger: #fcebeb;
+  --color-text-primary: #1a1a18;
+  --color-text-secondary: #6b6b67;
+  --color-text-tertiary: #9b9b97;
+  --color-text-info: #185fa5;
+  --color-text-success: #3b6d11;
+  --color-text-warning: #854f0b;
+  --color-text-danger: #a32d2d;
+  --color-border-tertiary: rgba(26,26,24,0.15);
+  --color-border-secondary: rgba(26,26,24,0.30);
+  --color-border-primary: rgba(26,26,24,0.40);
+  --color-border-info: rgba(24,95,165,0.40);
+  --color-border-success: rgba(59,109,17,0.40);
+  --color-border-warning: rgba(133,79,11,0.40);
+  --color-border-danger: rgba(163,45,45,0.40);
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-primary: #1c1c1a;
+    --color-background-secondary: #252523;
+    --color-background-tertiary: #2e2e2b;
+    --color-background-info: #0c3054;
+    --color-background-success: #1a3508;
+    --color-background-warning: #422508;
+    --color-background-danger: #4f1515;
+    --color-text-primary: #f0efe8;
+    --color-text-secondary: #a8a8a2;
+    --color-text-tertiary: #6b6b65;
+    --color-text-info: #85b7eb;
+    --color-text-success: #97c459;
+    --color-text-warning: #ef9f27;
+    --color-text-danger: #f09595;
+    --color-border-tertiary: rgba(240,239,232,0.15);
+    --color-border-secondary: rgba(240,239,232,0.30);
+    --color-border-primary: rgba(240,239,232,0.40);
+    --color-border-info: rgba(133,183,235,0.40);
+    --color-border-success: rgba(151,196,89,0.40);
+    --color-border-warning: rgba(239,159,39,0.40);
+    --color-border-danger: rgba(240,149,149,0.40);
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  font-family: var(--font-sans);
+  background: var(--color-background-tertiary);
+  margin: 0;
+  padding: 16px;
+}
+.page-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--color-background-primary);
+  border-radius: var(--border-radius-xl);
+  padding: 20px 24px 32px;
+  border: 0.5px solid var(--color-border-tertiary);
+}
+.top-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+  font-size: 12px;
+}
+.top-nav a {
+  color: var(--color-text-info);
+  text-decoration: none;
+  font-size: 12px;
+}
+.top-nav a:hover { text-decoration: underline; }
+.top-nav .sep { color: var(--color-text-tertiary); }
+.top-nav .mod-name {
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+.top-nav .company {
+  margin-left: auto;
+  color: var(--color-text-secondary);
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+  <div class="top-nav">
+    <a href="../index.html">← Все модули</a>
+    <span class="sep">·</span>
+    <span class="mod-name">06 Классификатор с проектами</span>
+    <span class="company">Alpino Group ТОО · НК РК 2026</span>
+  </div>
+  
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);font-size:13px}
+.app{padding:1rem 0}
+.tabs{display:flex;gap:4px;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.2rem;flex-wrap:wrap}
+.tab{padding:7px 13px;font-size:12px;cursor:pointer;border:none;background:transparent;color:var(--color-text-secondary);border-bottom:2px solid transparent;margin-bottom:-1px;font-family:var(--font-sans)}
+.tab.active{color:var(--color-text-primary);border-bottom:2px solid var(--color-text-primary);font-weight:500}
+.section{display:none}.section.active{display:block}
+.notice{font-size:11px;color:var(--color-text-secondary);padding:8px 12px;background:var(--color-background-secondary);border-radius:8px;margin-bottom:10px;line-height:1.6}
+.notice strong{color:var(--color-text-primary)}
+.notice.info{background:var(--color-background-info)}.notice.info strong{color:var(--color-text-info)}
+.notice.warn{background:var(--color-background-warning)}.notice.warn strong{color:var(--color-text-warning)}
+.notice.success{background:var(--color-background-success)}.notice.success strong{color:var(--color-text-success)}
+.notice.danger{background:var(--color-background-danger)}.notice.danger strong{color:var(--color-text-danger)}
+input,select,textarea{font-family:var(--font-sans);font-size:12px;padding:5px 8px;border:0.5px solid var(--color-border-secondary);border-radius:7px;background:var(--color-background-primary);color:var(--color-text-primary);width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--color-border-primary)}
+textarea{resize:vertical;min-height:70px}
+input[readonly]{background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.btn{padding:5px 12px;font-size:12px;font-family:var(--font-sans);border:0.5px solid var(--color-border-secondary);border-radius:7px;background:transparent;color:var(--color-text-primary);cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--color-background-secondary)}
+.btn-p{background:var(--color-text-primary);color:var(--color-background-primary);border-color:var(--color-text-primary)}
+.btn-sm{padding:2px 7px;font-size:11px}
+.badge{display:inline-block;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:500}
+.bg{background:var(--color-background-success);color:var(--color-text-success)}
+.br{background:var(--color-background-danger);color:var(--color-text-danger)}
+.bb{background:var(--color-background-info);color:var(--color-text-info)}
+.bw{background:var(--color-background-warning);color:var(--color-text-warning)}
+.bp{background:#EEEDFE;color:#3C3489}
+.bg2{background:color-mix(in srgb,var(--color-background-success) 40%,transparent);color:var(--color-text-success)}
+.acc{font-family:var(--font-mono);font-weight:500}
+.acc-bu{color:var(--color-text-info)}
+.acc-nu{color:var(--color-text-success)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+.fl-i{display:flex;flex-direction:column;gap:3px}
+.fl-i label{font-size:11px;color:var(--color-text-secondary)}
+.ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.pt{font-size:14px;font-weight:600}.ps{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+
+/* ПРОЕКТ КАРТОЧКА */
+.proj-card{border:0.5px solid var(--color-border-tertiary);border-radius:10px;padding:12px;margin-bottom:10px;cursor:pointer;transition:border-color .15s}
+.proj-card:hover{border-color:var(--color-border-primary)}
+.proj-card.active-proj{border-color:var(--color-text-primary);border-width:1.5px;background:color-mix(in srgb,var(--color-background-info) 8%,transparent)}
+.proj-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;gap:8px}
+.proj-name{font-size:13px;font-weight:600}
+.proj-client{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.proj-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.proj-accounts{background:var(--color-background-secondary);border-radius:7px;padding:8px 10px;font-size:11px;line-height:1.8}
+.proj-keywords{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.kw-tag{padding:2px 8px;border-radius:12px;font-size:10px;border:0.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-secondary)}
+.kw-tag.active-kw{background:var(--color-background-warning);border-color:var(--color-border-warning);color:var(--color-text-warning)}
+
+/* КЛАССИФИКАТОР С КОНТЕКСТОМ */
+.ctx-banner{border:1.5px solid var(--color-text-warning);border-radius:10px;padding:10px 14px;margin-bottom:12px;background:color-mix(in srgb,var(--color-background-warning) 12%,transparent)}
+.ctx-banner .ctx-title{font-size:12px;font-weight:600;color:var(--color-text-warning);margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.ctx-banner .ctx-body{font-size:11px;color:var(--color-text-secondary);line-height:1.6}
+
+.pos-item{border:0.5px solid var(--color-border-tertiary);border-radius:9px;padding:10px 12px;margin-bottom:8px}
+.pos-item.project-mat{border-left:3px solid var(--color-text-warning)}
+.pos-item.os{border-left:3px solid var(--color-text-warning)}
+.pos-item.tmz{border-left:3px solid var(--color-text-success)}
+.pos-item.svc{border-left:3px solid var(--color-text-info)}
+.pos-item.question{border-left:3px solid var(--color-text-danger);background:color-mix(in srgb,var(--color-background-danger) 6%,transparent)}
+
+.dialog-box{border:1.5px solid var(--color-border-warning);border-radius:12px;padding:14px;margin-bottom:12px;background:color-mix(in srgb,var(--color-background-warning) 8%,transparent)}
+.dialog-box.project-override{border-color:#e67e22;background:color-mix(in srgb,orange 5%,transparent)}
+.ai-label{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.ai-bubble{font-size:12px;color:var(--color-text-primary);line-height:1.7;margin-bottom:10px;padding:10px;background:var(--color-background-secondary);border-radius:8px}
+.type-buttons{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.type-btn{padding:8px 14px;border:1.5px solid var(--color-border-secondary);border-radius:8px;cursor:pointer;font-size:12px;font-family:var(--font-sans);background:var(--color-background-primary);color:var(--color-text-primary)}
+.type-btn:hover{border-color:var(--color-text-primary)}
+.type-btn.selected{border-color:var(--color-text-primary);background:var(--color-text-primary);color:var(--color-background-primary)}
+.type-btn.proj{border-color:#e67e22;color:#e67e22}
+.type-btn.proj.selected{background:#e67e22;color:white;border-color:#e67e22}
+.type-btn.os{border-color:var(--color-text-warning);color:var(--color-text-warning)}
+.type-btn.os.selected{background:var(--color-text-warning);color:white}
+.type-btn.tmz{border-color:var(--color-text-success);color:var(--color-text-success)}
+.type-btn.tmz.selected{background:var(--color-text-success);color:white}
+.type-btn.svc{border-color:var(--color-text-info);color:var(--color-text-info)}
+.type-btn.svc.selected{background:var(--color-text-info);color:white}
+
+/* Таблица */
+table.mt{width:100%;border-collapse:collapse;font-size:12px}
+table.mt th{padding:5px 7px;font-size:11px;font-weight:500;color:var(--color-text-secondary);border-bottom:0.5px solid var(--color-border-tertiary);text-align:left;white-space:nowrap;background:var(--color-background-secondary)}
+table.mt td{padding:5px 7px;border-bottom:0.5px solid var(--color-border-tertiary)}
+table.mt tr:hover td{background:var(--color-background-secondary)}
+table.mt tr.total td{font-weight:600;background:var(--color-background-secondary)}
+
+/* Счётчик */
+.stat-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.stat-item{padding:5px 10px;border-radius:7px;font-size:11px;background:var(--color-background-secondary);display:flex;align-items:center;gap:5px}
+</style>
+</head>
+<body>
+<div class="app">
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('projects')">• Проекты</button>
+  <button class="tab" onclick="showTab('classifier')">• Классификатор ЭСФ</button>
+  <button class="tab" onclick="showTab('journal')">• Журнал проводок</button>
+  <button class="tab" onclick="showTab('howto')">• Как работает</button>
+</div>
+
+<!-- ===== ПРОЕКТЫ ===== -->
+<div id="projects" class="section active">
+  <div class="ph">
+    <div><div class="pt">Проекты и операции компании</div>
+    <div class="ps">Контекст для ИИ-классификатора · Alpino Group ТОО</div></div>
+    <button class="btn btn-p btn-sm" onclick="toggleNewForm()">+ Новый проект</button>
+  </div>
+
+  <div class="notice info">
+    <strong>Зачем это нужно:</strong> Если компания закупает генератор для строительного проекта — это материал (1310), не ОС (2410). Насосная станция для монтажа на объекте заказчика — тоже 1310, затем при выполнении работ списывается на 7010 (себестоимость). ИИ будет это знать, если вы укажете активные проекты.
+  </div>
+
+  <!-- Форма нового проекта -->
+  <div id="new-proj-form" style="display:none;border:1.5px solid var(--color-border-primary);border-radius:12px;padding:14px;margin-bottom:14px">
+    <div style="font-size:13px;font-weight:600;margin-bottom:12px">Новый проект / операция</div>
+
+    <div class="g3">
+      <div class="fl-i"><label>Название проекта</label><input id="np-name" placeholder="Реконструкция НПС-2 NCOC"></div>
+      <div class="fl-i"><label>Заказчик</label><input id="np-client" placeholder="ТОО NCOC N.V."></div>
+      <div class="fl-i"><label>Номер договора</label><input id="np-contract" placeholder="NCOC-2026-0451"></div>
+    </div>
+    <div class="g4">
+      <div class="fl-i"><label>Тип проекта</label>
+        <select id="np-type" onchange="updateProjTypeHint()">
+          <option value="construction">Строительство / Реконструкция</option>
+          <option value="supply">Поставка товаров (перепродажа)</option>
+          <option value="service">Оказание услуг</option>
+          <option value="maintenance">ТО и ремонт оборудования</option>
+          <option value="own">Собственное строительство ОС</option>
+          <option value="production">Производство продукции</option>
+        </select>
+      </div>
+      <div class="fl-i"><label>Дата начала</label><input type="date" id="np-start" value="2026-04-01"></div>
+      <div class="fl-i"><label>Дата окончания (план)</label><input type="date" id="np-end" value="2026-12-31"></div>
+      <div class="fl-i"><label>Бюджет проекта (₸)</label><input type="number" id="np-budget" placeholder="50000000"></div>
+    </div>
+
+    <div id="proj-type-hint" class="notice warn" style="margin-top:0;margin-bottom:10px"></div>
+
+    <!-- Счета для этого проекта -->
+    <div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:8px;text-transform:uppercase">Счета учёта по проекту</div>
+    <div class="g4">
+      <div class="fl-i"><label>Закупки → на счёт (БУ)</label>
+        <select id="np-buy-acc">
+          <option value="1310">1310 — Материалы (для передачи)</option>
+          <option value="1330">1330 — Товары</option>
+          <option value="2930">2930 — Незаверш. строительство</option>
+          <option value="2410">2410 — Основные средства</option>
+          <option value="7010">7010 — Себестоимость</option>
+        </select>
+      </div>
+      <div class="fl-i"><label>Закупки → на счёт (НУ)</label>
+        <select id="np-buy-acc-nu">
+          <option value="1310Н">1310Н — Материалы</option>
+          <option value="1330Н">1330Н — Товары</option>
+          <option value="2400Н">2400Н — Незаверш. строит.</option>
+          <option value="7000Н">7000Н — Себестоимость</option>
+        </select>
+      </div>
+      <div class="fl-i"><label>Списание на счёт (БУ)</label>
+        <select id="np-write-acc">
+          <option value="7010">7010 — Себестоимость (осн.)</option>
+          <option value="7210">7210 — Административные</option>
+          <option value="2930">2930 — Незаверш. строительство</option>
+          <option value="8110">8110 — Осн. производство</option>
+        </select>
+      </div>
+      <div class="fl-i"><label>Субконто «Проект»</label><input id="np-subkonto" placeholder="NCOC-2026-0451 НПС-2"></div>
+    </div>
+
+    <!-- Ключевые слова для контекста -->
+    <div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin:10px 0 6px;text-transform:uppercase">
+      Ключевые слова — какие активы относятся к этому проекту
+    </div>
+    <div class="notice" style="margin-bottom:8px">
+      <strong>Укажите:</strong> типы оборудования, материалов, которые будут закупаться для этого проекта и должны идти на <strong>1310</strong> (материалы), а не на 2410 (ОС). ИИ будет использовать эти слова для контекстной классификации.
+    </div>
+    <div class="g2">
+      <div>
+        <textarea id="np-keywords" placeholder="генератор, насос, насосная станция, трубопровод, задвижка, клапан, манометр, кабель силовой, щит управления, электродвигатель, помпа, компрессор, автоматика, датчик, контроллер" style="min-height:80px"></textarea>
+        <div style="font-size:10px;color:var(--color-text-secondary);margin-top:4px">Через запятую. Именно эти позиции ЭСФ будут классифицироваться как материалы проекта.</div>
+      </div>
+      <div>
+        <div class="fl-i" style="margin-bottom:8px"><label>Описание / Комментарий</label>
+          <textarea id="np-desc" placeholder="Реконструкция насосной перекачивающей станции НПС-2 на объекте NCOC. Поставка и монтаж технологического оборудования." style="min-height:80px"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-top:4px">
+      <button class="btn btn-p btn-sm" onclick="saveProject()">Сохранить проект</button>
+      <button class="btn btn-sm" onclick="toggleNewForm()">Отмена</button>
+    </div>
+  </div>
+
+  <!-- Список проектов -->
+  <div id="proj-list"></div>
+</div>
+
+<!-- ===== КЛАССИФИКАТОР С КОНТЕКСТОМ ===== -->
+<div id="classifier" class="section">
+  <div class="ph">
+    <div><div class="pt">Классификатор ЭСФ</div>
+    <div class="ps" id="cls-sub">Нет активных проектов</div></div>
+    <button class="btn btn-sm" onclick="showTab('projects')">⚙️ Проекты →</button>
+  </div>
+
+  <!-- Активный контекст проекта -->
+  <div id="ctx-banner-area"></div>
+
+  <!-- Счётчик -->
+  <div class="stat-row" id="stat-row"></div>
+
+  <!-- Диалог -->
+  <div id="dialog-area"></div>
+
+  <!-- Обработанные -->
+  <div id="processed-list"></div>
+
+  <div id="finish-area" style="display:none">
+    <div class="notice success"><strong>✓ Все позиции классифицированы.</strong> Переходите к журналу проводок.</div>
+    <button class="btn btn-p" onclick="showTab('journal')">Перейти к проводкам →</button>
+  </div>
+</div>
+
+<!-- ===== ЖУРНАЛ ===== -->
+<div id="journal" class="section">
+  <div class="ph">
+    <div><div class="pt">Журнал проводок по ЭСФ</div><div class="ps">БУ + НУ · С аналитикой по проектам</div></div>
+    <button class="btn btn-p btn-sm" onclick="sendPrompt('Экспортируй журнал проводок в Excel для 1С:Казахстан с аналитикой по проектам')">Excel для 1С →</button>
+  </div>
+  <div style="overflow-x:auto">
+    <table class="mt" id="journal-table">
+      <thead><tr>
+        <th>Дата</th><th>Позиция</th><th>Тип</th>
+        <th>Дт БУ</th><th>Кт БУ</th><th>Дт НУ</th><th>Кт НУ</th>
+        <th style="text-align:right">Сумма (₸)</th>
+        <th>НДС</th><th>Проект</th><th>Подразд.</th>
+      </tr></thead>
+      <tbody id="journal-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== КАК РАБОТАЕТ ===== -->
+<div id="howto" class="section">
+  <div class="pt" style="margin-bottom:12px">• Логика контекстной классификации</div>
+
+  <div class="notice info">
+    <strong>Проблема без контекста:</strong> ИИ видит «Насосная станция 4 500 000 ₸» → думает ОС (2410). Но если это для строительного проекта заказчика — это материал (1310), который потом списывается на себестоимость (7010) при выполнении работ.
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+    <div style="padding:12px;border:0.5px solid var(--color-border-tertiary);border-radius:10px">
+      <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-text-warning)">❌ Без контекста проекта</div>
+      <div style="font-size:12px;line-height:1.8;color:var(--color-text-secondary)">
+        Насосная станция 4 500 000 ₸<br>
+        → ИИ: «высокая стоимость, насос» → предлагает <strong>ОС (2410)</strong><br>
+        → Бухгалтер вынужден вручную исправлять каждый раз<br>
+        → Риск ошибки в проводках
+      </div>
+    </div>
+    <div style="padding:12px;border:0.5px solid var(--color-border-success);border-radius:10px;background:color-mix(in srgb,var(--color-background-success) 10%,transparent)">
+      <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:var(--color-text-success)">✓ С контекстом проекта</div>
+      <div style="font-size:12px;line-height:1.8;color:var(--color-text-secondary)">
+        Активный проект: «Реконструкция НПС-2 NCOC»<br>
+        Ключевые слова: насос, насосная, генератор...<br>
+        → ИИ: <strong>«Это материал проекта! → 1310»</strong><br>
+        → Один клик для подтверждения · Субконто: проект
+      </div>
+    </div>
+  </div>
+
+  <div class="notice">
+    <strong>Полная цепочка учёта по проекту:</strong><br>
+    1️⃣ Закупка: Дт <span class="acc acc-bu">1310</span> / Кт <span class="acc acc-bu">3310</span> — материалы поступили на склад<br>
+    2️⃣ НДС: Дт <span class="acc acc-bu">1420</span> / Кт <span class="acc acc-bu">3310</span> — НДС к зачёту<br>
+    3️⃣ Передача в монтаж: Дт <span class="acc acc-bu">2930</span> / Кт <span class="acc acc-bu">1310</span> — материалы переданы на объект<br>
+    4️⃣ Акт выполненных работ: Дт <span class="acc acc-bu">1210</span> / Кт <span class="acc acc-bu">7010</span> — признание дохода + Дт <span class="acc acc-bu">7010</span> / Кт <span class="acc acc-bu">2930</span> — списание себестоимости
+  </div>
+
+  <div class="notice warn">
+    <strong>НУ:</strong> Материалы проекта (1310Н) → при списании на себестоимость → 7000Н. ОС у заказчика — в НУ у Alpino Group не возникает, т.к. актив передаётся заказчику.
+  </div>
+
+  <div class="notice">
+    <strong>Собственное строительство ОС</strong> (для себя, не для заказчика): Дт <span class="acc acc-bu">2930</span> / Кт <span class="acc acc-bu">1310</span> / Кт <span class="acc acc-bu">3350</span> → при вводе в эксплуатацию: Дт <span class="acc acc-bu">2410</span> / Кт <span class="acc acc-bu">2930</span>. НУ: 2400Н → 2100Н.
+  </div>
+</div>
+
+</div>
+
+<script>
+// ДАННЫЕ
+const ESF_ITEMS = [
+  {id:1,date:'23.04.2026',supplier:'ТОО "ALTRA Truck Service"',desc:'ФИЛЬТР МАСЛЯНЫЙ DAF',qty:1,price:24913.79,nds:3986.21,total:28900},
+  {id:2,date:'23.04.2026',supplier:'ТОО "NCOC Supply"',desc:'Насосная станция НЦС-50/50 Grundfos',qty:1,price:3879310.34,nds:620689.66,total:4500000},
+  {id:3,date:'22.04.2026',supplier:'ТОО "NCOC Supply"',desc:'Генератор дизельный SDMO 200кВт',qty:1,price:5172413.79,nds:827586.21,total:6000000},
+  {id:4,date:'22.04.2026',supplier:'ТОО "NCOC Supply"',desc:'Кабель силовой ВВГнг 4×95 (150м)',qty:1,price:431034.48,nds:68965.52,total:500000},
+  {id:5,date:'21.04.2026',supplier:'ТОО "Электро-Атырау"',desc:'Щит управления насосной станцией',qty:1,price:1293103.45,nds:206896.55,total:1500000},
+  {id:6,date:'20.04.2026',supplier:'ТОО "WELMASTER"',desc:'Сверло 25мм',qty:1,price:16034.48,nds:2565.52,total:18600},
+  {id:7,date:'15.04.2026',supplier:'ТОО "RomMash"',desc:'Ремонт экскаватора JINGONG JGM9225E',qty:1,price:64655.17,nds:10344.83,total:75000},
+  {id:8,date:'14.04.2026',supplier:'ТОО "NCOC Supply"',desc:'Датчик давления Endress+Hauser PMC51',qty:5,price:172413.79,nds:27586.21,total:200000},
+  {id:9,date:'13.04.2026',supplier:'ТОО "Цемент-Казахстан"',desc:'Цемент М400 (25 мешков)',qty:25,price:4310.34,nds:689.66,total:5000},
+  {id:10,date:'12.04.2026',supplier:'ТОО "ИТ-Решения"',desc:'Лицензия 1С:Бухгалтерия 8 для Казахстана',qty:1,price:259482.76,nds:40517.24,total:300000},
+];
+
+let projects = [
+  {
+    id:1, name:'Реконструкция НПС-2 NCOC', client:'ТОО NCOC N.V.',
+    contract:'NCOC-2026-0451', type:'construction',
+    start:'2026-03-01', end:'2026-11-30', budget:250000000,
+    buyAcc:'1310', buyAccNU:'1310Н', writeAcc:'7010', subkonto:'NCOC НПС-2',
+    keywords:['насос','насосная','генератор','кабель','щит','датчик','контроллер','трубопровод','задвижка','клапан','манометр','электродвигатель','помпа','компрессор','автоматика'],
+    desc:'Реконструкция насосной перекачивающей станции НПС-2. Поставка и монтаж технологического оборудования.',
+    active:true
+  }
+];
+let nextProjId = 2;
+let processed = [];
+let currentIdx = 0;
+let selectedType = null;
+
+function fmt(n){return Math.round(n||0).toLocaleString('ru-RU');}
+
+// КОНТЕКСТНАЯ КЛАССИФИКАЦИЯ
+function classifyWithContext(desc, price) {
+  const d = desc.toLowerCase();
+
+  // 1. Проверяем активные проекты
+  for(const proj of projects.filter(p=>p.active)) {
+    for(const kw of proj.keywords) {
+      if(d.includes(kw.toLowerCase().trim())) {
+        return {
+          type:'project_mat',
+          label:`Материал проекта: ${proj.name}`,
+          reason:`Ключевое слово "${kw}" совпадает с проектом "${proj.name}"`,
+          proj,
+          dtBU: proj.buyAcc, ctBU:'3310',
+          dtNU: proj.buyAccNU, ctNU:'3310Н',
+          ndsBU:'1420', ndsNU:'1420Н',
+          subkonto: proj.subkonto,
+          confidence:'high'
+        };
+      }
+    }
+  }
+
+  // 2. Стандартные ключевые слова (без порога стоимости)
+  const SVC = ['ремонт','обслуживани','монтаж','аренд','перевозк','консультац','услуг','работ','диагностик','страховани','регистрац','лицензи'];
+  const OS  = ['экскаватор','грузовик','погрузчик','трактор','кран','сервер','компьютер','ноутбук'];
+  const TMZ = ['фильтр','масло','запчасть','болт','труб','краск','бетон','цемент','арматур','сверл','диск','перчатк','лент','мешок'];
+
+  for(const kw of SVC) if(d.includes(kw)) return {type:'svc', label:'Услуга/Работа', reason:`Ключевое слово "${kw}"`, dtBU:'7210',ctBU:'3310',dtNU:'7200Н',ctNU:'3310Н',ndsBU:'1420',ndsNU:'1420Н',confidence:'medium'};
+  for(const kw of OS)  if(d.includes(kw)) return {type:'os',  label:'Основное средство', reason:`Ключевое слово "${kw}"`, dtBU:'2410',ctBU:'3310',dtNU:'2100Н',ctNU:'3310Н',ndsBU:'1420',ndsNU:'1420Н',confidence:'medium'};
+  for(const kw of TMZ) if(d.includes(kw)) return {type:'tmz', label:'Материалы/ТМЦ', reason:`Ключевое слово "${kw}"`, dtBU:'1310',ctBU:'3310',dtNU:'1310Н',ctNU:'3310Н',ndsBU:'1420',ndsNU:'1420Н',confidence:'medium'};
+
+  return {type:'unknown', label:'Не определено', reason:'Требует ручной классификации', dtBU:'1310',ctBU:'3310',dtNU:'1310Н',ctNU:'3310Н',ndsBU:'1420',ndsNU:'1420Н',confidence:'low'};
+}
+
+function startClassifier() {
+  showTab('classifier');
+  currentIdx=0; processed=[];
+  renderCtxBanner();
+  updateStats();
+  showNextItem();
+}
+
+function renderCtxBanner() {
+  const activeProjs = projects.filter(p=>p.active);
+  const el = document.getElementById('ctx-banner-area');
+  if(!activeProjs.length){
+    el.innerHTML=`<div class="notice warn"><strong>⚠ Нет активных проектов.</strong> Классификатор работает без контекста. Добавьте проекты для точной классификации.</div>`;
+    document.getElementById('cls-sub').textContent='Без контекста проектов';
+    return;
+  }
+  el.innerHTML = activeProjs.map(p=>`
+    <div class="ctx-banner">
+      <div class="ctx-title">• Активный контекст: ${p.name}</div>
+      <div class="ctx-body">
+        Заказчик: <strong>${p.client}</strong> · Договор: ${p.contract} · ${p.start} — ${p.end}<br>
+        Закупки по проекту → <span class="acc acc-bu">${p.buyAcc}</span> (${p.buyAcc==='1310'?'материалы':p.buyAcc==='2930'?'незаверш. строит.':'товары'}) · НУ: <span class="acc acc-nu">${p.buyAccNU}</span> · Субконто: <strong>${p.subkonto}</strong><br>
+        Ключевые слова (${p.keywords.length}): <span style="color:var(--color-text-warning)">${p.keywords.slice(0,8).join(', ')}${p.keywords.length>8?'...':''}</span>
+      </div>
+    </div>`).join('');
+  document.getElementById('cls-sub').textContent=`${activeProjs.length} активных проекта · ${activeProjs.map(p=>p.name).join(', ')}`;
+}
+
+function showNextItem() {
+  updateStats();
+  if(currentIdx >= ESF_ITEMS.length){
+    document.getElementById('dialog-area').innerHTML='';
+    document.getElementById('finish-area').style.display='block';
+    renderJournal();
+    return;
+  }
+  const item = ESF_ITEMS[currentIdx];
+  const guess = classifyWithContext(item.desc, item.price);
+  renderDialog(item, guess);
+}
+
+function renderDialog(item, g) {
+  const isProjectMat = g.type==='project_mat';
+  const isUnknown = g.type==='unknown';
+  const confColor = g.confidence==='high'?'bg':g.confidence==='medium'?'bw':'br';
+  const confText  = g.confidence==='high'?'✓ Высокая уверенность':g.confidence==='medium'?'~ Предположение':'⚠ Не определено';
+
+  // Для project_mat — компактный диалог (одно нажатие)
+  const isQuick = g.confidence==='high' && isProjectMat;
+
+  document.getElementById('dialog-area').innerHTML=`
+    <div class="dialog-box ${isProjectMat?'project-override':''}">
+      <div class="ai-label">
+        🤖 ИИ-Классификатор · <strong>${item.supplier}</strong> · ${item.date}
+        <span class="badge ${confColor}" style="margin-left:auto">${confText}</span>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;gap:8px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:14px;font-weight:600">${item.desc}</div>
+          <div style="font-size:12px;color:var(--color-text-secondary);margin-top:3px">
+            Кол-во: ${item.qty} · Без НДС: <strong>${fmt(item.price)} ₸</strong> · НДС: ${fmt(item.nds)} ₸ · Итого: <strong>${fmt(item.total)} ₸</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-bubble">
+        ${isProjectMat
+          ? `• <strong>Контекст проекта: «${g.proj.name}»</strong><br>
+             Ключевое слово совпало → этот актив классифицируется как <strong>материал для проекта</strong>, не как ОС.<br>
+             Счёт: <span class="acc acc-bu">${g.dtBU}</span> (материалы) → при списании: <span class="acc acc-bu">${g.proj.writeAcc}</span> (себестоимость) · Субконто: <strong>${g.subkonto}</strong>`
+          : isUnknown
+            ? `❓ Не удалось определить автоматически. Выберите тип вручную.`
+            : `• Предположение по ключевым словам: <strong>${g.label}</strong>. Подтвердите или выберите другой тип.`
+        }
+      </div>
+
+      <div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:6px">Тип:</div>
+      <div class="type-buttons">
+        ${isProjectMat||true?`<button class="type-btn proj ${g.type==='project_mat'?'selected':''}" onclick="selType('project_mat',this)">• Материал проекта (${g.type==='project_mat'?g.proj?.name||'проект':'выберите проект'})</button>`:''}
+        <button class="type-btn os  ${g.type==='os' ?'selected':''}" onclick="selType('os' ,this)">• Основное средство (2410)</button>
+        <button class="type-btn tmz ${g.type==='tmz'?'selected':''}" onclick="selType('tmz',this)">• Материалы/ТМЦ (1310)</button>
+        <button class="type-btn tmz ${g.type==='tmz_goods'?'selected':''}" onclick="selType('tmz_goods',this)" style="border-color:var(--color-text-success);color:var(--color-text-success)">• Товары (1330)</button>
+        <button class="type-btn svc ${g.type==='svc'?'selected':''}" onclick="selType('svc' ,this)">• Услуга/Работа (7210)</button>
+      </div>
+
+      <div id="extra-detail" style="font-size:11px;color:var(--color-text-secondary);padding:8px 10px;background:var(--color-background-secondary);border-radius:7px;margin-bottom:10px">
+        <strong>Проводка:</strong>
+        Дт <span class="acc acc-bu" id="ed-dtbu">${g.dtBU}</span> /
+        Кт <span class="acc acc-bu">${g.ctBU}</span> — ${fmt(item.price)} ₸ &nbsp;·&nbsp;
+        НДС: Дт <span class="acc acc-bu">${g.ndsBU}</span> / Кт <span class="acc acc-bu">${g.ctBU}</span> — ${fmt(item.nds)} ₸
+        <br>
+        <span class="acc acc-nu">НУ: Дт <span id="ed-dtnu">${g.dtNU}</span> / Кт ${g.ctNU}</span>
+        ${g.subkonto?` &nbsp;·&nbsp; Субконто: <strong>${g.subkonto}</strong>`:''}
+      </div>
+
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button class="btn btn-p" onclick="confirmCurrent()">Подтвердить →</button>
+        ${isProjectMat?`<span style="font-size:11px;color:var(--color-text-secondary)">Субконто «${g.subkonto}» будет добавлен автоматически</span>`:''}
+      </div>
+    </div>`;
+
+  selectedType = g.type;
+  window._currentGuess = g;
+}
+
+function selType(type, btn){
+  selectedType = type;
+  document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+
+  // Обновляем счета в деталях
+  const acc = {
+    'project_mat': window._currentGuess?.type==='project_mat'?window._currentGuess:null,
+    'os':  {dtBU:'2410',dtNU:'2100Н'},
+    'tmz': {dtBU:'1310',dtNU:'1310Н'},
+    'tmz_goods':{dtBU:'1330',dtNU:'1330Н'},
+    'svc': {dtBU:'7210',dtNU:'7200Н'},
+  }[type];
+  if(acc){
+    const dtbu = document.getElementById('ed-dtbu');
+    const dtnu = document.getElementById('ed-dtnu');
+    if(dtbu) dtbu.textContent = acc.dtBU||'1310';
+    if(dtnu) dtnu.textContent = acc.dtNU||'1310Н';
+  }
+}
+
+function confirmCurrent(){
+  if(!selectedType){alert('Выберите тип');return;}
+  const item = ESF_ITEMS[currentIdx];
+  const g = window._currentGuess;
+  let dtBU='1310',dtNU='1310Н',label='Материалы',projName='';
+
+  if(selectedType==='project_mat'&&g.type==='project_mat'){
+    dtBU=g.dtBU; dtNU=g.dtNU; label=g.label; projName=g.proj.name;
+  } else if(selectedType==='os'){dtBU='2410';dtNU='2100Н';label='Основное средство';}
+  else if(selectedType==='tmz_goods'){dtBU='1330';dtNU='1330Н';label='Товары';}
+  else if(selectedType==='svc'){dtBU='7210';dtNU='7200Н';label='Услуга/Работа';}
+  else {dtBU='1310';dtNU='1310Н';label='Материалы/ТМЦ';}
+
+  processed.push({...item, type:selectedType, label, dtBU, ctBU:'3310', dtNU, ctNU:'3310Н', ndsBU:'1420', ndsNU:'1420Н', projName,
+    subkonto: selectedType==='project_mat'&&g.type==='project_mat'?g.subkonto:''});
+
+  currentIdx++;
+  renderProcessed();
+  showNextItem();
+}
+
+function renderProcessed(){
+  document.getElementById('processed-list').innerHTML = processed.map(p=>`
+    <div class="pos-item ${p.type==='project_mat'?'project-mat':p.type}" style="opacity:.8">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+        <span style="font-size:12px;font-weight:500;flex:1">${p.desc}</span>
+        <span class="badge ${p.type==='project_mat'?'bw':p.type==='os'?'bw':p.type==='svc'?'bb':'bg'}">${p.label}</span>
+        <span style="font-size:13px;font-weight:600">${fmt(p.total)} ₸</span>
+      </div>
+      <div style="font-size:11px;color:var(--color-text-secondary);display:flex;gap:10px;flex-wrap:wrap">
+        <span>Дт БУ: <span class="acc acc-bu">${p.dtBU}</span></span>
+        <span>НДС: <span class="acc acc-bu">${p.ndsBU}</span></span>
+        <span>НУ: <span class="acc acc-nu">${p.dtNU}</span></span>
+        ${p.projName?`<span>• ${p.projName}</span>`:''}
+        ${p.subkonto?`<span>Субконто: <strong>${p.subkonto}</strong></span>`:''}
+      </div>
+    </div>`).join('');
+}
+
+function updateStats(){
+  const total=ESF_ITEMS.length, done=processed.length;
+  const pm=processed.filter(p=>p.type==='project_mat').length;
+  const os=processed.filter(p=>p.type==='os').length;
+  const tmz=processed.filter(p=>p.type==='tmz'||p.type==='tmz_goods').length;
+  const svc=processed.filter(p=>p.type==='svc').length;
+  document.getElementById('stat-row').innerHTML=`
+    <div class="stat-item"><span>📦</span> Всего: <strong>${total}</strong></div>
+    <div class="stat-item" style="background:var(--color-background-success);color:var(--color-text-success)">✓ Готово: <strong>${done}</strong></div>
+    <div class="stat-item" style="background:var(--color-background-warning);color:var(--color-text-warning)">⏳ Осталось: <strong>${total-done}</strong></div>
+    ${pm?`<div class="stat-item" style="background:color-mix(in srgb,orange 12%,transparent);color:#c0392b">• Проект: <strong>${pm}</strong></div>`:''}
+    ${os?`<div class="stat-item"><span class="badge bw">ОС: ${os}</span></div>`:''}
+    ${tmz?`<div class="stat-item"><span class="badge bg">ТМЦ: ${tmz}</span></div>`:''}
+    ${svc?`<div class="stat-item"><span class="badge bb">Услуга: ${svc}</span></div>`:''}`;
+}
+
+function renderJournal(){
+  const rows=[];
+  processed.forEach(p=>{
+    rows.push(`<tr>
+      <td>${p.date}</td>
+      <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${p.desc}">${p.desc}</td>
+      <td><span class="badge ${p.type==='project_mat'?'bw':p.type==='svc'?'bb':'bg'}">${p.label}</span></td>
+      <td class="acc acc-bu">${p.dtBU}</td><td class="acc acc-bu">${p.ctBU}</td>
+      <td class="acc acc-nu">${p.dtNU}</td><td class="acc acc-nu">${p.ctNU}</td>
+      <td style="text-align:right;font-weight:500">${fmt(p.price)}</td>
+      <td style="text-align:right;color:var(--color-text-warning)">${fmt(p.nds)}</td>
+      <td style="font-size:11px;color:${p.projName?'var(--color-text-warning)':'var(--color-text-secondary)'}">${p.projName||'—'}</td>
+      <td>—</td>
+    </tr>`);
+  });
+  document.getElementById('journal-tbody').innerHTML=rows.join('')||'<tr><td colspan="11" style="padding:20px;text-align:center;color:var(--color-text-secondary)">Сначала классифицируйте позиции ЭСФ</td></tr>';
+}
+
+// ПРОЕКТЫ
+function renderProjects(){
+  document.getElementById('proj-list').innerHTML = projects.map(p=>`
+    <div class="proj-card ${p.active?'active-proj':''}">
+      <div class="proj-header">
+        <div>
+          <div class="proj-name">${p.name}</div>
+          <div class="proj-client">${p.client} · Договор: ${p.contract}</div>
+        </div>
+        <div style="display:flex;gap:6px;align-items:flex-start;flex-wrap:wrap">
+          <span class="badge ${p.active?'bg':'br'}">${p.active?'Активен':'Не активен'}</span>
+          <span class="badge bb">${{construction:'Строительство',supply:'Поставка',service:'Услуги',maintenance:'ТО и ремонт',own:'Собств. строительство',production:'Производство'}[p.type]}</span>
+        </div>
+      </div>
+      <div class="proj-meta">
+        <span class="badge" style="background:var(--color-background-secondary)">${p.start} — ${p.end}</span>
+        ${p.budget?`<span class="badge" style="background:var(--color-background-secondary)">Бюджет: ${fmt(p.budget)} ₸</span>`:''}
+      </div>
+      <div class="proj-accounts">
+        Закупки → <span class="acc acc-bu">${p.buyAcc}</span> (НУ: <span class="acc acc-nu">${p.buyAccNU}</span>) &nbsp;·&nbsp;
+        Списание → <span class="acc acc-bu">${p.writeAcc}</span> &nbsp;·&nbsp;
+        Субконто: <strong>${p.subkonto}</strong>
+      </div>
+      ${p.desc?`<div style="font-size:11px;color:var(--color-text-secondary);margin-top:6px">${p.desc}</div>`:''}
+      <div class="proj-keywords">
+        <span style="font-size:10px;color:var(--color-text-secondary);margin-right:4px">Ключевые слова:</span>
+        ${p.keywords.map(kw=>`<span class="kw-tag active-kw">${kw}</span>`).join('')}
+      </div>
+      <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn btn-sm ${p.active?'btn-p':''}" onclick="toggleActive(${p.id})">${p.active?'✓ Деактивировать':'Активировать'}</button>
+        <button class="btn btn-sm" onclick="startClassifier()">• Классифицировать ЭСФ с этим контекстом</button>
+        <button class="btn btn-sm" style="color:var(--color-text-danger)" onclick="deleteProj(${p.id})">✕ Удалить</button>
+      </div>
+    </div>`).join('');
+}
+
+function toggleNewForm(){
+  const f=document.getElementById('new-proj-form');
+  f.style.display=f.style.display==='none'?'block':'none';
+  updateProjTypeHint();
+}
+
+function updateProjTypeHint(){
+  const type=document.getElementById('np-type')?.value;
+  const hints={
+    construction:'<strong>Строительство/Реконструкция для заказчика:</strong> Закупаемые активы (генераторы, насосы, оборудование) → <span class="acc acc-bu">1310</span> (материалы). При выполнении работ → Дт <span class="acc acc-bu">2930</span> / Кт <span class="acc acc-bu">1310</span>, затем → Дт <span class="acc acc-bu">7010</span> / Кт <span class="acc acc-bu">2930</span>.',
+    supply:'<strong>Поставка товаров:</strong> Закупки → <span class="acc acc-bu">1330</span> (товары). При реализации → Дт <span class="acc acc-bu">7010</span> / Кт <span class="acc acc-bu">1330</span> + Дт <span class="acc acc-bu">1210</span> / Кт <span class="acc acc-bu">6010</span>.',
+    service:'<strong>Оказание услуг:</strong> Прямые затраты → <span class="acc acc-bu">7010</span> или через <span class="acc acc-bu">1310</span> с последующим списанием.',
+    maintenance:'<strong>ТО и ремонт:</strong> Запчасти и материалы → <span class="acc acc-bu">1310</span>, услуги субподряда → <span class="acc acc-bu">7010</span> или <span class="acc acc-bu">7210</span>.',
+    own:'<strong>Собственное строительство ОС:</strong> Все затраты → <span class="acc acc-bu">2930</span> (незавершённое строительство). При вводе в эксплуатацию → Дт <span class="acc acc-bu">2410</span> / Кт <span class="acc acc-bu">2930</span>.',
+    production:'<strong>Производство продукции:</strong> Сырьё/материалы → <span class="acc acc-bu">1310</span>, в производство → <span class="acc acc-bu">8110</span>, готовая продукция → <span class="acc acc-bu">1320</span>.',
+  };
+  const hint=document.getElementById('proj-type-hint');
+  if(hint) hint.innerHTML=hints[type]||'';
+}
+
+function saveProject(){
+  const name=document.getElementById('np-name').value.trim();
+  if(!name){alert('Укажите название');return;}
+  const kwRaw=document.getElementById('np-keywords').value;
+  const keywords=kwRaw.split(',').map(k=>k.trim().toLowerCase()).filter(k=>k.length>1);
+  projects.push({
+    id:nextProjId++,
+    name, client:document.getElementById('np-client').value,
+    contract:document.getElementById('np-contract').value,
+    type:document.getElementById('np-type').value,
+    start:document.getElementById('np-start').value,
+    end:document.getElementById('np-end').value,
+    budget:parseFloat(document.getElementById('np-budget').value)||0,
+    buyAcc:document.getElementById('np-buy-acc').value,
+    buyAccNU:document.getElementById('np-buy-acc-nu').value,
+    writeAcc:document.getElementById('np-write-acc').value,
+    subkonto:document.getElementById('np-subkonto').value,
+    keywords, desc:document.getElementById('np-desc').value,
+    active:true
+  });
+  toggleNewForm();
+  renderProjects();
+}
+
+function toggleActive(id){
+  projects=projects.map(p=>p.id===id?{...p,active:!p.active}:p);
+  renderProjects();
+}
+function deleteProj(id){
+  if(!confirm('Удалить проект?'))return;
+  projects=projects.filter(p=>p.id!==id);
+  renderProjects();
+}
+
+function showTab(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(name).classList.add('active');
+  event?.currentTarget?.classList.add('active');
+  if(name==='projects') renderProjects();
+  if(name==='journal') renderJournal();
+}
+
+renderProjects();
+</script>
+
+</div>
+<script>
+// Заглушка для sendPrompt — в локальной версии показывает prompt
+function sendPrompt(text) {
+  var action = prompt('sendPrompt: ' + text + '\n\nВ реальной системе это отправит запрос к AI. Сейчас введите текст или нажмите Отмена:', '');
+  if (action) console.log('sendPrompt:', text);
+}
+// Заглушка для openLink
+function openLink(url) {
+  if (confirm('Открыть ссылку: ' + url)) window.open(url, '_blank');
+}
+</script>
+</body>
+</html>

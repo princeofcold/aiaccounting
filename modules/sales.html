@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12 Продажа · AI-Платформа бухучёта РК</title>
+<style>
+
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Consolas', 'Fira Code', monospace;
+  --font-serif: Georgia, serif;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f7f7f5;
+  --color-background-tertiary: #f0efea;
+  --color-background-info: #e6f1fb;
+  --color-background-success: #eaf3de;
+  --color-background-warning: #faeeda;
+  --color-background-danger: #fcebeb;
+  --color-text-primary: #1a1a18;
+  --color-text-secondary: #6b6b67;
+  --color-text-tertiary: #9b9b97;
+  --color-text-info: #185fa5;
+  --color-text-success: #3b6d11;
+  --color-text-warning: #854f0b;
+  --color-text-danger: #a32d2d;
+  --color-border-tertiary: rgba(26,26,24,0.15);
+  --color-border-secondary: rgba(26,26,24,0.30);
+  --color-border-primary: rgba(26,26,24,0.40);
+  --color-border-info: rgba(24,95,165,0.40);
+  --color-border-success: rgba(59,109,17,0.40);
+  --color-border-warning: rgba(133,79,11,0.40);
+  --color-border-danger: rgba(163,45,45,0.40);
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-primary: #1c1c1a;
+    --color-background-secondary: #252523;
+    --color-background-tertiary: #2e2e2b;
+    --color-background-info: #0c3054;
+    --color-background-success: #1a3508;
+    --color-background-warning: #422508;
+    --color-background-danger: #4f1515;
+    --color-text-primary: #f0efe8;
+    --color-text-secondary: #a8a8a2;
+    --color-text-tertiary: #6b6b65;
+    --color-text-info: #85b7eb;
+    --color-text-success: #97c459;
+    --color-text-warning: #ef9f27;
+    --color-text-danger: #f09595;
+    --color-border-tertiary: rgba(240,239,232,0.15);
+    --color-border-secondary: rgba(240,239,232,0.30);
+    --color-border-primary: rgba(240,239,232,0.40);
+    --color-border-info: rgba(133,183,235,0.40);
+    --color-border-success: rgba(151,196,89,0.40);
+    --color-border-warning: rgba(239,159,39,0.40);
+    --color-border-danger: rgba(240,149,149,0.40);
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  font-family: var(--font-sans);
+  background: var(--color-background-tertiary);
+  margin: 0;
+  padding: 16px;
+}
+.page-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--color-background-primary);
+  border-radius: var(--border-radius-xl);
+  padding: 20px 24px 32px;
+  border: 0.5px solid var(--color-border-tertiary);
+}
+.top-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+  font-size: 12px;
+}
+.top-nav a {
+  color: var(--color-text-info);
+  text-decoration: none;
+  font-size: 12px;
+}
+.top-nav a:hover { text-decoration: underline; }
+.top-nav .sep { color: var(--color-text-tertiary); }
+.top-nav .mod-name {
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+.top-nav .company {
+  margin-left: auto;
+  color: var(--color-text-secondary);
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+  <div class="top-nav">
+    <a href="../index.html">← Все модули</a>
+    <span class="sep">·</span>
+    <span class="mod-name">12 Продажа</span>
+    <span class="company">Alpino Group ТОО · НК РК 2026</span>
+  </div>
+  
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);font-size:13px}
+.app{padding:1rem 0}
+.tabs{display:flex;gap:4px;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.2rem;flex-wrap:wrap}
+.tab{padding:7px 13px;font-size:12px;cursor:pointer;border:none;background:transparent;color:var(--color-text-secondary);border-bottom:2px solid transparent;margin-bottom:-1px;font-family:var(--font-sans);white-space:nowrap}
+.tab.active{color:var(--color-text-primary);border-bottom:2px solid var(--color-text-primary);font-weight:500}
+.section{display:none}.section.active{display:block}
+.inner-tabs{display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap}
+.inner-tab{padding:5px 10px;font-size:11px;cursor:pointer;border:0.5px solid var(--color-border-secondary);border-radius:6px;background:transparent;color:var(--color-text-secondary);font-family:var(--font-sans);white-space:nowrap}
+.inner-tab.active{background:var(--color-text-primary);color:var(--color-background-primary);border-color:var(--color-text-primary)}
+.inner-section{display:none}.inner-section.active{display:block}
+.notice{font-size:11px;color:var(--color-text-secondary);padding:8px 12px;background:var(--color-background-secondary);border-radius:8px;margin-bottom:10px;line-height:1.5}
+.notice strong{color:var(--color-text-primary)}
+.notice.info{background:var(--color-background-info)}.notice.info strong{color:var(--color-text-info)}
+.notice.warn{background:var(--color-background-warning)}.notice.warn strong{color:var(--color-text-warning)}
+.notice.success{background:var(--color-background-success)}.notice.success strong{color:var(--color-text-success)}
+.notice.danger{background:var(--color-background-danger)}.notice.danger strong{color:var(--color-text-danger)}
+input,select,textarea{font-family:var(--font-sans);font-size:12px;padding:5px 8px;border:0.5px solid var(--color-border-secondary);border-radius:7px;background:var(--color-background-primary);color:var(--color-text-primary);width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--color-border-primary)}
+input[readonly]{background:var(--color-background-secondary);color:var(--color-text-secondary)}
+textarea{resize:vertical;min-height:60px}
+.btn{padding:5px 12px;font-size:12px;font-family:var(--font-sans);border:0.5px solid var(--color-border-secondary);border-radius:7px;background:transparent;color:var(--color-text-primary);cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--color-background-secondary)}
+.btn-p{background:var(--color-text-primary);color:var(--color-background-primary);border-color:var(--color-text-primary)}
+.btn-sm{padding:2px 7px;font-size:11px}
+.badge{display:inline-block;padding:2px 7px;border-radius:10px;font-size:10px;font-weight:500}
+.bg{background:var(--color-background-success);color:var(--color-text-success)}
+.br{background:var(--color-background-danger);color:var(--color-text-danger)}
+.bb{background:var(--color-background-info);color:var(--color-text-info)}
+.bw{background:var(--color-background-warning);color:var(--color-text-warning)}
+.bp{background:#EEEDFE;color:#3C3489}
+.acc{font-family:var(--font-mono);font-weight:500}
+.acc-bu{color:var(--color-text-info)}
+.acc-nu{color:var(--color-text-success)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+.fl-i{display:flex;flex-direction:column;gap:3px}
+.fl-i label{font-size:11px;color:var(--color-text-secondary)}
+.ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.pt{font-size:14px;font-weight:600}.ps{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.kpi-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:12px}
+.kpi{padding:9px 11px;border-radius:8px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary)}
+.kpi .kv{font-size:15px;font-weight:600;color:var(--color-text-primary)}.kpi .kl{font-size:10px;color:var(--color-text-secondary);margin-top:1px}
+.kpi.green{background:var(--color-background-success);border-color:var(--color-border-success)}.kpi.green .kv{color:var(--color-text-success)}
+.kpi.amber{background:var(--color-background-warning)}.kpi.amber .kv{color:var(--color-text-warning)}
+.kpi.info{background:var(--color-background-info)}.kpi.info .kv{color:var(--color-text-info)}
+.kpi.red{background:var(--color-background-danger)}.kpi.red .kv{color:var(--color-text-danger)}
+.kpi.purple{background:#EEEDFE}.kpi.purple .kv{color:#3C3489}
+table.mt{width:100%;border-collapse:collapse;font-size:12px}
+table.mt th{padding:5px 8px;font-size:11px;font-weight:500;color:var(--color-text-secondary);border-bottom:0.5px solid var(--color-border-tertiary);text-align:left;white-space:nowrap;background:var(--color-background-secondary)}
+table.mt td{padding:5px 8px;border-bottom:0.5px solid var(--color-border-tertiary);vertical-align:middle}
+table.mt tr:hover td{background:var(--color-background-secondary);cursor:pointer}
+table.mt tr.total td{font-weight:600;background:var(--color-background-secondary)}
+.doc-card{border:0.5px solid var(--color-border-tertiary);border-radius:10px;padding:12px;margin-bottom:10px}
+.doc-card.sale{border-left:3px solid var(--color-text-success)}
+.doc-card.esf-out{border-left:3px solid var(--color-text-info)}
+.doc-card.avr-out{border-left:3px solid var(--color-text-warning)}
+.doc-card.snt-out{border-left:3px solid #3C3489}
+.doc-card.invoice{border-left:3px solid var(--color-text-secondary)}
+.form-block{border:0.5px solid var(--color-border-tertiary);border-radius:10px;padding:14px;margin-bottom:12px}
+.form-block h3{font-size:12px;font-weight:500;margin-bottom:10px;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.03em}
+.entry-block{background:var(--color-background-secondary);border-radius:8px;padding:10px;margin-top:8px}
+.entry-row{display:grid;grid-template-columns:90px 90px 75px 75px 1fr 110px;gap:6px;padding:4px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px;align-items:center}
+.entry-row:last-child{border-bottom:none}
+.entry-hdr{font-size:10px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;padding-bottom:3px;margin-bottom:2px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.status-pipe{display:flex;align-items:center;gap:0;margin-bottom:12px;flex-wrap:wrap}
+.sp-item{padding:6px 12px;font-size:11px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:5px}
+.sp-item:first-child{border-radius:7px 0 0 7px}
+.sp-item:last-child{border-radius:0 7px 7px 0}
+.sp-item.active{background:var(--color-text-primary);color:var(--color-background-primary);border-color:var(--color-text-primary)}
+.sp-item.done{background:var(--color-background-success);border-color:var(--color-border-success);color:var(--color-text-success)}
+.sp-arrow{font-size:10px;color:var(--color-text-secondary);padding:0 2px;background:var(--color-background-secondary);border-top:0.5px solid var(--color-border-tertiary);border-bottom:0.5px solid var(--color-border-tertiary)}
+.lines-tbl{width:100%;border-collapse:collapse;font-size:11px;margin-top:8px}
+.lines-tbl th{padding:4px 6px;font-size:10px;font-weight:500;color:var(--color-text-secondary);border-bottom:0.5px solid var(--color-border-tertiary);text-align:left;background:var(--color-background-secondary)}
+.lines-tbl td{padding:4px 6px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.chart-bar{height:8px;background:var(--color-border-tertiary);border-radius:4px;overflow:hidden;margin-top:3px}
+.chart-fill{height:100%;border-radius:4px;background:var(--color-text-success)}
+</style>
+</head>
+<body>
+<div class="app">
+
+<div class="tabs">
+  <button class="tab active" onclick="showTab('ai-sale')">🤖 AI — Выставить документ</button>
+  <button class="tab" onclick="showTab('sales')">• Реализация ТМЗ и услуг</button>
+  <button class="tab" onclick="showTab('invoices')">• Счета покупателям</button>
+  <button class="tab" onclick="showTab('esf-out')">• ЭСФ выданные</button>
+  <button class="tab" onclick="showTab('avr-out')">✅ ЭАВР выданные</button>
+  <button class="tab" onclick="showTab('snt-out')">• ЭСНТ выданные</button>
+  <button class="tab" onclick="showTab('sverka')">⚖️ Расчёты</button>
+  <button class="tab" onclick="showTab('buyers')">• Покупатели</button>
+  <button class="tab" onclick="showTab('reports')">• Отчёты</button>
+  <button class="tab" onclick="showTab('service')">⚙️ Сервис</button>
+</div>
+
+<!-- ===== РЕАЛИЗАЦИЯ ===== -->
+
+<!-- ===== AI — ВЫСТАВИТЬ ДОКУМЕНТ ===== -->
+<div id="ai-sale" class="section active">
+  <div class="ph">
+    <div><div class="pt">🤖 AI — Выставить документ по договору</div>
+    <div class="ps">Загрузите договор, акт или опишите — Claude заполнит ЭСФ / ЭАВР / счёт автоматически</div></div>
+  </div>
+
+  <!-- API ключ -->
+  <div id="sale_key_wrap"></div>
+
+  <!-- Шаг 1: тип документа -->
+  <div id="sale-step0" style="margin-bottom:14px">
+    <div style="border:1.5px solid var(--color-border-info);border-radius:12px;padding:16px;background:color-mix(in srgb,var(--color-background-info) 8%,transparent)">
+      <div style="font-size:13px;font-weight:500;color:var(--color-text-info);margin-bottom:12px">Шаг 1: Какой документ нужно выставить?</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+        <div onclick="setSaleDocType('esf')" id="sdt-esf" style="padding:12px;border:1px solid var(--color-border-secondary);border-radius:8px;cursor:pointer;transition:all .15s">
+          <div style="font-size:14px;margin-bottom:4px">📋 ЭСФ</div>
+          <div style="font-size:12px;font-weight:500">Электронный счёт-фактура</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);margin-top:3px">Реализация товаров или услуг с НДС</div>
+        </div>
+        <div onclick="setSaleDocType('avr')" id="sdt-avr" style="padding:12px;border:1px solid var(--color-border-secondary);border-radius:8px;cursor:pointer;transition:all .15s">
+          <div style="font-size:14px;margin-bottom:4px">📝 ЭАВР</div>
+          <div style="font-size:12px;font-weight:500">Акт выполненных работ</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);margin-top:3px">Услуги, работы — подписывается двумя сторонами</div>
+        </div>
+        <div onclick="setSaleDocType('invoice')" id="sdt-invoice" style="padding:12px;border:1px solid var(--color-border-secondary);border-radius:8px;cursor:pointer;transition:all .15s">
+          <div style="font-size:14px;margin-bottom:4px">💳 Счёт на оплату</div>
+          <div style="font-size:12px;font-weight:500">Счёт покупателю</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);margin-top:3px">Выставляется до оплаты</div>
+        </div>
+      </div>
+      <div id="sale-type-hint" style="display:none;margin-top:10px;padding:8px 12px;background:var(--color-background-info);border-radius:8px;font-size:11px;color:var(--color-text-info)"></div>
+    </div>
+  </div>
+
+  <!-- Шаг 2: загрузка данных -->
+  <div id="sale-step1" style="display:none;margin-bottom:14px">
+    <div style="border:1.5px solid var(--color-border-info);border-radius:12px;padding:16px;background:color-mix(in srgb,var(--color-background-info) 8%,transparent)">
+      <div style="font-size:13px;font-weight:500;color:var(--color-text-info);margin-bottom:10px">Шаг 2: Предоставьте исходные данные</div>
+      <div style="border:2px dashed var(--color-border-secondary);border-radius:10px;padding:20px;text-align:center;cursor:pointer;margin-bottom:10px"
+        onclick="document.getElementById('sale-file').click()"
+        ondragover="event.preventDefault();this.style.background='var(--color-background-secondary)'"
+        ondragleave="this.style.background=''"
+        ondrop="saleDrop(event)">
+        <div style="font-size:24px;margin-bottom:6px">📂</div>
+        <div style="font-size:12px;color:var(--color-text-secondary)">Загрузите договор, акт, спецификацию (несколько файлов)</div>
+        <div style="font-size:10px;color:var(--color-text-tertiary);margin-top:3px">PDF · JPG · PNG · Excel</div>
+        <input type="file" id="sale-file" style="display:none" multiple accept=".pdf,.jpg,.jpeg,.png,.xlsx" onchange="saleAddFiles(this)">
+      </div>
+      <div id="sale-file-list" style="display:none;margin-bottom:8px;font-size:11px"></div>
+      <div style="text-align:center;font-size:11px;color:var(--color-text-secondary);margin-bottom:8px">— или опишите текстом —</div>
+      <textarea id="sale-txt" style="min-height:90px;font-size:12px;width:100%;padding:8px;border:.5px solid var(--color-border-secondary);border-radius:7px;background:var(--color-background-primary);color:var(--color-text-primary);font-family:var(--font-sans);resize:vertical"
+        placeholder="Примеры:&#10;• Выставить ЭСФ покупателю NCOC N.V. по акту выполненных работ за апрель 2026, сумма 10 000 000 тенге без НДС, договор NCOC-2026-0451&#10;• ЭАВР для Атырауского НПЗ — ремонтные работы, 4 000 000 тенге, акт №7 от 30.04.2026&#10;• Счёт на оплату КМГ по договору КМГ-2026-03, транспортные услуги 2 500 000 тенге"></textarea>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <button onclick="saleAnalyze()" style="padding:6px 14px;font-size:12px;border:.5px solid var(--color-text-primary);border-radius:7px;background:var(--color-text-primary);color:var(--color-background-primary);cursor:pointer">🤖 Claude — заполнить документ</button>
+        <button onclick="saleEx()" style="padding:6px 12px;font-size:11px;border:.5px solid var(--color-border-secondary);border-radius:7px;background:transparent;cursor:pointer">Пример</button>
+        <button onclick="setSaleDocType(null)" style="padding:6px 12px;font-size:11px;border:.5px solid var(--color-border-secondary);border-radius:7px;background:transparent;cursor:pointer">← Назад</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spinner -->
+  <div id="sale-spin" style="display:none;align-items:center;gap:10px;padding:12px;background:var(--color-background-secondary);border-radius:8px;margin:10px 0;font-size:12px;color:var(--color-text-secondary)">
+    <div style="width:14px;height:14px;border:2px solid var(--color-border-tertiary);border-top-color:var(--color-text-primary);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0"></div>
+    <span id="sale-spin-txt">Claude анализирует документ...</span>
+  </div>
+
+  <!-- Шаг 3: результат -->
+  <div id="sale-step2" style="display:none">
+    <div style="border:1.5px solid var(--color-border-success);border-radius:12px;padding:16px;background:color-mix(in srgb,var(--color-background-success) 8%,transparent)">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+        <div>
+          <div style="font-size:13px;font-weight:500;color:var(--color-text-success)" id="sale-res-title">🤖 Claude заполнил документ</div>
+          <div style="font-size:11px;color:var(--color-text-secondary);margin-top:3px" id="sale-res-sub"></div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <button onclick="salePost()" style="padding:5px 12px;font-size:11px;border:.5px solid var(--color-text-primary);border-radius:7px;background:var(--color-text-primary);color:var(--color-background-primary);cursor:pointer">✅ Провести</button>
+          <button onclick="salePrint()" style="padding:5px 12px;font-size:11px;border:.5px solid var(--color-border-secondary);border-radius:7px;background:transparent;cursor:pointer">🖨️ Печать</button>
+          <button onclick="resetSaleAI()" style="padding:5px 12px;font-size:11px;border:.5px solid var(--color-border-secondary);border-radius:7px;background:transparent;cursor:pointer">← Новый</button>
+        </div>
+      </div>
+
+      <!-- Поля документа -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-bottom:12px">
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <label style="font-size:11px;color:var(--color-text-secondary)">Покупатель *</label>
+          <input id="sr-buyer" placeholder="ТОО «NCOC N.V.»" style="font-size:12px;padding:6px 8px;border:.5px solid var(--color-border-secondary);border-radius:7px;background:var(--color-background-primary);color:var(--color-text-primary)">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <label style="font-size:11px;color:var(--color-text-secondary)">БИН покупателя</label>
+          <input id="sr-bin" placeholder="000000000000" style="font-family:var(--font-mono);font-size:12px;padding:6px 8px;border:.5px solid var(--color-border-secondary);border-radius:7px;background:var(--color-background-primary);color:var(--color-text-primary)">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <label style="font-size:11px;color:var(--color-text-secondary)">Договор / основание</label>
+          <input id="sr-contract" placeholder="NCOC-2026-0451" style="font-size:12px;padding:6px 8px;border:.5px solid var(--color-border-secondary);border-radius:7px;background:var(--color-background-primary);color:var(--color-text-primary)">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px">
+          <label style="font-size:11px;color:var(--color-text-secondary)">Дата документа</label>
+          <input type="date" id="sr-date" style="font-size:12px;padding:6px 8px;border:.5px solid var(--color-border-secondary);border-radius:7px;background:var(--color-background-primary);color:var(--color-text-primary)">
+        </div>
+      </div>
+
+      <!-- Строки услуг/товаров -->
+      <div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;margin-bottom:6px">Позиции документа</div>
+      <div style="display:grid;grid-template-columns:3fr 80px 100px 100px 100px;gap:6px;padding:5px 0;font-size:10px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;border-bottom:.5px solid var(--color-border-tertiary);margin-bottom:4px">
+        <div>Наименование</div><div style="text-align:center">Кол-во</div><div style="text-align:right">Цена (₸)</div><div style="text-align:right">НДС (₸)</div><div style="text-align:right">Итого (₸)</div>
+      </div>
+      <div id="sr-lines"></div>
+
+      <!-- Итого -->
+      <div id="sr-totals" style="margin-top:8px;padding:10px;background:var(--color-background-secondary);border-radius:8px;font-size:12px"></div>
+
+      <!-- Проводки -->
+      <div style="margin-top:10px;padding:10px;background:var(--color-background-secondary);border-radius:8px;font-size:11px;line-height:2" id="sr-entries"></div>
+
+      <!-- Комментарий Claude -->
+      <div id="sr-comment" style="margin-top:8px;padding:8px 12px;background:var(--color-background-info);border-radius:8px;font-size:11px;color:var(--color-text-info);display:none"></div>
+    </div>
+  </div>
+</div>
+
+<div id="sales" class="section">
+  <div class="ph">
+    <div><div class="pt">Реализация ТМЗ и услуг</div>
+    <div class="ps">Документы покупателей · Alpino Group ТОО · Апрель 2026</div></div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      <button class="btn btn-sm" onclick="showInner('sales','s-new',this)">+ Новая реализация</button>
+      <button class="btn btn-sm" onclick="showInner('sales','s-return',this)">+ Возврат от покупателя</button>
+      <button class="btn btn-p btn-sm" onclick="sendPrompt('Экспортируй журнал реализаций в Excel для 1С')">Excel →</button>
+    </div>
+  </div>
+
+  <!-- Пайплайн -->
+  <div class="status-pipe">
+    <div class="sp-item done">✓ Счёт выставлен</div>
+    <div class="sp-arrow">→</div>
+    <div class="sp-item done">✓ Аванс получен</div>
+    <div class="sp-arrow">→</div>
+    <div class="sp-item active">• Реализация</div>
+    <div class="sp-arrow">→</div>
+    <div class="sp-item">• ЭСФ / ЭАВР / СНТ</div>
+    <div class="sp-arrow">→</div>
+    <div class="sp-item">• Окончательная оплата</div>
+  </div>
+
+  <div class="inner-tabs">
+    <button class="inner-tab active" onclick="showInner('sales','s-list',this)">Журнал реализаций</button>
+    <button class="inner-tab" onclick="showInner('sales','s-new',this)">Новая реализация</button>
+    <button class="inner-tab" onclick="showInner('sales','s-return',this)">Возвраты от покупателей</button>
+    <button class="inner-tab" onclick="showInner('sales','s-eaes',this)">Реализация в ЕАЭС</button>
+  </div>
+
+  <div class="inner-section active" id="s-list">
+    <div class="kpi-g" id="sales-kpi"></div>
+    <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+      <input placeholder="Поиск по покупателю, номеру..." style="width:230px" oninput="">
+      <select style="width:140px">
+        <option>Все статусы</option><option>Проведены</option><option>Черновики</option><option>Не оплачены</option>
+      </select>
+      <select id="sales-buyer-filter" style="width:170px">
+        <option>Все покупатели</option>
+        <option>ТОО «NCOC N.V.»</option>
+        <option>ТОО «KazMunaiGaz»</option>
+        <option>ТОО «Атырауский НПЗ»</option>
+      </select>
+    </div>
+    <div style="overflow-x:auto">
+      <table class="mt" id="sales-table">
+        <thead><tr>
+          <th>Дата</th><th>Номер</th><th>Покупатель</th><th>Тип</th>
+          <th style="text-align:right">Без НДС (₸)</th>
+          <th style="text-align:right">НДС (₸)</th>
+          <th style="text-align:right">Итого (₸)</th>
+          <th>ЭСФ</th><th>Оплата</th><th>Статус</th><th></th>
+        </tr></thead>
+        <tbody id="sales-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="inner-section" id="s-new">
+    <div class="form-block">
+      <h3>Новая реализация ТМЗ и услуг</h3>
+      <div class="notice info" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <span><strong>Авто-заполнение:</strong> на основании счёта покупателю или договора</span>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-sm btn-p" onclick="fillSaleFromInvoice()">• Из счёта</button>
+          <button class="btn btn-sm" onclick="fillSaleFromContract()">• Из договора</button>
+        </div>
+      </div>
+      <div class="g4">
+        <div class="fl-i"><label>Номер</label><input id="sale-num" placeholder="РТ-2026-001"></div>
+        <div class="fl-i"><label>Дата</label><input type="date" id="sale-date" value="2026-04-30"></div>
+        <div class="fl-i"><label>Тип реализации</label>
+          <select id="sale-type" onchange="onSaleTypeChange()">
+            <option value="services">Услуги / Работы</option>
+            <option value="goods">Товары</option>
+            <option value="materials">Материалы</option>
+            <option value="mixed">Товары и услуги</option>
+          </select>
+        </div>
+        <div class="fl-i"><label>Со склада</label>
+          <select id="sale-wh">
+            <option>Основной склад</option>
+            <option>Склад материалов</option>
+            <option>Нефтебаза/ГСМ</option>
+          </select>
+        </div>
+      </div>
+      <div class="g3">
+        <div class="fl-i"><label>Покупатель</label><input id="sale-buyer" placeholder="ТОО «NCOC N.V.»"></div>
+        <div class="fl-i"><label>Договор</label><input id="sale-contract" placeholder="NCOC-2026-0451 от 01.03.2026"></div>
+        <div class="fl-i"><label>Ставка НДС</label>
+          <select id="sale-nds-rate">
+            <option value="16">16% (стандартная)</option>
+            <option value="0">0% (экспорт)</option>
+            <option value="no">Без НДС (не плательщик)</option>
+          </select>
+        </div>
+      </div>
+      <!-- Позиции -->
+      <div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin:8px 0 4px;text-transform:uppercase">Позиции реализации</div>
+      <div style="display:grid;grid-template-columns:2fr 70px 120px 100px 90px 36px;gap:6px;padding:3px 0;font-size:10px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase">
+        <div>Наименование</div><div style="text-align:center">Кол-во</div><div style="text-align:right">Цена (₸)</div><div style="text-align:right">НДС (₸)</div><div style="text-align:right">Сумма (₸)</div><div></div>
+      </div>
+      <div id="sale-lines"></div>
+      <button style="display:flex;align-items:center;gap:6px;padding:7px 10px;border:0.5px dashed var(--color-border-secondary);border-radius:7px;cursor:pointer;color:var(--color-text-secondary);font-size:12px;width:100%;justify-content:center;background:transparent;margin-top:6px" onclick="addSaleLine()">+ Добавить позицию</button>
+      <div style="display:flex;justify-content:flex-end;gap:16px;padding:8px 0;border-top:0.5px solid var(--color-border-tertiary);margin-top:8px;font-size:12px;font-weight:500">
+        <span>Без НДС: <strong id="sale-total">0 ₸</strong></span>
+        <span style="color:var(--color-text-warning)">НДС: <strong id="sale-nds-total">0 ₸</strong></span>
+        <span>Итого: <strong id="sale-grand">0 ₸</strong></span>
+      </div>
+      <div class="entry-block" id="sale-entries" style="display:none">
+        <div class="entry-hdr">Проводки 1С:Казахстан (БУ + НУ)</div>
+        <div id="sale-entries-content"></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <button class="btn btn-p btn-sm" onclick="saveSale()">• Провести</button>
+        <button class="btn btn-sm" onclick="createESFFromSale()">• Создать ЭСФ →</button>
+        <button class="btn btn-sm" onclick="createAVRFromSale()">• Создать ЭАВР →</button>
+        <button class="btn btn-sm" onclick="createSNTFromSale()">• Создать СНТ →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="inner-section" id="s-return">
+    <div class="form-block">
+      <h3>Возврат ТМЗ от покупателя</h3>
+      <div class="notice warn"><strong>Возврат от покупателя</strong> — оформляется при несоответствии качества/количества. Выписывается корректировочная ЭСФ (минус). НДС сторнируется.</div>
+      <div class="g3">
+        <div class="fl-i"><label>Покупатель</label><input placeholder="ТОО «NCOC N.V.»"></div>
+        <div class="fl-i"><label>Исходный документ реализации</label><input placeholder="РТ-2026-001"></div>
+        <div class="fl-i"><label>Дата возврата</label><input type="date" value="2026-04-30"></div>
+      </div>
+      <div class="g3">
+        <div class="fl-i"><label>Причина возврата</label>
+          <select><option>Несоответствие качеству</option><option>Пересорт</option><option>Излишки</option><option>Брак</option></select>
+        </div>
+        <div class="fl-i"><label>Сумма возврата (₸)</label><input type="number" placeholder="500000"></div>
+        <div class="fl-i"><label>НДС к сторнированию (₸)</label><input type="number" placeholder="80000"></div>
+      </div>
+      <div class="notice" style="margin-top:8px">
+        <strong>Проводки возврата:</strong><br>
+        Дт <span class="acc acc-bu">1330</span> / Кт <span class="acc acc-bu">1210</span> — возврат товаров<br>
+        Сторно Дт <span class="acc acc-bu">1210</span> / Кт <span class="acc acc-bu">3130</span> — сторно НДС<br>
+        <span class="acc acc-nu">НУ: 1330Н / 1210Н</span>
+      </div>
+      <button class="btn btn-p btn-sm" style="margin-top:8px">• Провести возврат</button>
+    </div>
+  </div>
+
+  <div class="inner-section" id="s-eaes">
+    <div class="notice info"><strong>Подтверждение реализации в страны ЕАЭС</strong> — при экспорте в Россию, Беларусь, Армению, Кыргызстан ставка НДС = 0%. Требуется подтверждение факта вывоза и уплата НДС страной-импортёром.</div>
+    <div style="overflow-x:auto"><table class="mt">
+      <thead><tr><th>Дата</th><th>Покупатель (ЕАЭС)</th><th>Страна</th><th>Сумма (₸)</th><th>НДС 0%</th><th>Статус подтверждения</th></tr></thead>
+      <tbody>
+        <tr><td>15.04.2026</td><td>ООО «РусПромТорг»</td><td><span class="badge bb">РФ</span></td><td>3 500 000</td><td><span class="badge bg">0%</span></td><td><span class="badge bw">Ожидает подтв.</span></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ===== СЧЕТА ПОКУПАТЕЛЯМ ===== -->
+<div id="invoices" class="section">
+  <div class="ph">
+    <div><div class="pt">Счета на оплату покупателю</div>
+    <div class="ps">Выставленные счета · Дебиторская задолженность</div></div>
+    <button class="btn btn-p btn-sm" onclick="showInner('invoices','inv-new',this)">+ Выставить счёт</button>
+  </div>
+
+  <div class="inner-tabs">
+    <button class="inner-tab active" onclick="showInner('invoices','inv-list',this)">Журнал счетов</button>
+    <button class="inner-tab" onclick="showInner('invoices','inv-new',this)">Новый счёт</button>
+    <button class="inner-tab" onclick="showInner('invoices','inv-unpaid',this)">Не оплаченные</button>
+  </div>
+
+  <div class="inner-section active" id="inv-list">
+    <div class="kpi-g" id="inv-kpi"></div>
+    <div style="overflow-x:auto"><table class="mt" id="inv-table">
+      <thead><tr>
+        <th>Дата</th><th>Номер счёта</th><th>Покупатель</th><th>Договор</th>
+        <th style="text-align:right">Сумма (₸)</th><th>НДС</th>
+        <th>Срок оплаты</th><th>Статус</th><th></th>
+      </tr></thead>
+      <tbody id="inv-tbody"></tbody>
+    </table></div>
+  </div>
+
+  <div class="inner-section" id="inv-new">
+    <div class="form-block">
+      <h3>Счёт на оплату покупателю</h3>
+      <div class="g4">
+        <div class="fl-i"><label>Номер счёта</label><input placeholder="СЧ-2026-004"></div>
+        <div class="fl-i"><label>Дата выставления</label><input type="date" value="2026-04-30"></div>
+        <div class="fl-i"><label>Срок оплаты</label><input type="date" value="2026-05-15"></div>
+        <div class="fl-i"><label>Ставка НДС</label>
+          <select><option value="16">16%</option><option value="0">0%</option><option value="no">Без НДС</option></select>
+        </div>
+      </div>
+      <div class="g3">
+        <div class="fl-i"><label>Покупатель</label><input placeholder="ТОО «NCOC N.V.»"></div>
+        <div class="fl-i"><label>Договор</label><input placeholder="NCOC-2026-0451"></div>
+        <div class="fl-i"><label>Назначение платежа</label><input placeholder="Реконструкция НПС-2 по договору №..."></div>
+      </div>
+      <div class="notice success" style="margin-top:8px"><strong>Счёт не является проводочным документом.</strong> После оплаты создаётся документ «Реализация» → ЭСФ. Счёт отслеживается в разделе «Не оплаченные покупателями».</div>
+      <button class="btn btn-p btn-sm" style="margin-top:8px" onclick="sendPrompt('Сформируй счёт на оплату покупателю по форме Казахстан')">Сохранить + Печать →</button>
+    </div>
+  </div>
+
+  <div class="inner-section" id="inv-unpaid">
+    <div class="notice danger"><strong>Счета не оплаченные покупателями</strong> — требуют контроля. Дебиторская задолженность (счёт 1210).</div>
+    <div class="kpi-g">
+      <div class="kpi red"><div class="kv" id="unpaid-total">0 ₸</div><div class="kl">Итого не оплачено</div></div>
+      <div class="kpi amber"><div class="kv" id="unpaid-count">0</div><div class="kl">Счетов просрочено</div></div>
+    </div>
+    <div style="overflow-x:auto"><table class="mt" id="unpaid-table">
+      <thead><tr><th>Покупатель</th><th>Счёт №</th><th>Дата</th><th>Срок оплаты</th><th style="text-align:right">Сумма (₸)</th><th>Просрочено (дней)</th><th>Статус</th></tr></thead>
+      <tbody id="unpaid-tbody"></tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ===== ЭСФ ВЫДАННЫЕ ===== -->
+<div id="esf-out" class="section">
+  <div class="ph">
+    <div><div class="pt">Электронные счета-фактуры выданные</div>
+    <div class="ps">esf.gov.kz · Исходящие ЭСФ · Alpino Group ТОО</div></div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      <button class="btn btn-sm btn-p" onclick="createESFForm()">+ Выписать ЭСФ</button>
+      <button class="btn btn-sm" onclick="sendPrompt('Синхронизируй выданные ЭСФ с esf.gov.kz')">Синхр. с ИС ЭСФ</button>
+    </div>
+  </div>
+
+  <div class="inner-tabs">
+    <button class="inner-tab active" onclick="showInner('esf-out','esf-out-list',this)">Журнал ЭСФ выданных</button>
+    <button class="inner-tab" onclick="showInner('esf-out','esf-out-new',this)">Выписать ЭСФ</button>
+    <button class="inner-tab" onclick="showInner('esf-out','esf-out-nds',this)">НДС начисленный (3130)</button>
+    <button class="inner-tab" onclick="showInner('esf-out','esf-out-corr',this)">Корректировочные</button>
+  </div>
+
+  <div class="inner-section active" id="esf-out-list">
+    <div class="kpi-g" id="esf-out-kpi"></div>
+    <div style="overflow-x:auto"><table class="mt" id="esf-out-table">
+      <thead><tr>
+        <th>Дата</th><th>Рег. номер ЭСФ</th><th>Покупатель</th>
+        <th style="text-align:right">Без НДС (₸)</th>
+        <th style="text-align:right">НДС (₸)</th>
+        <th style="text-align:right">Итого (₸)</th>
+        <th>Ставка</th><th>Статус</th><th>Документ</th>
+      </tr></thead>
+      <tbody id="esf-out-tbody"></tbody>
+    </table></div>
+  </div>
+
+  <div class="inner-section" id="esf-out-new">
+    <div class="form-block">
+      <h3>Выписать электронную счёт-фактуру</h3>
+      <div class="notice info"><strong>ЭСФ выписывается на портале esf.gov.kz</strong> через ЭЦП. Здесь формируются данные для заполнения.</div>
+      <div class="g4">
+        <div class="fl-i"><label>Дата выписки</label><input type="date" value="2026-04-30"></div>
+        <div class="fl-i"><label>Тип ЭСФ</label>
+          <select>
+            <option>Обычная (за товары/услуги)</option>
+            <option>Корректировочная (+)</option>
+            <option>Корректировочная (−)</option>
+            <option>Дополнительная</option>
+          </select>
+        </div>
+        <div class="fl-i"><label>Покупатель</label><input placeholder="ТОО «NCOC N.V.»"></div>
+        <div class="fl-i"><label>ИИН/БИН покупателя</label><input placeholder="040540000043" style="font-family:var(--font-mono)"></div>
+      </div>
+      <div class="g3">
+        <div class="fl-i"><label>ИИК покупателя</label><input placeholder="KZ..." style="font-family:var(--font-mono);font-size:11px"></div>
+        <div class="fl-i"><label>Договор</label><input placeholder="NCOC-2026-0451"></div>
+        <div class="fl-i"><label>Документ реализации</label><input placeholder="РТ-2026-001"></div>
+      </div>
+      <div class="g3">
+        <div class="fl-i"><label>Сумма без НДС (₸)</label><input type="number" id="esf-out-base" placeholder="10000000" oninput="calcESFOut()"></div>
+        <div class="fl-i"><label>Ставка НДС</label>
+          <select id="esf-out-rate" onchange="calcESFOut()">
+            <option value="16">16%</option><option value="0">0% (экспорт)</option><option value="no">Освобождено</option>
+          </select>
+        </div>
+        <div class="fl-i"><label>НДС (₸)</label><input type="number" id="esf-out-nds-val" readonly style="color:var(--color-text-warning)"></div>
+      </div>
+      <div class="notice success" id="esf-out-preview" style="display:none;margin-top:8px">
+        <strong>Проводка:</strong>
+        Дт <span class="acc acc-bu">1210</span> / Кт <span class="acc acc-bu">3130</span> — НДС начисленный <span id="esf-nds-preview"></span> ₸ ·
+        НУ: Дт <span class="acc acc-nu">1210Н</span> / Кт <span class="acc acc-nu">3130Н</span>
+      </div>
+      <button class="btn btn-p btn-sm" style="margin-top:10px" onclick="sendPrompt('Перейди на esf.gov.kz для выписки ЭСФ')">Перейти на esf.gov.kz →</button>
+    </div>
+  </div>
+
+  <div class="inner-section" id="esf-out-nds">
+    <div class="notice"><strong>НДС начисленный (счёт 3130)</strong> — исходящий НДС по выданным ЭСФ. В конце периода сальдируется с 1420 (НДС к зачёту). Разница уплачивается в бюджет.</div>
+    <div class="kpi-g" id="nds-out-kpi"></div>
+    <div style="overflow-x:auto"><table class="mt" id="nds-out-table">
+      <thead><tr><th>Покупатель</th><th>Кол-во ЭСФ</th><th style="text-align:right">База НДС (₸)</th><th>Ставка</th><th style="text-align:right">НДС начисл. (₸)</th></tr></thead>
+      <tbody id="nds-out-tbody"></tbody>
+    </table></div>
+    <div style="margin-top:12px;padding:12px;border:0.5px solid var(--color-border-tertiary);border-radius:10px;font-size:12px" id="nds-balance"></div>
+  </div>
+
+  <div class="inner-section" id="esf-out-corr">
+    <div class="notice warn"><strong>Корректировочная ЭСФ</strong> — выписывается при изменении цены или возврате. Может быть «плюсовая» (доначисление) или «минусовая» (уменьшение).</div>
+    <div style="overflow-x:auto"><table class="mt">
+      <thead><tr><th>Дата</th><th>К ЭСФ №</th><th>Покупатель</th><th>Тип</th><th style="text-align:right">Корректировка (₸)</th><th>НДС</th></tr></thead>
+      <tbody>
+        <tr><td>28.04.2026</td><td>ESF-OUT-002</td><td>ТОО «NCOC N.V.»</td><td><span class="badge br">− Минус</span></td><td style="text-align:right;color:var(--color-text-danger)">−500 000</td><td style="color:var(--color-text-danger)">−80 000</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ===== ЭАВР ВЫДАННЫЕ ===== -->
+<div id="avr-out" class="section">
+  <div class="ph">
+    <div><div class="pt">Электронные акты выполненных работ (выданные)</div>
+    <div class="ps">e-contract.kz · Alpino Group как исполнитель</div></div>
+    <div style="display:flex;gap:6px">
+      <button class="btn btn-p btn-sm" onclick="showInner('avr-out','avr-out-new',this)">+ Выписать ЭАВР</button>
+    </div>
+  </div>
+
+  <div class="inner-tabs">
+    <button class="inner-tab active" onclick="showInner('avr-out','avr-out-list',this)">Журнал ЭАВР выданных</button>
+    <button class="inner-tab" onclick="showInner('avr-out','avr-out-new',this)">Новый ЭАВР</button>
+    <button class="inner-tab" onclick="showInner('avr-out','avr-out-helper',this)">Помощник оформления</button>
+  </div>
+
+  <div class="inner-section active" id="avr-out-list">
+    <div class="kpi-g" id="avr-out-kpi"></div>
+    <div id="avr-out-cards"></div>
+  </div>
+
+  <div class="inner-section" id="avr-out-new">
+    <div class="form-block">
+      <h3>Новый ЭАВР (Alpino Group — исполнитель)</h3>
+      <div class="notice info"><strong>ЭАВР формируется на e-contract.kz.</strong> Здесь готовим данные. Alpino Group выступает исполнителем работ/услуг для заказчика.</div>
+      <div class="g4">
+        <div class="fl-i"><label>Тип акта</label>
+          <select><option>PRIMARY (первичный)</option><option>ADDITIONAL (дополнительный)</option></select>
+        </div>
+        <div class="fl-i"><label>Дата выполнения работ</label><input type="date" value="2026-04-30"></div>
+        <div class="fl-i"><label>Исполнитель</label><input value="Alpino Group ТОО" readonly></div>
+        <div class="fl-i"><label>Заказчик</label><input placeholder="ТОО «NCOC N.V.»"></div>
+      </div>
+      <div class="g3">
+        <div class="fl-i"><label>Договор</label><input placeholder="NCOC-2026-0451"></div>
+        <div class="fl-i"><label>Наши банковские реквизиты</label>
+          <select><option>БЦК · KZ12345678901234567890</option><option>ForteBank · KZ98765432109876543210</option></select>
+        </div>
+        <div class="fl-i"><label>Ставка НДС</label>
+          <select><option value="16">16%</option><option value="0">0%</option><option value="no">Без НДС</option></select>
+        </div>
+      </div>
+      <!-- Виды работ -->
+      <div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin:8px 0 4px;text-transform:uppercase">Виды выполненных работ/услуг</div>
+      <div id="avr-out-lines">
+        <div style="display:grid;grid-template-columns:2fr 90px 60px 100px 100px 80px;gap:6px;padding:5px 0;border-bottom:0.5px solid var(--color-border-tertiary);align-items:center">
+          <input placeholder="Реконструкция насосной станции НПС-2" style="font-size:11px;padding:3px 6px">
+          <input placeholder="49.41.19.01" style="font-family:var(--font-mono);font-size:10px;padding:3px 4px" title="Код ГСВС">
+          <input type="number" placeholder="1" style="font-size:11px;padding:3px 6px;text-align:center">
+          <input placeholder="ед." style="font-size:11px;padding:3px 6px">
+          <input type="number" placeholder="10000000" style="font-size:11px;padding:3px 6px;text-align:right">
+          <input type="number" placeholder="1600000" style="font-size:11px;padding:3px 6px;text-align:right">
+        </div>
+      </div>
+      <div class="notice" style="margin-top:10px">
+        <strong>Проводка при реализации работ:</strong><br>
+        Дт <span class="acc acc-bu">1210</span> / Кт <span class="acc acc-bu">6020</span> — признание дохода от услуг · НУ: Дт <span class="acc acc-nu">1210Н</span> / Кт <span class="acc acc-nu">6020Н</span><br>
+        Дт <span class="acc acc-bu">1210</span> / Кт <span class="acc acc-bu">3130</span> — НДС начисленный
+      </div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <button class="btn btn-p btn-sm" onclick="sendPrompt('Сформируй ЭАВР на e-contract.kz от имени Alpino Group')">Перейти на e-contract.kz →</button>
+        <button class="btn btn-sm">💾 Сохранить черновик</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="inner-section" id="avr-out-helper">
+    <div class="notice info"><strong>Помощник оформления ЭАВР</strong> — автоматически формирует черновик на e-contract.kz из данных документа «Реализация».</div>
+    <div class="form-block">
+      <h3>Выбрать документ-основание</h3>
+      <div class="fl-i" style="margin-bottom:10px"><label>Документ реализации</label>
+        <select>
+          <option>РТ-2026-001 · NCOC N.V. · 11 600 000 ₸</option>
+          <option>РТ-2026-002 · Атырауский НПЗ · 4 640 000 ₸</option>
+        </select>
+      </div>
+      <button class="btn btn-p btn-sm">Сформировать ЭАВР из документа →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ЭСНТ ВЫДАННЫЕ ===== -->
+<div id="snt-out" class="section">
+  <div class="ph">
+    <div><div class="pt">Электронные сопроводительные накладные (выданные)</div>
+    <div class="ps">esf.gov.kz · Alpino Group как грузоотправитель</div></div>
+    <button class="btn btn-p btn-sm">+ Выписать ЭСНТ</button>
+  </div>
+
+  <div class="inner-tabs">
+    <button class="inner-tab active" onclick="showInner('snt-out','snt-out-list',this)">Журнал ЭСНТ</button>
+    <button class="inner-tab" onclick="showInner('snt-out','snt-out-new',this)">Новая ЭСНТ</button>
+  </div>
+
+  <div class="inner-section active" id="snt-out-list">
+    <div class="kpi-g" id="snt-out-kpi"></div>
+    <div id="snt-out-cards"></div>
+  </div>
+
+  <div class="inner-section" id="snt-out-new">
+    <div class="form-block">
+      <h3>Новая сопроводительная накладная (выданная)</h3>
+      <div class="notice info"><strong>ЭСНТ выписывается при отгрузке товаров</strong> покупателю. Формируется на esf.gov.kz. Alpino Group — грузоотправитель/продавец.</div>
+      <div class="g4">
+        <div class="fl-i"><label>Тип СНТ</label>
+          <select><option>PRIMARY_SNT (основная)</option><option>ADDITIONAL_SNT (доп.)</option></select>
+        </div>
+        <div class="fl-i"><label>Дата отгрузки</label><input type="date" value="2026-04-30"></div>
+        <div class="fl-i"><label>Покупатель</label><input placeholder="ТОО «NCOC N.V.»"></div>
+        <div class="fl-i"><label>ИИН/БИН покупателя</label><input placeholder="040540000043" style="font-family:var(--font-mono)"></div>
+      </div>
+      <div class="g3">
+        <div class="fl-i"><label>Договор</label><input placeholder="NCOC-2026-0451"></div>
+        <div class="fl-i"><label>Адрес доставки</label><input placeholder="Атырауская обл., NCOC НПС-2"></div>
+        <div class="fl-i"><label>Транспорт</label><input placeholder="SHACMAN X3000 · 177 ABA 02"></div>
+      </div>
+      <button class="btn btn-p btn-sm" onclick="sendPrompt('Перейди на esf.gov.kz для выписки ЭСНТ')">Перейти на esf.gov.kz →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== РАСЧЁТЫ С КОНТРАГЕНТАМИ ===== -->
+<div id="sverka" class="section">
+  <div class="ph">
+    <div><div class="pt">Расчёты с контрагентами (покупатели)</div>
+    <div class="ps">Дебиторская задолженность · Акты сверки · Корректировки</div></div>
+  </div>
+
+  <div class="inner-tabs">
+    <button class="inner-tab active" onclick="showInner('sverka','sv-debt',this)">Дебиторская задолж.</button>
+    <button class="inner-tab" onclick="showInner('sverka','sv-acts',this)">Акты сверки</button>
+    <button class="inner-tab" onclick="showInner('sverka','sv-correct',this)">Корректировки долга</button>
+  </div>
+
+  <div class="inner-section active" id="sv-debt">
+    <div class="kpi-g" id="debt-kpi"></div>
+    <div style="overflow-x:auto"><table class="mt" id="debt-table">
+      <thead><tr><th>Покупатель</th><th>Счёт</th><th>Долг (₸)</th><th>Из них просроч.</th><th>Дней просрочки</th><th>Последняя оплата</th><th>Статус</th></tr></thead>
+      <tbody id="debt-tbody"></tbody>
+    </table></div>
+  </div>
+
+  <div class="inner-section" id="sv-acts">
+    <div class="kpi-g" id="sv-acts-kpi"></div>
+    <div id="sv-acts-list"></div>
+  </div>
+
+  <div class="inner-section" id="sv-correct">
+    <div class="notice info"><strong>Корректировки долга</strong> — взаимозачёт требований, списание безнадёжной задолженности, уступка права требования.</div>
+    <div style="overflow-x:auto"><table class="mt">
+      <thead><tr><th>Дата</th><th>Тип</th><th>Покупатель</th><th style="text-align:right">Сумма (₸)</th><th>Дт БУ</th><th>Кт БУ</th><th>Статус</th></tr></thead>
+      <tbody>
+        <tr><td>30.04.2026</td><td><span class="badge bb">Взаимозачёт</span></td><td>ТОО «NCOC N.V.»</td><td style="text-align:right">2 000 000</td><td class="acc acc-bu">3310</td><td class="acc acc-bu">1210</td><td><span class="badge bw">Черновик</span></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- ===== ПОКУПАТЕЛИ ===== -->
+<div id="buyers" class="section">
+  <div class="ph">
+    <div><div class="pt">Покупатели · Справочники</div></div>
+    <button class="btn btn-p btn-sm">+ Новый покупатель</button>
+  </div>
+
+  <div class="inner-tabs">
+    <button class="inner-tab active" onclick="showInner('buyers','b-list',this)">Контрагенты</button>
+    <button class="inner-tab" onclick="showInner('buyers','b-contracts',this)">Договоры</button>
+    <button class="inner-tab" onclick="showInner('buyers','b-vsklads',this)">Виртуальные склады</button>
+    <button class="inner-tab" onclick="showInner('buyers','b-dossier',this)">Досье покупателя</button>
+  </div>
+
+  <div class="inner-section active" id="b-list">
+    <div id="buyers-cards"></div>
+  </div>
+
+  <div class="inner-section" id="b-contracts">
+    <div style="overflow-x:auto"><table class="mt" id="buyer-contracts">
+      <thead><tr><th>Покупатель</th><th>Номер договора</th><th>Дата</th><th>Тип</th><th style="text-align:right">Сумма (₸)</th><th>% выполнения</th><th>Статус</th></tr></thead>
+      <tbody id="buyer-contracts-tbody"></tbody>
+    </table></div>
+  </div>
+
+  <div class="inner-section" id="b-vsklads">
+    <div class="notice info"><strong>Виртуальные склады контрагентов</strong> — учёт товаров, переданных покупателю на ответственное хранение или на реализацию. Остаток числится на балансе Alpino до момента фактической продажи.</div>
+    <div style="overflow-x:auto"><table class="mt">
+      <thead><tr><th>Покупатель</th><th>Наименование ТМЦ</th><th>Кол-во</th><th>Ед.</th><th style="text-align:right">Себестоимость (₸)</th><th>Передано</th></tr></thead>
+      <tbody>
+        <tr><td>ТОО «NCOC N.V.»</td><td>Насосная станция НЦС-50/50</td><td>1</td><td>шт</td><td style="text-align:right">3 879 310</td><td>05.08.2025</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="inner-section" id="b-dossier">
+    <div class="fl-i" style="margin-bottom:10px"><label>Выбрать покупателя</label>
+      <select id="buyer-dossier-sel" onchange="renderBuyerDossier()">
+        <option value="">— выбрать —</option>
+        <option value="ncoc">ТОО «NCOC N.V.»</option>
+        <option value="kmg">ТОО «KazMunaiGaz»</option>
+        <option value="anpz">ТОО «Атырауский НПЗ»</option>
+      </select>
+    </div>
+    <div id="buyer-dossier-content"></div>
+  </div>
+</div>
+
+<!-- ===== ОТЧЁТЫ ===== -->
+<div id="reports" class="section">
+  <div class="ph"><div><div class="pt">Отчёты · Продажа</div></div></div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+    <div>
+      <div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:8px;text-transform:uppercase">Продажи и реализация</div>
+      <div id="rpt-sales-list"></div>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:8px;text-transform:uppercase">НДС и ЭСФ</div>
+      <div id="rpt-nds-list"></div>
+    </div>
+  </div>
+
+  <div style="margin-top:4px">
+    <div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:8px;text-transform:uppercase">Дебиторская задолженность (счёт 1210)</div>
+    <div class="kpi-g" id="rpt-debt-kpi"></div>
+    <div style="overflow-x:auto">
+      <table class="mt">
+        <thead><tr>
+          <th>Покупатель</th><th>Договор</th>
+          <th style="text-align:right">Аванс (3260) ₸</th>
+          <th style="text-align:right">Реализовано ₸</th>
+          <th style="text-align:right">Оплачено ₸</th>
+          <th style="text-align:right">Долг (1210) ₸</th>
+          <th>%</th>
+        </tr></thead>
+        <tbody id="rpt-debt-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== СЕРВИС ===== -->
+<div id="service" class="section">
+  <div class="ph"><div><div class="pt">Сервис · Синхронизация с ИС ЭСФ</div></div></div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div>
+      <div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:8px;text-transform:uppercase">Загрузка из XML</div>
+      <div id="svc-load"></div>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:8px;text-transform:uppercase">Синхронизация с ИС ЭСФ</div>
+      <div id="svc-sync"></div>
+    </div>
+  </div>
+
+  <div style="margin-top:14px">
+    <div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:8px;text-transform:uppercase">Статус</div>
+    <div class="kpi-g">
+      <div class="kpi green"><div class="kv">✓</div><div class="kl">ЭСФ выданные</div></div>
+      <div class="kpi green"><div class="kv">✓</div><div class="kl">ЭАВР выданные</div></div>
+      <div class="kpi amber"><div class="kv">⏳</div><div class="kl">ЭСНТ выданные</div></div>
+      <div class="kpi green"><div class="kv">✓</div><div class="kl">НДС (3130)</div></div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function fmt(n){return Math.round(n||0).toLocaleString('ru-RU');}
+
+// ===== ДАННЫЕ =====
+const SALES = [
+  {id:1,date:'30.04.2026',num:'РТ-2026-001',buyer:'ТОО «NCOC N.V.»',type:'services',total:10000000,nds:1600000,grand:11600000,esf:'ESF-OUT-001',status:'posted',paid:25000000},
+  {id:2,date:'28.04.2026',num:'РТ-2026-002',buyer:'ТОО «Атырауский НПЗ»',type:'services',total:4000000,nds:640000,grand:4640000,esf:'ESF-OUT-002',status:'posted',paid:0},
+  {id:3,date:'25.04.2026',num:'РТ-2026-003',buyer:'ТОО «KazMunaiGaz»',type:'goods',total:2500000,nds:400000,grand:2900000,esf:null,status:'draft',paid:0},
+];
+
+const INVOICES = [
+  {id:1,date:'01.04.2026',num:'СЧ-2026-001',buyer:'ТОО «NCOC N.V.»',contract:'NCOC-2026-0451',amount:11600000,nds:1600000,due:'30.04.2026',status:'paid'},
+  {id:2,date:'20.04.2026',num:'СЧ-2026-002',buyer:'ТОО «Атырауский НПЗ»',contract:'АНП-2026-07',amount:4640000,nds:640000,due:'20.05.2026',status:'unpaid'},
+  {id:3,date:'25.04.2026',num:'СЧ-2026-003',buyer:'ТОО «KazMunaiGaz»',contract:'КМГ-2026-03',amount:2900000,nds:400000,due:'25.05.2026',status:'unpaid'},
+];
+
+const ESF_OUT = [
+  {reg:'ESF-OUT-001',date:'30.04.2026',buyer:'ТОО «NCOC N.V.»',base:10000000,nds:1600000,total:11600000,rate:'16%',status:'DELIVERED',doc:'РТ-2026-001'},
+  {reg:'ESF-OUT-002',date:'28.04.2026',buyer:'ТОО «Атырауский НПЗ»',base:4000000,nds:640000,total:4640000,rate:'16%',status:'DELIVERED',doc:'РТ-2026-002'},
+  {reg:'ESF-OUT-003',date:'15.04.2026',buyer:'ООО «РусПромТорг»',base:3500000,nds:0,total:3500000,rate:'0%',status:'DELIVERED',doc:'РТ-2026-004'},
+];
+
+const AVR_OUT = [
+  {num:'ЭАВР-001',date:'30.04.2026',customer:'ТОО «NCOC N.V.»',contract:'NCOC-2026-0451',total:10000000,nds:1600000,grand:11600000,works:[
+    {name:'Реконструкция насосной станции НПС-2 (монтаж оборудования)',gsvs:'43.22.20.01',qty:1,unit:'компл.',price:10000000,nds:1600000},
+  ],status:'signed'},
+  {num:'ЭАВР-002',date:'28.04.2026',customer:'ТОО «Атырауский НПЗ»',contract:'АНП-2026-07',total:4000000,nds:640000,grand:4640000,works:[
+    {name:'Техническое обслуживание технологического оборудования',gsvs:'33.12.11.00',qty:1,unit:'услуга',price:4000000,nds:640000},
+  ],status:'signed'},
+];
+
+const SNT_OUT = [
+  {num:'СНТ-OUT-001',date:'25.04.2026',customer:'ТОО «KazMunaiGaz»',total:2900000,nds:400000,
+   products:[{name:'Насосная станция НЦС-50/50 б/у (восстановленная)',tnved:'8413600009',qty:1,price:2500000}],status:'DELIVERED'},
+];
+
+const BUYERS = [
+  {name:'ТОО «NCOC N.V.»',tin:'040540000043',city:'Атырау',total_sales:11600000,docs:3,advance:25000000,debt:0},
+  {name:'ТОО «Атырауский НПЗ»',tin:'050640001234',city:'Атырау',total_sales:4640000,docs:2,advance:0,debt:4640000},
+  {name:'ТОО «KazMunaiGaz»',tin:'030540001111',city:'Астана',total_sales:2900000,docs:1,advance:0,debt:2900000},
+  {name:'ООО «РусПромТорг»',tin:'RU7712345678',city:'Москва',total_sales:3500000,docs:1,advance:0,debt:3500000},
+];
+
+let saleLines = [];
+let saleLinesId = 1;
+
+// ===== РЕНДЕР =====
+function renderSalesKPI(){
+  const totalGrand = SALES.reduce((s,r)=>s+r.grand,0);
+  const totalNds   = SALES.reduce((s,r)=>s+r.nds,0);
+  const unpaid = SALES.filter(r=>r.paid<r.grand).length;
+  document.getElementById('sales-kpi').innerHTML=`
+    <div class="kpi"><div class="kv">${SALES.length}</div><div class="kl">Реализаций</div></div>
+    <div class="kpi green"><div class="kv">${fmt(totalGrand)} ₸</div><div class="kl">Выручка итого</div></div>
+    <div class="kpi amber"><div class="kv">${fmt(totalNds)} ₸</div><div class="kl">НДС начисленный</div></div>
+    <div class="kpi red"><div class="kv">${unpaid}</div><div class="kl">Не оплачено</div></div>
+    <div class="kpi purple"><div class="kv">${fmt(SALES.reduce((s,r)=>s+r.total,0))} ₸</div><div class="kl">Без НДС</div></div>`;
+}
+
+function renderSalesTable(){
+  const typeL={services:'Услуги',goods:'Товары',materials:'Материалы',mixed:'Смешанное'};
+  document.getElementById('sales-tbody').innerHTML = SALES.map(r=>`<tr>
+    <td>${r.date}</td>
+    <td style="font-family:var(--font-mono);font-size:11px">${r.num}</td>
+    <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.buyer}</td>
+    <td><span class="badge ${r.type==='services'?'bb':r.type==='goods'?'bg':'bw'}">${typeL[r.type]}</span></td>
+    <td style="text-align:right">${fmt(r.total)}</td>
+    <td style="text-align:right;color:var(--color-text-warning)">${fmt(r.nds)}</td>
+    <td style="text-align:right;font-weight:500;color:var(--color-text-success)">${fmt(r.grand)}</td>
+    <td>${r.esf?`<span class="badge bg" style="font-size:9px">✓ ЭСФ</span>`:'<span class="badge br" style="font-size:9px">нет</span>'}</td>
+    <td><span class="badge ${r.paid>=r.grand?'bg':r.paid>0?'bw':'br'}">${r.paid>=r.grand?'Оплачен':r.paid>0?'Аванс':'Не оплачен'}</span></td>
+    <td><span class="badge ${r.status==='posted'?'bg':'bw'}">${r.status==='posted'?'Проведён':'Черновик'}</span></td>
+    <td style="display:flex;gap:4px">
+      <button class="btn btn-sm" onclick="showSaleEntries(${r.id})">Пров.</button>
+    </td>
+  </tr>`).join('');
+}
+
+function renderInvoiceKPI(){
+  const total = INVOICES.reduce((s,i)=>s+i.amount,0);
+  const unpaid = INVOICES.filter(i=>i.status==='unpaid').reduce((s,i)=>s+i.amount,0);
+  document.getElementById('inv-kpi').innerHTML=`
+    <div class="kpi"><div class="kv">${INVOICES.length}</div><div class="kl">Счетов выставлено</div></div>
+    <div class="kpi green"><div class="kv">${fmt(total)} ₸</div><div class="kl">Итого</div></div>
+    <div class="kpi red"><div class="kv">${fmt(unpaid)} ₸</div><div class="kl">Не оплачено</div></div>`;
+  document.getElementById('unpaid-total').textContent = fmt(unpaid)+' ₸';
+  document.getElementById('unpaid-count').textContent = INVOICES.filter(i=>i.status==='unpaid').length;
+}
+
+function renderInvoiceTable(){
+  document.getElementById('inv-tbody').innerHTML = INVOICES.map(inv=>`<tr>
+    <td>${inv.date}</td>
+    <td style="font-family:var(--font-mono)">${inv.num}</td>
+    <td>${inv.buyer}</td>
+    <td style="font-size:11px">${inv.contract}</td>
+    <td style="text-align:right;font-weight:500">${fmt(inv.amount)}</td>
+    <td style="text-align:right;color:var(--color-text-warning)">${fmt(inv.nds)}</td>
+    <td style="color:${new Date(inv.due)<new Date()?'var(--color-text-danger)':'var(--color-text-secondary)'}">${inv.due}</td>
+    <td><span class="badge ${inv.status==='paid'?'bg':'br'}">${inv.status==='paid'?'✓ Оплачен':'Не оплачен'}</span></td>
+    <td><button class="btn btn-sm" onclick="sendPrompt('Сформируй напоминание об оплате счёта ${inv.num} для ${inv.buyer}')">Напомнить</button></td>
+  </tr>`).join('');
+
+  document.getElementById('unpaid-tbody').innerHTML = INVOICES.filter(i=>i.status==='unpaid').map(inv=>{
+    const overdue = Math.max(0, Math.round((new Date()-new Date(inv.due))/86400000));
+    return `<tr>
+      <td>${inv.buyer}</td><td style="font-family:var(--font-mono)">${inv.num}</td>
+      <td>${inv.date}</td><td>${inv.due}</td>
+      <td style="text-align:right;font-weight:500;color:var(--color-text-danger)">${fmt(inv.amount)}</td>
+      <td style="text-align:center;color:${overdue>0?'var(--color-text-danger)':'var(--color-text-secondary)'}">${overdue>0?overdue+' дн':'В срок'}</td>
+      <td><span class="badge ${overdue>30?'br':'bw'}">${overdue>30?'Просрочен>30':'Текущий'}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+function renderESFOutKPI(){
+  const total=ESF_OUT.reduce((s,e)=>s+e.total,0);
+  const nds16=ESF_OUT.filter(e=>e.rate==='16%').reduce((s,e)=>s+e.nds,0);
+  const nds0=ESF_OUT.filter(e=>e.rate==='0%').length;
+  document.getElementById('esf-out-kpi').innerHTML=`
+    <div class="kpi"><div class="kv">${ESF_OUT.length}</div><div class="kl">ЭСФ выдано</div></div>
+    <div class="kpi green"><div class="kv">${fmt(total)} ₸</div><div class="kl">Итого выручка</div></div>
+    <div class="kpi amber"><div class="kv">${fmt(nds16)} ₸</div><div class="kl">НДС начисленный (3130)</div></div>
+    <div class="kpi bb"><div class="kv">${nds0}</div><div class="kl">ЭСФ по ставке 0%</div></div>`;
+
+  document.getElementById('esf-out-tbody').innerHTML = ESF_OUT.map(e=>`<tr>
+    <td>${e.date}</td>
+    <td style="font-family:var(--font-mono);font-size:10px">${e.reg}</td>
+    <td>${e.buyer}</td>
+    <td style="text-align:right">${fmt(e.base)}</td>
+    <td style="text-align:right;color:var(--color-text-warning)">${fmt(e.nds)}</td>
+    <td style="text-align:right;font-weight:500;color:var(--color-text-success)">${fmt(e.total)}</td>
+    <td><span class="badge ${e.rate==='16%'?'bw':e.rate==='0%'?'bg':'bb'}">${e.rate}</span></td>
+    <td><span class="badge bg">✓ DELIVERED</span></td>
+    <td style="font-size:11px;font-family:var(--font-mono)">${e.doc}</td>
+  </tr>`).join('');
+
+  // НДС по покупателям
+  const byBuyer={};
+  ESF_OUT.forEach(e=>{
+    if(!byBuyer[e.buyer])byBuyer[e.buyer]={count:0,base:0,nds:0};
+    byBuyer[e.buyer].count++;byBuyer[e.buyer].base+=e.base;byBuyer[e.buyer].nds+=e.nds;
+  });
+  const totalNds16 = Object.values(byBuyer).reduce((s,b)=>s+b.nds,0);
+  const totalNdsIn  = 5309072; // НДС к зачёту из ЭСФ полученных
+  document.getElementById('nds-out-kpi').innerHTML=`
+    <div class="kpi amber"><div class="kv">${fmt(totalNds16)} ₸</div><div class="kl">НДС начисл. (3130)</div></div>
+    <div class="kpi info"><div class="kv">${fmt(totalNdsIn)} ₸</div><div class="kl">НДС к зачёту (1420)</div></div>
+    <div class="kpi ${totalNds16>totalNdsIn?'red':'green'}"><div class="kv">${fmt(Math.abs(totalNds16-totalNdsIn))} ₸</div><div class="kl">${totalNds16>totalNdsIn?'К уплате в бюджет':'К возврату'}</div></div>`;
+  document.getElementById('nds-out-tbody').innerHTML=Object.entries(byBuyer).map(([buyer,d])=>`<tr>
+    <td>${buyer}</td><td style="text-align:center">${d.count}</td>
+    <td style="text-align:right">${fmt(d.base)}</td><td style="text-align:center">16%</td>
+    <td style="text-align:right;font-weight:500;color:var(--color-text-warning)">${fmt(d.nds)}</td>
+  </tr>`).join('');
+  document.getElementById('nds-balance').innerHTML=`
+    <strong>Сальдо НДС за апрель 2026:</strong><br>
+    НДС начисленный (3130): <span class="acc acc-bu">${fmt(totalNds16)} ₸</span> &nbsp;−&nbsp;
+    НДС к зачёту (1420): <span class="acc acc-bu">${fmt(totalNdsIn)} ₸</span> =
+    <strong style="color:${totalNds16>totalNdsIn?'var(--color-text-danger)':'var(--color-text-success)'}">${fmt(Math.abs(totalNds16-totalNdsIn))} ₸ ${totalNds16>totalNdsIn?'к уплате в бюджет':'к возврату'}</strong><br>
+    <span style="font-size:11px;color:var(--color-text-secondary)">Проводка уплаты: Дт <span class="acc acc-bu">3130</span> / Кт <span class="acc acc-bu">1030</span></span>`;
+}
+
+function renderAVROutKPI(){
+  const total = AVR_OUT.reduce((s,a)=>s+a.grand,0);
+  document.getElementById('avr-out-kpi').innerHTML=`
+    <div class="kpi"><div class="kv">${AVR_OUT.length}</div><div class="kl">ЭАВР выдано</div></div>
+    <div class="kpi green"><div class="kv">${fmt(total)} ₸</div><div class="kl">Итого по актам</div></div>
+    <div class="kpi amber"><div class="kv">${fmt(AVR_OUT.reduce((s,a)=>s+a.nds,0))} ₸</div><div class="kl">НДС</div></div>`;
+
+  document.getElementById('avr-out-cards').innerHTML = AVR_OUT.map(a=>`
+    <div class="doc-card avr-out">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;flex-wrap:wrap;gap:8px">
+        <div>
+          <div style="font-size:13px;font-weight:600">${a.num} от ${a.date}</div>
+          <div style="font-size:11px;color:var(--color-text-secondary)">Исполнитель: <strong>Alpino Group ТОО</strong> → Заказчик: <strong>${a.customer}</strong></div>
+          <div style="font-size:11px;color:var(--color-text-secondary)">Договор: ${a.contract}</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:16px;font-weight:700;color:var(--color-text-success)">${fmt(a.grand)} ₸</div>
+          <div style="font-size:11px;color:var(--color-text-warning)">НДС: ${fmt(a.nds)} ₸</div>
+          <span class="badge bg">✓ Подписан</span>
+        </div>
+      </div>
+      <table class="lines-tbl">
+        <thead><tr><th>Наименование работ</th><th>Код ГСВС</th><th>Кол-во</th><th>Ед.</th><th style="text-align:right">Цена (₸)</th><th style="text-align:right">НДС (₸)</th></tr></thead>
+        <tbody>${a.works.map(w=>`<tr>
+          <td>${w.name}</td>
+          <td style="font-family:var(--font-mono);font-size:10px">${w.gsvs}</td>
+          <td style="text-align:center">${w.qty}</td>
+          <td>${w.unit}</td>
+          <td style="text-align:right">${fmt(w.price)}</td>
+          <td style="text-align:right;color:var(--color-text-warning)">${fmt(w.nds)}</td>
+        </tr>`).join('')}</tbody>
+      </table>
+      <div class="entry-block">
+        <div class="entry-hdr">Проводки 1С</div>
+        <div class="entry-row"><div class="acc acc-bu">Дт 1210</div><div class="acc acc-bu">Кт 6020</div><div class="acc acc-nu" style="font-size:10px">Дт 1210Н</div><div class="acc acc-nu" style="font-size:10px">Кт 6020Н</div><div style="font-size:11px;color:var(--color-text-secondary)">Признание дохода от услуг</div><div style="text-align:right;font-weight:500">${fmt(a.total)} ₸</div></div>
+        <div class="entry-row"><div class="acc acc-bu">Дт 1210</div><div class="acc acc-bu">Кт 3130</div><div class="acc acc-nu" style="font-size:10px">Дт 1210Н</div><div class="acc acc-nu" style="font-size:10px">Кт 3130Н</div><div style="font-size:11px;color:var(--color-text-secondary)">НДС начисленный (исходящий)</div><div style="text-align:right;font-weight:500;color:var(--color-text-warning)">${fmt(a.nds)} ₸</div></div>
+        <div class="entry-row"><div class="acc acc-bu">Дт 3260</div><div class="acc acc-bu">Кт 1210</div><div class="acc acc-nu" style="font-size:10px">Дт 3260Н</div><div class="acc acc-nu" style="font-size:10px">Кт 1210Н</div><div style="font-size:11px;color:var(--color-text-secondary)">Зачёт аванса покупателя</div><div style="text-align:right;font-weight:500">${fmt(a.grand)} ₸</div></div>
+      </div>
+    </div>`).join('');
+}
+
+function renderSNTOutKPI(){
+  const total=SNT_OUT.reduce((s,x)=>s+x.total,0);
+  document.getElementById('snt-out-kpi').innerHTML=`
+    <div class="kpi"><div class="kv">${SNT_OUT.length}</div><div class="kl">ЭСНТ выдано</div></div>
+    <div class="kpi green"><div class="kv">${fmt(total)} ₸</div><div class="kl">Итого</div></div>
+    <div class="kpi"><div class="kv">1</div><div class="kl">DELIVERED</div></div>`;
+  document.getElementById('snt-out-cards').innerHTML = SNT_OUT.map(s=>`
+    <div class="doc-card snt-out">
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px">
+        <div>
+          <div style="font-size:13px;font-weight:600">СНТ-OUT № ${s.num} от ${s.date}</div>
+          <div style="font-size:11px;color:var(--color-text-secondary)">Отправитель: <strong>Alpino Group ТОО</strong> → Получатель: <strong>${s.customer}</strong></div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:16px;font-weight:700">${fmt(s.total)} ₸</div>
+          <span class="badge bb">• DELIVERED</span>
+        </div>
+      </div>
+      <table class="lines-tbl">
+        <thead><tr><th>Наименование</th><th>ТН ВЭД</th><th>Кол-во</th><th style="text-align:right">Цена (₸)</th></tr></thead>
+        <tbody>${s.products.map(p=>`<tr><td>${p.name}</td><td style="font-family:var(--font-mono);font-size:10px">${p.tnved}</td><td>${p.qty}</td><td style="text-align:right">${fmt(p.price)}</td></tr>`).join('')}</tbody>
+      </table>
+    </div>`).join('');
+}
+
+function renderDebtKPI(){
+  const total=BUYERS.reduce((s,b)=>s+b.debt,0);
+  document.getElementById('debt-kpi').innerHTML=`
+    <div class="kpi red"><div class="kv">${fmt(total)} ₸</div><div class="kl">Дебит. задолж. (1210)</div></div>
+    <div class="kpi amber"><div class="kv">${BUYERS.filter(b=>b.debt>0).length}</div><div class="kl">Покупателей с долгом</div></div>
+    <div class="kpi green"><div class="kv">${fmt(BUYERS.reduce((s,b)=>s+b.advance,0))} ₸</div><div class="kl">Авансы получ. (3260)</div></div>`;
+  document.getElementById('debt-tbody').innerHTML = BUYERS.filter(b=>b.debt>=0).map(b=>`<tr>
+    <td>${b.name}</td>
+    <td class="acc acc-bu">1210</td>
+    <td style="text-align:right;font-weight:500;color:${b.debt>0?'var(--color-text-danger)':'var(--color-text-success)'}">${fmt(b.debt)}</td>
+    <td style="text-align:right;color:var(--color-text-danger)">${b.debt>0?fmt(b.debt):'—'}</td>
+    <td style="text-align:center">${b.debt>0?Math.floor(Math.random()*30)+1:'—'}</td>
+    <td>${b.advance>0?`Аванс: ${fmt(b.advance)} ₸`:'—'}</td>
+    <td><span class="badge ${b.debt===0?'bg':b.debt>5000000?'br':'bw'}">${b.debt===0?'Оплачен':b.debt>5000000?'Крупный долг':'Текущий'}</span></td>
+  </tr>`).join('');
+
+  document.getElementById('sv-acts-kpi').innerHTML=`
+    <div class="kpi"><div class="kv">2</div><div class="kl">Актов сверки</div></div>
+    <div class="kpi green"><div class="kv">1</div><div class="kl">Согласовано</div></div>
+    <div class="kpi amber"><div class="kv">1</div><div class="kl">На согласовании</div></div>`;
+  document.getElementById('sv-acts-list').innerHTML=`
+    <div class="doc-card" style="border-left:3px solid var(--color-text-success)">
+      <div style="display:flex;justify-content:space-between;margin-bottom:6px;flex-wrap:wrap;gap:8px">
+        <div><strong>Акт сверки · ТОО «NCOC N.V.»</strong><div style="font-size:11px;color:var(--color-text-secondary)">Период: 01.01.2026 — 30.04.2026 · Счёт 1210/3260</div></div>
+        <span class="badge bg">✓ Согласован</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px">
+        <div><span style="color:var(--color-text-secondary)">По нашим данным (дебит.):</span> <strong>0 ₸</strong> (аванс закрыт актом)</div>
+        <div><span style="color:var(--color-text-secondary)">По данным NCOC:</span> <strong>0 ₸</strong></div>
+      </div>
+    </div>
+    <div class="doc-card" style="border-left:3px solid var(--color-text-warning)">
+      <div style="display:flex;justify-content:space-between;margin-bottom:6px;flex-wrap:wrap;gap:8px">
+        <div><strong>Акт сверки · ТОО «Атырауский НПЗ»</strong><div style="font-size:11px;color:var(--color-text-secondary)">Период: 01.04.2026 — 30.04.2026</div></div>
+        <span class="badge bw">На согласовании</span>
+      </div>
+      <div style="font-size:12px;color:var(--color-text-secondary)">Задолженность: <strong style="color:var(--color-text-danger)">4 640 000 ₸</strong></div>
+    </div>`;
+}
+
+function renderBuyers(){
+  document.getElementById('buyers-cards').innerHTML = BUYERS.map(b=>`
+    <div style="padding:10px 12px;border:0.5px solid var(--color-border-tertiary);border-radius:8px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="">
+      <div>
+        <div style="font-size:12px;font-weight:600">${b.name}</div>
+        <div style="font-size:11px;color:var(--color-text-secondary)">ИИН/БИН: <span style="font-family:var(--font-mono)">${b.tin}</span> · ${b.city}</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:12px;font-weight:600;color:var(--color-text-success)">${fmt(b.total_sales)} ₸</div>
+        <div style="font-size:10px;color:var(--color-text-secondary)">${b.docs} доc. · Долг: <span style="color:${b.debt>0?'var(--color-text-danger)':'var(--color-text-success)'}">${fmt(b.debt)} ₸</span></div>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('buyer-contracts-tbody').innerHTML=`
+    <tr><td>ТОО «NCOC N.V.»</td><td>NCOC-2026-0451</td><td>01.03.2026</td><td><span class="badge bb">Подряд</span></td><td style="text-align:right">250 000 000</td>
+      <td><div style="font-size:11px">5%</div><div class="chart-bar"><div class="chart-fill" style="width:5%"></div></div></td>
+      <td><span class="badge bg">Активен</span></td></tr>
+    <tr><td>ТОО «Атырауский НПЗ»</td><td>АНП-2026-07</td><td>20.04.2026</td><td><span class="badge bw">Услуги ТО</span></td><td style="text-align:right">20 000 000</td>
+      <td><div style="font-size:11px">23%</div><div class="chart-bar"><div class="chart-fill" style="width:23%"></div></div></td>
+      <td><span class="badge bg">Активен</span></td></tr>
+    <tr><td>ТОО «KazMunaiGaz»</td><td>КМГ-2026-03</td><td>25.04.2026</td><td><span class="badge bg">Поставка</span></td><td style="text-align:right">10 000 000</td>
+      <td><div style="font-size:11px">29%</div><div class="chart-bar"><div class="chart-fill" style="width:29%"></div></div></td>
+      <td><span class="badge bg">Активен</span></td></tr>`;
+}
+
+function renderBuyerDossier(){
+  const id = document.getElementById('buyer-dossier-sel').value;
+  if(!id){document.getElementById('buyer-dossier-content').innerHTML='';return;}
+  const b = BUYERS.find(x=>x.name.toLowerCase().includes(id));
+  if(!b){document.getElementById('buyer-dossier-content').innerHTML='';return;}
+  document.getElementById('buyer-dossier-content').innerHTML=`
+    <div class="kpi-g">
+      <div class="kpi green"><div class="kv">${fmt(b.total_sales)} ₸</div><div class="kl">Оборот за период</div></div>
+      <div class="kpi ${b.debt>0?'red':'green'}"><div class="kv">${fmt(b.debt)} ₸</div><div class="kl">Долг (1210)</div></div>
+      ${b.advance?`<div class="kpi info"><div class="kv">${fmt(b.advance)} ₸</div><div class="kl">Аванс (3260)</div></div>`:''}
+      <div class="kpi"><div class="kv">${b.docs}</div><div class="kl">Документов</div></div>
+    </div>
+    <div class="notice"><strong>История:</strong> Реализации: ${SALES.filter(s=>s.buyer.includes(b.name.split('«')[1]?.split('»')[0]||'')).length} · ЭСФ: ${ESF_OUT.filter(e=>e.buyer.includes(b.name.split('«')[1]?.split('»')[0]||'')).length} · ЭАВР: ${AVR_OUT.filter(a=>a.customer.includes(b.name.split('«')[1]?.split('»')[0]||'')).length}</div>`;
+}
+
+function renderReports(){
+  const salesRpts=[
+    {n:'Отчёты по продажам',i:'•'},{n:'Отчёт о реализации товаров и услуг',i:'•'},
+    {n:'Сведения по актам выполненных работ',i:'✅'},{n:'Журнал учёта счетов-фактур',i:'•'},
+    {n:'Отчёт по наличию выписанных СНТ',i:'•'},{n:'Дополнительные отчёты',i:'•'},
+  ];
+  const ndsRpts=[
+    {n:'Анализ НДС (3130 − 1420)',i:'•'},{n:'Обязательства по ИС ЭСФ',i:'•'},
+    {n:'Отчёт по наличию ЭСФ выданных',i:'•'},{n:'Счета не оплаченные покупателями',i:'⚠️'},
+    {n:'Анализ остатков виртуальных складов',i:'•'},
+  ];
+  const ri=r=>`<div onclick="sendPrompt('Сформируй отчёт: ${r.n} за апрель 2026')" style="padding:9px 12px;border:0.5px solid var(--color-border-tertiary);border-radius:8px;margin-bottom:6px;cursor:pointer;display:flex;align-items:center;gap:8px;font-size:12px"><span style="font-size:15px">${r.i}</span>${r.n}<span style="margin-left:auto;color:var(--color-text-secondary)">→</span></div>`;
+  document.getElementById('rpt-sales-list').innerHTML=salesRpts.map(ri).join('');
+  document.getElementById('rpt-nds-list').innerHTML=ndsRpts.map(ri).join('');
+
+  const totalSales=SALES.reduce((s,r)=>s+r.grand,0);
+  const totalDebt =BUYERS.reduce((s,b)=>s+b.debt,0);
+  const totalAdv  =BUYERS.reduce((s,b)=>s+b.advance,0);
+  document.getElementById('rpt-debt-kpi').innerHTML=`
+    <div class="kpi green"><div class="kv">${fmt(totalSales)} ₸</div><div class="kl">Выручка итого</div></div>
+    <div class="kpi amber"><div class="kv">${fmt(ESF_OUT.reduce((s,e)=>s+e.nds,0))} ₸</div><div class="kl">НДС к уплате (3130)</div></div>
+    <div class="kpi info"><div class="kv">${fmt(totalAdv)} ₸</div><div class="kl">Авансы получ. (3260)</div></div>
+    <div class="kpi red"><div class="kv">${fmt(totalDebt)} ₸</div><div class="kl">Дебит. задолж. (1210)</div></div>`;
+
+  document.getElementById('rpt-debt-tbody').innerHTML=BUYERS.map(b=>`<tr>
+    <td>${b.name}</td><td style="font-size:11px">${b.docs} доц.</td>
+    <td style="text-align:right;color:var(--color-text-info)">${b.advance?fmt(b.advance):'-'}</td>
+    <td style="text-align:right">${fmt(b.total_sales)}</td>
+    <td style="text-align:right;color:var(--color-text-success)">${fmt(b.total_sales-b.debt)}</td>
+    <td style="text-align:right;font-weight:500;color:${b.debt>0?'var(--color-text-danger)':'var(--color-text-success)'}">${fmt(b.debt)}</td>
+    <td style="text-align:center">
+      <div style="font-size:11px">${b.total_sales>0?Math.round((b.total_sales-b.debt)/b.total_sales*100):0}%</div>
+      <div class="chart-bar"><div class="chart-fill" style="width:${b.total_sales>0?Math.round((b.total_sales-b.debt)/b.total_sales*100):0}%"></div></div>
+    </td>
+  </tr>`).join('');
+}
+
+function renderService(){
+  document.getElementById('svc-load').innerHTML=[
+    {n:'Загрузить СНТ (выданные) из XML',i:'•',d:'Выданные ЭСНТ'},
+  ].map(s=>`<div style="padding:10px 12px;border:0.5px solid var(--color-border-tertiary);border-radius:8px;margin-bottom:6px;cursor:pointer;display:flex;align-items:center;gap:8px;font-size:12px">
+    <span style="font-size:16px">${s.i}</span><div><div>${s.n}</div>${s.d?`<div style="font-size:10px;color:var(--color-text-secondary)">${s.d}</div>`:''}</div>
+    <span style="margin-left:auto">→</span></div>`).join('');
+  document.getElementById('svc-sync').innerHTML=[
+    {n:'Получить ЭАВР выданные из ИС ЭСФ',i:'•',d:'e-contract.kz'},
+    {n:'Получить ЭСФ выданные из ИС ЭСФ',i:'•',d:'esf.gov.kz'},
+    {n:'Дополнительные обработки',i:'⚙️',d:''},
+  ].map(s=>`<div style="padding:10px 12px;border:0.5px solid var(--color-border-tertiary);border-radius:8px;margin-bottom:6px;cursor:pointer;display:flex;align-items:center;gap:8px;font-size:12px">
+    <span style="font-size:16px">${s.i}</span><div><div>${s.n}</div>${s.d?`<div style="font-size:10px;color:var(--color-text-info)">${s.d}</div>`:''}</div>
+    <span style="margin-left:auto">→</span></div>`).join('');
+}
+
+// Форма продажи
+function addSaleLine(){
+  saleLines.push({id:saleLinesId++,name:'',qty:1,price:0,nds:0});
+  renderSaleLines();
+}
+function renderSaleLines(){
+  document.getElementById('sale-lines').innerHTML=saleLines.map(l=>`
+    <div style="display:grid;grid-template-columns:2fr 70px 120px 100px 90px 36px;gap:6px;padding:5px 0;border-bottom:0.5px solid var(--color-border-tertiary);align-items:center">
+      <input value="${l.name}" placeholder="Наименование услуги/товара" style="font-size:11px;padding:3px 6px" onchange="setSaleLine(${l.id},'name',this.value)">
+      <input type="number" value="${l.qty}" style="font-size:11px;padding:3px 6px;text-align:center" onchange="setSaleLine(${l.id},'qty',+this.value);calcSaleTotal()">
+      <input type="number" value="${l.price}" style="font-size:11px;padding:3px 6px;text-align:right" onchange="setSaleLine(${l.id},'price',+this.value);calcSaleTotal()">
+      <input type="number" value="${l.nds}" style="font-size:11px;padding:3px 6px;text-align:right" onchange="setSaleLine(${l.id},'nds',+this.value);calcSaleTotal()">
+      <input type="number" value="${(l.price*l.qty)+(l.nds||0)}" readonly style="font-size:11px;padding:3px 6px;text-align:right;background:var(--color-background-secondary)">
+      <button class="btn btn-sm" style="color:var(--color-text-danger)" onclick="saleLines=saleLines.filter(x=>x.id!==${l.id});renderSaleLines()">✕</button>
+    </div>`).join('');
+  calcSaleTotal();
+}
+function setSaleLine(id,f,v){saleLines=saleLines.map(l=>l.id===id?{...l,[f]:v}:l);}
+function calcSaleTotal(){
+  const total=saleLines.reduce((s,l)=>s+(l.price*l.qty||0),0);
+  const nds  =saleLines.reduce((s,l)=>s+(l.nds||0),0);
+  document.getElementById('sale-total').textContent    =fmt(total)+' ₸';
+  document.getElementById('sale-nds-total').textContent=fmt(nds)+' ₸';
+  document.getElementById('sale-grand').textContent    =fmt(total+nds)+' ₸';
+  if(!total){document.getElementById('sale-entries').style.display='none';return;}
+  document.getElementById('sale-entries').style.display='';
+  const type=document.getElementById('sale-type').value;
+  const acc6=type==='services'?'6020':type==='goods'?'6010':'6010';
+  const nu6 =type==='services'?'6020Н':'6010Н';
+  document.getElementById('sale-entries-content').innerHTML=`
+    <div class="entry-row"><div class="acc acc-bu">Дт 1210</div><div class="acc acc-bu">Кт ${acc6}</div><div class="acc acc-nu" style="font-size:10px">Дт 1210Н</div><div class="acc acc-nu" style="font-size:10px">Кт ${nu6}</div><div style="font-size:11px;color:var(--color-text-secondary)">Признание выручки от ${type==='services'?'услуг':'реализации товаров'}</div><div style="text-align:right;font-weight:500;color:var(--color-text-success)">${fmt(total)} ₸</div></div>
+    ${nds>0?`<div class="entry-row"><div class="acc acc-bu">Дт 1210</div><div class="acc acc-bu">Кт 3130</div><div class="acc acc-nu" style="font-size:10px">Дт 1210Н</div><div class="acc acc-nu" style="font-size:10px">Кт 3130Н</div><div style="font-size:11px;color:var(--color-text-secondary)">НДС начисленный (исходящий)</div><div style="text-align:right;font-weight:500;color:var(--color-text-warning)">${fmt(nds)} ₸</div></div>`:''}
+    ${type!=='services'?`<div class="entry-row"><div class="acc acc-bu">Дт 7010</div><div class="acc acc-bu">Кт 1330</div><div class="acc acc-nu" style="font-size:10px">Дт 7000Н</div><div class="acc acc-nu" style="font-size:10px">Кт 1330Н</div><div style="font-size:11px;color:var(--color-text-secondary)">Списание себестоимости реализованных товаров</div><div style="text-align:right;font-weight:500;color:var(--color-text-danger)">по себест.</div></div>`:''}
+    <div class="entry-row" style="background:color-mix(in srgb,var(--color-background-info) 10%,transparent)"><div class="acc acc-bu">Дт 3260</div><div class="acc acc-bu">Кт 1210</div><div class="acc acc-nu" style="font-size:10px">Дт 3260Н</div><div class="acc acc-nu" style="font-size:10px">Кт 1210Н</div><div style="font-size:11px;color:var(--color-text-secondary)">Зачёт аванса (если был предоплата)</div><div style="text-align:right;font-weight:500">${fmt(total+nds)} ₸</div></div>
+    <div class="entry-row" style="background:color-mix(in srgb,var(--color-background-success) 10%,transparent)"><div class="acc acc-bu">Дт 1030</div><div class="acc acc-bu">Кт 1210</div><div>—</div><div>—</div><div style="font-size:11px;color:var(--color-text-secondary)">Оплата от покупателя (при поступлении)</div><div style="text-align:right;font-weight:500">${fmt(total+nds)} ₸</div></div>`;
+}
+
+function fillSaleFromInvoice(){
+  document.getElementById('sale-buyer').value='ТОО «NCOC N.V.»';
+  document.getElementById('sale-contract').value='NCOC-2026-0451';
+  document.getElementById('sale-type').value='services';
+  saleLines=[{id:saleLinesId++,name:'Реконструкция НПС-2 (монтаж, наладка)',qty:1,price:10000000,nds:1600000}];
+  renderSaleLines();
+}
+function fillSaleFromContract(){
+  document.getElementById('sale-buyer').value='ТОО «Атырауский НПЗ»';
+  document.getElementById('sale-contract').value='АНП-2026-07';
+  saleLines=[{id:saleLinesId++,name:'ТО технологического оборудования',qty:1,price:4000000,nds:640000}];
+  renderSaleLines();
+}
+function saveSale(){alert('Реализация проведена! Проводки Дт 1210 / Кт 6020 + 3130 сформированы.');}
+function createESFFromSale(){showTab('esf-out');document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===2));}
+function createAVRFromSale(){showTab('avr-out');document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===3));}
+function createSNTFromSale(){showTab('snt-out');document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',i===4));}
+function showSaleEntries(id){
+  const r=SALES.find(x=>x.id===id);
+  if(!r)return;
+  const acc=r.type==='services'?'6020':'6010';
+  alert(`Проводки ${r.num}:\
+Дт 1210 / Кт ${acc} — ${fmt(r.total)} ₸\
+Дт 1210 / Кт 3130 — ${fmt(r.nds)} ₸ (НДС)\
+Зачёт аванса: Дт 3260 / Кт 1210 — ${fmt(r.grand)} ₸`);
+}
+function calcESFOut(){
+  const base=parseFloat(document.getElementById('esf-out-base').value)||0;
+  const rate=document.getElementById('esf-out-rate').value;
+  const nds=rate==='16'?Math.round(base*0.16):0;
+  document.getElementById('esf-out-nds-val').value=nds;
+  const prev=document.getElementById('esf-out-preview');
+  if(base){prev.style.display='';document.getElementById('esf-nds-preview').textContent=fmt(nds);}
+  else prev.style.display='none';
+}
+function createESFForm(){showInner('esf-out','esf-out-new',null);document.querySelectorAll('#esf-out .inner-tab').forEach((t,i)=>t.classList.toggle('active',i===1));}
+function onSaleTypeChange(){calcSaleTotal();}
+
+function showInner(parent,name,btn){
+  document.querySelectorAll(`#${parent} .inner-tab`).forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll(`#${parent} .inner-section`).forEach(s=>s.classList.remove('active'));
+  document.getElementById(name).classList.add('active');
+  if(btn)btn.classList.add('active');
+}
+function showTab(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(name).classList.add('active');
+  event?.currentTarget?.classList.add('active');
+  if(name==='reports') renderReports();
+  if(name==='service') renderService();
+}
+
+// INIT
+renderSalesKPI(); renderSalesTable();
+renderInvoiceKPI(); renderInvoiceTable();
+renderESFOutKPI();
+renderAVROutKPI(); renderSNTOutKPI();
+renderDebtKPI(); renderBuyers();
+renderReports(); renderService();
+addSaleLine();
+mkKeyBlock('sale_key');
+</script>
+
+</div>
+<script>
+// Заглушка для sendPrompt — в локальной версии показывает prompt
+function sendPrompt(text) {
+  var action = prompt('sendPrompt: ' + text + '\n\nВ реальной системе это отправит запрос к AI. Сейчас введите текст или нажмите Отмена:', '');
+  if (action) console.log('sendPrompt:', text);
+}
+// Заглушка для openLink
+function openLink(url) {
+  if (confirm('Открыть ссылку: ' + url)) window.open(url, '_blank');
+}
+
+
+// ====== CLAUDE API HELPER ======
+function getKey(){return localStorage.getItem('anthropic_key')||'';}
+function saveKey(v){localStorage.setItem('anthropic_key',v.trim());}
+function toggleKeyVis(id){const el=document.getElementById(id);el.type=el.type==='password'?'text':'password';}
+
+function toB64(file){
+  return new Promise((res,rej)=>{
+    const r=new FileReader();
+    r.onload=()=>res(r.result.split(',')[1]);
+    r.onerror=()=>rej(new Error('Ошибка чтения'));
+    r.readAsDataURL(file);
+  });
+}
+
+async function callClaude(prompt, files=[]){
+  const key=getKey();
+  if(!key) throw new Error('NO_KEY');
+  const content=[];
+  for(const f of files){
+    const b64=await toB64(f);
+    if(f.type==='application/pdf'||f.name.endsWith('.pdf'))
+      content.push({type:'document',source:{type:'base64',media_type:'application/pdf',data:b64}});
+    else if(f.type.startsWith('image/'))
+      content.push({type:'image',source:{type:'base64',media_type:f.type,data:b64}});
+  }
+  content.push({type:'text',text:prompt});
+  const resp=await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'x-api-key':key,
+      'anthropic-version':'2023-06-01',
+      'anthropic-dangerous-direct-browser-access':'true'
+    },
+    body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:1500,messages:[{role:'user',content}]})
+  });
+  if(!resp.ok){
+    const e=await resp.json().catch(()=>({}));
+    throw new Error('API '+resp.status+': '+(e.error?.message||resp.statusText));
+  }
+  const data=await resp.json();
+  const text=data.content?.find(c=>c.type==='text')?.text||'{}';
+  const clean=text.replace(/```json|```/g,'').trim();
+  const m=clean.match(/\{[\s\S]*\}/);
+  return JSON.parse(m?.[0]||clean);
+}
+
+function mkKeyBlock(inputId){
+  const saved=getKey();
+  const el=document.getElementById(inputId+'_wrap');
+  if(el) el.innerHTML=`
+    <div style="margin-bottom:10px;padding:10px;background:var(--bs);border-radius:8px;border:.5px solid var(--bor)">
+      <div style="font-size:11px;font-weight:500;color:var(--ts);margin-bottom:6px">🔑 Anthropic API ключ</div>
+      <div style="display:flex;gap:6px">
+        <input type="password" id="${inputId}" value="${saved}" placeholder="sk-ant-api03-..."
+          style="font-family:var(--fm);font-size:11px" oninput="saveKey(this.value)">
+        <button class="btn sm" onclick="toggleKeyVis('${inputId}')" style="white-space:nowrap;flex-shrink:0">👁</button>
+      </div>
+      <div style="font-size:10px;color:var(--tt);margin-top:3px">
+        Ключ хранится в браузере · <a href="https://console.anthropic.com/account/keys" target="_blank" style="color:var(--ti)">Получить →</a>
+      </div>
+    </div>`;
+}
+// ====== END API HELPER ======
+
+
+// ====== AI ПРОДАЖА ======
+let saleDocType=null,saleFiles=[];
+
+function setSaleDocType(t){
+  saleDocType=t;
+  document.querySelectorAll('[id^=sdt-]').forEach(el=>{
+    el.style.borderColor='var(--color-border-secondary)';
+    el.style.background='';
+  });
+  if(!t){
+    document.getElementById('sale-step0').style.display='block';
+    document.getElementById('sale-step1').style.display='none';
+    document.getElementById('sale-step2').style.display='none';
+    document.getElementById('sale-type-hint').style.display='none';
+    return;
+  }
+  const el=document.getElementById('sdt-'+t);
+  if(el){el.style.borderColor='var(--color-text-info)';el.style.background='color-mix(in srgb,var(--color-background-info) 15%,transparent)';}
+  const hints={
+    esf:'ЭСФ: выставляется через esf.gov.kz · Нужен ЭЦП · Проводка: Дт 1210/Кт 6020 + Дт 1210/Кт 3130 (НДС)',
+    avr:'ЭАВР: подписывается через e-contract.kz · Нужны подписи двух сторон · Проводка: Дт 7010/Кт 8110 (себестоимость)',
+    invoice:'Счёт: выставляется свободно · Не требует ЭЦП · Основание для оплаты',
+  };
+  const hint=document.getElementById('sale-type-hint');
+  hint.textContent='💡 '+hints[t];hint.style.display='block';
+  setTimeout(()=>{
+    document.getElementById('sale-step1').style.display='block';
+    document.getElementById('sale-step1').scrollIntoView({behavior:'smooth'});
+  },300);
+}
+
+function saleDrop(e){e.preventDefault();e.currentTarget.style.background='';saleAddFiles({files:e.dataTransfer.files});}
+function saleAddFiles(inp){
+  for(const f of inp.files) saleFiles.push(f);
+  const fl=document.getElementById('sale-file-list');
+  fl.style.display=saleFiles.length?'block':'none';
+  fl.innerHTML='<strong>📎 Файлов: '+saleFiles.length+'</strong><br>'+
+    saleFiles.map((f,i)=>'<span style="display:inline-flex;align-items:center;gap:4px;margin:2px;padding:2px 8px;background:var(--color-background-info);border-radius:10px;font-size:10px;color:var(--color-text-info)">'+
+      (f.name.endsWith('.pdf')?'📄':'🖼️')+' '+f.name+
+      ' <span onclick="saleFiles.splice('+i+',1);saleAddFiles({files:[]})" style="cursor:pointer;color:var(--color-text-danger)">×</span></span>').join('');
+}
+function saleEx(){
+  const exs={
+    esf:'Выставить ЭСФ покупателю ТОО NCOC N.V. БИН 030540002836
+Договор: NCOC-2026-0451
+Услуги по договору за апрель 2026
+Сумма без НДС: 10 000 000 тенге
+НДС 16%: 1 600 000 тенге
+Итого: 11 600 000 тенге',
+    avr:'ЭАВР №8 для ТОО Атырауский НПЗ
+Ремонтные работы на объекте НПС, апрель 2026
+Сумма: 4 000 000 тенге + НДС 640 000 = 4 640 000 тенге
+Договор: АНП-2026-07',
+    invoice:'Счёт на оплату ТОО КазМунайГаз
+Транспортные услуги, май 2026
+Сумма: 2 500 000 тенге + НДС 400 000 = 2 900 000 тенге
+Оплатить до 25 мая 2026',
+  };
+  document.getElementById('sale-txt').value=exs[saleDocType]||'';
+}
+
+async function saleAnalyze(){
+  const txt=document.getElementById('sale-txt').value.trim();
+  if(!txt&&!saleFiles.length){alert('Введите данные или загрузите файл');return;}
+  
+  const sp=document.getElementById('sale-spin');
+  sp.style.display='flex';
+  const msgs=['Claude читает документ...','Извлекаю реквизиты покупателя...','Определяю суммы и НДС...','Формирую документ...'];
+  let i=0;const iv=setInterval(()=>{document.getElementById('sale-spin-txt').textContent=msgs[i%msgs.length];i++;},600);
+  
+  const typeNames={esf:'ЭСФ (Электронный счёт-фактура)',avr:'ЭАВР (Акт выполненных работ)',invoice:'Счёт на оплату'};
+  const prompt=`Ты бухгалтер в Казахстане. Прочитай документ и заполни ${typeNames[saleDocType]||'документ'}.
+
+Компания-продавец: Alpino Group ТОО, БИН 140840019304, г.Атырау, ул.Сатпаева 48Б, плательщик НДС.
+
+Верни ТОЛЬКО JSON:
+{
+  "buyer": "название покупателя",
+  "buyerBIN": "БИН 12 цифр",
+  "contract": "номер договора",
+  "date": "YYYY-MM-DD",
+  "docNum": "номер документа",
+  "lines": [
+    {"name":"наименование","qty":1,"unit":"услуга или шт","price":число,"nds":число,"total":число}
+  ],
+  "totalBase": число_без_НДС,
+  "totalNDS": число_НДС,
+  "totalGrand": итого,
+  "comment": "пояснение",
+  "entries": [
+    {"dt":"счёт","kt":"счёт","desc":"описание","sum":число}
+  ]
+}
+
+Счета для продажи: Дт 1210/Кт 6020 (выручка), Дт 1210/Кт 3130 (НДС начисл.), при закрытии аванса: Дт 3260/Кт 1210
+
+${txt?'Данные: '+txt:''}`;
+
+  try {
+    const result=await callClaude(prompt,saleFiles);
+    clearInterval(iv);sp.style.display='none';
+    fillSaleResult(result);
+  } catch(err) {
+    clearInterval(iv);sp.style.display='none';
+    if(err.message==='NO_KEY'){alert('Введите API ключ в поле выше');return;}
+    alert('⚠ Ошибка Claude API: '+err.message+'\n\nПроверьте API ключ и баланс на console.anthropic.com');
+  }
+}
+
+function fillSaleResult(r){
+  const typeNames={esf:'📋 ЭСФ',avr:'📝 ЭАВР',invoice:'💳 Счёт'};
+  document.getElementById('sale-res-title').textContent='✅ Claude заполнил: '+typeNames[saleDocType];
+  document.getElementById('sale-res-sub').textContent=(r.buyer||'')+(r.contract?' · Договор: '+r.contract:'')+(r.date?' · '+r.date:'');
+  
+  const sv=(id,v)=>{const el=document.getElementById(id);if(el&&v)el.value=v;};
+  sv('sr-buyer',r.buyer);sv('sr-bin',r.buyerBIN);sv('sr-contract',r.contract);sv('sr-date',r.date);
+  
+  // Строки
+  document.getElementById('sr-lines').innerHTML=(r.lines||[]).map(l=>`
+    <div style="display:grid;grid-template-columns:3fr 80px 100px 100px 100px;gap:6px;padding:5px 0;border-bottom:.5px solid var(--color-border-tertiary);font-size:12px;align-items:center">
+      <div>${l.name}</div>
+      <div style="text-align:center">${l.qty||1} ${l.unit||'шт'}</div>
+      <div style="text-align:right;font-family:var(--font-mono)">${fmt(l.price)}</div>
+      <div style="text-align:right;font-family:var(--font-mono);color:var(--color-text-warning)">${fmt(l.nds)}</div>
+      <div style="text-align:right;font-family:var(--font-mono);font-weight:500">${fmt(l.total)}</div>
+    </div>`).join('');
+
+  // Итого
+  document.getElementById('sr-totals').innerHTML=
+    `Итого без НДС: <strong>${fmt(r.totalBase)} ₸</strong> · НДС 16%: <strong style="color:var(--color-text-warning)">${fmt(r.totalNDS)} ₸</strong> · <strong>ИТОГО: ${fmt(r.totalGrand)} ₸</strong>`;
+
+  // Проводки
+  document.getElementById('sr-entries').innerHTML='<strong>Проводки:</strong><br>'+
+    (r.entries||[]).map(e=>`Дт <b style="color:var(--color-text-info)">${e.dt}</b>/Кт <b style="color:var(--color-text-info)">${e.kt}</b> — ${e.desc} — ${fmt(e.sum)} ₸`).join('<br>');
+
+  // Комментарий
+  if(r.comment){
+    const cm=document.getElementById('sr-comment');cm.textContent='💡 Claude: '+r.comment;cm.style.display='block';
+  }
+
+  document.getElementById('sale-step2').style.display='block';
+  document.getElementById('sale-step2').scrollIntoView({behavior:'smooth'});
+}
+
+function salePost(){
+  const buyer=document.getElementById('sr-buyer').value;
+  alert('✅ Документ проведён!\n\nПокупатель: '+buyer+'\nДобавлен в журнал реализаций.\n\nСледующий шаг: выставьте ЭСФ на esf.gov.kz');
+  resetSaleAI();
+}
+function salePrint(){alert('Печать документа — в продакшн версии формируется PDF');}
+function resetSaleAI(){
+  saleDocType=null;saleFiles=[];
+  document.getElementById('sale-step0').style.display='block';
+  document.getElementById('sale-step1').style.display='none';
+  document.getElementById('sale-step2').style.display='none';
+  document.getElementById('sale-type-hint').style.display='none';
+  document.getElementById('sale-txt').value='';
+  document.getElementById('sale-file-list').style.display='none';
+  document.querySelectorAll('[id^=sdt-]').forEach(el=>{el.style.borderColor='var(--color-border-secondary)';el.style.background='';});
+}
+
+</script>
+</body>
+</html>
