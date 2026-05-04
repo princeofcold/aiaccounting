@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI-Платформа бухгалтерского аутсорсинга РК</title>
+<style>
+:root{--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;--bg:#fff;--bg2:#f7f7f5;--bg3:#f0efea;--info:#e6f1fb;--success:#eaf3de;--warn:#faeeda;--danger:#fcebeb;--t1:#1a1a18;--t2:#6b6b67;--ti:#185fa5;--ts:#3b6d11;--tw:#854f0b;--border:rgba(26,26,24,0.15)}
+@media(prefers-color-scheme:dark){:root{--bg:#1c1c1a;--bg2:#252523;--bg3:#2e2e2b;--info:#0c3054;--success:#1a3508;--warn:#422508;--t1:#f0efe8;--t2:#a8a8a2;--ti:#85b7eb;--ts:#97c459;--tw:#ef9f27;--border:rgba(240,239,232,0.15)}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);background:var(--bg3);padding:20px 16px;min-height:100vh}
+.wrap{max-width:1000px;margin:0 auto}
+.header{background:var(--bg);border-radius:16px;padding:22px 26px;margin-bottom:16px;border:0.5px solid var(--border)}
+.hrow{display:flex;align-items:center;gap:14px;margin-bottom:12px;flex-wrap:wrap}
+.logo{width:42px;height:42px;border-radius:10px;background:var(--t1);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.ht{font-size:17px;font-weight:500;color:var(--t1)}.hs{font-size:12px;color:var(--t2);margin-top:2px}
+.pills{display:flex;gap:6px;flex-wrap:wrap}
+.pill{padding:3px 10px;border-radius:20px;font-size:11px;background:var(--bg2);color:var(--t2);border:0.5px solid var(--border)}
+.pill.ok{background:var(--success);color:var(--ts)}.pill.warn{background:var(--warn);color:var(--tw)}
+.st{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--t2);margin-bottom:8px;margin-top:20px;display:flex;align-items:center;gap:8px}
+.st::after{content:'';flex:1;height:0.5px;background:var(--border)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:10px;margin-bottom:4px}
+a.card{background:var(--bg);border:0.5px solid var(--border);border-radius:12px;padding:14px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;transition:border-color .15s}
+a.card:hover{border-color:var(--t1)}
+a.card.f{border-left:2.5px solid var(--ti)}
+.ci{font-size:24px}.cn{font-size:12px;font-weight:500;color:var(--t1);line-height:1.3}
+.cd{font-size:10px;color:var(--t2);line-height:1.5;flex:1}
+.cb{display:inline-block;padding:2px 8px;border-radius:10px;font-size:9px;font-weight:500;align-self:flex-start}
+.bf{background:var(--info);color:var(--ti)}.bs{background:var(--success);color:var(--ts)}
+.footer{margin-top:20px;padding:12px 16px;background:var(--bg2);border-radius:8px;font-size:11px;color:var(--t2);border:0.5px solid var(--border);line-height:1.7}
+.footer strong{color:var(--t1)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <div class="hrow">
+    <div class="logo">📊</div>
+    <div><div class="ht">AI-Платформа бухгалтерского аутсорсинга РК</div>
+    <div class="hs">v1.0 · НК РК 2026 · Приказ МФ РК №695 от 12.11.2025</div></div>
+  </div>
+  <div class="pills">
+    <span class="pill ok">✓ НК РК 2026</span>
+    <span class="pill ok">✓ ОУР · Плательщик НДС</span>
+    <span class="pill">МРП 4 325 ₸</span>
+    <span class="pill">4 сотрудника</span>
+    <span class="pill warn">⏰ ФНО 200/300 → 15.05.2026</span>
+  </div>
+</div>
+
+<div class="st">Финальные модули</div>
+<div class="grid">
+  <a class="card f" href="modules/ai-entries.html" style="border-color:var(--ti);border-width:1.5px;background:color-mix(in srgb,var(--info) 8%,var(--bg))">
+    <div class="ci">🤖</div>
+    <div class="cn">AI — Автоматические проводки</div>
+    <div class="cd">Загрузи файл или дай команду → AI формирует проводки → Бухгалтер проверяет → В 1С</div>
+    <span class="cb bf">★ Новый</span>
+  </a>
+  <a class="card f" href="modules/fot-final.html">
+    <div class="ci">💰</div><div class="cn">ФОТ — расчёт зарплаты</div>
+    <div class="cd">Дашборд · Сотрудники · Табель · Расчёт · Отпускные · Больничный · Премии · Алименты · ИПН нараст. · Net→Gross</div>
+    <span class="cb bf">Финальный</span>
+  </a>
+  <a class="card f" href="modules/hr.html">
+    <div class="ci">👥</div><div class="cn">Кадры</div>
+    <div class="cd">Реестр Т-2 · Кадровые документы · Трудовые договоры · ЕСУТД eEnbek.kz</div>
+    <span class="cb bf">Финальный</span>
+  </a>
+  <a class="card f" href="modules/fixed-assets.html">
+    <div class="ci">🔧</div><div class="cn">ОС / Внеоборотные активы</div>
+    <div class="cd">Реестр 7 объектов · Аморт. БУ vs НУ · Налоги на ОС · ОНА/ОНО · Инвентаризация</div>
+    <span class="cb bf">Финальный</span>
+  </a>
+  <a class="card f" href="modules/projects.html">
+    <div class="ci">📁</div><div class="cn">Проекты</div>
+    <div class="cd">Бюджет vs Факт · 2930 НЗП · 1310→2930→7010 · Классификатор · АО</div>
+    <span class="cb bf">Финальный</span>
+  </a>
+  <a class="card f" href="modules/reports.html">
+    <div class="ci">📊</div><div class="cn">Отчёты БУ+НУ+P&L</div>
+    <div class="cd">ОСВ · Регистр ИПН/СН · P&L · Расчёты дебит/кредит</div>
+    <span class="cb bf">Финальный</span>
+  </a>
+  <a class="card f" href="modules/fno.html">
+    <div class="ci">🏛</div><div class="cn">ФНО авто-заполнение</div>
+    <div class="cd">200/101/300/100/870/328 · Авто из модулей · Налоговый календарь</div>
+    <span class="cb bf">Финальный</span>
+  </a>
+  <a class="card f" href="modules/purchase.html">
+    <div class="ci">📥</div><div class="cn">Покупка</div>
+    <div class="cd">99 ЭСФ · ЭАВР №7 · 8 ЭСНТ · Поставщики · Акты сверки · НДС баланс</div>
+    <span class="cb bf">Финальный</span>
+  </a>
+  <a class="card f" href="modules/bank-cash-ao.html">
+    <div class="ci">🏦</div><div class="cn">Банк · Касса · АО</div>
+    <div class="cd">ПП · ПКО/РКО · Авансовые отчёты · Выписка · Нормы НК РК 2026</div>
+    <span class="cb bf">Финальный</span>
+  </a>
+</div>
+
+<div class="st">Стабильные модули</div>
+<div class="grid">
+  <a class="card" href="modules/classifier.html">
+    <div class="ci">🔍</div><div class="cn">Классификатор + Проекты</div>
+    <div class="cd">ИИ классификатор с контекстом NCOC НПС-2</div>
+    <span class="cb bs">Стабильный</span>
+  </a>
+  <a class="card" href="modules/avr-snt.html">
+    <div class="ci">📄</div><div class="cn">ЭАВР · ЭСНТ</div>
+    <div class="cd">Парсинг АВР №7 ИП Дана · 8 СНТ · Тягачи DAF</div>
+    <span class="cb bs">Стабильный</span>
+  </a>
+  <a class="card" href="modules/sales.html">
+    <div class="ci">📤</div><div class="cn">Продажа</div>
+    <div class="cd">Реализация · ЭСФ выданные · Дебиторка · Пайплайн</div>
+    <span class="cb bs">Стабильный</span>
+  </a>
+  <a class="card" href="modules/warehouse.html">
+    <div class="ci">📦</div><div class="cn">Склад</div>
+    <div class="cd">Остатки 1310 · Документы · Инвентаризация · Цены</div>
+    <span class="cb bs">Стабильный</span>
+  </a>
+</div>
+
+<div class="footer">
+  <strong>Как тестировать:</strong> Кликайте на карточки — модуль открывается. Интернет не нужен — все данные встроены.<br>
+  <strong>Ошибка в модуле?</strong> Нажмите F12 → Console → посмотрите текст ошибки → сообщите Аязбеку.<br>
+  <strong>Кнопки AI →</strong> В локальной версии показывают диалог вместо Claude — это нормально для тестирования.<br>
+  · Разработано с Claude · Anthropic · 2026
+</div>
+
+</div>
+</body>
+</html>
